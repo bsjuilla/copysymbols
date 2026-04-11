@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
-import { categories, getSymbolsByCategory, symbols } from "@/data/symbols";
+import { categories, getSymbolsByCategory } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
 import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: { category: string };
@@ -16,10 +18,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.name} Symbols — Copy & Paste`,
     description: `Copy and paste ${cat.name.toLowerCase()} symbols. Click any symbol to copy instantly.`,
   };
-}
-
-export function generateStaticParams() {
-  return categories.map(c => ({ category: c.id }));
 }
 
 export default function CategoryPage({ params }: Props) {
@@ -45,7 +43,7 @@ export default function CategoryPage({ params }: Props) {
           <div style={{ fontSize: "2.5rem", marginBottom: 12 }}>{cat.icon}</div>
           <div className="section-label">{catSymbols.length} symbols</div>
           <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--text)", marginBottom: 8 }}>
-            {cat.name} Symbols — Copy & Paste
+            {cat.name} Symbols
           </h1>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.6 }}>
             {cat.description}. Click any symbol to copy it instantly.
@@ -57,36 +55,6 @@ export default function CategoryPage({ params }: Props) {
             <SymbolCard key={s.id} symbol={s.symbol} name={s.name} id={s.id} />
           ))}
         </div>
-
-        <section style={{ marginBottom: 64 }}>
-          <h2 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 20 }}>
-            {cat.name} Symbol Details
-          </h2>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                  {["Symbol","Name","Unicode","HTML","Description"].map(h => (
-                    <th key={h} style={{ textAlign: "left", padding: "10px 14px", color: "var(--text3)", fontWeight: 500, fontSize: 12, letterSpacing: "0.05em", textTransform: "uppercase" }}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {catSymbols.map((s, i) => (
-                  <tr key={s.id} style={{ borderBottom: "1px solid var(--border)", background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)" }}>
-                    <td style={{ padding: "12px 14px", fontSize: "1.4rem" }}>{s.symbol}</td>
-                    <td style={{ padding: "12px 14px", color: "var(--text)", fontWeight: 500 }}>
-                      <Link href={`/symbol/${s.id}`} style={{ color: "var(--text)", textDecoration: "none" }}>{s.name}</Link>
-                    </td>
-                    <td style={{ padding: "12px 14px" }}><span className="code-tag">{s.unicode}</span></td>
-                    <td style={{ padding: "12px 14px" }}><span className="code-tag">{s.html}</span></td>
-                    <td style={{ padding: "12px 14px", color: "var(--text2)", maxWidth: 260 }}>{s.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
 
         <section>
           <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>More Categories</h2>
