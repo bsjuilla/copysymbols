@@ -3,21 +3,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const links = [
+type NavChild = { href: string; label: string };
+type NavLink = { href?: string; label: string; children?: NavChild[] };
+
+const links: NavLink[] = [
   { href: "/symbols", label: "Symbols" },
   { href: "/emoji", label: "Emoji" },
   { href: "/kaomoji", label: "Kaomoji" },
   { href: "/fancy-text", label: "Fancy Text" },
   { href: "/text-repeater", label: "Repeater" },
   {
-    label: "More ▾",
+    label: "More",
     children: [
-      { href: "/symbols-for/instagram", label: "📸 Instagram Symbols" },
-      { href: "/symbols-for/discord", label: "🎮 Discord Symbols" },
-      { href: "/symbols-for/whatsapp", label: "💬 WhatsApp Symbols" },
-      { href: "/symbols-for/twitter", label: "🐦 Twitter Symbols" },
-      { href: "/symbols-for/tiktok", label: "🎵 TikTok Symbols" },
-      { href: "/text-art", label: "🎨 Text Art" },
+      { href: "/symbols-for/instagram", label: "Instagram Symbols" },
+      { href: "/symbols-for/discord", label: "Discord Symbols" },
+      { href: "/symbols-for/whatsapp", label: "WhatsApp Symbols" },
+      { href: "/symbols-for/twitter", label: "Twitter Symbols" },
+      { href: "/symbols-for/tiktok", label: "TikTok Symbols" },
+      { href: "/text-art", label: "Text Art" },
     ],
   },
 ];
@@ -29,7 +32,8 @@ export default function NavClient() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
       {links.map(l => {
-        if ("children" in l) {
+        if (l.children) {
+          const children = l.children;
           return (
             <div key={l.label} style={{ position: "relative" }}>
               <button
@@ -37,16 +41,16 @@ export default function NavClient() {
                 className="nav-link"
                 style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
               >
-                {l.label}
+                {l.label} ▾
               </button>
               {open && (
-                <div style={{ position: "absolute", right: 0, top: "100%", background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: 8, minWidth: 200, zIndex: 200, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
-                  {l.children.map(c => (
+                <div style={{ position: "absolute", right: 0, top: "100%", background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: 8, minWidth: 180, zIndex: 200, boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }}>
+                  {children.map(c => (
                     <Link
                       key={c.href}
                       href={c.href}
                       onClick={() => setOpen(false)}
-                      style={{ display: "block", padding: "8px 12px", fontSize: 13, color: "var(--text2)", textDecoration: "none", borderRadius: 6, transition: "all 0.15s" }}
+                      style={{ display: "block", padding: "8px 12px", fontSize: 13, color: "var(--text2)", textDecoration: "none", borderRadius: 6 }}
                       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--surface)"; (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
                       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = "var(--text2)"; }}
                     >
