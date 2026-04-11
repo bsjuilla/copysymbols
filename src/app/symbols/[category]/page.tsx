@@ -11,6 +11,12 @@ interface Props {
   params: { category: string };
 }
 
+export async function generateStaticParams() {
+  return categories.map((cat) => ({
+    category: cat.id,
+  }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = categories.find(c => c.id === params.category);
   if (!cat) return {};
