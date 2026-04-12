@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { categories, symbols } from "@/data/symbols";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://copysymbols.com";
+  const base = "https://copychars.com";
 
   const staticPages = [
     { url: base, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
