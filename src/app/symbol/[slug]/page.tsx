@@ -6,6 +6,8 @@ import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 interface Props { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -16,10 +18,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${s.symbol} ${s.name} — Copy & Paste`,
     description: `Copy the ${s.name} symbol (${s.symbol}). Unicode: ${s.unicode}, HTML: ${s.html}. ${s.description}`,
   };
-}
-
-export function generateStaticParams() {
-  return symbols.map(s => ({ slug: s.id }));
 }
 
 export default async function SymbolDetailPage({ params }: Props) {
