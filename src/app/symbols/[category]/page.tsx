@@ -5,14 +5,13 @@ import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
-
 interface Props {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const cat = categories.find(c => c.id === params.category);
+  const { category } = await params;
+  const cat = categories.find(c => c.id === category);
   if (!cat) return {};
   return {
     title: `${cat.name} Symbols — Copy & Paste`,
@@ -20,11 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CategoryPage({ params }: Props) {
-  const cat = categories.find(c => c.id === params.category);
+export default async function CategoryPage({ params }: Props) {
+  const { category } = await params;
+  const cat = categories.find(c => c.id === category);
   if (!cat) notFound();
 
-  const catSymbols = getSymbolsByCategory(params.category);
+  const catSymbols = getSymbolsByCategory(category);
 
   return (
     <>
@@ -36,17 +36,17 @@ export default function CategoryPage({ params }: Props) {
           <span>›</span>
           <Link href="/symbols" style={{ color: "var(--text3)", textDecoration: "none" }}>Symbols</Link>
           <span>›</span>
-          <span style={{ color: "var(--text2)" }}>{cat.name}</span>
+          <span style={{ color: "var(--text2)" }}>{cat!.name}</span>
         </div>
 
         <div style={{ marginBottom: 40 }}>
-          <div style={{ fontSize: "2.5rem", marginBottom: 12 }}>{cat.icon}</div>
+          <div style={{ fontSize: "2.5rem", marginBottom: 12 }}>{cat!.icon}</div>
           <div className="section-label">{catSymbols.length} symbols</div>
           <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", color: "var(--text)", marginBottom: 8 }}>
-            {cat.name} Symbols
+            {cat!.name} Symbols
           </h1>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.6 }}>
-            {cat.description}. Click any symbol to copy it instantly.
+            {cat!.description}. Click any symbol to copy it instantly.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function CategoryPage({ params }: Props) {
         <section>
           <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>More Categories</h2>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {categories.filter(c => c.id !== params.category).map(c => (
+            {categories.filter(c => c.id !== category).map(c => (
               <Link key={c.id} href={`/symbols/${c.id}`} className="cat-pill">
                 {c.icon} {c.name}
               </Link>
