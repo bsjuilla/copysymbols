@@ -3,6 +3,8 @@ import PlatformPageClient from "./PlatformPageClient";
 import CopyToast from "@/components/CopyToast";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 const platforms: Record<string, { name: string; description: string; emoji: string; color: string }> = {
   instagram: { name: "Instagram", description: "Cool symbols and special characters for your Instagram bio, captions and comments.", emoji: "📸", color: "#E1306C" },
   discord: { name: "Discord", description: "Unicode symbols, arrows and decorations for Discord usernames, server names and messages.", emoji: "🎮", color: "#5865F2" },
@@ -12,29 +14,27 @@ const platforms: Record<string, { name: string; description: string; emoji: stri
   facebook: { name: "Facebook", description: "Special symbols for Facebook posts, comments and profile info.", emoji: "👤", color: "#1877F2" },
 };
 
-interface Props { params: { platform: string } }
-
-export function generateStaticParams() {
-  return Object.keys(platforms).map(p => ({ platform: p }));
-}
+interface Props { params: Promise<{ platform: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const p = platforms[params.platform];
+  const { platform } = await params;
+  const p = platforms[platform];
   if (!p) return {};
   return {
     title: `Symbols for ${p.name} — Copy & Paste`,
     description: p.description + " Click any symbol to copy instantly.",
-    keywords: [`symbols for ${params.platform}`, `${params.platform} symbols`, `${params.platform} bio symbols`, `copy paste ${params.platform}`],
+    keywords: [`symbols for ${platform}`, `${platform} symbols`, `${platform} bio symbols`, `copy paste ${platform}`],
   };
 }
 
-export default function PlatformPage({ params }: Props) {
-  const platform = platforms[params.platform];
-  if (!platform) notFound();
+export default async function PlatformPage({ params }: Props) {
+  const { platform } = await params;
+  const platformData = platforms[platform];
+  if (!platformData) notFound();
   return (
     <>
       <CopyToast />
-      <PlatformPageClient platform={params.platform} platformData={platform} />
+      <PlatformPageClient platform={platform} platformData={platformData} />
     </>
   );
 }
