@@ -5,7 +5,8 @@ import BioLineItem from "./BioLineItem";
 
 export const metadata: Metadata = {
   title: "How to Make a Line in Instagram Bio — Dividers Copy & Paste",
-  description: "Copy and paste aesthetic lines for your Instagram bio.",
+  description: "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.",
+  keywords: ["instagram bio line","instagram bio divider","aesthetic line copy paste"],
 };
 
 const lines = [
@@ -23,16 +24,34 @@ export default function BlogInstagramLines() {
     <>
       <CopyToast />
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "48px 24px" }}>
-        <Link href="/blog" style={{ color: "var(--text3)", textDecoration: "none", fontSize: 13 }}>← Blog</Link>
+        <Link href="/blog" style={{ color: "var(--text3)", textDecoration: "none", fontSize: 13 }}>
+          ← Blog
+        </Link>
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           How to Make a Line in Your Instagram Bio
         </h1>
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>
-          Copy any line below and paste it into your Instagram bio to create a divider between sections.
+          Instagram does not have a built-in divider feature, but Unicode line characters work perfectly in bios. Click any line below to copy it, then paste it straight into Instagram.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 48 }}>
-          {lines.map(({ s, n }) => <BioLineItem key={n} s={s} n={n} />)}
+          {lines.map(({ s, n }) => (
+            <BioLineItem key={n} s={s} n={n} />
+          ))}
         </div>
+        <section style={{ marginBottom: 40, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 24 }}>
+          <h2 style={{ fontSize: 17, fontWeight: 600, color: "var(--text)", marginBottom: 12 }}>How to use</h2>
+          <ol style={{ paddingLeft: 20, margin: 0 }}>
+            {[
+              "Click any line above to copy it.",
+              "Open Instagram and go to Edit Profile.",
+              "Tap the Bio field and long-press to paste.",
+              "Place the line between sections of your bio.",
+              "Tap Save.",
+            ].map((step, i) => (
+              <li key={i} style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7, marginBottom: 6 }}>{step}</li>
+            ))}
+          </ol>
+        </section>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Link href="/borders" className="cat-pill">All Borders</Link>
           <Link href="/bio-templates" className="cat-pill">Bio Templates</Link>

@@ -21,9 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = platforms[platform];
   if (!p) return {};
   return {
-    title: `Symbols for ${p.name} — Copy & Paste`,
+    title: "Symbols for " + p.name + " — Copy & Paste",
     description: p.description + " Click any symbol to copy instantly.",
-    keywords: [`symbols for ${platform}`, `${platform} symbols`, `${platform} bio symbols`, `copy paste ${platform}`],
   };
 }
 
