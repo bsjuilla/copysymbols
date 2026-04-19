@@ -1,0 +1,43 @@
+name: Content Bot — Daily Symbol & Kaomoji Generator
+
+on:
+  schedule:
+    # Runs every day at 07:00 UTC
+    - cron: '0 7 * * *'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  generate-content:
+    name: Generate new symbols & kaomoji
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # needed to commit and push
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run content bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/content-bot.mjs
+
+      - name: Commit and push new content
+        run: |
+          git config --local user.email "content-bot@copychars.com"
+          git config --local user.name "CopyChars Bot"
+          git add src/data/generated-symbols.ts src/data/generated-kaomoji.ts
+          # Only commit if there are actual changes
+          if git diff --staged --quiet; then
+            echo "No new content generated today."
+          else
+            git commit -m "bot: auto-generate content [$(date +'%Y-%m-%d')]"
+            git push
+          fi
