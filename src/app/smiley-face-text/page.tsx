@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
+import CopySymbolGrid from "@/components/CopySymbolGrid";
 
 export const metadata: Metadata = {
-  title: "Smiley Face Text Symbols :) ☺ ツ Copy & Paste",
+  title: "Smiley Face Text Symbols ☺ ツ Copy & Paste",
   description: "Copy text smiley faces instantly. Classic :) emoticons, Unicode smileys ☺ ☻ ツ, and kawaii faces. Works everywhere — no emoji required.",
 };
 
-const smileys = [
-  { symbol: "☺", name: "White Smiling Face" }, { symbol: "☻", name: "Black Smiling Face" },
-  { symbol: "ツ", name: "Katakana Tu (smile)" }, { symbol: "シ", name: "Katakana Si (grin)" },
-  { symbol: "ϡ", name: "Coptic Letter Shima" }, { symbol: "⌣", name: "Smile (arc)" },
-  { symbol: "ʘ", name: "Latin Letter Bilabial Click" }, { symbol: "◉", name: "Fisheye" },
-  { symbol: "ಠ", name: "Kannada Letter" }, { symbol: "益", name: "CJK Rage face" },
-  { symbol: "ω", name: "Omega (cute mouth)" }, { symbol: "▽", name: "White Down-Pointing Triangle" },
+const unicodeSmileys = [
+  { symbol: "☺", name: "White Smiling Face" },
+  { symbol: "☻", name: "Black Smiling Face" },
+  { symbol: "ツ", name: "Katakana Tu (smile)" },
+  { symbol: "シ", name: "Katakana Si (grin)" },
+  { symbol: "ϡ", name: "Coptic Letter Shima" },
+  { symbol: "⌣", name: "Smile (arc)" },
+  { symbol: "ʘ", name: "Bilabial Click" },
+  { symbol: "ಠ", name: "Kannada Letter" },
+  { symbol: "ω", name: "Omega (cute mouth)" },
+  { symbol: "▽", name: "White Down Triangle" },
+  { symbol: "◡", name: "Lower Half Circle" },
+  { symbol: "益", name: "CJK Rage face" },
 ];
 
-const classic = [":)",":-)",":-D",":D","xD","XD","=)","=D",":P",":-P",";)",":-)",":o","O_o","o_O","^_^","^.^","T_T",">_<","*_*"];
+const classicFaces = [
+  ":)", ":-)", ":D", ":-D", "xD", "=)", ":P", ";)", "T_T", ">_<", "*_*", "^_^", "^.^", ":o", "O_o",
+];
 
 export default function SmileyFaceTextPage() {
   return (
@@ -24,31 +33,12 @@ export default function SmileyFaceTextPage() {
         Smiley Face Text ☺
       </h1>
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.6 }}>
-        Classic text emoticons and Unicode smiley symbols. Click any to copy — no emoji, just text characters that work everywhere.
+        Classic text emoticons and Unicode smiley symbols. No emoji — just text characters that work everywhere.
       </p>
-      <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>Unicode Smileys</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: 10, marginBottom: 40 }}>
-        {smileys.map(s => (
-          <button key={s.symbol} onClick={() => navigator.clipboard.writeText(s.symbol)}
-            style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "14px 10px", cursor: "pointer", textAlign: "center" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}>
-            <div style={{ fontSize: "1.8rem", marginBottom: 6 }}>{s.symbol}</div>
-            <div style={{ fontSize: 10, color: "var(--text2)" }}>{s.name}</div>
-          </button>
-        ))}
-      </div>
-      <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>Classic Emoticons</h2>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }}>
-        {classic.map(s => (
-          <button key={s} onClick={() => navigator.clipboard.writeText(s)}
-            style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 14px", cursor: "pointer", fontSize: 15, color: "var(--text)" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}>
-            {s}
-          </button>
-        ))}
-      </div>
+      <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Unicode Smileys</h2>
+      <CopySymbolGrid items={unicodeSmileys} columns="repeat(auto-fill, minmax(140px, 1fr))" />
+      <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Classic Emoticons</h2>
+      <CopySymbolGrid items={classicFaces.map(s => ({ symbol: s, name: s }))} columns="repeat(auto-fill, minmax(100px, 1fr))" />
     </div>
   );
 }

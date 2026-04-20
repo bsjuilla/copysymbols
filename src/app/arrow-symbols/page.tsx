@@ -1,20 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CopySymbolGrid from "@/components/CopySymbolGrid";
 
 export const metadata: Metadata = {
-  title: "Arrow Symbols → ← Copy & Paste — 200+ Arrow Signs",
-  description: "Copy and paste arrow symbols instantly. Right arrows →, left arrows ←, up ↑ down ↓, double arrows ⇒, curved arrows ↷, and 200+ more. One click to copy.",
+  title: "Arrow Symbols → ← Copy & Paste — 100+ Arrow Signs",
+  description: "Copy and paste arrow symbols instantly. Right →, left ←, up ↑, down ↓, double ⇒, curved ↷, bold ➡ and more. One click to copy.",
 };
 
-const arrowGroups = [
-  { label: "Basic Arrows", arrows: ["→","←","↑","↓","↔","↕","↗","↘","↙","↖"] },
-  { label: "Double Arrows", arrows: ["⇒","⇐","⇑","⇓","⇔","⇕","⇗","⇘","⇙","⇖"] },
-  { label: "Bold / Filled", arrows: ["➡","⬅","⬆","⬇","➔","➜","➝","➞","➟","➠"] },
-  { label: "Curved Arrows", arrows: ["↷","↶","↻","↺","⟳","⟲","↩","↪","↬","↫"] },
-  { label: "Long Arrows", arrows: ["⟶","⟵","⟷","⟹","⟸","⟺","⟼","⟻","↠","↞"] },
-  { label: "Triangle / Chevron", arrows: ["▶","◀","▲","▼","▷","◁","△","▽","›","‹"] },
-  { label: "Decorative", arrows: ["➤","➢","➣","➥","➦","➧","➨","➩","➪","➫"] },
-  { label: "Special", arrows: ["↵","↩","↪","⎋","⏎","⌫","⌦","⇥","⇤","⇧"] },
+const items = [
+  { symbol: "→", name: "Right Arrow", unicode: "U+2192", use: "Direction, next" },
+  { symbol: "←", name: "Left Arrow", unicode: "U+2190", use: "Back, previous" },
+  { symbol: "↑", name: "Up Arrow", unicode: "U+2191", use: "Increase, rise" },
+  { symbol: "↓", name: "Down Arrow", unicode: "U+2193", use: "Decrease, fall" },
+  { symbol: "↔", name: "Left Right Arrow", unicode: "U+2194", use: "Bidirectional" },
+  { symbol: "↕", name: "Up Down Arrow", unicode: "U+2195", use: "Vertical both" },
+  { symbol: "↗", name: "North East Arrow", unicode: "U+2197", use: "Diagonal upper right" },
+  { symbol: "↘", name: "South East Arrow", unicode: "U+2198", use: "Diagonal lower right" },
+  { symbol: "↙", name: "South West Arrow", unicode: "U+2199", use: "Diagonal lower left" },
+  { symbol: "↖", name: "North West Arrow", unicode: "U+2196", use: "Diagonal upper left" },
+  { symbol: "⇒", name: "Double Right Arrow", unicode: "U+21D2", use: "Implies (logic)" },
+  { symbol: "⇐", name: "Double Left Arrow", unicode: "U+21D0", use: "Reverse implication" },
+  { symbol: "⇔", name: "Double Left Right", unicode: "U+21D4", use: "If and only if" },
+  { symbol: "➡", name: "Black Right Arrow", unicode: "U+27A1", use: "Bold filled right" },
+  { symbol: "⬅", name: "Black Left Arrow", unicode: "U+2B05", use: "Bold filled left" },
+  { symbol: "⬆", name: "Black Up Arrow", unicode: "U+2B06", use: "Bold filled up" },
+  { symbol: "⬇", name: "Black Down Arrow", unicode: "U+2B07", use: "Bold filled down" },
+  { symbol: "↷", name: "Curved Right", unicode: "U+21B7", use: "Redo action" },
+  { symbol: "↶", name: "Curved Left", unicode: "U+21B6", use: "Undo action" },
+  { symbol: "↵", name: "Return Arrow", unicode: "U+21B5", use: "Enter key / newline" },
+  { symbol: "➔", name: "Heavy Right Arrow", unicode: "U+2794", use: "Emphasis arrow" },
+  { symbol: "›", name: "Single Right Chevron", unicode: "U+203A", use: "Breadcrumb separator" },
+  { symbol: "‹", name: "Single Left Chevron", unicode: "U+2039", use: "Left chevron" },
+  { symbol: "»", name: "Double Right Chevron", unicode: "U+00BB", use: "Double chevron" },
 ];
 
 export default function ArrowSymbolsPage() {
@@ -25,37 +42,21 @@ export default function ArrowSymbolsPage() {
         Arrow Symbols → ←
       </h1>
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.6 }}>
-        200+ arrow symbols organized by style. Click any arrow to copy it instantly. Works in all apps — Google Docs, Word, Instagram, Discord.
+        Click any arrow to copy it instantly. Works in all apps — Google Docs, Word, Instagram, Discord.
       </p>
-      {arrowGroups.map(group => (
-        <div key={group.label} style={{ marginBottom: 40 }}>
-          <h2 className="font-display" style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>{group.label}</h2>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {group.arrows.map(a => (
-              <button key={a} onClick={() => navigator.clipboard.writeText(a)}
-                style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 16px", cursor: "pointer", fontSize: "1.4rem", transition: "all 0.15s", minWidth: 52, textAlign: "center" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.transform = ""; }}>
-                {a}
-              </button>
-            ))}
-          </div>
-        </div>
-      ))}
+      <CopySymbolGrid items={items} columns="repeat(auto-fill, minmax(160px, 1fr))" />
       <section style={{ marginBottom: 40 }}>
-        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>Common Uses for Arrow Symbols</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
+        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Keyboard Shortcuts</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
           {[
-            { use: "→ in emails", desc: "Show direction, steps, or transitions" },
-            { use: "⇒ in math", desc: "Logical implication: if A then B" },
-            { use: "↩ in UI", desc: "Return / undo button icon" },
-            { use: "↑↓ in tables", desc: "Sort direction indicators" },
-            { use: "➡ in social bios", desc: "Point to links or calls-to-action" },
-            { use: "↷ in diagrams", desc: "Show circular flow or redo action" },
-          ].map(item => (
-            <div key={item.use} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 16px" }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: "var(--accent)", marginBottom: 4 }}>{item.use}</div>
-              <div style={{ fontSize: 12, color: "var(--text2)" }}>{item.desc}</div>
+            { platform: "Windows → ←", method: "Alt+26 for →, Alt+27 for ←" },
+            { platform: "Windows ↑ ↓", method: "Alt+24 for ↑, Alt+25 for ↓" },
+            { platform: "HTML →", method: "&rarr; for →, &larr; for ←" },
+            { platform: "HTML ↑ ↓", method: "&uarr; for ↑, &darr; for ↓" },
+          ].map(row => (
+            <div key={row.platform} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "16px 18px" }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{row.platform}</div>
+              <div style={{ fontSize: 13, color: "var(--text2)" }}>{row.method}</div>
             </div>
           ))}
         </div>

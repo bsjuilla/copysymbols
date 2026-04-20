@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CopySymbolGrid from "@/components/CopySymbolGrid";
 
 export const metadata: Metadata = {
   title: "Pi Symbol π Copy & Paste — π Π and Math Constants",
-  description: "Copy the pi symbol π instantly. Lowercase π, uppercase Π, and related math constant symbols. Keyboard shortcuts for all devices.",
+  description: "Copy the pi symbol π instantly. Lowercase π, uppercase Π, and related math constants. Keyboard shortcuts: Windows Alt+227, Mac Option+P.",
 };
 
-const piSymbols = [
-  { symbol: "π", name: "Pi (lowercase)", unicode: "U+03C0", html: "&pi;", use: "Math constant ≈ 3.14159" },
-  { symbol: "Π", name: "Pi (uppercase)", unicode: "U+03A0", html: "&Pi;", use: "Product notation" },
-  { symbol: "∏", name: "N-ary Product", unicode: "U+220F", html: "&prod;", use: "Product operator" },
-  { symbol: "τ", name: "Tau", unicode: "U+03C4", html: "&tau;", use: "Tau = 2π ≈ 6.283" },
-  { symbol: "φ", name: "Phi (golden ratio)", unicode: "U+03C6", html: "&phi;", use: "Golden ratio ≈ 1.618" },
-  { symbol: "∞", name: "Infinity", unicode: "U+221E", html: "&infin;", use: "Infinity constant" },
-  { symbol: "∑", name: "Summation", unicode: "U+2211", html: "&sum;", use: "Sum operator" },
-  { symbol: "√", name: "Square Root", unicode: "U+221A", html: "&radic;", use: "Radical sign" },
+const items = [
+  { symbol: "π", name: "Pi (lowercase)", unicode: "U+03C0", use: "Math constant ≈ 3.14159" },
+  { symbol: "Π", name: "Pi (uppercase)", unicode: "U+03A0", use: "Product notation" },
+  { symbol: "∏", name: "N-ary Product", unicode: "U+220F", use: "Product operator" },
+  { symbol: "τ", name: "Tau", unicode: "U+03C4", use: "Tau = 2π ≈ 6.283" },
+  { symbol: "φ", name: "Phi (golden ratio)", unicode: "U+03C6", use: "Golden ratio ≈ 1.618" },
+  { symbol: "∞", name: "Infinity", unicode: "U+221E", use: "Infinity constant" },
+  { symbol: "∑", name: "Summation", unicode: "U+2211", use: "Sum operator" },
+  { symbol: "√", name: "Square Root", unicode: "U+221A", use: "Radical sign" },
 ];
 
 export default function PiSymbolPage() {
@@ -27,19 +28,7 @@ export default function PiSymbolPage() {
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.6 }}>
         Click any symbol to copy it instantly. π is the ratio of a circle&apos;s circumference to its diameter ≈ 3.14159265...
       </p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12, marginBottom: 56 }}>
-        {piSymbols.map(s => (
-          <button key={s.symbol} onClick={() => navigator.clipboard.writeText(s.symbol)}
-            style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 16px", cursor: "pointer", textAlign: "center", transition: "all 0.15s" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}>
-            <div style={{ fontSize: "2.5rem", marginBottom: 8, lineHeight: 1 }}>{s.symbol}</div>
-            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", marginBottom: 4 }}>{s.name}</div>
-            <div style={{ fontSize: 11, color: "var(--text3)" }}>{s.unicode}</div>
-            <div style={{ fontSize: 11, color: "var(--text2)", marginTop: 4 }}>{s.use}</div>
-          </button>
-        ))}
-      </div>
+      <CopySymbolGrid items={items} />
       <section style={{ marginBottom: 48 }}>
         <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>How to Type π</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
@@ -51,7 +40,7 @@ export default function PiSymbolPage() {
           ].map(row => (
             <div key={row.platform} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "16px 18px" }}>
               <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{row.platform}</div>
-              <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>{row.method}</div>
+              <div style={{ fontSize: 13, color: "var(--text2)" }}>{row.method}</div>
             </div>
           ))}
         </div>
