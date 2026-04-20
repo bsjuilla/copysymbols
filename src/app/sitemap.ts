@@ -26,6 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/aesthetic-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/mirror-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/symbol-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    // NEW — Dedicated symbol pages
+    { url: `${base}/checkmark`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/degree-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/infinity-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/pi-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/copyright-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/arrow-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/flower-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${base}/sparkle-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${base}/smiley-face-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${base}/number-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     // Platform pages
     { url: `${base}/symbols-for/instagram`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/symbols-for/discord`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
@@ -33,12 +44,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/symbols-for/twitter`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/symbols-for/tiktok`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/symbols-for/facebook`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    // Blog
+    // Blog — original
     { url: `${base}/blog/how-to-type-copyright`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/currency-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/trademark-vs-registered`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/greek-alphabet-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/instagram-bio-lines`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    // Blog — new
+    { url: `${base}/blog/check-mark-symbol`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/degree-symbol-copy-paste`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/infinity-symbol`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/arrow-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/star-symbols`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/heart-symbols`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/discord-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${base}/blog/instagram-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${base}/blog/math-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${base}/blog/bullet-point-copy-paste`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
   ];
 
   const categoryPages = categories.map(cat => ({

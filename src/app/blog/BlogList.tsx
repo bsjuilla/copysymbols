@@ -3,41 +3,23 @@
 import Link from "next/link";
 
 const posts = [
-  {
-    href: "/blog/how-to-type-copyright",
-    title: "How to Type the Copyright Symbol © on Any Device",
-    desc: "Mac, Windows, iPhone, Android and HTML shortcuts for the © copyright sign.",
-    icon: "©",
-    category: "How-To",
-  },
-  {
-    href: "/blog/trademark-vs-registered",
-    title: "™ vs ® vs © — What is the Difference?",
-    desc: "Plain-English explanation of trademark, registered trademark and copyright. When to use each.",
-    icon: "™",
-    category: "Explained",
-  },
-  {
-    href: "/blog/currency-symbols-list",
-    title: "All Currency Symbols — Complete List $ € £ ¥ ₹",
-    desc: "Every world currency symbol with country, name and Unicode. Copy any with one click.",
-    icon: "€",
-    category: "Reference",
-  },
-  {
-    href: "/blog/greek-alphabet-list",
-    title: "Complete Greek Alphabet — α β γ Copy & Paste",
-    desc: "All 24 Greek letters with uppercase, lowercase, names and their uses in math and science.",
-    icon: "Ω",
-    category: "Reference",
-  },
-  {
-    href: "/blog/instagram-bio-lines",
-    title: "How to Make a Line in Your Instagram Bio",
-    desc: "Copy and paste aesthetic dividers and separators that work in Instagram bios.",
-    icon: "─",
-    category: "How-To",
-  },
+  // Original 5
+  { href: "/blog/how-to-type-copyright", title: "How to Type the Copyright Symbol © on Any Device", desc: "Mac, Windows, iPhone, Android and HTML shortcuts for the © copyright sign.", icon: "©", category: "How-To" },
+  { href: "/blog/trademark-vs-registered", title: "™ vs ® vs © — What is the Difference?", desc: "Plain-English explanation of trademark, registered trademark and copyright. When to use each.", icon: "™", category: "Explained" },
+  { href: "/blog/currency-symbols-list", title: "All Currency Symbols — Complete List $ € £ ¥ ₹", desc: "Every world currency symbol with country, name and Unicode. Copy any with one click.", icon: "€", category: "Reference" },
+  { href: "/blog/greek-alphabet-list", title: "Complete Greek Alphabet — α β γ Copy & Paste", desc: "All 24 Greek letters with uppercase, lowercase, names and their uses in math and science.", icon: "Ω", category: "Reference" },
+  { href: "/blog/instagram-bio-lines", title: "How to Make a Line in Your Instagram Bio", desc: "Copy and paste aesthetic dividers and separators that work in Instagram bios.", icon: "─", category: "How-To" },
+  // New 10
+  { href: "/blog/check-mark-symbol", title: "Check Mark Symbol ✓ — Complete Guide to Tick Marks", desc: "Unicode values, keyboard shortcuts for every device, and when to use each check mark variant.", icon: "✓", category: "How-To" },
+  { href: "/blog/degree-symbol-copy-paste", title: "Degree Symbol ° — How to Type It on Any Device", desc: "Windows Alt+0176, Mac Option+Shift+8, iPhone hold-0, Android, HTML &deg; — all shortcuts.", icon: "°", category: "How-To" },
+  { href: "/blog/infinity-symbol", title: "Infinity Symbol ∞ — Meaning, History and How to Type It", desc: "The mathematical meaning, historical origin, and keyboard shortcuts for the infinity symbol.", icon: "∞", category: "Explained" },
+  { href: "/blog/arrow-symbols-list", title: "Arrow Symbols → Complete List of 200+ Copy Paste Arrows", desc: "Every Unicode arrow: right, left, up, down, double, curved, bold, decorative and more.", icon: "→", category: "Reference" },
+  { href: "/blog/star-symbols", title: "Star Symbols ★ ☆ Copy & Paste — Every Star Character", desc: "Filled stars, outline stars, sparkle stars, and emoji stars — complete guide with Unicode values.", icon: "★", category: "Reference" },
+  { href: "/blog/heart-symbols", title: "Heart Symbols ♥ ♡ Copy & Paste — Every Heart Character", desc: "Red hearts, outline hearts, coloured hearts, and text hearts. Meanings and keyboard shortcuts.", icon: "♥", category: "Reference" },
+  { href: "/blog/discord-symbols", title: "Discord Symbols — Special Characters That Work in Discord", desc: "All Unicode symbols for Discord usernames, bios, and messages. Stars, brackets, arrows and more.", icon: "⚔", category: "How-To" },
+  { href: "/blog/instagram-symbols", title: "Instagram Symbols — Copy & Paste for Bios and Captions", desc: "Best symbols for Instagram bios and captions. Stars, hearts, arrows, flowers, and dividers.", icon: "✦", category: "How-To" },
+  { href: "/blog/math-symbols-list", title: "Math Symbols — Complete Unicode Mathematics Reference", desc: "Every math symbol: operators, comparison, calculus, set theory, and logic with Unicode codes.", icon: "∑", category: "Reference" },
+  { href: "/blog/bullet-point-copy-paste", title: "Bullet Point Symbols • — All Bullet Characters Copy & Paste", desc: "Round, square, arrow, hollow bullets for lists, bios, and documents. Keyboard shortcuts included.", icon: "•", category: "How-To" },
 ];
 
 const categoryColors: Record<string, string> = {
