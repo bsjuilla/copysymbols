@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   keywords: ["copy paste symbols","special characters","emoji copy","arrow symbols","currency symbols","greek letters","kaomoji"],
   openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
   robots: { index: true, follow: true },
+  openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
+robots: { index: true, follow: true },
+verification: { google: "<meta name="google-site-verification" content="yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" />" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
