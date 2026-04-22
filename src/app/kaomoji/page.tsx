@@ -4,9 +4,9 @@ import CopyToast from "@/components/CopyToast";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kaomoji — Copy & Paste Japanese Emoticons",
-  description: "Browse and copy 80+ kaomoji (Japanese text emoticons). Happy, sad, angry, surprised, cute — click any kaomoji to copy it instantly.",
-  keywords: ["kaomoji","japanese emoticons","text faces","copy paste kaomoji","(◕‿◕)","ascii art faces"],
+  title: "Kaomoji ʕ•ᴥ•ʔ Copy & Paste — Japanese Text Emoticons",
+  description: "Copy kaomoji instantly. ¯\\_(ツ)_/¯ (◕‿◕) ʕ•ᴥ•ʔ (╥_╥) — happy, sad, angry, cute, bear faces. 100+ Japanese text emoticons that work everywhere.",
+  keywords: ["kaomoji copy paste","japanese emoticons","text faces copy paste","shrug emoticon","(◕‿◕) copy","cute kaomoji","kaomoji japanese"],
 };
 
 export default function KaomojiPage() {
