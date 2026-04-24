@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
   robots: { index: true, follow: true },
   verification: { google: "yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" },
+  alternates: { canonical: "https://www.copychars.com" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
