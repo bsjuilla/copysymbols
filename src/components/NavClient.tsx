@@ -7,6 +7,7 @@ type NavChild = { href: string; label: string };
 type NavLink = { href?: string; label: string; children?: NavChild[] };
 
 const links: NavLink[] = [
+  { href: "/", label: "Home" },
   { href: "/symbols", label: "Symbols" },
   { href: "/emoji", label: "Emoji" },
   { href: "/kaomoji", label: "Kaomoji" },
