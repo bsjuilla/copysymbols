@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${s.symbol} ${s.name} — Copy & Paste`,
     description: `Copy the ${s.name} symbol (${s.symbol}). Unicode: ${s.unicode}, HTML: ${s.html}. ${s.description}`,
+    alternates: { canonical: `https://www.copychars.com/symbol/${slug}` },
   };
 }
 
