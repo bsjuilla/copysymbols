@@ -28,6 +28,7 @@ const links: NavLink[] = [
     children: [
       { href: "/hearts", label: "❤ Heart Symbols" },
       { href: "/stars", label: "★ Star Symbols" },
+      { href: "/bio-builder", label: "🛠️ Bio Builder" },
       { href: "/borders", label: "─ Borders & Lines" },
       { href: "/lenny-face", label: "( ͡° ͜ʖ ͡°) Lenny Faces" },
       { href: "/bullet-points", label: "• Bullet Points" },
