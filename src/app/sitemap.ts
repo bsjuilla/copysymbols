@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/bullet-points`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/bio-templates`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
     { url: `${base}/emoji-combos`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${base}/bio-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     // Tools
     { url: `${base}/small-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/strikethrough-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
