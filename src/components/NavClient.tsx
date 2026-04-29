@@ -13,6 +13,7 @@ const links: NavLink[] = [
   { href: "/kaomoji", label: "Kaomoji" },
   { href: "/fancy-text", label: "Fancy Text" },
   { href: "/blog", label: "Blog" },
+  {
     label: "Tools",
     children: [
       { href: "/text-repeater", label: "🔁 Text Repeater" },
