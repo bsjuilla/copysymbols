@@ -257,4 +257,6 @@ export const generatedSymbols: Symbol[] = [
   { id: "gen-chess-die-three-of-two-1777474847482", symbol: "❹", name: "Die Three of Two", keywords: ["dice", "three"], category: "chess", unicode: "U+2678", html: "&#9838;", css: "\\2678", description: "Die face." },
   { id: "gen-chess-die-four-of-two-1777474847482", symbol: "❺", name: "Die Four of Two", keywords: ["dice", "four"], category: "chess", unicode: "U+2679", html: "&#9839;", css: "\\2679", description: "Die face." },
   { id: "gen-chess-die-five-of-two-1777474847482", symbol: "❻", name: "Die Five of Two", keywords: ["dice", "five"], category: "chess", unicode: "U+267A", html: "&#9840;", css: "\\267A", description: "Die face." },
+  { id: "gen-music-music-box-1777493365325", symbol: "", name: "Music box", keywords: ["music", "box"], category: "music", unicode: "U+1F3C7", html: "&#128287;", css: "\\1F3C7", description: "" },
+  { id: "gen-music-headphone-1777493365325", symbol: "🎧", name: "Headphone", keywords: ["music", "headphone"], category: "music", unicode: "U+1F4AF", html: "&#128189;", css: "\\1F4AF", description: "" },
 ];
