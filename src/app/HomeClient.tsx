@@ -34,6 +34,47 @@ const TICKER_SYMBOLS = [
 
 const FLOAT_SYMBOLS = ["✦","★","♡","∞","π","→","©","✿","Ω","≠","∑","⚡","♪","◈","❋"];
 
+// ─── TESTIMONIALS DATA ────────────────────────────────────────────────────────
+
+const TESTIMONIALS = [
+  {
+    text: "I use CopyChars every single day for my Instagram bio and captions. The aesthetic borders alone are worth bookmarking it.",
+    handle: "@sofiacreatess",
+    platform: "📸 Instagram creator",
+    symbol: "✦",
+  },
+  {
+    text: "Finally a symbol site that doesn't look like it was built in 2003. The search is instant and it actually has everything I need.",
+    handle: "@devwithmark",
+    platform: "💻 Web developer",
+    symbol: "→",
+  },
+  {
+    text: "My Discord server name looks so much better now. Spent 10 minutes here and completely transformed my whole server aesthetic.",
+    handle: "@noxgaming_",
+    platform: "🎮 Discord server owner",
+    symbol: "⚔",
+  },
+  {
+    text: "The kaomoji collection is huge and actually organised by mood. This is the only copy-paste site I send to my followers.",
+    handle: "@kawaii.txt",
+    platform: "🎵 TikTok creator",
+    symbol: "( ◕‿◕)",
+  },
+  {
+    text: "As a maths teacher I need Greek letters and operators constantly. CopyChars saves me going into Word's symbol picker every time.",
+    handle: "@mathswithpriya",
+    platform: "🧮 Educator",
+    symbol: "∑",
+  },
+  {
+    text: "The fancy text generator is legit — my Twitter bio finally looks the way I wanted it to for years.",
+    handle: "@lana.writes",
+    platform: "🐦 Twitter / X",
+    symbol: "𝓛",
+  },
+];
+
 // ─── INLINE MINI SYMBOL CARD ─────────────────────────────────────────────────
 
 function MiniCard({ symbol, name, id }: SymbolItem) {
@@ -175,6 +216,10 @@ export default function HomeClient({
           0%, 100% { opacity: 0.5; }
           50% { opacity: 1; }
         }
+        @keyframes trust-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
         .hero-float-sym {
           position: absolute;
           font-size: 1.4rem;
@@ -288,6 +333,74 @@ export default function HomeClient({
         }
         .section-preview-sym:hover { border-color: var(--accent); background: rgba(200,169,110,0.08); transform: scale(1.1); }
         .animate-in { animation: fade-in-up 0.6s ease both; }
+
+        /* ── SOCIAL PROOF STYLES ── */
+        .trust-strip {
+          display: flex;
+          width: max-content;
+          animation: trust-scroll 30s linear infinite;
+          gap: 0;
+        }
+        .trust-strip-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 0 32px;
+          white-space: nowrap;
+          font-size: 13px;
+          color: var(--text3);
+          border-right: 1px solid var(--border);
+        }
+        .trust-strip-item span:first-child { font-size: 1.1rem; }
+        .trust-strip-item strong { color: var(--text2); font-weight: 500; }
+        .testimonial-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 22px 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          transition: border-color 0.2s, transform 0.2s;
+        }
+        .testimonial-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+        .testimonial-quote {
+          font-size: 14px;
+          color: var(--text2);
+          line-height: 1.75;
+          flex: 1;
+        }
+        .testimonial-symbol {
+          font-size: 1.6rem;
+          line-height: 1;
+          opacity: 0.6;
+        }
+        .testimonial-footer {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border-top: 1px solid var(--border);
+          padding-top: 12px;
+        }
+        .testimonial-handle {
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--accent);
+          font-family: 'DM Mono', monospace;
+        }
+        .testimonial-platform {
+          font-size: 11px;
+          color: var(--text3);
+        }
+        .star-rating {
+          display: flex;
+          gap: 2px;
+          margin-left: auto;
+        }
+        .star-rating span {
+          color: var(--accent);
+          font-size: 12px;
+        }
       `}</style>
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
@@ -397,6 +510,27 @@ export default function HomeClient({
               title="Click to copy"
             >
               {sym}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── SOCIAL PROOF TRUST STRIP ──────────────────────────────────────── */}
+      <div style={{ borderBottom: "1px solid var(--border)", background: "var(--bg)", overflow: "hidden", height: 44, display: "flex", alignItems: "center" }}>
+        <div className="trust-strip">
+          {[...Array(2)].flatMap(() => [
+            { icon: "📸", text: <><strong>Instagram</strong> bios & captions</> },
+            { icon: "🎮", text: <><strong>Discord</strong> usernames & servers</> },
+            { icon: "🎵", text: <><strong>TikTok</strong> bios & comments</> },
+            { icon: "🐦", text: <><strong>Twitter / X</strong> profiles</> },
+            { icon: "💬", text: <><strong>WhatsApp</strong> messages & statuses</> },
+            { icon: "📝", text: <><strong>Google Docs</strong> & Word documents</> },
+            { icon: "💻", text: <><strong>Developers</strong> — HTML, CSS, Unicode</> },
+            { icon: "🎓", text: <><strong>Students</strong> — math & science symbols</> },
+          ]).map((item, i) => (
+            <div key={i} className="trust-strip-item">
+              <span>{item.icon}</span>
+              <span>{item.text}</span>
             </div>
           ))}
         </div>
@@ -534,6 +668,37 @@ export default function HomeClient({
                 <div className="font-display" style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{f.title}</div>
                 <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.7, margin: 0 }}>{f.desc}</p>
               </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: 64 }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <div className="section-label" style={{ marginBottom: 8 }}>Loved by creators</div>
+            <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+              What People Are Saying
+            </h2>
+            <p style={{ fontSize: 14, color: "var(--text3)", maxWidth: 480, margin: "0 auto" }}>
+              Used daily by content creators, developers, students and professionals worldwide.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <div className="testimonial-symbol">{t.symbol}</div>
+                <p className="testimonial-quote">&ldquo;{t.text}&rdquo;</p>
+                <div className="testimonial-footer">
+                  <div>
+                    <div className="testimonial-handle">{t.handle}</div>
+                    <div className="testimonial-platform">{t.platform}</div>
+                  </div>
+                  <div className="star-rating">
+                    {[...Array(5)].map((_, j) => <span key={j}>★</span>)}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </section>
