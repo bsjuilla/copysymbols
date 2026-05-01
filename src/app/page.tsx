@@ -1,6 +1,7 @@
 import { categories, symbols, getPopularSymbols } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
 import HomeClient from "./HomeClient";
+import { canonical } from "@/lib/canonical";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
