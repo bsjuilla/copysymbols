@@ -1,3 +1,4 @@
+import { canonical } from "@/lib/canonical";
 import { notFound } from "next/navigation";
 import { categories, getSymbolsByCategory } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.name} Symbols — Copy & Paste`,
     description: `Copy and paste ${cat.name.toLowerCase()} symbols. Click any symbol to copy instantly.`,
     alternates: { canonical: `https://www.copychars.com/symbols/${category}` },
+    ...canonical(`/symbols/${params.category}/${params.id}`),
   };
 }
 
