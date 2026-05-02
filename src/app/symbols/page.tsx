@@ -2,10 +2,12 @@ import Link from "next/link";
 import { categories, symbols } from "@/data/symbols";
 import CategoryCard from "@/components/CategoryCard";
 import type { Metadata } from "next";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "All Symbol Categories",
   description: "Browse 3000+ special characters organised by category — arrows, currency, math, Greek letters, chess, zodiac, and more.",
+  ...canonical("/symbols"),
 };
 
 export default function SymbolsIndexPage() {
