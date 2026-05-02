@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "Symbols for " + p.name + " — Copy & Paste",
     description: p.description + " Click any symbol to copy instantly.",
+    ...canonical(`/symbols-for/${params.platform}`),
   };
 }
 
