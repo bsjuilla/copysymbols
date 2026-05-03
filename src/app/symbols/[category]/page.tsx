@@ -1,4 +1,3 @@
-import { canonical } from "@/lib/canonical";
 import { notFound } from "next/navigation";
 import { categories, getSymbolsByCategory } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
@@ -19,11 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${cat.name} Symbols — Copy & Paste`,
     description: `Copy and paste ${cat.name.toLowerCase()} symbols. Click any symbol to copy instantly.`,
     alternates: { canonical: `https://www.copychars.com/symbols/${category}` },
-    ...canonical(`/symbols/${params.category}/${params.id}`),
   };
 }
 
-// Maps each category to related blog posts, tools, and platform pages
 const categoryRelated: Record<string, {
   blog?: { href: string; label: string; desc: string }[];
   tools?: { href: string; label: string; desc: string }[];
@@ -214,6 +211,12 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       <CopyToast />
+      <style>{`
+        .cat-blog-link { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; text-decoration: none; transition: border-color 0.15s; }
+        .cat-blog-link:hover { border-color: var(--accent); }
+        .cat-tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; text-decoration: none; display: block; transition: border-color 0.15s, transform 0.15s; }
+        .cat-tool-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+      `}</style>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
 
         {/* Breadcrumb */}
@@ -244,10 +247,9 @@ export default async function CategoryPage({ params }: Props) {
           ))}
         </div>
 
-        {/* ── CROSS-LINKS SECTION ── */}
+        {/* Cross-links */}
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 48, marginBottom: 48, display: "flex", flexDirection: "column", gap: 40 }}>
 
-          {/* Related blog posts */}
           {hasBlog && (
             <div>
               <h2 className="font-display" style={{ fontSize: 16, fontWeight: 700, color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 16 }}>
@@ -255,34 +257,18 @@ export default async function CategoryPage({ params }: Props) {
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {related.blog!.map(post => (
-                  <Link key={post.href} href={post.href} style={{ textDecoration: "none" }}>
-                    <div style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: 10,
-                      padding: "14px 18px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      gap: 16,
-                      transition: "border-color 0.15s",
-                    }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"}
-                    >
-                      <div>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text)", marginBottom: 2 }}>{post.label}</div>
-                        <div style={{ fontSize: 13, color: "var(--text3)" }}>{post.desc}</div>
-                      </div>
-                      <span style={{ color: "var(--accent)", flexShrink: 0 }}>→</span>
+                  <Link key={post.href} href={post.href} className="cat-blog-link">
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text)", marginBottom: 2 }}>{post.label}</div>
+                      <div style={{ fontSize: 13, color: "var(--text3)" }}>{post.desc}</div>
                     </div>
+                    <span style={{ color: "var(--accent)", flexShrink: 0 }}>→</span>
                   </Link>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Related tools */}
           {hasTools && (
             <div>
               <h2 className="font-display" style={{ fontSize: 16, fontWeight: 700, color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 16 }}>
@@ -290,28 +276,15 @@ export default async function CategoryPage({ params }: Props) {
               </h2>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 {related.tools!.map(tool => (
-                  <Link key={tool.href} href={tool.href} style={{ textDecoration: "none" }}>
-                    <div style={{
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: 10,
-                      padding: "12px 16px",
-                      transition: "border-color 0.15s, transform 0.15s",
-                      cursor: "pointer",
-                    }}
-                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "var(--accent)"; el.style.transform = "translateY(-2px)"; }}
-                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "var(--border)"; el.style.transform = ""; }}
-                    >
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", marginBottom: 2 }}>{tool.label}</div>
-                      <div style={{ fontSize: 12, color: "var(--text3)" }}>{tool.desc}</div>
-                    </div>
+                  <Link key={tool.href} href={tool.href} className="cat-tool-card">
+                    <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)", marginBottom: 2 }}>{tool.label}</div>
+                    <div style={{ fontSize: 12, color: "var(--text3)" }}>{tool.desc}</div>
                   </Link>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Platform / quick links */}
           {hasPages && (
             <div>
               <h2 className="font-display" style={{ fontSize: 16, fontWeight: 700, color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 16 }}>
