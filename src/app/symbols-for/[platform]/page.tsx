@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import PlatformPageClient from "./PlatformPageClient";
 import CopyToast from "@/components/CopyToast";
+import { canonical } from "@/lib/canonical";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
