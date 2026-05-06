@@ -505,4 +505,10 @@ export const generatedSymbols: Symbol[] = [
   { id: "gen-weather-seedling-1778059696498", symbol: "🌿️", name: "Seedling", keywords: ["nature", "season", "spring"], category: "weather", unicode: "U+1F331", html: "&#127986;", css: "\\1F331", description: "Used to indicate a spring or natural setting." },
   { id: "gen-weather-cloud-with-rain-1778059696498", symbol: "🌨️", name: "Cloud with Rain", keywords: ["rain", "weather"], category: "weather", unicode: "U+1F327", html: "&#127970;", css: "\\1F327", description: "Used to indicate rain or weather." },
   { id: "gen-weather-tornado-1778059696498", symbol: "🌪️", name: "Tornado", keywords: ["storm", "weather"], category: "weather", unicode: "U+1F32A", html: "&#127973;", css: "\\1F32A", description: "Used to indicate a tornado or stormy weather." },
+  { id: "gen-chess-currency-sign-1778080617075", symbol: "¤", name: "Currency Sign", keywords: [], category: "chess", unicode: "U+00A4", html: "&yen;", css: "\\00A4", description: "Used in board games for currency." },
+  { id: "gen-chess-chess-pawn-1778080617075", symbol: "☗", name: "Chess Pawn", keywords: [], category: "chess", unicode: "U+265F", html: "&#9819;", css: "\\265F", description: "Used in chess pieces for pawns." },
+  { id: "gen-chess-chess-rook-1778080617075", symbol: "☖", name: "Chess Rook", keywords: [], category: "chess", unicode: "U+265A", html: "&#9814;", css: "\\265A", description: "Used in chess pieces for rooks." },
+  { id: "gen-chess-black-circle-1778080617075", symbol: "⚫", name: "Black Circle", keywords: [], category: "chess", unicode: "U+26AB", html: "&#9797;", css: "\\26AB", description: "Used in board games for dice." },
+  { id: "gen-chess-white-circle-1778080617075", symbol: "⚪", name: "White Circle", keywords: [], category: "chess", unicode: "U+26AA", html: "&#9796;", css: "\\26AA", description: "Used in board games for dice." },
+  { id: "gen-chess-hot-beverage-1778080617075", symbol: "☕️", name: "Hot Beverage", keywords: [], category: "chess", unicode: "U+2615", html: "&#9829;", css: "\\2615", description: "Used in chess pieces for kings." },
 ];
