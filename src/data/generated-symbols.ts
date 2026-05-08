@@ -606,4 +606,10 @@ export const generatedSymbols: Symbol[] = [
   { id: "gen-shapes-permille-sign-1778250487269", symbol: "‱", name: "Permille Sign", keywords: ["permille", "sign"], category: "shapes", unicode: "U+2030", html: "&#8252;", css: "\\2030", description: "Permille sign used for representation." },
   { id: "gen-shapes-caret-mark-1778250487269", symbol: "‴", name: "Caret Mark", keywords: ["caret", "mark", "diacritic"], category: "shapes", unicode: "U+2033", html: "&#8253;", css: "\\2033", description: "Caret mark used for diacritics." },
   { id: "gen-shapes-fits-1778250487269", symbol: "‶", name: "Fits", keywords: ["fits", "mark"], category: "shapes", unicode: "U+2036", html: "&#8256;", css: "\\2036", description: "Fits mark used for notation." },
+  { id: "gen-shapes-white-medium-small-star-1778270806314", symbol: "◉", name: "White Medium Small Star", keywords: ["star"], category: "shapes", unicode: "U+25C9", html: "&#9649;", css: "\\25C9", description: "" },
+  { id: "gen-shapes-white-medium-diamond-1778270806314", symbol: "▭", name: "White Medium Diamond", keywords: ["diamond"], category: "shapes", unicode: "U+25CB", html: "&#9641;", css: "\\25CB", description: "" },
+  { id: "gen-shapes-six-pointed-star-1778270806314", symbol: "✴", name: "Six-Pointed Star", keywords: ["star"], category: "shapes", unicode: "U+2734", html: "&#9790;", css: "\\2734", description: "" },
+  { id: "gen-shapes-black-rightwards-arrow-1778270806314", symbol: "⬠", name: "Black Rightwards Arrow", keywords: ["arrow"], category: "shapes", unicode: "U+21D0", html: "&#8594;", css: "\\21D0", description: "" },
+  { id: "gen-shapes-white-square-with-right-half-black-1778270806314", symbol: "⬡", name: "White Square With Right Half Black", keywords: ["square"], category: "shapes", unicode: "U+25A1", html: "&#9633;", css: "\\25A1", description: "" },
+  { id: "gen-shapes-white-diamond-with-a-filled-half-1778270806314", symbol: "❍", name: "White Diamond With A Filled Half", keywords: ["diamond"], category: "shapes", unicode: "U+275B", html: "&#10083;", css: "\\275B", description: "" },
 ];
