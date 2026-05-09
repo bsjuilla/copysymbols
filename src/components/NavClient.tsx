@@ -18,6 +18,7 @@ const links: NavLink[] = [
     children: [
       { href: "/text-repeater", label: "🔁 Text Repeater" },
       { href: "/small-text", label: "ˢ Small Text" },
+      { href: "/superscript-generator", label: "ˣ² Super & Subscript" },
       { href: "/strikethrough-text", label: "S̶ Strikethrough" },
       { href: "/aesthetic-text", label: "ａ Aesthetic Text" },
       { href: "/mirror-text", label: "↕ Mirror Text" },
