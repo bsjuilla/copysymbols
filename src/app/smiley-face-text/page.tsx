@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Smiley Face Text Symbols ☺ ツ Copy & Paste",
   description: "Copy text smiley faces instantly. Classic :) emoticons, Unicode smileys ☺ ☻ ツ, and kawaii faces. Works everywhere — no emoji required.",
+  ...canonical("/smiley-face-text"),
 };
 
 const unicodeSmileys = [

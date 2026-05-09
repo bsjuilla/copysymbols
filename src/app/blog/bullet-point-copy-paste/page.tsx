@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Bullet Point Symbols • Copy & Paste — All Bullet Characters",
   description: "Copy bullet point symbols instantly. Round, square, arrow, and hollow bullets for lists, bios, and documents. Keyboard shortcuts included.",
+  ...canonical("/blog/bullet-point-copy-paste"),
 };
 
 export default function BlogPost() {

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Arrow Symbols — Complete List of 200+ Copy Paste Arrows",
   description: "Every Unicode arrow symbol with name and code. Right, left, up, down, double, curved, bold, and decorative arrows. Click any to copy.",
+  ...canonical("/blog/arrow-symbols-list"),
 };
 
 export default function BlogPost() {

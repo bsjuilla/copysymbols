@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Degree Symbol ° Copy & Paste — °C °F and More",
   description: "Copy the degree symbol ° instantly. Keyboard shortcuts for Windows (Alt+0176), Mac (Option+Shift+8), iPhone, Android, and HTML &deg;.",
+  ...canonical("/degree-symbol"),
 };
 
 const items = [

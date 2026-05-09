@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Check Mark Symbol ✓ — Complete Guide to Tick Marks",
   description: "Everything about the check mark symbol. Unicode values, keyboard shortcuts for every device, and when to use each variant.",
+  ...canonical("/blog/check-mark-symbol"),
 };
 
 export default function BlogPost() {

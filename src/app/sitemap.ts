@@ -12,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/text-art`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${base}/fancy-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/text-repeater`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    // Blog index
+    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    // NOTE: /community and /search are intentionally OMITTED.
+    //   /community  — empty user-content page (~40 words live content); excluded
+    //                 to avoid "Crawled — currently not indexed" noise.
+    //                 Page itself sets robots: { index: false } as belt-and-braces.
+    //   /search     — robots.ts disallows /search and the page sets index:false.
     // Mega pages
     { url: `${base}/hearts`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/stars`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
@@ -78,5 +85,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...categoryPages, ...symbolPages];
+  // Dedupe by URL. Necessary because src/data/generated-symbols.ts currently
+  // contains duplicate `id` values (Agent 3's territory) which would otherwise
+  // emit the same /symbol/<id> URL many times — the live sitemap before this
+  // fix had one URL repeated 20× and another 10×. Dedupe also protects against
+  // any accidental overlap between staticPages, categoryPages and symbolPages.
+  const all = [...staticPages, ...categoryPages, ...symbolPages];
+  const seen = new Set<string>();
+  return all.filter(entry => {
+    if (seen.has(entry.url)) return false;
+    seen.add(entry.url);
+    return true;
+  });
 }

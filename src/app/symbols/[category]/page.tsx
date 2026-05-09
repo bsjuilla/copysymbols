@@ -208,9 +208,43 @@ export default async function CategoryPage({ params }: Props) {
   const hasTools = related.tools && related.tools.length > 0;
   const hasPages = related.pages && related.pages.length > 0;
 
+  // JSON-LD: BreadcrumbList + ItemList of the symbols on this page.
+  // Helps Google understand listing intent so the page is indexed as a
+  // catalogue rather than dismissed as thin content.
+  const baseUrl = "https://www.copychars.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+          { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+          { "@type": "ListItem", position: 3, name: `${cat!.name} Symbols`, item: `${baseUrl}/symbols/${category}` },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        name: `${cat!.name} Symbols`,
+        description: `${cat!.description}. ${catSymbols.length} symbols to copy and paste.`,
+        numberOfItems: catSymbols.length,
+        itemListElement: catSymbols.slice(0, 100).map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: s.name,
+          url: `${baseUrl}/symbol/${s.id}`,
+        })),
+      },
+    ],
+  };
+
   return (
     <>
       <CopyToast />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style>{`
         .cat-blog-link { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; text-decoration: none; transition: border-color 0.15s; }
         .cat-blog-link:hover { border-color: var(--accent); }

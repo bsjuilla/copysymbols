@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Check Mark Symbol ✓ Copy & Paste — All Checkmarks",
   description: "Copy and paste check mark symbols instantly. ✓ ✔ ☑ ✅ — tick marks, ballot boxes, heavy check marks. One click to copy any checkmark symbol.",
+  ...canonical("/checkmark"),
 };
 
 const items = [
