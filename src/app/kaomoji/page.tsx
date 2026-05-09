@@ -1,4 +1,5 @@
-import { kaomojiCategories, kaomoji } from "@/data/kaomoji";
+import { kaomojiCategories } from "@/data/kaomoji";
+import { allKaomoji } from "@/data/all-kaomoji";
 import KaomojiPageClient from "./KaomojiPageClient";
 import CopyToast from "@/components/CopyToast";
 import type { Metadata } from "next";
@@ -28,8 +29,8 @@ export default function KaomojiPage() {
         "@type": "ItemList",
         name: "Kaomoji — Japanese Text Emoticons",
         description: "Copy-and-paste Japanese kaomoji text emoticons.",
-        numberOfItems: kaomoji.length,
-        itemListElement: kaomoji.slice(0, 100).map((k, i) => ({
+        numberOfItems: allKaomoji.length,
+        itemListElement: allKaomoji.slice(0, 100).map((k, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: k.name,
@@ -44,7 +45,7 @@ export default function KaomojiPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <KaomojiPageClient allKaomoji={kaomoji} categories={kaomojiCategories} />
+      <KaomojiPageClient allKaomoji={allKaomoji} categories={kaomojiCategories} />
     </>
   );
 }
