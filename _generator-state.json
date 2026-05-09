@@ -1,0 +1,146 @@
+{
+  "arrows": {
+    "count": 122,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "currency": {
+    "count": 48,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "math": {
+    "count": 56,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "greek": {
+    "count": 115,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "legal": {
+    "count": 69,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "shapes": {
+    "count": 69,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "punctuation": {
+    "count": 31,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "music": {
+    "count": 62,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "chess": {
+    "count": 50,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "zodiac": {
+    "count": 40,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "weather": {
+    "count": 59,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "technical": {
+    "count": 74,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "superscript": {
+    "count": 27,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "ui": {
+    "count": 26,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:happy": {
+    "count": 58,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:love": {
+    "count": 93,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:sad": {
+    "count": 70,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:angry": {
+    "count": 65,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:surprised": {
+    "count": 80,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:shy": {
+    "count": 25,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:cool": {
+    "count": 71,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:silly": {
+    "count": 60,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:waving": {
+    "count": 56,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  },
+  "kaomoji:bear": {
+    "count": 61,
+    "consecutive_zero_runs": 0,
+    "saturated": false,
+    "last_run": null
+  }
+}
