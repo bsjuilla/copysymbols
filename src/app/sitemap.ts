@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 import { categories, symbols } from "@/data/symbols";
+import { emoji } from "@/data/emoji";
+import { allKaomoji } from "@/data/all-kaomoji";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.copychars.com";
@@ -86,12 +88,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Per-emoji + per-kaomoji detail pages (Task X — per-item indexability).
+  // Every entry from src/data/emoji.ts and src/data/all-kaomoji.ts is
+  // statically generated, so each gets its own sitemap entry. Together this
+  // adds ~1632 URLs (1074 emoji + ~558 kaomoji).
+  const emojiPages = emoji.map(e => ({
+    url: `${base}/emoji/${e.id}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  const kaomojiPages = allKaomoji.map(k => ({
+    url: `${base}/kaomoji/${k.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
   // Dedupe by URL. Necessary because src/data/generated-symbols.ts currently
   // contains duplicate `id` values (Agent 3's territory) which would otherwise
   // emit the same /symbol/<id> URL many times — the live sitemap before this
   // fix had one URL repeated 20× and another 10×. Dedupe also protects against
   // any accidental overlap between staticPages, categoryPages and symbolPages.
-  const all = [...staticPages, ...categoryPages, ...symbolPages];
+  const all = [
+    ...staticPages,
+    ...categoryPages,
+    ...symbolPages,
+    ...emojiPages,
+    ...kaomojiPages,
+  ];
   const seen = new Set<string>();
   return all.filter(entry => {
     if (seen.has(entry.url)) return false;
