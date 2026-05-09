@@ -12,9 +12,38 @@ export const metadata: Metadata = {
 };
 
 export default function KaomojiPage() {
+  // JSON-LD: BreadcrumbList + ItemList of kaomoji entries on this page.
+  const baseUrl = "https://www.copychars.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+          { "@type": "ListItem", position: 2, name: "Kaomoji", item: `${baseUrl}/kaomoji` },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        name: "Kaomoji — Japanese Text Emoticons",
+        description: "Copy-and-paste Japanese kaomoji text emoticons.",
+        numberOfItems: kaomoji.length,
+        itemListElement: kaomoji.slice(0, 100).map((k, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: k.name,
+        })),
+      },
+    ],
+  };
   return (
     <>
       <CopyToast />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <KaomojiPageClient allKaomoji={kaomoji} categories={kaomojiCategories} />
     </>
   );

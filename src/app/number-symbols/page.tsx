@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Number Symbols ① ② ③ Copy & Paste — Circled & Special Numbers",
   description: "Copy circled numbers ①②③, Roman numerals ⅠⅡⅢ, fractions ½ ¼ ¾, and superscript numbers. One click to copy.",
+  ...canonical("/number-symbols"),
 };
 
 const circled = ["①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩","⑪","⑫","⑬","⑭","⑮","⑯","⑰","⑱","⑲","⑳"].map(s => ({ symbol: s, name: `Circled ${s}` }));

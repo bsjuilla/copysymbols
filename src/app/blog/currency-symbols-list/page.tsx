@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "All Currency Symbols List — Copy & Paste $ € £ ¥ ₹ ₿",
   description: "Complete list of all world currency symbols with their country, currency name and Unicode. Copy any currency symbol with one click.",
   keywords: ["currency symbols list","all currency symbols","money symbols copy paste","$ € £ ¥ symbols","world currency symbols"],
+  ...canonical("/blog/currency-symbols-list"),
 };
 
 const currencies = [

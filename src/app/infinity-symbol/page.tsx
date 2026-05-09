@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Infinity Symbol ∞ Copy & Paste — All Infinity Signs",
   description: "Copy the infinity symbol ∞ with one click. Keyboard shortcuts for Mac (Option+5), Windows (Alt+236), HTML &infin; and LaTeX \\infty.",
+  ...canonical("/infinity-symbol"),
 };
 
 const items = [

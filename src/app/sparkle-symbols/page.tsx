@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Sparkle Symbols ✨ ✦ ⭐ Copy & Paste — Star Sparkles",
   description: "Copy sparkle and star symbols instantly. ✨ ✦ ✧ ⭐ 🌟 💫 ✶ — aesthetic sparkles for Instagram bios, captions, and social media.",
+  ...canonical("/sparkle-symbols"),
 };
 
 const items = [

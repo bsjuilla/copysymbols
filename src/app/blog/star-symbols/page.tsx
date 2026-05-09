@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Star Symbols ★ ☆ Copy & Paste — Every Star Character",
   description: "Copy star symbols instantly. Filled stars, outline stars, sparkle stars, and emoji stars. Complete guide with Unicode values and uses.",
+  ...canonical("/blog/star-symbols"),
 };
 
 export default function BlogPost() {

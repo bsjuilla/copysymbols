@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Copyright Symbol © Copy & Paste — ™ ® © All IP Symbols",
   description: "Copy the copyright symbol © instantly. Includes trademark ™, registered ® and all IP symbols. Shortcuts: Windows Alt+0169, Mac Option+G, iPhone hold C.",
+  ...canonical("/copyright-symbol"),
 };
 
 const items = [

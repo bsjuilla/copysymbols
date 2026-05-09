@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Greek Alphabet Symbols — Complete List α β γ Copy & Paste",
   description: "Complete Greek alphabet with uppercase and lowercase letters, names and their common uses in math, science and everyday language. Copy any Greek letter.",
   keywords: ["greek alphabet copy paste","greek letters list","alpha beta gamma symbols","greek symbols math","all greek letters"],
+  ...canonical("/blog/greek-alphabet-list"),
 };
 
 const greekLetters = [

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "How to Type the Copyright Symbol © on Mac, Windows & iPhone",
   description: "Learn how to type the copyright symbol © on Mac (Option+G), Windows (Alt+0169), iPhone, Android, and in HTML. Step-by-step guide with shortcuts.",
   keywords: ["how to type copyright symbol","copyright symbol mac","copyright symbol windows","© keyboard shortcut","copyright symbol html"],
+  ...canonical("/blog/how-to-type-copyright"),
 };
 
 export default function BlogCopyright() {

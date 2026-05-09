@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Flower Symbols ✿ ❀ ❁ Copy & Paste — All Floral Signs",
   description: "Copy flower symbols instantly. ✿ ❀ ❁ ✾ 🌸 🌺 🌻 — floral text symbols and emoji flowers for bios, captions, and messages.",
+  ...canonical("/flower-symbols"),
 };
 
 const items = [

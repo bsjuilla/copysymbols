@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Instagram Symbols — Copy & Paste for Bios and Captions",
   description: "The best symbols for Instagram bios and captions. Stars, hearts, arrows, flowers, dividers, and aesthetic text that actually works on Instagram.",
+  ...canonical("/blog/instagram-symbols"),
 };
 
 export default function BlogPost() {

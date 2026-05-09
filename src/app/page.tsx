@@ -1,12 +1,14 @@
 import { categories, symbols, getPopularSymbols } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
 import HomeClient from "./HomeClient";
-import { canonical } from "@/lib/canonical";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "CopyChars — Copy & Paste Symbols, Emoji & Special Characters",
   description: "Copy and paste 3000+ symbols instantly. Arrows → ← ↑, hearts ♥ ♡, stars ★ ☆, currency $ € £ ¥, Greek letters, kaomoji and more. One click to copy.",
+  // Homepage canonical kept as bare origin (no trailing slash) to match the
+  // value already indexed by Google. Do NOT switch to canonical("/") — that
+  // would emit a trailing slash and create a fresh URL for Google to dedupe.
   alternates: { canonical: "https://www.copychars.com" },
 };
 

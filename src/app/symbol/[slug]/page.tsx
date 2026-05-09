@@ -35,9 +35,34 @@ export default async function SymbolDetailPage({ params }: Props) {
     { label: "Category", value: cat?.name || "", color: "var(--accent)", icon: "≡" },
   ];
 
+  // JSON-LD: BreadcrumbList for this symbol detail page so Google understands
+  // the site's category hierarchy when indexing 1,000+ symbol pages.
+  const baseUrl = "https://www.copychars.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+      ...(cat
+        ? [{ "@type": "ListItem", position: 3, name: cat.name, item: `${baseUrl}/symbols/${cat.id}` }]
+        : []),
+      {
+        "@type": "ListItem",
+        position: cat ? 4 : 3,
+        name: s!.name,
+        item: `${baseUrl}/symbol/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <CopyToast />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <style>{`
         .sym-hero-card {

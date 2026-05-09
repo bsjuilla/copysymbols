@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopyToast from "@/components/CopyToast";
 import BioLineItem from "./BioLineItem";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "How to Make a Line in Instagram Bio — Dividers Copy & Paste",
   description: "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.",
   keywords: ["instagram bio line","instagram bio divider","aesthetic line copy paste"],
+  ...canonical("/blog/instagram-bio-lines"),
 };
 
 const lines = [

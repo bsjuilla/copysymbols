@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Heart Symbols ♥ ♡ Copy & Paste — Every Heart Character",
   description: "Copy heart symbols instantly. Red hearts, outline hearts, coloured hearts, and text hearts. Complete list with meanings for bios and messages.",
+  ...canonical("/blog/heart-symbols"),
 };
 
 export default function BlogPost() {
