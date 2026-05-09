@@ -102,7 +102,7 @@ export default function PlatformPageClient({ platform, platformData }: Props) {
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
       {/* Breadcrumb */}
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 32, fontSize: 13, color: "var(--text3)" }}>
-        <a href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</a>
+        <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
         <span>›</span>
         <span style={{ color: "var(--text2)" }}>Symbols for {platformData.name}</span>
       </div>

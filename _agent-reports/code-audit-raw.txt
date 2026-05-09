@@ -1,0 +1,784 @@
+================================================================================
+tsc --noEmit (BEFORE fixes)
+================================================================================
+(empty = clean exit)
+
+================================================================================
+tsc --noEmit (AFTER fixes)
+================================================================================
+(empty = clean exit)
+
+================================================================================
+npm run lint (BEFORE fixes)
+================================================================================
+
+> CopyChars@0.1.0 lint
+> eslint
+
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\HomeClient.tsx
+   80:35   warning  'id' is defined but never used                                   @typescript-eslint/no-unused-vars
+  446:40   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  736:185  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx
+   59:10  warning  'preview' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  295:75  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:295:75
+  293 | function HallOfFame({ creations }: { creations: Creation[] }) {
+  294 |   const top = [...creations].filter(c => c.visibility === "public").sort((a, b) => b.likes - a.likes).slice(0, 10);
+> 295 |   const topWeek = [...creations].filter(c => c.visibility === "public" && Date.now() - c.createdAt < 604800000).sort((a, b) => b.likes - a.likes).slice(0, 5);
+      |                                                                           ^^^^^^^^^^ Cannot call impure function
+  296 |
+  297 |   return (
+  298 |     <div>                                                                                                                                                                                               react-hooks/purity
+  336:30  warning  'onUpdate' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  365:23  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react/no-unescaped-entities
+  399:5   error    Error: Cannot access variable before it is declared
+
+`refresh` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:399:5
+  397 |     seedIfEmpty();
+  398 |     setUser(getCurrentUser());
+> 399 |     refresh();
+      |     ^^^^^^^ `refresh` accessed before it is declared
+  400 |   }, []);
+  401 |
+  402 |   const refresh = useCallback(() => {
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:402:3
+  400 |   }, []);
+  401 |
+> 402 |   const refresh = useCallback(() => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 403 |     setCreations(getCreations());
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 404 |     setUser(getCurrentUser());
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 405 |     setTick(t => t + 1);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 406 |   }, []);
+      | ^^^^^^^^^^ `refresh` is declared here
+  407 |
+  408 |   const publicCreations = creations.filter(c => c.visibility === "public");
+  409 |  react-hooks/immutability
+  400:6   warning  React Hook useEffect has a missing dependency: 'refresh'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+  417:20  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:417:20
+  415 |       if (sort === "most-liked") return b.likes - a.likes;
+  416 |       if (sort === "weekly") {
+> 417 |         const aW = Date.now() - a.createdAt < 604800000 ? a.likes : 0;
+      |                    ^^^^^^^^^^ Cannot call impure function
+  418 |         const bW = Date.now() - b.createdAt < 604800000 ? b.likes : 0;
+  419 |         return bW - aW;
+  420 |       }                                                                                                                                                                                                                                                                                                                                                      react-hooks/purity
+  418:20  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:418:20
+  416 |       if (sort === "weekly") {
+  417 |         const aW = Date.now() - a.createdAt < 604800000 ? a.likes : 0;
+> 418 |         const bW = Date.now() - b.createdAt < 604800000 ? b.likes : 0;
+      |                    ^^^^^^^^^^ Cannot call impure function
+  419 |         return bW - aW;
+  420 |       }
+  421 |       return 0;                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/purity
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\emoji\EmojiPageClient.tsx
+  3:8  warning  'CopyToast' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\fancy-text\FancyTextClient.tsx
+    3:8    warning  'CopyToast' is defined but never used                            @typescript-eslint/no-unused-vars
+  178:140  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  178:220  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  181:30   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  181:35   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\hearts\HeartsClient.tsx
+  3:8  warning  'CopyToast' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\kaomoji\KaomojiPageClient.tsx
+  63:19  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\not-found.tsx
+  8:84   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  8:105  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\page.tsx
+  4:10  warning  'canonical' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\search\SearchPageClient.tsx
+   3:20   warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+  68:141  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  68:149  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:97   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:108  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:111  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:124  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:127  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  69:145  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  74:115  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  74:123  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\small-text\SmallTextClient.tsx
+  87:149  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  87:151  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\symbol\[slug]\page.tsx
+  2:10  warning  'symbols' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\symbols-for\[platform]\PlatformPageClient.tsx
+  105:9  error  Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\symbols\page.tsx
+  1:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\FavouritesPanel.tsx
+  10:10  warning  'copied' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  82:37  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\FavouritesPanel.tsx:82:37
+  80 |               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+  81 |                 {recent.slice(0, 16).map(r => (
+> 82 |                   <span key={r.id + Math.random()} title={r.name} onClick={() => copy(r.symbol, r.name)}
+     |                                     ^^^^^^^^^^^^^ Cannot call impure function
+  83 |                     style={{ fontSize: "1.2rem", cursor: "pointer", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "4px 8px", transition: "border-color 0.15s" }}>
+  84 |                     {r.symbol}
+  85 |                   </span>  react-hooks/purity
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SearchBar.tsx
+  9:37  warning  'autoFocus' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SearchOverlay.tsx
+   74:12  warning  'e' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  152:6   warning  React Hook useEffect has a missing dependency: 'handleCopy'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SymbolCard.tsx
+  22:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SymbolCard.tsx:22:7
+  20 |     try {
+  21 |       const favs = JSON.parse(localStorage.getItem("copychars-favs") || "[]");
+> 22 |       setIsFav(favs.some((f: { id: string }) => f.id === id));
+     |       ^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |     } catch {}
+  24 |   }, [id]);
+  25 |  react-hooks/set-state-in-effect
+
+✖ 44 problems (29 errors, 15 warnings)
+
+
+================================================================================
+npm run lint (AFTER fixes)
+================================================================================
+
+> CopyChars@0.1.0 lint
+> eslint
+
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\HomeClient.tsx
+  80:35  warning  'id' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx
+   59:10  warning  'preview' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  295:75  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:295:75
+  293 | function HallOfFame({ creations }: { creations: Creation[] }) {
+  294 |   const top = [...creations].filter(c => c.visibility === "public").sort((a, b) => b.likes - a.likes).slice(0, 10);
+> 295 |   const topWeek = [...creations].filter(c => c.visibility === "public" && Date.now() - c.createdAt < 604800000).sort((a, b) => b.likes - a.likes).slice(0, 5);
+      |                                                                           ^^^^^^^^^^ Cannot call impure function
+  296 |
+  297 |   return (
+  298 |     <div>                                                                                                                                                                                               react-hooks/purity
+  336:30  warning  'onUpdate' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  399:5   error    Error: Cannot access variable before it is declared
+
+`refresh` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:399:5
+  397 |     seedIfEmpty();
+  398 |     setUser(getCurrentUser());
+> 399 |     refresh();
+      |     ^^^^^^^ `refresh` accessed before it is declared
+  400 |   }, []);
+  401 |
+  402 |   const refresh = useCallback(() => {
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:402:3
+  400 |   }, []);
+  401 |
+> 402 |   const refresh = useCallback(() => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 403 |     setCreations(getCreations());
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 404 |     setUser(getCurrentUser());
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 405 |     setTick(t => t + 1);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 406 |   }, []);
+      | ^^^^^^^^^^ `refresh` is declared here
+  407 |
+  408 |   const publicCreations = creations.filter(c => c.visibility === "public");
+  409 |  react-hooks/immutability
+  400:6   warning  React Hook useEffect has a missing dependency: 'refresh'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+  417:20  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:417:20
+  415 |       if (sort === "most-liked") return b.likes - a.likes;
+  416 |       if (sort === "weekly") {
+> 417 |         const aW = Date.now() - a.createdAt < 604800000 ? a.likes : 0;
+      |                    ^^^^^^^^^^ Cannot call impure function
+  418 |         const bW = Date.now() - b.createdAt < 604800000 ? b.likes : 0;
+  419 |         return bW - aW;
+  420 |       }                                                                                                                                                                                                                                                                                                                                                      react-hooks/purity
+  418:20  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\app\community\CommunityClient.tsx:418:20
+  416 |       if (sort === "weekly") {
+  417 |         const aW = Date.now() - a.createdAt < 604800000 ? a.likes : 0;
+> 418 |         const bW = Date.now() - b.createdAt < 604800000 ? b.likes : 0;
+      |                    ^^^^^^^^^^ Cannot call impure function
+  419 |         return bW - aW;
+  420 |       }
+  421 |       return 0;                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/purity
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\FavouritesPanel.tsx
+  10:10  warning  'copied' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  82:37  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\FavouritesPanel.tsx:82:37
+  80 |               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+  81 |                 {recent.slice(0, 16).map(r => (
+> 82 |                   <span key={r.id + Math.random()} title={r.name} onClick={() => copy(r.symbol, r.name)}
+     |                                     ^^^^^^^^^^^^^ Cannot call impure function
+  83 |                     style={{ fontSize: "1.2rem", cursor: "pointer", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "4px 8px", transition: "border-color 0.15s" }}>
+  84 |                     {r.symbol}
+  85 |                   </span>  react-hooks/purity
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SearchBar.tsx
+  9:37  warning  'autoFocus' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SearchOverlay.tsx
+   74:12  warning  'e' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+  152:6   warning  React Hook useEffect has a missing dependency: 'handleCopy'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SymbolCard.tsx
+  22:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Nitin\OneDrive\Documents\Claude\Obsedian demo\copysymbols\src\components\SymbolCard.tsx:22:7
+  20 |     try {
+  21 |       const favs = JSON.parse(localStorage.getItem("copychars-favs") || "[]");
+> 22 |       setIsFav(favs.some((f: { id: string }) => f.id === id));
+     |       ^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |     } catch {}
+  24 |   }, [id]);
+  25 |  react-hooks/set-state-in-effect
+
+✖ 14 problems (6 errors, 8 warnings)
+
+
+================================================================================
+npm audit --omit=dev
+================================================================================
+# npm audit report
+
+postcss  <8.5.10
+Severity: moderate
+PostCSS has XSS via Unescaped </style> in its CSS Stringify Output - https://github.com/advisories/GHSA-qx2v-qp2m-jg93
+fix available via `npm audit fix --force`
+Will install next@9.3.3, which is a breaking change
+node_modules/next/node_modules/postcss
+  next  9.3.4-canary.0 - 16.3.0-canary.5
+  Depends on vulnerable versions of postcss
+  node_modules/next
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+================================================================================
+npm run build (AFTER fixes)
+================================================================================
+
+> CopyChars@0.1.0 build
+> next build
+
+▲ Next.js 16.2.3 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.9s
+  Running TypeScript ...
+  Finished TypeScript in 9.3s ...
+  Collecting page data using 11 workers ...
+⚠ Using edge runtime on a page currently disables static generation for that page
+  Generating static pages using 11 workers (0/53) ...
+  Generating static pages using 11 workers (13/53) 
+  Generating static pages using 11 workers (26/53) 
+  Generating static pages using 11 workers (39/53) 
+✓ Generating static pages using 11 workers (53/53) in 1583ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /aesthetic-text
+├ ƒ /apple-icon
+├ ○ /arrow-symbols
+├ ○ /bio-builder
+├ ○ /bio-templates
+├ ○ /blog
+├ ○ /blog/arrow-symbols-list
+├ ○ /blog/bullet-point-copy-paste
+├ ○ /blog/check-mark-symbol
+├ ○ /blog/currency-symbols-list
+├ ○ /blog/degree-symbol-copy-paste
+├ ○ /blog/discord-symbols
+├ ○ /blog/greek-alphabet-list
+├ ○ /blog/heart-symbols
+├ ○ /blog/how-to-type-copyright
+├ ○ /blog/infinity-symbol
+├ ○ /blog/instagram-bio-lines
+├ ○ /blog/instagram-symbols
+├ ○ /blog/math-symbols-list
+├ ○ /blog/star-symbols
+├ ○ /blog/trademark-vs-registered
+├ ○ /borders
+├ ○ /bullet-points
+├ ○ /checkmark
+├ ○ /community
+├ ○ /copyright-symbol
+├ ○ /degree-symbol
+├ ○ /emoji
+├ ○ /emoji-combos
+├ ○ /fancy-text
+├ ○ /flower-symbols
+├ ○ /hearts
+├ ƒ /icon
+├ ○ /infinity-symbol
+├ ○ /kaomoji
+├ ○ /lenny-face
+├ ○ /mirror-text
+├ ○ /number-symbols
+├ ○ /pi-symbol
+├ ○ /robots.txt
+├ ○ /search
+├ ○ /sitemap.xml
+├ ○ /small-text
+├ ○ /smiley-face-text
+├ ○ /sparkle-symbols
+├ ○ /stars
+├ ○ /strikethrough-text
+├ ○ /symbol-builder
+├ ƒ /symbol/[slug]
+├ ○ /symbols
+├ ƒ /symbols-for/[platform]
+├ ƒ /symbols/[category]
+├ ○ /text-art
+└ ○ /text-repeater
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+================================================================================
+Analysis JSON (route map, sitemap drift, duplicates, shapes, dead components)
+================================================================================
+{
+  "routes": {
+    "count": 51,
+    "static": [
+      "/aesthetic-text",
+      "/arrow-symbols",
+      "/bio-builder",
+      "/bio-templates",
+      "/blog/arrow-symbols-list",
+      "/blog/bullet-point-copy-paste",
+      "/blog/check-mark-symbol",
+      "/blog/currency-symbols-list",
+      "/blog/degree-symbol-copy-paste",
+      "/blog/discord-symbols",
+      "/blog/greek-alphabet-list",
+      "/blog/heart-symbols",
+      "/blog/how-to-type-copyright",
+      "/blog/infinity-symbol",
+      "/blog/instagram-bio-lines",
+      "/blog/instagram-symbols",
+      "/blog/math-symbols-list",
+      "/blog",
+      "/blog/star-symbols",
+      "/blog/trademark-vs-registered",
+      "/borders",
+      "/bullet-points",
+      "/checkmark",
+      "/community",
+      "/copyright-symbol",
+      "/degree-symbol",
+      "/emoji-combos",
+      "/emoji",
+      "/fancy-text",
+      "/flower-symbols",
+      "/hearts",
+      "/infinity-symbol",
+      "/kaomoji",
+      "/lenny-face",
+      "/mirror-text",
+      "/number-symbols",
+      "/",
+      "/pi-symbol",
+      "/search",
+      "/small-text",
+      "/smiley-face-text",
+      "/sparkle-symbols",
+      "/stars",
+      "/strikethrough-text",
+      "/symbol-builder",
+      "/symbols",
+      "/text-art",
+      "/text-repeater"
+    ],
+    "dynamic": [
+      "/symbol/[slug]",
+      "/symbols-for/[platform]",
+      "/symbols/[category]"
+    ]
+  },
+  "sitemap": {
+    "static_count": 53,
+    "missingFromSitemap": [
+      "/blog",
+      "/community",
+      "/search"
+    ],
+    "sitemapOrphans": []
+  },
+  "brokenHrefs": [
+    {
+      "href": "/${p}",
+      "sources": [
+        "app/layout.tsx"
+      ]
+    }
+  ],
+  "duplicates_across_files": {
+    "symbols.ts__vs__generated-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "symbols.ts__vs__extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-symbols.ts__vs__extra-symbols.ts": {
+      "count": 21,
+      "examples": [
+        {
+          "value": "①",
+          "a": {
+            "id": "gen-technical-decimal-number-one-1777540743505",
+            "symbol": "①",
+            "name": "Decimal Number One"
+          },
+          "b": {
+            "id": "circled-1",
+            "symbol": "①",
+            "name": "Circled Digit One"
+          }
+        },
+        {
+          "value": "②",
+          "a": {
+            "id": "gen-technical-decimal-number-two-1777540743505",
+            "symbol": "②",
+            "name": "Decimal Number Two"
+          },
+          "b": {
+            "id": "circled-2",
+            "symbol": "②",
+            "name": "Circled Digit Two"
+          }
+        },
+        {
+          "value": "③",
+          "a": {
+            "id": "gen-technical-decimal-number-three-1777540743505",
+            "symbol": "③",
+            "name": "Decimal Number Three"
+          },
+          "b": {
+            "id": "circled-3",
+            "symbol": "③",
+            "name": "Circled Digit Three"
+          }
+        },
+        {
+          "value": "④",
+          "a": {
+            "id": "gen-technical-decimal-number-four-1777540743505",
+            "symbol": "④",
+            "name": "Decimal Number Four"
+          },
+          "b": {
+            "id": "circled-4",
+            "symbol": "④",
+            "name": "Circled Digit Four"
+          }
+        },
+        {
+          "value": "⑤",
+          "a": {
+            "id": "gen-technical-decimal-number-five-1777540743505",
+            "symbol": "⑤",
+            "name": "Decimal Number Five"
+          },
+          "b": {
+            "id": "circled-5",
+            "symbol": "⑤",
+            "name": "Circled Digit Five"
+          }
+        }
+      ]
+    },
+    "kaomoji.ts__vs__generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "internal_duplicates_by_value": {
+    "symbols.ts": {
+      "count": 1,
+      "examples": [
+        {
+          "value": "π",
+          "records": [
+            {
+              "id": "pi",
+              "symbol": "π",
+              "name": "Pi"
+            },
+            {
+              "id": "pi-lower",
+              "symbol": "π",
+              "name": "Pi (lowercase)"
+            }
+          ]
+        }
+      ]
+    },
+    "generated-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "internal_duplicates_by_id": {
+    "symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-symbols.ts": {
+      "count": 43,
+      "examples": [
+        {
+          "value": "gen-currency-shekel-sign-1777232694973",
+          "records": [
+            {
+              "id": "gen-currency-shekel-sign-1777232694973",
+              "symbol": "₪",
+              "name": "Shekel Sign"
+            },
+            {
+              "id": "gen-currency-shekel-sign-1777232694973",
+              "symbol": "₶",
+              "name": "Shekel Sign"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-with-hook-variation-1777389154567",
+          "records": [
+            {
+              "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+              "symbol": "Α̱",
+              "name": "Alpha with Hook Variation"
+            },
+            {
+              "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+              "symbol": "α̱",
+              "name": "Alpha with Hook Variation"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-beta-with-hook-variation-1777389154567",
+          "records": [
+            {
+              "id": "gen-greek-beta-with-hook-variation-1777389154567",
+              "symbol": "Β̱",
+              "name": "Beta with Hook Variation"
+            },
+            {
+              "id": "gen-greek-beta-with-hook-variation-1777389154567",
+              "symbol": "β̱",
+              "name": "Beta with Hook Variation"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-1777407277238",
+          "records": [
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἀ",
+              "name": "Alpha"
+            },
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "ἀ",
+              "name": "Alpha"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-1777407277238",
+          "records": [
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἀ",
+              "name": "Alpha"
+            },
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἁ",
+              "name": "Alpha"
+            }
+          ]
+        }
+      ]
+    },
+    "extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "shapes": {
+    "symbols.ts": {
+      "total": 233,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 184,
+      "variants": [
+        [
+          "category,css,description,html,id,keywords,name,shortcut,symbol,unicode",
+          35
+        ],
+        [
+          "color,description,icon,id,name",
+          14
+        ]
+      ],
+      "variantTotal": 49
+    },
+    "generated-symbols.ts": {
+      "total": 610,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 610,
+      "variants": [],
+      "variantTotal": 0
+    },
+    "extra-symbols.ts": {
+      "total": 60,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 57,
+      "variants": [
+        [
+          "color,description,icon,id,name",
+          3
+        ]
+      ],
+      "variantTotal": 3
+    },
+    "kaomoji.ts": {
+      "total": 81,
+      "majority": "face,id,keywords,mood,name",
+      "majority_count": 71,
+      "variants": [
+        [
+          "icon,id,name",
+          10
+        ]
+      ],
+      "variantTotal": 10
+    },
+    "generated-kaomoji.ts": {
+      "total": 568,
+      "majority": "face,id,keywords,mood,name",
+      "majority_count": 568,
+      "variants": [],
+      "variantTotal": 0
+    }
+  },
+  "dead_components": [
+    "components/FavouritesPanel.tsx",
+    "components/MultiSelectGrid.tsx",
+    "components/SearchBar.tsx",
+    "components/SearchTrigger.tsx"
+  ],
+  "data_counts": {
+    "symbols.ts": 219,
+    "generated-symbols.ts": 610,
+    "extra-symbols.ts": 57,
+    "kaomoji.ts": 71,
+    "generated-kaomoji.ts": 568
+  }
+}

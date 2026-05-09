@@ -362,7 +362,7 @@ function ProfilePage({ user, onUpdate }: { user: UserProfile; onUpdate: () => vo
       {creations.length === 0 ? (
         <div style={{ textAlign: "center", padding: "48px 24px", color: "var(--text3)" }}>
           <div style={{ fontSize: "2.5rem", marginBottom: 12 }}>✦</div>
-          <p>You haven't posted anything yet. Go create something!</p>
+          <p>You haven&apos;t posted anything yet. Go create something!</p>
         </div>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
