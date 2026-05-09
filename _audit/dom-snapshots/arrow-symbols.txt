@@ -1,0 +1,134 @@
+✦ CopyChars
+Home
+Symbols
+Emoji
+Kaomoji
+Fancy Text
+Blog
+Tools
+▼
+Collections
+▼
+Platforms
+▼
+COPY & PASTE
+Arrow Symbols → ←
+
+Click any arrow to copy it instantly. Works in all apps — Google Docs, Word, Instagram, Discord.
+
+→
+Right Arrow
+U+2192
+Direction, next
+←
+Left Arrow
+U+2190
+Back, previous
+↑
+Up Arrow
+U+2191
+Increase, rise
+↓
+Down Arrow
+U+2193
+Decrease, fall
+↔
+Left Right Arrow
+U+2194
+Bidirectional
+↕
+Up Down Arrow
+U+2195
+Vertical both
+↗
+North East Arrow
+U+2197
+Diagonal upper right
+↘
+South East Arrow
+U+2198
+Diagonal lower right
+↙
+South West Arrow
+U+2199
+Diagonal lower left
+↖
+North West Arrow
+U+2196
+Diagonal upper left
+⇒
+Double Right Arrow
+U+21D2
+Implies (logic)
+⇐
+Double Left Arrow
+U+21D0
+Reverse implication
+⇔
+Double Left Right
+U+21D4
+If and only if
+➡
+Black Right Arrow
+U+27A1
+Bold filled right
+⬅
+Black Left Arrow
+U+2B05
+Bold filled left
+⬆
+Black Up Arrow
+U+2B06
+Bold filled up
+⬇
+Black Down Arrow
+U+2B07
+Bold filled down
+↷
+Curved Right
+U+21B7
+Redo action
+↶
+Curved Left
+U+21B6
+Undo action
+↵
+Return Arrow
+U+21B5
+Enter key / newline
+➔
+Heavy Right Arrow
+U+2794
+Emphasis arrow
+›
+Single Right Chevron
+U+203A
+Breadcrumb separator
+‹
+Single Left Chevron
+U+2039
+Left chevron
+»
+Double Right Chevron
+U+00BB
+Double chevron
+Keyboard Shortcuts
+Windows → ←
+Alt+26 for →, Alt+27 for ←
+Windows ↑ ↓
+Alt+24 for ↑, Alt+25 for ↓
+HTML →
+&rarr; for →, &larr; for ←
+HTML ↑ ↓
+&uarr; for ↑, &darr; for ↓
+All Arrow Details
+Technical Symbols
+✓ Check Marks
+✦ CopyChars
+
+3000+ symbols, one click away.
+
+Symbols
+Emoji
+Kaomoji
+Text Art

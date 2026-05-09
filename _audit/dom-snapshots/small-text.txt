@@ -1,0 +1,41 @@
+✦ CopyChars
+Home
+Symbols
+Emoji
+Kaomoji
+Fancy Text
+Blog
+Tools
+▼
+Collections
+▼
+Platforms
+▼
+©
+Copied!
+✓
+TEXT CONVERTER
+Small Text Generator
+
+Convert your text to ˢᵐᵃˡˡ superscript, ᴄᴀᴘs ᴄᴀᴘɪᴛᴀʟs and more. Works on Instagram bios, TikTok, Discord — anywhere you can paste text.
+
+Superscript (Small)ˢᵐᵃˡˡ text — most popular for bios
+ˢᵐᵃˡˡ text — most popular for bios
+Small Capsᴘʀᴏꜰᴇssɪᴏɴᴀʟ small capitals
+ᴘʀᴏꜰᴇssɪᴏɴᴀʟ small capitals
+Subscriptₜₑₓₜ below the line
+ₜₑₓₜ below the line
+Tiny Bold𝘁𝗶𝗻𝘆 bold text
+𝘁𝗶𝗻𝘆 bold text
+How does small text work?
+
+Small text uses Unicode superscript and modifier letter characters that look like tiny versions of normal letters. For example, the small "a" is actually the character ᵃ (Unicode U+1D43). Because they are real text characters — not images or formatting — they work anywhere you can paste text, including Instagram bios, TikTok profiles, Discord usernames, Twitter bios, and more.
+
+✦ CopyChars
+
+3000+ symbols, one click away.
+
+Symbols
+Emoji
+Kaomoji
+Text Art
