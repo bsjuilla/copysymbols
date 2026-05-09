@@ -163,8 +163,6 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-.nav-scroll::-webkit-scrollbar { display: none; }
-
 ::selection { background: var(--accent-glow); color: var(--accent); }
 
 .kaomoji-card {
