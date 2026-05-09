@@ -1,7 +1,3 @@
-// Per-kaomoji detail page. Pre-rendered at build time via generateStaticParams
-// so every kaomoji in src/data/all-kaomoji.ts (~558 routes) ships as a static
-// HTML document. Mirrors src/app/emoji/[slug]/page.tsx for consistency.
-
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";

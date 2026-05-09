@@ -1,7 +1,7 @@
-// AUTO-EXTRACTED from src/app/emoji/EmojiPageClient.tsx for SEO indexability.
-// Each emoji is exposed as a slug-addressable record so /emoji/[slug] can render
-// a per-emoji detail page. Editing this file by hand is OK — but if you add a new
-// emoji, also bump the corresponding category icon list below.
+// Source of truth for emoji records. /emoji renders by category; /emoji/[slug]
+// renders one record per page (SSG via generateStaticParams).
+
+import { slugify } from "@/lib/slug";
 
 export type EmojiRecord = {
   id: string;
@@ -1128,24 +1128,23 @@ export const emoji: EmojiRecord[] = [
   { id: "maracas", emoji: "🪇", name: "Maracas", category: "activities", keywords: ["maracas","activities","emoji"] },
 ];
 
-const _byId = new Map<string, EmojiRecord>(emoji.map((e) => [e.id, e]));
+// Build all lookup maps in a single pass at module load. Build-time only;
+// /emoji/[slug] uses dynamicParams=false so the maps never run per-request.
+const _byId = new Map<string, EmojiRecord>();
+const _byCategory = new Map<string, EmojiRecord[]>();
+for (const e of emoji) {
+  _byId.set(e.id, e);
+  const list = _byCategory.get(e.category);
+  if (list) list.push(e);
+  else _byCategory.set(e.category, [e]);
+}
 
 export function getEmojiBySlug(slug: string): EmojiRecord | undefined {
   return _byId.get(slug);
 }
 
 export function getEmojiByCategory(catId: string): EmojiRecord[] {
-  return emoji.filter((e) => e.category === catId);
+  return _byCategory.get(catId) ?? [];
 }
 
-/**
- * Deterministic slugifier for emoji names. Lowercase, hyphen-separated,
- * non-alphanumerics collapsed. Used at build time (for generateStaticParams)
- * and at extraction time to stay in sync.
- */
-export function slugifyEmoji(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
+export const slugifyEmoji = slugify;

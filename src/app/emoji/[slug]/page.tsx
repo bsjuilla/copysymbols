@@ -1,9 +1,3 @@
-// Per-emoji detail page. Pre-rendered at build time via generateStaticParams
-// so every emoji in src/data/emoji.ts (~1074 routes) ships as a static HTML
-// document. This is the SEO win for "hotel emoji", "rocket emoji", etc.
-//
-// To add a new emoji: edit src/data/emoji.ts, then re-run `next build`.
-
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -23,8 +17,6 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   return emoji.map((e) => ({ slug: e.id }));
 }
 
-// Pre-rendered routes 404 for unknown slugs at build time (no on-demand
-// rendering). This keeps the surface area predictable and crawl-friendly.
 export const dynamicParams = false;
 
 function codepointsOf(glyph: string): string[] {
