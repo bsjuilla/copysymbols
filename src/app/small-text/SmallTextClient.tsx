@@ -84,7 +84,7 @@ export default function SmallTextClient() {
       <section style={{ marginTop: 64, borderTop: "1px solid var(--border)", paddingTop: 48 }}>
         <h2 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>How does small text work?</h2>
         <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.8 }}>
-          Small text uses Unicode superscript and modifier letter characters that look like tiny versions of normal letters. For example, the small "a" is actually the character ᵃ (Unicode U+1D43). Because they are real text characters — not images or formatting — they work anywhere you can paste text, including Instagram bios, TikTok profiles, Discord usernames, Twitter bios, and more.
+          Small text uses Unicode superscript and modifier letter characters that look like tiny versions of normal letters. For example, the small &quot;a&quot; is actually the character ᵃ (Unicode U+1D43). Because they are real text characters — not images or formatting — they work anywhere you can paste text, including Instagram bios, TikTok profiles, Discord usernames, Twitter bios, and more.
         </p>
       </section>
     </div>

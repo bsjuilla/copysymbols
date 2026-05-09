@@ -60,7 +60,7 @@ export default function KaomojiPageClient({
           </div>
           <div>
             <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.8 }}>
-              They're made by combining punctuation marks, letters, and symbols from Japanese, Korean, and other Unicode character sets. Popular examples: ¯\_(ツ)_/¯, (◕‿◕), ʕ•ᴥ•ʔ. Copy any of the faces above and paste them wherever you like.
+              They&apos;re made by combining punctuation marks, letters, and symbols from Japanese, Korean, and other Unicode character sets. Popular examples: ¯\_(ツ)_/¯, (◕‿◕), ʕ•ᴥ•ʔ. Copy any of the faces above and paste them wherever you like.
             </p>
           </div>
         </div>

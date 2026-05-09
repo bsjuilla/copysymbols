@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import CopyToast from "@/components/CopyToast";
 
 const emojiCategories = [
   {

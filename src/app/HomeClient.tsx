@@ -443,7 +443,7 @@ export default function HomeClient({
           </h1>
 
           <p className="animate-in" style={{ fontSize: "clamp(15px, 2vw, 18px)", color: "var(--text2)", lineHeight: 1.7, maxWidth: 520, margin: "0 auto 36px", animationDelay: "0.3s" }}>
-            Every special character you'll ever need — arrows, hearts, stars, Greek letters, kaomoji and more. Tap to copy.
+            Every special character you&apos;ll ever need — arrows, hearts, stars, Greek letters, kaomoji and more. Tap to copy.
           </p>
 
           {/* Search bar */}
@@ -733,7 +733,7 @@ export default function HomeClient({
             The fastest way to copy special characters
           </h2>
           <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.8, maxWidth: 600, margin: "0 auto 20px" }}>
-            CopyChars has every Unicode symbol organised and ready to copy. Whether you need a ✓ checkmark, ∞ infinity sign, © copyright symbol, → arrow, or ♥ heart — just click and it's in your clipboard.
+            CopyChars has every Unicode symbol organised and ready to copy. Whether you need a ✓ checkmark, ∞ infinity sign, © copyright symbol, → arrow, or ♥ heart — just click and it&apos;s in your clipboard.
           </p>
           <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
             {["✓ check mark","∞ infinity","© copyright","→ arrow","♥ heart","★ star","° degree","π pi symbol"].map(tag => (

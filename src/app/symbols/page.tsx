@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { categories, symbols } from "@/data/symbols";
 import CategoryCard from "@/components/CategoryCard";
 import type { Metadata } from "next";

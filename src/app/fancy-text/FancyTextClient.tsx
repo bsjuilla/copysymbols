@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import CopyToast from "@/components/CopyToast";
 
 const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -175,10 +174,10 @@ export default function FancyTextClient() {
         <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>How does fancy text work?</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
           <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.8 }}>
-            Fancy text uses special Unicode characters that look like styled letters but are actually completely different characters. That's why they work everywhere — Instagram, TikTok, Twitter, Discord — because they're just regular text, not images or special formatting.
+            Fancy text uses special Unicode characters that look like styled letters but are actually completely different characters. That&apos;s why they work everywhere — Instagram, TikTok, Twitter, Discord — because they&apos;re just regular text, not images or special formatting.
           </p>
           <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.8 }}>
-            For example, the "bold" style uses characters from the Mathematical Alphanumeric Symbols block (U+1D400 and onwards). The cursive style uses Script letters. They all copy and paste like normal text, so you can use them in bios, captions, usernames, and messages.
+            For example, the &quot;bold&quot; style uses characters from the Mathematical Alphanumeric Symbols block (U+1D400 and onwards). The cursive style uses Script letters. They all copy and paste like normal text, so you can use them in bios, captions, usernames, and messages.
           </p>
         </div>
       </section>
