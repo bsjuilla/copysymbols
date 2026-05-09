@@ -1,0 +1,184 @@
+## RAW DIAGNOSTICS — INDEXING DOCTOR
+Date: 2026-05-09
+Branch: agent/indexing-fixes (off main, head 78704e9)
+
+================================================================================
+1. ROOT CANONICAL BUG — src/app/layout.tsx line 17
+================================================================================
+  alternates: { canonical: "https://www.copychars.com" }
+
+This is exported from the ROOT layout. Every page that does not set its own
+`alternates.canonical` inherits this homepage URL → Google sees every URL as
+a duplicate of the homepage.
+
+================================================================================
+2. PER-PAGE CANONICAL AUDIT (50 page.tsx files)
+================================================================================
+
+PAGES WITH CORRECT CANONICAL (14):
+  src/app/page.tsx                                  (alternates literal — homepage, OK)
+  src/app/blog/page.tsx                             (canonical("/blog"))
+  src/app/symbols/page.tsx                          (canonical("/symbols"))
+  src/app/symbols/[category]/page.tsx               (generateMetadata literal)
+  src/app/symbol/[slug]/page.tsx                    (generateMetadata literal)
+  src/app/symbols-for/[platform]/page.tsx           (canonical(`/symbols-for/${platform}`))
+  src/app/borders/page.tsx                          (canonical("/borders"))
+  src/app/emoji-combos/page.tsx                     (canonical("/emoji-combos"))
+  src/app/bio-templates/page.tsx                    (canonical("/bio-templates"))
+  src/app/kaomoji/page.tsx                          (canonical("/kaomoji"))
+  src/app/emoji/page.tsx                            (canonical("/emoji"))
+  src/app/lenny-face/page.tsx                       (canonical("/lenny-face"))
+  src/app/bio-builder/page.tsx                      (literal — works but inconsistent with helper)
+
+PAGES WITH BUGGY CANONICAL (1):
+  src/app/text-repeater/page.tsx                    canonical("/text-generators")  ← WRONG PATH (route doesn't exist)
+
+PAGES MISSING CANONICAL (35) — INHERIT HOMEPAGE FROM ROOT LAYOUT:
+  src/app/aesthetic-text/page.tsx
+  src/app/arrow-symbols/page.tsx
+  src/app/blog/arrow-symbols-list/page.tsx
+  src/app/blog/bullet-point-copy-paste/page.tsx
+  src/app/blog/check-mark-symbol/page.tsx
+  src/app/blog/currency-symbols-list/page.tsx
+  src/app/blog/degree-symbol-copy-paste/page.tsx
+  src/app/blog/discord-symbols/page.tsx
+  src/app/blog/greek-alphabet-list/page.tsx
+  src/app/blog/heart-symbols/page.tsx
+  src/app/blog/how-to-type-copyright/page.tsx
+  src/app/blog/infinity-symbol/page.tsx
+  src/app/blog/instagram-bio-lines/page.tsx
+  src/app/blog/instagram-symbols/page.tsx
+  src/app/blog/math-symbols-list/page.tsx
+  src/app/blog/star-symbols/page.tsx
+  src/app/blog/trademark-vs-registered/page.tsx
+  src/app/bullet-points/page.tsx
+  src/app/checkmark/page.tsx
+  src/app/community/page.tsx                        (also: thin content, will be excluded from sitemap)
+  src/app/copyright-symbol/page.tsx
+  src/app/degree-symbol/page.tsx
+  src/app/fancy-text/page.tsx
+  src/app/flower-symbols/page.tsx
+  src/app/hearts/page.tsx
+  src/app/infinity-symbol/page.tsx
+  src/app/mirror-text/page.tsx
+  src/app/number-symbols/page.tsx
+  src/app/pi-symbol/page.tsx
+  src/app/search/page.tsx                           (noindex — fine, but still set canonical for hygiene? skip — robots:noindex wins)
+  src/app/small-text/page.tsx
+  src/app/smiley-face-text/page.tsx
+  src/app/sparkle-symbols/page.tsx
+  src/app/stars/page.tsx
+  src/app/strikethrough-text/page.tsx
+  src/app/symbol-builder/page.tsx
+  src/app/text-art/page.tsx
+
+TOTAL TO FIX: 35 missing + 1 wrong + 1 hardcoded-but-correct (refactor optional)
+
+================================================================================
+3. LIVE SITEMAP DIAGNOSTICS — https://www.copychars.com/sitemap.xml
+================================================================================
+- Total URLs:   1,108
+- Unique URLs:  1,077
+- Duplicates:   31
+  - /symbol/gen-greek-alpha-1777407277238 appears 20 times
+  - /symbol/gen-legal-reference-mark-used-as-a-legal-symbol-1777407285677 appears 10 times
+
+These are direct outputs of duplicate `id` values in src/data/generated-symbols.ts
+(Agent 3's territory). Our sitemap.ts is dumb-mapping `symbols.map(s => /symbol/${s.id})`
+which faithfully emits the dupes.
+
+FIX: dedupe via Set in sitemap.ts.
+
+ROUTES PRESENT BUT MISSING FROM SITEMAP:
+  /blog        ← exists at src/app/blog/page.tsx, NOT in sitemap.ts staticPages
+  /community   ← exists at src/app/community/page.tsx, NOT in sitemap. KEEP OUT.
+                 Live URL has only ~40-50 words content ("0 creations · 0 creators").
+                 Adding it would only worsen "Crawled — not indexed".
+  /search      ← exists at src/app/search/page.tsx, NOT in sitemap. KEEP OUT.
+                 Already disallowed in robots.ts AND has robots:{index:false}. Correct.
+
+ACTION: add /blog to sitemap. Skip /community and /search.
+
+================================================================================
+4. LIVE THIN-CONTENT SAMPLE
+================================================================================
+URL                                        Word count (excluding nav/footer/grid)
+-------------------------------------------------------------------------------
+https://www.copychars.com/symbols/music    ~80–120 words (intro + section)
+https://www.copychars.com/aesthetic-text   ~80–100 words (heading + 6 style labels)
+https://www.copychars.com/arrow-symbols    ~320–380 words (descriptions + Unicode + shortcuts)
+https://www.copychars.com/blog/discord-symbols  ~285 words
+https://www.copychars.com/community        ~40–50 words (empty community state — VERY THIN)
+
+Pages under ~200 unique copy words are at high risk for "Crawled — not indexed".
+By far the largest category is the symbol grid pages (`/symbols/[cat]`,
+`/aesthetic-text`, `/hearts`, `/stars`, etc.) where most rendered text is
+symbol/grid/buttons that Google discounts.
+
+NOTE: Improving thin content is a content-team task (out of scope for this PR
+beyond what JSON-LD can do). Adding ItemList JSON-LD on grid pages helps
+Google understand the listing intent and credits unique structured data.
+
+================================================================================
+5. BROKEN URL IN LIVE SITEMAP
+================================================================================
+WebFetch https://www.copychars.com/symbol/heart-1  →  HTTP 404
+
+The live sitemap contains URLs that 404. This is the duplicate-id symptom
+plus the `[slug]` route falling through to notFound() because the duplicate
+ids cause `getSymbolBySlug` to return the wrong symbol or undefined for
+edge cases. We dedupe in sitemap as a defensive measure; data fixes are
+Agent 3.
+
+================================================================================
+6. INTERNAL LINKING / ORPHAN ROUTES
+================================================================================
+Found 60 <Link href= occurrences across 23 files.
+
+Components that fan out internal links:
+  src/app/HomeClient.tsx                  (homepage — fans out to many)
+  src/components/CategoryCard.tsx         (links to /symbols/{cat})
+  src/app/layout.tsx footer               (links: /symbols /emoji /kaomoji /text-art)
+  src/app/symbols/[category]/page.tsx     (related blog/tools/pages tables)
+  src/app/symbol/[slug]/page.tsx          (breadcrumb + related)
+
+LIKELY ORPHANS (few inbound internal links found by grep — needs site-wide
+audit beyond this PR):
+  /text-repeater, /strikethrough-text, /mirror-text, /smiley-face-text,
+  /number-symbols, /flower-symbols, /sparkle-symbols, /pi-symbol,
+  /degree-symbol, /infinity-symbol, /copyright-symbol, /checkmark,
+  /arrow-symbols, /symbol-builder
+
+ACTION: Sidestep partly via the Related Categories widget on /symbols/[category]
+(Fix F adds 3-5 sibling category links from each category page).
+
+Comprehensive fix is beyond this PR — flag in next-steps.
+
+================================================================================
+7. PREVIEW DEPLOYMENT INDEXING RISK
+================================================================================
+- WebFetch https://copysymbols-one.vercel.app/      → 301 redirect to www.copychars.com/
+- WebFetch https://copysymbols-one.vercel.app/robots.txt → 301 redirect to www.copychars.com/robots.txt
+
+The Vercel preview is ALREADY 301-redirecting all hosts to canonical domain.
+NO duplicate-indexing risk from the preview. Fix D (proxy.ts noindex) NOT NEEDED
+— would be redundant code.
+
+If a future preview branch breaks the redirect, we can add a proxy.ts at that
+point. Note Next 16: middleware.ts is renamed to proxy.ts (file convention)
+with an exported `proxy` function — see node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md
+
+================================================================================
+8. JSON-LD STRUCTURED DATA
+================================================================================
+Grep for 'application/ld+json' across src/  →  ZERO matches.
+
+No structured data anywhere on the site. Adding BreadcrumbList + ItemList to
+catalogue pages and BreadcrumbList to detail pages helps Google understand
+listing intent.
+
+================================================================================
+9. ROBOTS.TS
+================================================================================
+Already correct: allows /, disallows /search, points to canonical sitemap.
+No changes needed.

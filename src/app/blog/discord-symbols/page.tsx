@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Discord Symbols — Special Characters That Work in Discord",
   description: "All symbols, Unicode characters, and text art that work in Discord usernames, bios, and messages. Stars, hearts, arrows, brackets, and more.",
+  ...canonical("/blog/discord-symbols"),
 };
 
 export default function BlogPost() {

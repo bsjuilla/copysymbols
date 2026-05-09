@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Degree Symbol ° — How to Type It on Any Device",
   description: "How to type the degree symbol on Windows (Alt+0176), Mac (Option+Shift+8), iPhone (hold 0), and Android. Plus HTML code and CSS value.",
+  ...canonical("/blog/degree-symbol-copy-paste"),
 };
 
 export default function BlogPost() {

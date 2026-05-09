@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "™ vs ® vs © — What is the Difference? (Trade Mark, Registered, Copyright)",
   description: "Learn the difference between ™ (trade mark), ® (registered trademark) and © (copyright). When to use each symbol and what they legally mean.",
   keywords: ["trademark vs registered trademark","™ vs ®","copyright vs trademark","what does ™ mean","what does ® mean","difference tm and r"],
+  ...canonical("/blog/trademark-vs-registered"),
 };
 
 export default function BlogTrademark() {

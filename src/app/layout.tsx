@@ -14,7 +14,11 @@ export const metadata: Metadata = {
   openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
   robots: { index: true, follow: true },
   verification: { google: "yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" },
-  alternates: { canonical: "https://www.copychars.com" },
+  // NOTE: do NOT set alternates.canonical here. A root-level canonical is
+  // inherited by every child route that doesn't override it, causing every
+  // page to advertise the homepage as its canonical (Google then de-dupes
+  // them all into the homepage). Each page.tsx must declare its own
+  // canonical via `canonical("/its-path")` from "@/lib/canonical".
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

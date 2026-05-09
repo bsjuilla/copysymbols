@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Math Symbols — Complete Unicode Mathematics Reference",
   description: "Complete list of math symbols. Operators, comparison, calculus, set theory, and logic symbols with Unicode values and HTML codes.",
+  ...canonical("/blog/math-symbols-list"),
 };
 
 export default function BlogPost() {

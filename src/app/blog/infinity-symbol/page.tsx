@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Infinity Symbol ∞ — Meaning, History and How to Type It",
   description: "The complete guide to the infinity symbol. Its mathematical meaning, historical origin, and keyboard shortcuts for Mac, Windows, HTML and LaTeX.",
+  ...canonical("/blog/infinity-symbol"),
 };
 
 export default function BlogPost() {

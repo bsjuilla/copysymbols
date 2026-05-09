@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Pi Symbol π Copy & Paste — π Π and Math Constants",
   description: "Copy the pi symbol π instantly. Lowercase π, uppercase Π, and related math constants. Keyboard shortcuts: Windows Alt+227, Mac Option+P.",
+  ...canonical("/pi-symbol"),
 };
 
 const items = [
