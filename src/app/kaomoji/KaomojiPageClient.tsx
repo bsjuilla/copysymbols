@@ -5,9 +5,13 @@ import KaomojiCard from "@/components/KaomojiCard";
 
 interface Cat { id: string; name: string; icon: string; }
 
+// Each kaomoji passed in carries an optional slug so the card can link to
+// /kaomoji/<slug>. The slug is computed by src/data/all-kaomoji.ts.
+type KaomojiWithMaybeSlug = Kaomoji & { slug?: string };
+
 export default function KaomojiPageClient({
   allKaomoji, categories
-}: { allKaomoji: Kaomoji[]; categories: Cat[] }) {
+}: { allKaomoji: KaomojiWithMaybeSlug[]; categories: Cat[] }) {
   const [active, setActive] = useState("all");
 
   const filtered = active === "all" ? allKaomoji : allKaomoji.filter(k => k.mood === active);
@@ -46,7 +50,7 @@ export default function KaomojiPageClient({
 
       {/* Grid */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))", gap: 10 }}>
-        {filtered.map(k => <KaomojiCard key={k.id} kaomoji={k} />)}
+        {filtered.map(k => <KaomojiCard key={k.id} kaomoji={k} slug={k.slug} />)}
       </div>
 
       {/* Info section */}
