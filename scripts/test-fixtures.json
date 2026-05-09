@@ -1,0 +1,34 @@
+{
+  "_comment": "Fixture used by content-bot.mjs --dry-run --use-fixture. Mixes intentional good and bad items per category so we can verify the classifier.",
+  "symbols": {
+    "music": [
+      { "symbol": "𝅘𝅥𝅮", "name": "Eighth Note Beamed", "keywords": ["eighth","note"], "unicode": "U+1D160", "html": "&#119136;", "css": "\\1D160", "description": "An eighth note." },
+      { "symbol": "𝆑", "name": "Forte", "keywords": ["forte","loud"], "unicode": "U+1D191", "html": "&#119185;", "css": "\\1D191", "description": "Music dynamic forte." },
+      { "symbol": "🐋", "name": "Whale Note", "keywords": ["whale"], "unicode": "U+1F40B", "html": "&#128011;", "css": "\\1F40B", "description": "A whale incorrectly labelled as music." },
+      { "symbol": "p", "name": "Pianissimo", "keywords": ["pp"], "unicode": "U+0070", "html": "&#112;", "css": "p", "description": "Letter p hallucinated as a music symbol." },
+      { "symbol": "+", "name": "Crescendo", "keywords": ["crescendo"], "unicode": "U+002B", "html": "&#43;", "css": "+", "description": "Plus sign is not music." },
+      { "symbol": "♩", "name": "Quarter Note", "keywords": ["quarter","note"], "unicode": "U+2669", "html": "&#9833;", "css": "\\2669", "description": "Quarter note." }
+    ],
+    "arrows": [
+      { "symbol": "⤴", "name": "Arrow Pointing Rightwards Then Curving Upwards", "keywords": ["curving","up"], "unicode": "U+2934", "html": "&#10548;", "css": "\\2934", "description": "Curving up arrow." },
+      { "symbol": "🔥", "name": "Fire Arrow", "keywords": ["fire"], "unicode": "U+1F525", "html": "&#128293;", "css": "\\1F525", "description": "Fire emoji wrongly classified as arrow." }
+    ],
+    "currency": [
+      { "symbol": "₹", "name": "Indian Rupee", "keywords": ["rupee","india"], "unicode": "U+20B9", "html": "&#8377;", "css": "\\20B9", "description": "Indian rupee." },
+      { "symbol": "₿", "name": "Bitcoin", "keywords": ["btc","bitcoin"], "unicode": "U+20BF", "html": "&#8383;", "css": "\\20BF", "description": "Bitcoin currency." },
+      { "symbol": "X", "name": "Mystery Currency", "keywords": ["mystery"], "unicode": "U+0058", "html": "&#88;", "css": "X", "description": "Letter X hallucinated as currency." }
+    ],
+    "chess": [
+      { "symbol": "♚", "name": "Black Chess King", "keywords": ["king"], "unicode": "U+265A", "html": "&#9818;", "css": "\\265A", "description": "Black chess king." },
+      { "symbol": "🏆", "name": "Trophy Chess", "keywords": ["trophy"], "unicode": "U+1F3C6", "html": "&#127942;", "css": "\\1F3C6", "description": "Trophy emoji wrongly classified." }
+    ]
+  },
+  "kaomoji": {
+    "happy": [
+      { "face": "(✿◕‿◕)", "name": "Flower Smile", "keywords": ["happy","cute"] },
+      { "face": "🌸🍵", "name": "Tea Time", "keywords": ["happy"] },
+      { "face": "→←↑↓", "name": "Arrow Spam", "keywords": ["weird"] },
+      { "face": "ヽ(◕ω◕)ノ", "name": "Cheering", "keywords": ["happy","cheer"] }
+    ]
+  }
+}
