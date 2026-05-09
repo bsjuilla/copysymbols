@@ -58,7 +58,7 @@ export default function NavClient() {
   const toggle = (label: string) => setOpenMenu(prev => prev === label ? null : label);
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
+    <div className="nav-scroll" style={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "nowrap", overflowX: "auto", scrollbarWidth: "none", msOverflowStyle: "none", maxWidth: "calc(100vw - 180px)" }}>
       {links.map(l => {
         if (l.children) {
           const children = l.children;

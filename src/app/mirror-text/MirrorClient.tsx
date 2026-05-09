@@ -4,7 +4,9 @@ import { useState, useMemo } from "react";
 const flipMap: Record<string, string> = { a:"ɐ",b:"q",c:"ɔ",d:"p",e:"ǝ",f:"ɟ",g:"ɓ",h:"ɥ",i:"ᴉ",j:"ɾ",k:"ʞ",l:"l",m:"ɯ",n:"u",o:"o",p:"d",q:"b",r:"ɹ",s:"s",t:"ʇ",u:"n",v:"ʌ",w:"ʍ",x:"x",y:"ʎ",z:"z",A:"∀",B:"ᗺ",C:"Ɔ",D:"ᗡ",E:"Ǝ",F:"Ⅎ",G:"פ",H:"H",I:"I",J:"ɾ",K:"ʞ",L:"⅂",M:"W",N:"N",O:"O",P:"Ԁ",Q:"Q",R:"ᴚ",S:"S",T:"⊥",U:"∩",V:"Λ",W:"M",X:"X",Y:"⅄",Z:"Z","0":"0","1":"Ɩ","2":"ᄅ","3":"Ɛ","4":"ㄣ","5":"ϛ","6":"9","7":"ㄥ","8":"8","9":"6","!":"¡","?":"¿",".":"˙",",":"'","'":","," ":" " };
 
 export default function MirrorClient() {
-  const [input, setInput] = useState("");
+  // Prefill so the empty state demos the tool — vision audit flagged the
+  // blank state as confusing because the placeholder text reads as broken output.
+  const [input, setInput] = useState("hello world");
   const [copied, setCopied] = useState<string | null>(null);
 
   const outputs = useMemo(() => [
