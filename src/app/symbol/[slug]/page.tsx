@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { symbols, getSymbolBySlug, getSymbolsByCategory, categories } from "@/data/symbols";
+import { getSymbolBySlug, getSymbolsByCategory, categories } from "@/data/symbols";
 import CopyToast from "@/components/CopyToast";
 import SymbolCopyButtons from "@/components/SymbolCopyButtons";
 import SymbolCard from "@/components/SymbolCard";

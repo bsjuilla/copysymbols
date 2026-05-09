@@ -1,0 +1,366 @@
+{
+  "routes": {
+    "count": 51,
+    "static": [
+      "/aesthetic-text",
+      "/arrow-symbols",
+      "/bio-builder",
+      "/bio-templates",
+      "/blog/arrow-symbols-list",
+      "/blog/bullet-point-copy-paste",
+      "/blog/check-mark-symbol",
+      "/blog/currency-symbols-list",
+      "/blog/degree-symbol-copy-paste",
+      "/blog/discord-symbols",
+      "/blog/greek-alphabet-list",
+      "/blog/heart-symbols",
+      "/blog/how-to-type-copyright",
+      "/blog/infinity-symbol",
+      "/blog/instagram-bio-lines",
+      "/blog/instagram-symbols",
+      "/blog/math-symbols-list",
+      "/blog",
+      "/blog/star-symbols",
+      "/blog/trademark-vs-registered",
+      "/borders",
+      "/bullet-points",
+      "/checkmark",
+      "/community",
+      "/copyright-symbol",
+      "/degree-symbol",
+      "/emoji-combos",
+      "/emoji",
+      "/fancy-text",
+      "/flower-symbols",
+      "/hearts",
+      "/infinity-symbol",
+      "/kaomoji",
+      "/lenny-face",
+      "/mirror-text",
+      "/number-symbols",
+      "/",
+      "/pi-symbol",
+      "/search",
+      "/small-text",
+      "/smiley-face-text",
+      "/sparkle-symbols",
+      "/stars",
+      "/strikethrough-text",
+      "/symbol-builder",
+      "/symbols",
+      "/text-art",
+      "/text-repeater"
+    ],
+    "dynamic": [
+      "/symbol/[slug]",
+      "/symbols-for/[platform]",
+      "/symbols/[category]"
+    ]
+  },
+  "sitemap": {
+    "static_count": 53,
+    "missingFromSitemap": [
+      "/blog",
+      "/community",
+      "/search"
+    ],
+    "sitemapOrphans": []
+  },
+  "brokenHrefs": [
+    {
+      "href": "/${p}",
+      "sources": [
+        "app/layout.tsx"
+      ]
+    }
+  ],
+  "duplicates_across_files": {
+    "symbols.ts__vs__generated-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "symbols.ts__vs__extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-symbols.ts__vs__extra-symbols.ts": {
+      "count": 21,
+      "examples": [
+        {
+          "value": "①",
+          "a": {
+            "id": "gen-technical-decimal-number-one-1777540743505",
+            "symbol": "①",
+            "name": "Decimal Number One"
+          },
+          "b": {
+            "id": "circled-1",
+            "symbol": "①",
+            "name": "Circled Digit One"
+          }
+        },
+        {
+          "value": "②",
+          "a": {
+            "id": "gen-technical-decimal-number-two-1777540743505",
+            "symbol": "②",
+            "name": "Decimal Number Two"
+          },
+          "b": {
+            "id": "circled-2",
+            "symbol": "②",
+            "name": "Circled Digit Two"
+          }
+        },
+        {
+          "value": "③",
+          "a": {
+            "id": "gen-technical-decimal-number-three-1777540743505",
+            "symbol": "③",
+            "name": "Decimal Number Three"
+          },
+          "b": {
+            "id": "circled-3",
+            "symbol": "③",
+            "name": "Circled Digit Three"
+          }
+        },
+        {
+          "value": "④",
+          "a": {
+            "id": "gen-technical-decimal-number-four-1777540743505",
+            "symbol": "④",
+            "name": "Decimal Number Four"
+          },
+          "b": {
+            "id": "circled-4",
+            "symbol": "④",
+            "name": "Circled Digit Four"
+          }
+        },
+        {
+          "value": "⑤",
+          "a": {
+            "id": "gen-technical-decimal-number-five-1777540743505",
+            "symbol": "⑤",
+            "name": "Decimal Number Five"
+          },
+          "b": {
+            "id": "circled-5",
+            "symbol": "⑤",
+            "name": "Circled Digit Five"
+          }
+        }
+      ]
+    },
+    "kaomoji.ts__vs__generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "internal_duplicates_by_value": {
+    "symbols.ts": {
+      "count": 1,
+      "examples": [
+        {
+          "value": "π",
+          "records": [
+            {
+              "id": "pi",
+              "symbol": "π",
+              "name": "Pi"
+            },
+            {
+              "id": "pi-lower",
+              "symbol": "π",
+              "name": "Pi (lowercase)"
+            }
+          ]
+        }
+      ]
+    },
+    "generated-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "internal_duplicates_by_id": {
+    "symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-symbols.ts": {
+      "count": 43,
+      "examples": [
+        {
+          "value": "gen-currency-shekel-sign-1777232694973",
+          "records": [
+            {
+              "id": "gen-currency-shekel-sign-1777232694973",
+              "symbol": "₪",
+              "name": "Shekel Sign"
+            },
+            {
+              "id": "gen-currency-shekel-sign-1777232694973",
+              "symbol": "₶",
+              "name": "Shekel Sign"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-with-hook-variation-1777389154567",
+          "records": [
+            {
+              "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+              "symbol": "Α̱",
+              "name": "Alpha with Hook Variation"
+            },
+            {
+              "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+              "symbol": "α̱",
+              "name": "Alpha with Hook Variation"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-beta-with-hook-variation-1777389154567",
+          "records": [
+            {
+              "id": "gen-greek-beta-with-hook-variation-1777389154567",
+              "symbol": "Β̱",
+              "name": "Beta with Hook Variation"
+            },
+            {
+              "id": "gen-greek-beta-with-hook-variation-1777389154567",
+              "symbol": "β̱",
+              "name": "Beta with Hook Variation"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-1777407277238",
+          "records": [
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἀ",
+              "name": "Alpha"
+            },
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "ἀ",
+              "name": "Alpha"
+            }
+          ]
+        },
+        {
+          "value": "gen-greek-alpha-1777407277238",
+          "records": [
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἀ",
+              "name": "Alpha"
+            },
+            {
+              "id": "gen-greek-alpha-1777407277238",
+              "symbol": "Ἁ",
+              "name": "Alpha"
+            }
+          ]
+        }
+      ]
+    },
+    "extra-symbols.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    },
+    "generated-kaomoji.ts": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "shapes": {
+    "symbols.ts": {
+      "total": 233,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 184,
+      "variants": [
+        [
+          "category,css,description,html,id,keywords,name,shortcut,symbol,unicode",
+          35
+        ],
+        [
+          "color,description,icon,id,name",
+          14
+        ]
+      ],
+      "variantTotal": 49
+    },
+    "generated-symbols.ts": {
+      "total": 610,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 610,
+      "variants": [],
+      "variantTotal": 0
+    },
+    "extra-symbols.ts": {
+      "total": 60,
+      "majority": "category,css,description,html,id,keywords,name,symbol,unicode",
+      "majority_count": 57,
+      "variants": [
+        [
+          "color,description,icon,id,name",
+          3
+        ]
+      ],
+      "variantTotal": 3
+    },
+    "kaomoji.ts": {
+      "total": 81,
+      "majority": "face,id,keywords,mood,name",
+      "majority_count": 71,
+      "variants": [
+        [
+          "icon,id,name",
+          10
+        ]
+      ],
+      "variantTotal": 10
+    },
+    "generated-kaomoji.ts": {
+      "total": 568,
+      "majority": "face,id,keywords,mood,name",
+      "majority_count": 568,
+      "variants": [],
+      "variantTotal": 0
+    }
+  },
+  "dead_components": [
+    "components/FavouritesPanel.tsx",
+    "components/MultiSelectGrid.tsx",
+    "components/SearchBar.tsx",
+    "components/SearchTrigger.tsx"
+  ],
+  "data_counts": {
+    "symbols.ts": 219,
+    "generated-symbols.ts": 610,
+    "extra-symbols.ts": 57,
+    "kaomoji.ts": 71,
+    "generated-kaomoji.ts": 568
+  }
+}

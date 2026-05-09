@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useCallback, Suspense } from "react";
 import { searchSymbols } from "@/data/symbols";
 import { kaomoji } from "@/data/kaomoji";
 import SymbolCard from "@/components/SymbolCard";
@@ -65,13 +65,13 @@ function SearchInner() {
           totalResults === 0 ? (
             <div style={{ textAlign: "center", padding: "64px 24px" }}>
               <div style={{ fontSize: "3rem", marginBottom: 16 }}>🔍</div>
-              <div className="font-display" style={{ fontSize: 20, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>No results for "{query}"</div>
-              <p style={{ color: "var(--text2)", fontSize: 14 }}>Try searching by description — "raised dot", "double arrow", "european currency"</p>
+              <div className="font-display" style={{ fontSize: 20, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>No results for &quot;{query}&quot;</div>
+              <p style={{ color: "var(--text2)", fontSize: 14 }}>Try searching by description — &quot;raised dot&quot;, &quot;double arrow&quot;, &quot;european currency&quot;</p>
             </div>
           ) : (
             <div>
               <div style={{ fontSize: 13, color: "var(--text3)", marginBottom: 28 }}>
-                {totalResults} result{totalResults !== 1 ? "s" : ""} for <span style={{ color: "var(--accent)" }}>"{query}"</span>
+                {totalResults} result{totalResults !== 1 ? "s" : ""} for <span style={{ color: "var(--accent)" }}>&quot;{query}&quot;</span>
               </div>
 
               {results.length > 0 && (
