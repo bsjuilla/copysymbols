@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/bio-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     // Tools
     { url: `${base}/small-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/superscript-generator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/strikethrough-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/aesthetic-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/mirror-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },

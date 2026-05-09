@@ -177,7 +177,8 @@ const categoryRelated: Record<string, {
   },
   superscript: {
     tools: [
-      { href: "/small-text", label: "ˢ Small Text", desc: "Full small text & superscript generator" },
+      { href: "/superscript-generator", label: "ˣ² Super & Subscript Generator", desc: "Type any text, get instant superscript and subscript" },
+      { href: "/small-text", label: "ˢ Small Text", desc: "Small caps + superscript + subscript in one tool" },
       { href: "/fancy-text", label: "Fancy Text", desc: "More Unicode text styles" },
     ],
     pages: [
