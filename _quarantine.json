@@ -1,0 +1,4676 @@
+{
+  "generated_at": "2026-05-09T07:18:15.181Z",
+  "total": 450,
+  "items": [
+    {
+      "source": "symbols",
+      "reason": "internal duplicate of glyph \"π\" within symbols",
+      "record": {
+        "id": "pi-lower",
+        "symbol": "π",
+        "name": "Pi (lowercase)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "symbols",
+      "reason": "no meaningful codepoints (zero-width / control only)",
+      "record": {
+        "id": "zero-width",
+        "symbol": "‍",
+        "name": "Zero Width Joiner",
+        "category": "punctuation"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-globe-1776974700561",
+        "symbol": "🌐",
+        "name": "Globe",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-galaxy-1776974700561",
+        "symbol": "🌌",
+        "name": "Galaxy",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-cloud-with-rain-1776974700561",
+        "symbol": "🌠",
+        "name": "Cloud with Rain",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-thermometer-1776974700561",
+        "symbol": "🌡️",
+        "name": "Thermometer",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-sun-behind-clouds-1776974700561",
+        "symbol": "🌭",
+        "name": "Sun behind Clouds",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'weather' to 'zodiac': score 0.00 in 'weather', better fit 'zodiac' (1.00)",
+      "record": {
+        "id": "gen-zodiac-1f31c",
+        "symbol": "🌜",
+        "name": "Waning Gibbous Moon",
+        "oldCategory": "weather",
+        "newCategory": "zodiac"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-crescent-moon-1776974700561",
+        "symbol": "🌻",
+        "name": "Crescent Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-full-moon-1776974700561",
+        "symbol": "🌺",
+        "name": "Full Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-new-moon-1776974700561",
+        "symbol": "🌼",
+        "name": "New Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-waning-crescent-moon-1776974700561",
+        "symbol": "🌽",
+        "name": "Waning Crescent Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-waxing-gibbous-moon-1776974700561",
+        "symbol": "🌾",
+        "name": "Waxing Gibbous Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-first-quarter-moon-1776974700561",
+        "symbol": "🌿",
+        "name": "First Quarter Moon",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-moon-phase-1776974700561",
+        "symbol": "🕰️",
+        "name": "Moon Phase",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'ui': score 0.00 in 'shapes', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f520",
+        "symbol": "🔠",
+        "name": "Input Symbol for Numbers",
+        "oldCategory": "shapes",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'ui': score 0.00 in 'shapes', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f521",
+        "symbol": "🔡",
+        "name": "Input Symbol forSymbols",
+        "oldCategory": "shapes",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'ui': score 0.00 in 'shapes', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f522",
+        "symbol": "🔢",
+        "name": "Input Symbol for Numbers 2",
+        "oldCategory": "shapes",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'shapes', no other category >= 0.70",
+      "record": {
+        "id": "gen-shapes-package-1777060271800",
+        "symbol": "📦",
+        "name": "Package",
+        "category": "shapes"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'weather' to 'ui': score 0.00 in 'weather', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-26a0",
+        "symbol": "⚠️",
+        "name": "High Temperature Warning",
+        "oldCategory": "weather",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'weather' to 'zodiac': score 0.00 in 'weather', better fit 'zodiac' (1.00)",
+      "record": {
+        "id": "gen-zodiac-1f319",
+        "symbol": "🌙",
+        "name": "Night Sky",
+        "oldCategory": "weather",
+        "newCategory": "zodiac"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-sunflower-1777060278274",
+        "symbol": "🌱",
+        "name": "Sunflower",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-rose-1777060278274",
+        "symbol": "🌹",
+        "name": "Rose",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-cherry-blossom-1777060278274",
+        "symbol": "🌸",
+        "name": "Cherry Blossom",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-desert-1777060278274",
+        "symbol": "🏜️",
+        "name": "Desert",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-mountainous-landscape-1777060278274",
+        "symbol": "🏞️",
+        "name": "Mountainous Landscape",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-city-1777060278274",
+        "symbol": "🏟️",
+        "name": "City",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-palm-tree-1777060278274",
+        "symbol": "🌴",
+        "name": "Palm Tree",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-tree-1777060278274",
+        "symbol": "🌳",
+        "name": "Tree",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-foggy-weather-1777060278274",
+        "symbol": "🚣",
+        "name": "Foggy Weather",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-cambodian-riel-1777191472606",
+        "symbol": "៛",
+        "name": "Cambodian riel",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-bangladeshi-taka-1777191472606",
+        "symbol": "‎৳",
+        "name": "Bangladeshi taka",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-qatari-riyal-note-1777191472606",
+        "symbol": "ق",
+        "name": "Qatari riyal note",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-pakistani-rupee-sign-variant-1777191472606",
+        "symbol": "",
+        "name": "Pakistani rupee sign variant",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-mauritius-rupee-1777191472606",
+        "symbol": "৳",
+        "name": "Mauritius rupee",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-qatari-rial-note-variant-1777191472606",
+        "symbol": "q",
+        "name": "Qatari rial note variant",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27c5",
+        "symbol": "⟅",
+        "name": "Double Horizontal Line with Double Right and Left Arrowheads",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27c6",
+        "symbol": "⟆",
+        "name": "Double Horizontal Line with Up and Down Arrowheads",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'shapes': score 0.00 in 'arrows', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b10",
+        "symbol": "⬐",
+        "name": "Left Arrowhead with Vertical Stroke",
+        "oldCategory": "arrows",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'shapes': score 0.00 in 'arrows', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-27a1",
+        "symbol": "➡️",
+        "name": "Rightwards Arrow with Stroke",
+        "oldCategory": "arrows",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-right-pointing-index-1777232687086",
+        "symbol": "👉",
+        "name": "Right Pointing Index",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-left-pointing-index-1777232687086",
+        "symbol": "👈",
+        "name": "Left Pointing Index",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'ui': score 0.00 in 'arrows', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f504",
+        "symbol": "🔄",
+        "name": "Counterclockwise Arrows Button",
+        "oldCategory": "arrows",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-natural-numbers-1777232703471",
+        "symbol": "ℕ",
+        "name": "Natural Numbers",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'technical': score 0.00 in 'arrows', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23e9",
+        "symbol": "⏩",
+        "name": "Fast Forward Button Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'technical': score 0.00 in 'arrows', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23ea",
+        "symbol": "⏪",
+        "name": "Reverse Button Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-document-1777368394176",
+        "symbol": "📜",
+        "name": "Document",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-police-officer-1777368394176",
+        "symbol": "👮‍♂️",
+        "name": "Police Officer",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-open-book-1777368394176",
+        "symbol": "📚",
+        "name": "Open Book",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-prohibited-1777368394176",
+        "symbol": "🚫",
+        "name": "Prohibited",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-megaphone-1777368394176",
+        "symbol": "📢",
+        "name": "Megaphone",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-file-folder-1777368394176",
+        "symbol": "📑",
+        "name": "File Folder",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-chart-increasing-1777368394176",
+        "symbol": "📊",
+        "name": "Chart Increasing",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-calendar-1777368394176",
+        "symbol": "📆",
+        "name": "Calendar",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-file-cabinet-1777368394176",
+        "symbol": "📁",
+        "name": "File Cabinet",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2016",
+        "symbol": "‖",
+        "name": "Double Vertical Line",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'math': score 0.00 in 'legal', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-22d5",
+        "symbol": "⋕",
+        "name": "Up Right Diagonal Arrow",
+        "oldCategory": "legal",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-202220222022",
+        "symbol": "•••",
+        "name": "Triple Dot Leader",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2022202220222022",
+        "symbol": "••••",
+        "name": "Quadruple Dot Leader",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+        "symbol": "Α̱",
+        "name": "Alpha with Hook Variation",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-hook-variation-1777389154567",
+        "symbol": "α̱",
+        "name": "Alpha with Hook Variation",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-beta-with-hook-variation-1777389154567",
+        "symbol": "Β̱",
+        "name": "Beta with Hook Variation",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-beta-with-hook-variation-1777389154567",
+        "symbol": "β̱",
+        "name": "Beta with Hook Variation",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'ui': score 0.00 in 'shapes', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-26ab",
+        "symbol": "⚫️",
+        "name": "Black Circle",
+        "oldCategory": "shapes",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'zodiac': score 0.00 in 'shapes', better fit 'zodiac' (1.00)",
+      "record": {
+        "id": "gen-zodiac-2642",
+        "symbol": "♂️",
+        "name": "Men's Sign",
+        "oldCategory": "shapes",
+        "newCategory": "zodiac"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'zodiac': score 0.00 in 'shapes', better fit 'zodiac' (1.00)",
+      "record": {
+        "id": "gen-zodiac-2640",
+        "symbol": "♀️",
+        "name": "Women's Sign",
+        "oldCategory": "shapes",
+        "newCategory": "zodiac"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2042",
+        "symbol": "⁂",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2043",
+        "symbol": "⁃",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2041",
+        "symbol": "⁁",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20412041",
+        "symbol": "⁁⁁",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20422042",
+        "symbol": "⁂⁂",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2023",
+        "symbol": "‣",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2040",
+        "symbol": "⁀",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2025",
+        "symbol": "‥",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20412022",
+        "symbol": "⁁•",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20422022",
+        "symbol": "⁂•",
+        "name": "Reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'shapes': score 0.00 in 'legal', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b55",
+        "symbol": "⭕",
+        "name": "Hollow red circle, used for caution as legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20432043",
+        "symbol": "⁃⁃",
+        "name": "Double reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-204220422042",
+        "symbol": "⁂⁂⁂",
+        "name": "Triple reference mark, used as a legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'ui': score 0.00 in 'legal', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f511",
+        "symbol": "🔑",
+        "name": "Closed lock, used for certification as legal symbol",
+        "oldCategory": "legal",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25ef",
+        "symbol": "◯",
+        "name": "Circle",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25fb",
+        "symbol": "◻️",
+        "name": "Squircle",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b1b",
+        "symbol": "⬛",
+        "name": "Black Square",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b1c",
+        "symbol": "⬜",
+        "name": "White Square",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b1d",
+        "symbol": "⬝",
+        "name": "Black Rectangle",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b1e",
+        "symbol": "⬞",
+        "name": "White Rectangle",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-sharp-note-1777474838370",
+        "symbol": "🐲",
+        "name": "Sharp Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-flat-note-1777474838370",
+        "symbol": "🐳",
+        "name": "Flat Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-dot-1777474838370",
+        "symbol": ".",
+        "name": "Dot",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'punctuation': score 0.00 in 'music', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2024",
+        "symbol": "․",
+        "name": "Vertical Dot",
+        "oldCategory": "music",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-crescendo-1777474838370",
+        "symbol": "+",
+        "name": "Crescendo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-decrescendo-1777474838370",
+        "symbol": "-",
+        "name": "Decrescendo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-pianissimo-1777474838370",
+        "symbol": "p",
+        "name": "Pianissimo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-fortissimo-1777474838370",
+        "symbol": "f",
+        "name": "Fortissimo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-fortissimo-1777474838370",
+        "symbol": "ff",
+        "name": "Double Fortissimo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-pianissimo-1777474838370",
+        "symbol": "pp",
+        "name": "Double Pianissimo",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2776",
+        "symbol": "❶",
+        "name": "Die Six of One",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2777",
+        "symbol": "❷",
+        "name": "Die One of Two",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2778",
+        "symbol": "❸",
+        "name": "Die Two of Two",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2779",
+        "symbol": "❹",
+        "name": "Die Three of Two",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277a",
+        "symbol": "❺",
+        "name": "Die Four of Two",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277b",
+        "symbol": "❻",
+        "name": "Die Five of Two",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-music-box-1777493365325",
+        "symbol": "",
+        "name": "Music box",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-headphone-1777493365325",
+        "symbol": "🎧",
+        "name": "Headphone",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-computer-1777540743505",
+        "symbol": "🖥️",
+        "name": "Computer",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"①\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-one-1777540743505",
+        "symbol": "①",
+        "name": "Decimal Number One",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"②\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-two-1777540743505",
+        "symbol": "②",
+        "name": "Decimal Number Two",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"③\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-three-1777540743505",
+        "symbol": "③",
+        "name": "Decimal Number Three",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"④\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-four-1777540743505",
+        "symbol": "④",
+        "name": "Decimal Number Four",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑤\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-five-1777540743505",
+        "symbol": "⑤",
+        "name": "Decimal Number Five",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑥\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-six-1777540743505",
+        "symbol": "⑥",
+        "name": "Decimal Number Six",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑦\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-seven-1777540743505",
+        "symbol": "⑦",
+        "name": "Decimal Number Seven",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑧\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-eight-1777540743505",
+        "symbol": "⑧",
+        "name": "Decimal Number Eight",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑨\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-nine-1777540743505",
+        "symbol": "⑨",
+        "name": "Decimal Number Nine",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⑩\" already in extra",
+      "record": {
+        "id": "gen-technical-decimal-number-ten-1777540743505",
+        "symbol": "⑩",
+        "name": "Decimal Number Ten",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277c",
+        "symbol": "❼",
+        "name": "Decimal Number Seven Alternative",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277d",
+        "symbol": "❽",
+        "name": "Decimal Number Eight Alternative",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277e",
+        "symbol": "❾",
+        "name": "Decimal Number Nine Alternative",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-277f",
+        "symbol": "❿",
+        "name": "Decimal Number Ten Alternative",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'ui': score 0.00 in 'technical', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2699",
+        "symbol": "⚙️",
+        "name": "Gear",
+        "oldCategory": "technical",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-old-computer-1777579713510",
+        "symbol": "🖥",
+        "name": "Old Computer",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-desktop-computer-1777579713510",
+        "symbol": "💻",
+        "name": "Desktop Computer",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-teletype-machine-1777579713510",
+        "symbol": "🖲️",
+        "name": "Teletype Machine",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25a8",
+        "symbol": "▨",
+        "name": "Square with Left Half Black",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25b9",
+        "symbol": "▹",
+        "name": "Right Angle Tri Angle",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-mouse-1777579713510",
+        "symbol": "🖱️",
+        "name": "Mouse",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-chart-increasing-with-dot-1777579713510",
+        "symbol": "📈",
+        "name": "Chart Increasing With Dot",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-input-symbol-for-numbers-1777579713510",
+        "symbol": "📝",
+        "name": "Input Symbol for Numbers",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-old-fashioned-tv-1777579713510",
+        "symbol": "🖳️",
+        "name": "Old Fashioned TV",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-variants-1777626255192",
+        "symbol": "Ά",
+        "name": "Alpha with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-beta-cyrillic-variant-1777626255192",
+        "symbol": "Б",
+        "name": "Beta (Cyrillic Variant)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-beta-with-variants-1777626255192",
+        "symbol": "β̈",
+        "name": "Beta with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-gamma-cyrillic-variant-1777626255192",
+        "symbol": "Г",
+        "name": "Gamma (Cyrillic Variant)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-gamma-with-variants-1777626255192",
+        "symbol": "γ̈",
+        "name": "Gamma with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-delta-with-variants-1777626255192",
+        "symbol": "δ̈",
+        "name": "Delta with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-epsilon-with-variants-1777626255192",
+        "symbol": "ε̈",
+        "name": "Epsilon with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-zeta-with-variants-1777626255192",
+        "symbol": "ζ̈",
+        "name": "Zeta with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-eta-with-variants-1777626255192",
+        "symbol": "η̈",
+        "name": "Eta with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-theta-with-variants-1777626255192",
+        "symbol": "θ̈",
+        "name": "Theta with Variants",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-201b",
+        "symbol": "‛",
+        "name": "Left Single Quotation Mark",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-201f",
+        "symbol": "‟",
+        "name": "Left Double Quotation Mark",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2017",
+        "symbol": "‗",
+        "name": "Double Low-Right Half Ring",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-203f",
+        "symbol": "‿",
+        "name": "Interpunct-Solida",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'punctuation': score 0.00 in 'legal', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2027",
+        "symbol": "‧",
+        "name": "Interpunct",
+        "oldCategory": "legal",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23f1",
+        "symbol": "⏱",
+        "name": "Clock, Timer, Stopwatch, etc.",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'ui': score 0.00 in 'music', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f50a",
+        "symbol": "🔊",
+        "name": "Speaker, Loudspeaker, Etc.",
+        "oldCategory": "music",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-sharp-left-half-1777710178346",
+        "symbol": "♪(",
+        "name": "Double Sharp (Left Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-sharp-right-half-1777710178346",
+        "symbol": "♪)",
+        "name": "Double Sharp (Right Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-musical-note-etc-1777710178346",
+        "symbol": "🎵",
+        "name": "Musical Note, Etc.",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-flat-left-half-1777710178346",
+        "symbol": "♩.",
+        "name": "Double Flat (Left Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-flat-right-half-1777710178346",
+        "symbol": "♩)",
+        "name": "Double Flat (Right Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23ef",
+        "symbol": "⏯",
+        "name": "Stop Circle (Music, Video, Etc.)",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'ui': score 0.00 in 'music', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f507",
+        "symbol": "🔇",
+        "name": "Muted Speaker, Etc.",
+        "oldCategory": "music",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-notes-music-sheet-etc-1777710178346",
+        "symbol": "🎶",
+        "name": "Notes, Music Sheet, Etc.",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'ui': score 0.00 in 'music', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f508",
+        "symbol": "🔈",
+        "name": "Speaker, Volume Down, Etc.",
+        "oldCategory": "music",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-flat-left-half-1777710178346",
+        "symbol": "♭(",
+        "name": "Flat (Left Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-flat-right-half-1777710178346",
+        "symbol": "♭)",
+        "name": "Flat (Right Half)",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25a2",
+        "symbol": "▢",
+        "name": "Black Circle (Game Piece)",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'zodiac', no other category >= 0.70",
+      "record": {
+        "id": "gen-zodiac-dots-and-dash-symbol-1777710194996",
+        "symbol": "▖",
+        "name": "Dots and Dash Symbol",
+        "category": "zodiac"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'zodiac' to 'weather': score 0.00 in 'zodiac', better fit 'weather' (1.00)",
+      "record": {
+        "id": "gen-weather-2604",
+        "symbol": "☄",
+        "name": "Last Quarter Moon Symbol",
+        "oldCategory": "zodiac",
+        "newCategory": "weather"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'zodiac' to 'weather': score 0.00 in 'zodiac', better fit 'weather' (1.00)",
+      "record": {
+        "id": "gen-weather-2609",
+        "symbol": "☉",
+        "name": "Gibbous Moon Symbol",
+        "oldCategory": "zodiac",
+        "newCategory": "weather"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'zodiac' to 'weather': score 0.00 in 'zodiac', better fit 'weather' (1.00)",
+      "record": {
+        "id": "gen-weather-2608",
+        "symbol": "☈",
+        "name": "Waxing Moon Symbol",
+        "oldCategory": "zodiac",
+        "newCategory": "weather"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23fa",
+        "symbol": "⏺️",
+        "name": "Notes",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'shapes': score 0.00 in 'music', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-275a",
+        "symbol": "❚",
+        "name": "Dingbats",
+        "oldCategory": "music",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'shapes': score 0.00 in 'music', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-275a-2",
+        "symbol": "❚️",
+        "name": "Dingbats",
+        "oldCategory": "music",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23f9",
+        "symbol": "⏹️",
+        "name": "Note With Stem Leftward",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23f9-2",
+        "symbol": "⏹",
+        "name": "Note With Stem Leftward",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'chess', no other category >= 0.70",
+      "record": {
+        "id": "gen-chess-chessboard-square-1777730542974",
+        "symbol": "♚⬜",
+        "name": "Chessboard Square",
+        "category": "chess"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'zodiac': score 0.00 in 'chess', better fit 'zodiac' (1.00)",
+      "record": {
+        "id": "gen-zodiac-2642-2",
+        "symbol": "♂",
+        "name": "Male Sign",
+        "oldCategory": "chess",
+        "newCategory": "zodiac"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'chess', no other category >= 0.70",
+      "record": {
+        "id": "gen-chess-female-and-male-with-diameter-circle-1777730542974",
+        "symbol": "♀♂•",
+        "name": "Female and Male with Diameter Circle",
+        "category": "chess"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-tilde-note-1777751630923",
+        "symbol": "~",
+        "name": "Tilde Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-ampersand-double-note-head-1777751630923",
+        "symbol": "&",
+        "name": "Ampersand/Double Note Head",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-note-head-1777751630923",
+        "symbol": "",
+        "name": "Double Note Head",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-sharp-note-1777751630923",
+        "symbol": "",
+        "name": "Sharp Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-flat-note-1777751630923",
+        "symbol": "",
+        "name": "Flat Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-natural-note-1777751630923",
+        "symbol": "",
+        "name": "Natural Note",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-note-head-1777751630923",
+        "symbol": "^",
+        "name": "Note Head",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-breve-rest-1777751630923",
+        "symbol": "",
+        "name": "Breve Rest",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-dot-rest-1777751630923",
+        "symbol": "",
+        "name": "Double Dot Rest",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-forte-1777751630923",
+        "symbol": "!",
+        "name": "Double Forte",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-mezzo-piano-1777751630923",
+        "symbol": "m",
+        "name": "Mezzo Piano",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-mezzo-piano-1777751630923",
+        "symbol": "mp",
+        "name": "Mezzo Piano",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-fortissimo-zero-1777751630923",
+        "symbol": "ffz",
+        "name": "Fortissimo Zero",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-comorian-franc-1777798210496",
+        "symbol": "K",
+        "name": "Comorian Franc",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-rwandan-franc-1777798210496",
+        "symbol": "R",
+        "name": "Rwandan Franc",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-moroccan-dirham-1777798210496",
+        "symbol": "M",
+        "name": "Moroccan Dirham",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-taka-1000th-part-1777816993688",
+        "symbol": "৲",
+        "name": "Taka (1000th part)",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-lepcha-currency-symbol-1777816993688",
+        "symbol": "૱",
+        "name": "Lepcha Currency Symbol",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-tanzanian-shilling-1777816993688",
+        "symbol": "‌৲",
+        "name": "Tanzanian Shilling",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-sierra-leonean-leone-1777816993688",
+        "symbol": "‌ল৲",
+        "name": "Sierra Leonean Leone",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-long-double-right-arrow-with-subscript-1777838028196",
+        "symbol": "⟹⃀",
+        "name": "Long Double Right Arrow With Subscript",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-long-right-pointing-double-triangle-with-subscript-1777838028196",
+        "symbol": "⟿⃀",
+        "name": "Long Right Pointing Double Triangle With Subscript",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-left-double-arrow-with-subscript-1777838028196",
+        "symbol": "⟸⃀",
+        "name": "Left Double Arrow With Subscript",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-rightwards-two-headed-arrow-with-subscript-1777838028196",
+        "symbol": "⇉⃀",
+        "name": "Rightwards Two-Headed Arrow With Subscript",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-left-right-arrow-through-bar-with-subscript-1777838028196",
+        "symbol": "⇋⃀",
+        "name": "Left-Right Arrow Through Bar With Subscript",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-subset-with-overline-1777838045310",
+        "symbol": "ⅈ",
+        "name": "Subset with Overline",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'math' to 'technical': score 0.00 in 'math', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-2308",
+        "symbol": "⌈",
+        "name": "Floor Bracket",
+        "oldCategory": "math",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'math' to 'technical': score 0.00 in 'math', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-2309",
+        "symbol": "⌉",
+        "name": "Ceiling Bracket",
+        "oldCategory": "math",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-black-feferman-sch-tte-arrow-1777838045310",
+        "symbol": "ℱ",
+        "name": "Black-Feferman-Schütte Arrow",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-black-feferman-sch-tte-arrow-1777838045310",
+        "symbol": "ℍ",
+        "name": "Black-Feferman-Schütte Arrow",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-planck-constant-1777838045310",
+        "symbol": "ℎ",
+        "name": "Planck Constant",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-reduction-bracket-1777838045310",
+        "symbol": "ℏ",
+        "name": "Reduction Bracket",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-stigma-1777838045310",
+        "symbol": "ℐ",
+        "name": "Stigma",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-imaginary-part-symbol-1777838045310",
+        "symbol": "ℑ",
+        "name": "Imaginary Part Symbol",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-script-l-1777838045310",
+        "symbol": "ℓ",
+        "name": "script L",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-script-capital-p-with-hook-1777838045310",
+        "symbol": "℘",
+        "name": "Script Capital P with Hook",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-black-feferman-sch-tte-arrow-1777838045310",
+        "symbol": "ℙ",
+        "name": "Black-Feferman-Schütte Arrow",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-number-set-with-dot-above-1777838045310",
+        "symbol": "ℚ",
+        "name": "Number Set with Dot Above",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-real-part-symbol-1777838045310",
+        "symbol": "ℜ",
+        "name": "Real Part Symbol",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'math', no other category >= 0.70",
+      "record": {
+        "id": "gen-math-number-set-with-overline-1777838045310",
+        "symbol": "ℝ",
+        "name": "Number Set with Overline",
+        "category": "math"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'math' to 'technical': score 0.00 in 'math', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-2300",
+        "symbol": "⌀",
+        "name": "Empty Set",
+        "oldCategory": "math",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'shapes': score 0.00 in 'arrows', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-27a0",
+        "symbol": "➠",
+        "name": "Long Dash",
+        "oldCategory": "arrows",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'shapes': score 0.00 in 'arrows', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2782",
+        "symbol": "➂",
+        "name": "Double Exclamation Mark Object",
+        "oldCategory": "arrows",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'shapes': score 0.00 in 'arrows', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2783",
+        "symbol": "➃",
+        "name": "Triangular Exclamation Mark Object",
+        "oldCategory": "arrows",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27ee",
+        "symbol": "⟮",
+        "name": "Double Left Diagonal Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27ef",
+        "symbol": "⟯",
+        "name": "Double Right Diagonal Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27c7",
+        "symbol": "⟇",
+        "name": "Curly Right-Tail Right Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27c8",
+        "symbol": "⟈",
+        "name": "Curly Left-Tail Left Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27c9",
+        "symbol": "⟉",
+        "name": "Left-Tail Right Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27ca",
+        "symbol": "⟊",
+        "name": "Right-Tail Left Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27cb",
+        "symbol": "⟋",
+        "name": "Right-Tail Right Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27cc",
+        "symbol": "⟌",
+        "name": "Left-Tail Left Arrow",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27d1",
+        "symbol": "⟑",
+        "name": "Double Left-Pointing Angle Quotation Mark Arrows",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'arrows' to 'math': score 0.00 in 'arrows', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-27d2",
+        "symbol": "⟒",
+        "name": "Double Right-Pointing Angle Quotation Mark Arrows",
+        "oldCategory": "arrows",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-somali-shilling-1777906754848",
+        "symbol": "ﷻ",
+        "name": "Somali Shilling",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-long-left-right-arrow-1777925614105",
+        "symbol": "⇔ (⇆)",
+        "name": "Long Left Right Arrow",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-long-left-right-double-arrow-1777925614105",
+        "symbol": "⇆ (⇔)",
+        "name": "Long Left Right Double Arrow",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-left-right-wave-arrow-1777925614105",
+        "symbol": "⇆ (⇁)",
+        "name": "Left Right Wave Arrow",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-double-left-right-arrow-1777925614105",
+        "symbol": "⇅ (⇅)",
+        "name": "Double Left Right Arrow",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'arrows', no other category >= 0.70",
+      "record": {
+        "id": "gen-arrows-rightwards-white-arrow-1777925614105",
+        "symbol": "→ (⇨)",
+        "name": "Rightwards White Arrow",
+        "category": "arrows"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'currency', no other category >= 0.70",
+      "record": {
+        "id": "gen-currency-afghanistan-afghani-1777925623385",
+        "symbol": "؋",
+        "name": "Afghanistan Afghani",
+        "category": "currency"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-omega-with-stroke-1778011578992",
+        "symbol": "Ω̇",
+        "name": "Uppercase Omega with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-omega-with-stroke-1778011578992",
+        "symbol": "ω̇",
+        "name": "Lowercase Omega with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-omega-with-macron-1778011578992",
+        "symbol": "Ω̄",
+        "name": "Uppercase Omega with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-omega-with-macron-1778011578992",
+        "symbol": "ω̄",
+        "name": "Lowercase Omega with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-omega-with-cleft-1778011578992",
+        "symbol": "Ω̐",
+        "name": "Uppercase Omega with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-omega-with-cleft-1778011578992",
+        "symbol": "ω̐",
+        "name": "Lowercase Omega with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-alpha-with-stroke-1778011578992",
+        "symbol": "Α̇",
+        "name": "Uppercase Alpha with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-alpha-with-stroke-1778011578992",
+        "symbol": "α̇",
+        "name": "Lowercase Alpha with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-alpha-with-macron-1778011578992",
+        "symbol": "Ᾱ",
+        "name": "Uppercase Alpha with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-alpha-with-macron-1778011578992",
+        "symbol": "ᾱ",
+        "name": "Lowercase Alpha with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-alpha-with-cleft-1778011578992",
+        "symbol": "Α̐",
+        "name": "Uppercase Alpha with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-alpha-with-cleft-1778011578992",
+        "symbol": "α̐",
+        "name": "Lowercase Alpha with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-kappa-with-stroke-1778011578992",
+        "symbol": "Κ̇",
+        "name": "Uppercase Kappa with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-kappa-with-stroke-1778011578992",
+        "symbol": "κ̇",
+        "name": "Lowercase Kappa with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-kappa-with-macron-1778011578992",
+        "symbol": "Κ̄",
+        "name": "Uppercase Kappa with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-kappa-with-macron-1778011578992",
+        "symbol": "κ̄",
+        "name": "Lowercase Kappa with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-kappa-with-cleft-1778011578992",
+        "symbol": "Κ̐",
+        "name": "Uppercase Kappa with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-kappa-with-cleft-1778011578992",
+        "symbol": "κ̐",
+        "name": "Lowercase Kappa with Cleft",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-phi-with-stroke-1778011578992",
+        "symbol": "Φ̇",
+        "name": "Uppercase Phi with Stroke",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'weather': score 0.00 in 'legal', better fit 'weather' (1.00)",
+      "record": {
+        "id": "gen-weather-2611",
+        "symbol": "☑",
+        "name": "Approved Checkmark",
+        "oldCategory": "legal",
+        "newCategory": "weather"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-circled-m-symbol-1778011587598",
+        "symbol": "Ⓜ",
+        "name": "Circled M Symbol",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-circled-l-symbol-1778011587598",
+        "symbol": "Ⓛ",
+        "name": "Circled L Symbol",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'math': score 0.00 in 'legal', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-2030",
+        "symbol": "‰",
+        "name": "Per mille Sign",
+        "oldCategory": "legal",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-cross-mark-1778011587598",
+        "symbol": "Ⓧ",
+        "name": "Cross Mark",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'ui': score 0.00 in 'legal', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-1f535",
+        "symbol": "🔵",
+        "name": "Circled Blue Square",
+        "oldCategory": "legal",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-note-whiteness-mark-1778059670215",
+        "symbol": "",
+        "name": "Note Whiteness Mark",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'music', no other category >= 0.70",
+      "record": {
+        "id": "gen-music-double-octave-bar-1778059670215",
+        "symbol": "ﬆ",
+        "name": "Double Octave Bar",
+        "category": "music"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'punctuation': score 0.00 in 'music', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2045",
+        "symbol": "⁅",
+        "name": "Superscript Four",
+        "oldCategory": "music",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23c3",
+        "symbol": "⏃",
+        "name": "Double Exclamation Mark Object",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23cc",
+        "symbol": "⏌",
+        "name": "Leftwards Black Long Dash Arrow",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23c0",
+        "symbol": "⏀",
+        "name": "Leftwards Arrow to Bar Over Rightwards Arrow Over Leftwards Arrow",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'punctuation': score 0.00 in 'music', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-20452045",
+        "symbol": "⁅⁅",
+        "name": "Superscript Four Superscript Four",
+        "oldCategory": "music",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23c323c3",
+        "symbol": "⏃⏃",
+        "name": "Double Exclamation Mark Object Double Exclamation Mark Object",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'music' to 'technical': score 0.00 in 'music', better fit 'technical' (1.00)",
+      "record": {
+        "id": "gen-technical-23cc23cc",
+        "symbol": "⏌⏌",
+        "name": "Leftwards Black Long Dash Arrow Leftwards Black Long Dash Arrow",
+        "oldCategory": "music",
+        "newCategory": "technical"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"✂\" already in extra",
+      "record": {
+        "id": "gen-chess-game-die-1778059679326",
+        "symbol": "✂",
+        "name": "Game Die",
+        "category": "chess"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2703",
+        "symbol": "✃",
+        "name": "Game Die",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2704",
+        "symbol": "✄",
+        "name": "Game Die",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'zodiac', no other category >= 0.70",
+      "record": {
+        "id": "gen-zodiac-sun-1778059687269",
+        "symbol": "🌞",
+        "name": "Sun",
+        "category": "zodiac"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-sun-behind-clouds-1778059696498",
+        "symbol": "🌞️",
+        "name": "Sun Behind Clouds",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-gardenia-1778059696498",
+        "symbol": "🌻️",
+        "name": "Gardenia",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-tulip-1778059696498",
+        "symbol": "🌷️",
+        "name": "Tulip",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-hibiscus-1778059696498",
+        "symbol": "🌺️",
+        "name": "Hibiscus",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-potted-plant-1778059696498",
+        "symbol": "🌼️",
+        "name": "Potted Plant",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-seedling-1778059696498",
+        "symbol": "🌿️",
+        "name": "Seedling",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'currency': score 0.00 in 'chess', better fit 'currency' (1.00)",
+      "record": {
+        "id": "gen-currency-a4",
+        "symbol": "¤",
+        "name": "Currency Sign",
+        "oldCategory": "chess",
+        "newCategory": "currency"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'ui': score 0.00 in 'chess', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2617",
+        "symbol": "☗",
+        "name": "Chess Pawn",
+        "oldCategory": "chess",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'ui': score 0.00 in 'chess', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2616",
+        "symbol": "☖",
+        "name": "Chess Rook",
+        "oldCategory": "chess",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'ui': score 0.00 in 'chess', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-26ab-2",
+        "symbol": "⚫",
+        "name": "Black Circle",
+        "oldCategory": "chess",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'ui': score 0.00 in 'chess', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-26aa",
+        "symbol": "⚪",
+        "name": "White Circle",
+        "oldCategory": "chess",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'ui': score 0.00 in 'chess', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2615",
+        "symbol": "☕️",
+        "name": "Hot Beverage",
+        "oldCategory": "chess",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25ce",
+        "symbol": "◎",
+        "name": "White Diamond Game Piece",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'chess' to 'shapes': score 0.00 in 'chess', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25af",
+        "symbol": "▯",
+        "name": "Game Board Tile",
+        "oldCategory": "chess",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'weather' to 'shapes': score 0.00 in 'weather', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2708",
+        "symbol": "✈️",
+        "name": "Airplane",
+        "oldCategory": "weather",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'weather', no other category >= 0.70",
+      "record": {
+        "id": "gen-weather-beach-1778098876632",
+        "symbol": "🏖️",
+        "name": "Beach",
+        "category": "weather"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'shapes': score 0.00 in 'technical', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2753",
+        "symbol": "❓",
+        "name": "Question Mark Exclamation Mark",
+        "oldCategory": "technical",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-hammer-and-pliers-1778146685418",
+        "symbol": "🛠️",
+        "name": "Hammer and Pliers",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-file-folder-open-1778146685418",
+        "symbol": "📂",
+        "name": "File Folder Open",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-satellite-1778146685418",
+        "symbol": "📡",
+        "name": "Satellite",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-megaphone-1778146685418",
+        "symbol": "📣",
+        "name": "Megaphone",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-telephone-receiver-1778146685418",
+        "symbol": "📟",
+        "name": "Telephone Receiver",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-telephone-1778146685418",
+        "symbol": "📞",
+        "name": "Telephone",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'technical', no other category >= 0.70",
+      "record": {
+        "id": "gen-technical-printed-circuit-board-1778146685418",
+        "symbol": "🖨️",
+        "name": "Printed Circuit Board",
+        "category": "technical"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'superscript', no other category >= 0.70",
+      "record": {
+        "id": "gen-superscript-superscript-small-a-1778167333815",
+        "symbol": "ᵃ",
+        "name": "Superscript Small A",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'superscript', no other category >= 0.70",
+      "record": {
+        "id": "gen-superscript-superscript-small-t-1778167333815",
+        "symbol": "ᶿ",
+        "name": "Superscript Small T",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'superscript', no other category >= 0.70",
+      "record": {
+        "id": "gen-superscript-superscript-hook-1778167333815",
+        "symbol": "ˢ",
+        "name": "Superscript Hook",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅽ\" already in extra",
+      "record": {
+        "id": "gen-superscript-superscript-small-letter-c-1778167333815",
+        "symbol": "Ⅽ",
+        "name": "Superscript Small Letter C",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅼ\" already in extra",
+      "record": {
+        "id": "gen-superscript-superscript-small-letter-l-1778167333815",
+        "symbol": "Ⅼ",
+        "name": "Superscript Small Letter L",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅳ\" already in extra",
+      "record": {
+        "id": "gen-superscript-superscript-small-letter-i-1778167333815",
+        "symbol": "Ⅳ",
+        "name": "Superscript Small Letter I",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅴ\" already in extra",
+      "record": {
+        "id": "gen-superscript-superscript-small-letter-v-1778167333815",
+        "symbol": "Ⅴ",
+        "name": "Superscript Small Letter V",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅵ\" already in extra",
+      "record": {
+        "id": "gen-superscript-superscript-small-letter-vi-1778167333815",
+        "symbol": "Ⅵ",
+        "name": "Superscript Small Letter VI",
+        "category": "superscript"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'math': score 0.00 in 'technical', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-222c",
+        "symbol": "∬",
+        "name": "Double Integral",
+        "oldCategory": "technical",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'math': score 0.00 in 'technical', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-22c5",
+        "symbol": "⋅",
+        "name": "Dot Operator",
+        "oldCategory": "technical",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'punctuation': score 0.00 in 'technical', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2044",
+        "symbol": "⁄",
+        "name": "Fraction Slash",
+        "oldCategory": "technical",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'punctuation': score 0.00 in 'technical', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2046",
+        "symbol": "⁆",
+        "name": "Double Exclamation Mark",
+        "oldCategory": "technical",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'legal': score 0.00 in 'technical', better fit 'legal' (1.00)",
+      "record": {
+        "id": "gen-legal-2047",
+        "symbol": "⁇",
+        "name": "Interpunct-Solidus",
+        "oldCategory": "technical",
+        "newCategory": "legal"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'legal': score 0.00 in 'technical', better fit 'legal' (1.00)",
+      "record": {
+        "id": "gen-legal-2048",
+        "symbol": "⁈",
+        "name": "Question Mark with Dot Above",
+        "oldCategory": "technical",
+        "newCategory": "legal"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'legal': score 0.00 in 'technical', better fit 'legal' (1.00)",
+      "record": {
+        "id": "gen-legal-2049",
+        "symbol": "⁉",
+        "name": "Exclamation Mark with Dot Above",
+        "oldCategory": "technical",
+        "newCategory": "legal"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'math': score 0.00 in 'technical', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-22c4",
+        "symbol": "⋄",
+        "name": "White Bullet",
+        "oldCategory": "technical",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'math': score 0.00 in 'technical', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-22db",
+        "symbol": "⋛",
+        "name": "Reverse Tilde Operator",
+        "oldCategory": "technical",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'technical' to 'math': score 0.00 in 'technical', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-22dc",
+        "symbol": "⋜",
+        "name": "Tilde Operator",
+        "oldCategory": "technical",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'ui' to 'shapes': score 0.00 in 'ui', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2757",
+        "symbol": "❗",
+        "name": "Exclamation Mark Bullet",
+        "oldCategory": "ui",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-eyes-1778184803183",
+        "symbol": "👀",
+        "name": "Eyes",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-two-friends-holding-hands-1778184803183",
+        "symbol": "👂",
+        "name": "Two Friends Holding Hands",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-light-bulb-1778184803183",
+        "symbol": "💡",
+        "name": "Light Bulb",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'ui' to 'shapes': score 0.00 in 'ui', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2b50",
+        "symbol": "⭐️",
+        "name": "Star",
+        "oldCategory": "ui",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-ok-hand-sign-1778184803183",
+        "symbol": "👍",
+        "name": "OK Hand Sign",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-chart-increasing-with-male-sign-1778184803183",
+        "symbol": "📊‍♂️",
+        "name": "Chart Increasing With Male Sign",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-chart-increasing-with-yen-and-male-sign-1778184803183",
+        "symbol": "📈‍♂️",
+        "name": "Chart Increasing With Yen And Male Sign",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-two-friends-holding-hands-1778184803183",
+        "symbol": "👫",
+        "name": "Two Friends Holding Hands",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-chart-increasing-with-female-sign-1778184803183",
+        "symbol": "📊‍♀️",
+        "name": "Chart Increasing With Female Sign",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'ui', no other category >= 0.70",
+      "record": {
+        "id": "gen-ui-chart-increasing-with-yen-and-female-sign-1778184803183",
+        "symbol": "📈‍♀️",
+        "name": "Chart Increasing With Yen And Female Sign",
+        "category": "ui"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-ring-above-uppercase-variant-letter-form-1778228610179",
+        "symbol": "Α̊",
+        "name": "Alpha with ring above - uppercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-ring-above-lowercase-variant-letter-form-1778228610179",
+        "symbol": "α̊",
+        "name": "Alpha with ring above - lowercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.33 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-ring-above-and-breve-uppercase-variant-letter-form-17782286",
+        "symbol": "Α̇́",
+        "name": "Alpha with ring above and breve - uppercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.33 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-macron-and-ring-above-uppercase-variant-letter-form-1778228",
+        "symbol": "Α̊́",
+        "name": "Alpha with macron and ring above - uppercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.33 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-macron-and-breve-uppercase-variant-letter-form-177822861017",
+        "symbol": "Α̇̄",
+        "name": "Alpha with macron and breve - uppercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.33 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-alpha-with-ring-above-and-breve-uppercase-variant-letter-form-17782286",
+        "symbol": "Α̊̇",
+        "name": "Alpha with ring above and breve - uppercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-final-sigma-with-double-macron-lowercase-variant-letter-form-177822861",
+        "symbol": "ς̇",
+        "name": "Final sigma with double macron - lowercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.33 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-final-sigma-with-double-macron-and-breve-lowercase-variant-letter-form",
+        "symbol": "ς̇̇",
+        "name": "Final sigma with double macron and breve - lowercase (variant letter form)",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-pound-sign-1778228618773",
+        "symbol": "Ω",
+        "name": "Pound Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-official-seal-1778228618773",
+        "symbol": "ⓑ",
+        "name": "Official Seal",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'ui': score 0.00 in 'legal', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2691",
+        "symbol": "⚑",
+        "name": "Crown",
+        "oldCategory": "legal",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⚒\" already in extra",
+      "record": {
+        "id": "gen-legal-dagger-1778228618773",
+        "symbol": "⚒",
+        "name": "Dagger",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⚓\" already in extra",
+      "record": {
+        "id": "gen-legal-club-suit-1778228618773",
+        "symbol": "⚓",
+        "name": "Club Suit",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'ui': score 0.00 in 'legal', better fit 'ui' (1.00)",
+      "record": {
+        "id": "gen-ui-2694",
+        "symbol": "⚔",
+        "name": "Diamond Suit",
+        "oldCategory": "legal",
+        "newCategory": "ui"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⚖\" already in extra",
+      "record": {
+        "id": "gen-legal-lightning-bolt-1778228618773",
+        "symbol": "⚖",
+        "name": "Lightning Bolt",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"⚕\" already in extra",
+      "record": {
+        "id": "gen-legal-heart-suit-1778228618773",
+        "symbol": "⚕",
+        "name": "Heart Suit",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-alpha-with-macron-1778250469107",
+        "symbol": "Α̲",
+        "name": "Uppercase Alpha with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-alpha-with-macron-1778250469107",
+        "symbol": "α̲",
+        "name": "Lowercase Alpha with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-uppercase-delta-with-macron-1778250469107",
+        "symbol": "Δ̃",
+        "name": "Uppercase Delta with Macron",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.50 in 'greek', no other category >= 0.70",
+      "record": {
+        "id": "gen-greek-lowercase-delta-with-dot-1778250469107",
+        "symbol": "Δ̇",
+        "name": "Lowercase Delta with Dot",
+        "category": "greek"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'shapes': score 0.00 in 'legal', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-25c1",
+        "symbol": "◁",
+        "name": "Less-than Symbol",
+        "oldCategory": "legal",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'legal' to 'shapes': score 0.00 in 'legal', better fit 'shapes' (1.00)",
+      "record": {
+        "id": "gen-shapes-2756",
+        "symbol": "❖",
+        "name": "White Medium Star",
+        "oldCategory": "legal",
+        "newCategory": "shapes"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-1-of-10-vertical-forms-for-various-technical-use-and-waving-dash-17782",
+        "symbol": "①✿",
+        "name": "1 of 10 Vertical Forms for Various Technical Use and Waving Dash",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-enclosed-alphanumerics-8-1778250478808",
+        "symbol": "Ⓢ",
+        "name": "Enclosed Alphanumerics - 8",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-1-of-10-vertical-forms-for-various-technical-use-and-3-of-10-vertical-",
+        "symbol": "①③",
+        "name": "1 of 10 Vertical Forms for Various Technical Use and 3 of 10 Vertical Forms for Various Technical Use",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-2-of-10-vertical-forms-for-various-technical-use-and-3-of-10-vertical-",
+        "symbol": "②③",
+        "name": "2 of 10 Vertical Forms for Various Technical Use and 3 of 10 Vertical Forms for Various Technical Use",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "cross-file duplicate of glyph \"Ⅹ\" already in extra",
+      "record": {
+        "id": "gen-legal-roman-numeral-10-1778250478808",
+        "symbol": "Ⅹ",
+        "name": "Roman Numeral 10",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-1-of-10-vertical-forms-for-various-technical-use-and-female-sign-17782",
+        "symbol": "①♀",
+        "name": "1 of 10 Vertical Forms for Various Technical Use and Female Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-2-of-10-vertical-forms-for-various-technical-use-and-female-sign-17782",
+        "symbol": "②♀",
+        "name": "2 of 10 Vertical Forms for Various Technical Use and Female Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-1-of-10-vertical-forms-for-various-technical-use-and-3-of-10-vertical-",
+        "symbol": "①③♀",
+        "name": "1 of 10 Vertical Forms for Various Technical Use and 3 of 10 Vertical Forms for Various Technical Use and Female Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-2-of-10-vertical-forms-for-various-technical-use-and-3-of-10-vertical-",
+        "symbol": "②③♀",
+        "name": "2 of 10 Vertical Forms for Various Technical Use and 3 of 10 Vertical Forms for Various Technical Use and Female Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'legal', no other category >= 0.70",
+      "record": {
+        "id": "gen-legal-1-of-10-vertical-forms-for-various-technical-use-and-3-of-10-vertical-",
+        "symbol": "①③⑤♀",
+        "name": "1 of 10 Vertical Forms for Various Technical Use and 3 of 10 Vertical Forms for Various Technical Use and 5 of 10 Vertical Forms for Various Technical Use and Female Sign",
+        "category": "legal"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "score 0.00 in 'shapes', no other category >= 0.70",
+      "record": {
+        "id": "gen-shapes-white-medium-large-square-1778250487269",
+        "symbol": "▀",
+        "name": "White Medium Large Square",
+        "category": "shapes"
+      }
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'math': score 0.00 in 'shapes', better fit 'math' (1.00)",
+      "record": {
+        "id": "gen-math-2031",
+        "symbol": "‱",
+        "name": "Permille Sign",
+        "oldCategory": "shapes",
+        "newCategory": "math"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'punctuation': score 0.00 in 'shapes', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2034",
+        "symbol": "‴",
+        "name": "Caret Mark",
+        "oldCategory": "shapes",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "generated",
+      "reason": "rerouted from 'shapes' to 'punctuation': score 0.00 in 'shapes', better fit 'punctuation' (1.00)",
+      "record": {
+        "id": "gen-punctuation-2036",
+        "symbol": "‶",
+        "name": "Fits",
+        "oldCategory": "shapes",
+        "newCategory": "punctuation"
+      },
+      "relocated": true
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-i21bsb",
+        "face": "(ʙ˅ʙ˅)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-mk2569",
+        "face": "(¬¬",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-f8obro",
+        "face": "(*ˇˇ*)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-m4hlha",
+        "face": ")ˇˇ(*",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-9xinto",
+        "face": ")ʖ(",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-cfahrd",
+        "face": "(⋈(",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-nhntul",
+        "face": "(☼⏪☼)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-t8nw1j",
+        "face": "(❀˙❀)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-y9gli8",
+        "face": "(℃❤℃)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-deg7hl",
+        "face": "(✿✨✵)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-6715wv",
+        "face": "(♥❀'",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-lyn4ow",
+        "face": "(❀♫❀)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-h0zhkq",
+        "face": "(♫❤♪)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-9digvs",
+        "face": "(☁❤☁)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-najmnd",
+        "face": "(♥✦⃀)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-ysy18d",
+        "face": "(❀❤❅)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-1yewtp",
+        "face": "(♀❤♀",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-mfjba0",
+        "face": "(♀♂❤)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-1hg2n6",
+        "face": "(♂♀❤)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-eu0762",
+        "face": "(❤♀♀)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-3zuiys",
+        "face": "(♀♀♀❤)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-gim0re",
+        "face": "(❤♥♥)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-iimc01",
+        "face": "(♀❤❤)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-xcsm22",
+        "face": "(♀♀❤❤)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-ko1vss",
+        "face": "(♀❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-yw734h",
+        "face": "(♀♀❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-vcz7ln",
+        "face": "(♀❤❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-ke9j1d",
+        "face": "(♀♀♀❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-k3ak0b",
+        "face": "(♀❤❤❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-od26d3",
+        "face": "(♀♀♀♀❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-likkk4",
+        "face": "(♀❤❤❤❤",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-edxr1g",
+        "face": "(﹏)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-d9z5oj",
+        "face": "(~‾﹏~‾)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-dbvcir",
+        "face": "(⬛💫)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-jh9pnu",
+        "face": "(✿﹏✿)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-852jqk",
+        "face": "(﹏﹏)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-f8320t",
+        "face": "(﹏✿)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-gfpqco",
+        "face": "(✿﹏)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-y44mi0",
+        "face": "(﹏﹏~)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-v6uuqq",
+        "face": "(✿﹏✨)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-e22ka4",
+        "face": "(﹏﹏﹏)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-wwbz8o",
+        "face": "(﹏❤️)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-ha7wpc",
+        "face": "(✿﹏🌸)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-rwdmlf",
+        "face": "(˙﹏˙)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-happy-3yitnl",
+        "face": "(﹏﹏💕)",
+        "mood": "happy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-ft3zqo",
+        "face": "(~☃~)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-x8adwk",
+        "face": "(；ˉ﹏ˉ；)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-rvp4t5",
+        "face": "(＜﹏＞)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-62lp00",
+        "face": "(⁂⁃⁂⁃)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-ehavca",
+        "face": "(⁂⁃⁂⁃⁂⁃)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-a6ftls",
+        "face": "(⁂⁃⁂⁃⁂⁃⁂)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-fn5g2z",
+        "face": "(⁂⁃⁂﹏⁂)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-b3z661",
+        "face": "(⁂⁃⁂⁃⁂⁃⁂⁃)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-ixd85l",
+        "face": "(⁂⁂⁃⁂⁂⁃⁂⁂)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-hp7r7f",
+        "face": "(⁂⁂⁂⁃⁂⁂⁃⁂⁂)",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-g8b13l",
+        "face": "(╥﹏╥)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-dka9oj",
+        "face": "(；﹏﹏；)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-0qa6mg",
+        "face": "(~﹏~)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-cool-1rpaaz",
+        "face": "(◯◯◯)",
+        "mood": "cool"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-cool-mv29i1",
+        "face": "(◯◧◯)",
+        "mood": "cool"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-cool-mm02pm",
+        "face": "(◯◧✿)",
+        "mood": "cool"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-cool-omc61q",
+        "face": "(◯✿✿)",
+        "mood": "cool"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-waving-agyelo",
+        "face": "(ˇˇ",
+        "mood": "waving"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-wd3rz5",
+        "face": "(╥﹀╥)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-3adl3r",
+        "face": "(；╥﹏；)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-yw6tm5",
+        "face": "(╥╥﹏)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-towh3a",
+        "face": "(；╥╥；)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-ua33i9",
+        "face": "(；﹏╥；)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-sj8h0n",
+        "face": "(╥╥╥﹏)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-3npwer",
+        "face": "◕・◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-j41mu4",
+        "face": "◕・◯◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-hini82",
+        "face": "◕・^◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-ukzs6i",
+        "face": "◕・_◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-rpt3lm",
+        "face": "◕・◇◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-jcbfy0",
+        "face": "◕・◊◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-vnh4xu",
+        "face": "◕・✿◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-g6zder",
+        "face": "◕・◐◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-2wwc38",
+        "face": "◕・❀◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-yiqwo9",
+        "face": "◕・✲◕",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-angry-pflmvg",
+        "face": "( ◖◗ )",
+        "mood": "angry"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-vz0wx0",
+        "face": "(⊂˚∀˚⊃)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-kvoa4i",
+        "face": "(☠ʖ☠)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-o1m0iz",
+        "face": "(ʕ¤ʔ)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-owpz20",
+        "face": "(☻¤☻)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-59rvbs",
+        "face": "(✿¤ˇ¤)",
+        "mood": "silly"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-b0rp8m",
+        "face": "(◕ω❤️😊)",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-love-4wd5bl",
+        "face": "(◕ω❤️😊づ",
+        "mood": "love"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-dcc75z",
+        "face": "(◟̽◟̽)",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-shy-rdzcoy",
+        "face": "(◞౥◟)",
+        "mood": "shy"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-sad-9asw3v",
+        "face": "(﹏╥﹏)",
+        "mood": "sad"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-surprised-ogp3f3",
+        "face": "(◕😮◕)",
+        "mood": "surprised"
+      }
+    },
+    {
+      "source": "gen-kaomoji",
+      "reason": "fails kaomoji validator",
+      "record": {
+        "id": "gen-silly-rintb4",
+        "face": "(◯˗ˇ˗◯)",
+        "mood": "silly"
+      }
+    }
+  ]
+}
