@@ -26,8 +26,12 @@ const by_severity = { high: 0, medium: 0, low: 0 };
 const by_category = {};
 let total_issues = 0;
 
+// Normalise field names: some vision agents used `type`/`description` instead of
+// `category`/`evidence`. Mutate in place so downstream scripts see one schema.
 for (const finding of findings) {
   for (const issue of finding.issues || []) {
+    if (issue.type && !issue.category) issue.category = issue.type;
+    if (issue.description && !issue.evidence) issue.evidence = issue.description;
     total_issues++;
     by_severity[issue.severity] = (by_severity[issue.severity] || 0) + 1;
     by_category[issue.category] = (by_category[issue.category] || 0) + 1;
