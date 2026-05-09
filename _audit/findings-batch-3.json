@@ -1,0 +1,208 @@
+[
+  {
+    "page": "/lenny-face",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/lenny-face.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/lenny-face",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/lenny-face.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/bullet-points",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/bullet-points.png",
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Two cards in 'Star & Decorative Bullets' section both labelled 'White Star' but render different glyphs (✧ U+2727 vs ☆ U+2606). Confusing for users who can't tell which is which.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/bullet-points",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/bullet-points.png",
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Two adjacent cards labelled 'White Star' in the Star & Decorative Bullets row (✧ and ☆) — same labelling collision visible on mobile.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/bio-templates",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/bio-templates.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/bio-templates",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/bio-templates.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/emoji-combos",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/emoji-combos.png",
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Identical combo ☁️🌙 appears in 'Aesthetic & Vibes' (labelled 'Cloudy night') AND in 'Soft & Cute' (labelled 'Cloud moon'). Same string, two cards, two categories — copies the same character sequence under different names.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/emoji-combos",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/emoji-combos.png",
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Same ☁️🌙 duplicate combo across 'Aesthetic & Vibes' (Cloudy night) and 'Soft & Cute' (Cloud moon) is also visible on mobile.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/bio-builder",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/bio-builder.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/bio-builder",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/bio-builder.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/small-text",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/small-text.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/small-text",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/small-text.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/strikethrough-text",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/strikethrough-text.png",
+    "issues": [
+      {
+        "type": "layout-broken",
+        "severity": "low",
+        "description": "H1 'S̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶ Text Generator' uses combining strikethrough characters that visually extend the strike line slightly into the unstyled 'Text Generator' words because of glyph metrics — looks like the strike crosses into the next word. Acceptable as a creative choice but visually noisy."
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/strikethrough-text",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/strikethrough-text.png",
+    "issues": [
+      {
+        "type": "layout-broken",
+        "severity": "low",
+        "description": "On mobile the H1 wraps after 'Strikethrough', so 'Text Generator' renders cleanly on its own line — issue is less pronounced than desktop but still present at the wrap point."
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/aesthetic-text",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/aesthetic-text.png",
+    "issues": [
+      {
+        "type": "layout-broken",
+        "severity": "low",
+        "description": "H1 uses fullwidth characters 'ａｅｓｔｈｅｔｉｃ' which are extremely wide; combined with bold display font, the title wraps awkwardly with 'Generator' dropping to its own line on desktop and feels visually heavy compared to other tool pages."
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/aesthetic-text",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/aesthetic-text.png",
+    "issues": [
+      {
+        "type": "layout-broken",
+        "severity": "low",
+        "description": "Fullwidth 'ａｅｓｔｈｅｔｉｃ' in H1 forces 'Text Generator' onto a second line on mobile too — title takes 2 lines and feels disproportionately tall."
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/mirror-text",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/mirror-text.png",
+    "issues": [
+      {
+        "type": "broken-tool",
+        "severity": "high",
+        "description": "All four output cards (Upside Down Flipped, Upside Down Same Order, Reversed, Reversed + Spaced) display plain English placeholder text like 'Text flipped both upside down and reversed' instead of the actual transformed/flipped/reversed Unicode preview. By contrast, sibling tools small-text, strikethrough-text and aesthetic-text all show real transformed example output in the empty state. User has no way to see what the tool actually produces without typing — looks like the conversion is broken or the placeholder data was never converted.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/mirror-text",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/mirror-text.png",
+    "issues": [
+      {
+        "type": "broken-tool",
+        "severity": "high",
+        "description": "Same as desktop: all four output card previews show plain English description text rather than actual mirrored/flipped Unicode output. Empty state is uninformative and looks like the tool is non-functional.",
+        "suggested_fix": "data-fix"
+      }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbol-builder",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbol-builder.png",
+    "issues": [],
+    "all_clear": true
+  },
+  {
+    "page": "/symbol-builder",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbol-builder.png",
+    "issues": [],
+    "all_clear": true
+  }
+]

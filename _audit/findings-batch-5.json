@@ -1,0 +1,161 @@
+[
+  {
+    "page": "/symbols-for/instagram",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-for-instagram.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/symbols-for/instagram",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-for-instagram.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Top nav wraps to 3 rows on narrow viewport (Home/Symbols/Emoji row clipped above CopyChars logo, Tools/Collections row, then Platforms row). Sitewide header pattern, also affects every other page in this batch.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbols-for/discord",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-for-discord.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/symbols-for/discord",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-for-discord.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same sitewide nav-wraps-to-3-rows issue as instagram page.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbols-for/tiktok",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-for-tiktok.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "In Trending Symbols: two cards labelled 'Ornament' (꧁ and ꧂) and two cards labelled 'Vai' (ꔪ and ꗃ) with identical labels. Instagram/Discord pages distinguish these as 'Open Ornament' / 'Close Ornament'. Inconsistent data per platform.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "low",
+        "description": "TikTok page has only 2 category sections (Bio Decorations, Trending Symbols) vs 4 sections on Instagram/Discord. Total ~33 symbols vs 50+ elsewhere. Page is still meaningfully platform-specific (TikTok-flavoured aesthetic chars, dancers, music notes), so not template-thin, just sparser.",
+        "suggested_fix": "data-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbols-for/tiktok",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-for-tiktok.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Same duplicate-label data issue as desktop ('Ornament'/'Ornament', 'Vai'/'Vai').",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same sitewide header wraps-to-3-rows issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbol/heart",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbol-heart.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "empty-grid",
+        "severity": "high",
+        "description": "Page renders the 404 'Page not found' state instead of a heart symbol detail page. Slug 'heart' is not resolved by the dynamic route, despite hearts being one of the most prominent collections on the site (/hearts exists). Likely missing slug mapping or symbol-data record. Recent SEO PR added per-page canonicals -- a 404 here means the canonical anchor for 'heart' as a single-symbol entity does not exist either.",
+        "suggested_fix": "data-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbol/heart",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbol-heart.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "empty-grid",
+        "severity": "high",
+        "description": "Same 404 as desktop. Mobile additionally shows the sitewide nav wrapping to 3 rows.",
+        "suggested_fix": "data-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbol/star",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbol-star.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "empty-grid",
+        "severity": "high",
+        "description": "Page renders 404 'Page not found'. Slug 'star' is not resolved by /symbol/[slug] even though stars are an entire site collection (/stars) and the related-symbols block on /symbol/checkmark links to 'Black Star' and 'White Star'. Missing canonical slug for the bare 'star' entity.",
+        "suggested_fix": "data-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbol/star",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbol-star.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "empty-grid",
+        "severity": "high",
+        "description": "Same 404 as desktop.",
+        "suggested_fix": "data-fix"
+      }
+    ]
+  },
+  {
+    "page": "/symbol/checkmark",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbol-checkmark.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/symbol/checkmark",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbol-checkmark.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same sitewide header wraps-to-3-rows issue. Page content itself is well laid out vertically with no horizontal scroll.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  }
+]

@@ -1,0 +1,300 @@
+[
+  {
+    "page": "/checkmark",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/checkmark.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/checkmark",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/checkmark.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Top nav wraps to three lines (Kaomoji/Fancy Text/Blog on row 1, Tools/Collections on row 2, Platforms on row 3) which pushes the page content down and looks visually unbalanced. Functional but not polished.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/degree-symbol",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/degree-symbol.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/degree-symbol",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/degree-symbol.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same nav wrapping issue as other pages — header consumes ~3 rows on mobile.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/infinity-symbol",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/infinity-symbol.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/infinity-symbol",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/infinity-symbol.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/pi-symbol",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/pi-symbol.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/pi-symbol",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/pi-symbol.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/copyright-symbol",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/copyright-symbol.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/copyright-symbol",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/copyright-symbol.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/arrow-symbols",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/arrow-symbols.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/arrow-symbols",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/arrow-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "layout-broken",
+        "severity": "medium",
+        "description": "Mobile collapses to a single-column grid for 24 arrow cards, producing an extremely tall page (~4500px). Pi/Copyright/Degree pages use the same single-column treatment but with fewer items so it isn't as painful. Two columns on mobile would cut scroll length in half.",
+        "suggested_fix": "code-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/flower-symbols",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/flower-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "Compared to peer single-symbol pages (checkmark, degree, copyright, infinity, pi), this page has only an intro + grid. No 'How to Type' / keyboard shortcuts section and no internal-linking pills (e.g., Hearts, Aesthetic Text, Emoji) at the bottom. Also no Unicode codepoint labels under each card unlike sibling pages.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/flower-symbols",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/flower-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "Same thin-content issue as desktop — no shortcuts, no related-category links, no codepoints.",
+        "suggested_fix": "code-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/sparkle-symbols",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/sparkle-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "Two cards both labeled 'Eight Pointed Star' (positions 11 and 14 in the grid: U+2738 ✸ vs U+2734 ✴) — identical names will confuse users. Disambiguate the labels (e.g., 'Eight Pointed Black Star' vs 'Eight Pointed Pinwheel Star') or merge.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "No 'How to Type' / shortcuts section, no internal linking pills, no Unicode codepoint labels under cards. Inconsistent with checkmark/degree/copyright pages.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/sparkle-symbols",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/sparkle-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "Same duplicate 'Eight Pointed Star' label issue as desktop.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "Same thin-content issue as desktop.",
+        "suggested_fix": "code-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/smiley-face-text",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/smiley-face-text.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Classic Emoticons cards display the emoticon as the large character AND repeat it as the label below (e.g., ':)' as the symbol with ':)' as the label, 'xD' / 'xD', 'T_T' / 'T_T'). Reads as redundant since there's no extra info — a description like 'happy smile' or 'crying' would be more useful.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "low",
+        "description": "No 'How to Type' shortcuts section and no internal linking pills (would expect links to Kaomoji, Lenny Face, Emoji).",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/smiley-face-text",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/smiley-face-text.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Same emoticon symbol/label redundancy as desktop.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Same site-wide mobile nav wrapping issue.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/number-symbols",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/number-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Circled-Numbers cards repeat the symbol in both the large display and the label (e.g., '①' big and 'Circled ①' beneath; same for ②–⑳). Suggest replacing label with the plain integer ('Circled 1', 'Circled 2', ...) so the label adds disambiguating information rather than echoing the glyph. Same mild redundancy on Roman/Superscript sections.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "No 'How to Type' / shortcuts section, no internal linking pills (Math Symbols, Pi Symbol, Greek Letters would be natural). Inconsistent with peer pages.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  },
+  {
+    "page": "/number-symbols",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/number-symbols.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "Same Circled-Numbers symbol/label redundancy as desktop.",
+        "suggested_fix": "data-fix"
+      },
+      {
+        "type": "thin-content",
+        "severity": "medium",
+        "description": "Same missing shortcuts + internal linking as desktop.",
+        "suggested_fix": "code-fix"
+      },
+      {
+        "type": "mobile-issue",
+        "severity": "low",
+        "description": "Single-column grid for 60+ cards yields an extremely tall page (~9000px). Two columns would help.",
+        "suggested_fix": "code-fix"
+      }
+    ]
+  }
+]

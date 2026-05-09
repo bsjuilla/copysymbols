@@ -1,0 +1,206 @@
+[
+  {
+    "page": "/",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/home.png",
+    "issues": [
+      { "severity": "high", "category": "literal-escape", "evidence": "Punctuation category preview tile on home page shows literal \\u201C, \\u201D, \\u2018, \\u2019 as the first four glyph chips inside the All Categories punctuation card (DOM lines 368-371 confirm strings, not chars)", "suggested_fix": "data-fix", "target_file": "src/data/symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/home.png",
+    "issues": [
+      { "severity": "high", "category": "literal-escape", "evidence": "Same Punctuation category preview shows literal \\u201C, \\u201D, \\u2018, \\u2019 on mobile (the strings are tall enough to be clipped/visible across two lines on the All Categories Punctuation tile)", "suggested_fix": "data-fix", "target_file": "src/data/symbols.ts" },
+      { "severity": "low", "category": "other", "evidence": "Stats row on mobile shows fragmented values (510+ / 12 / 0+ / 0+) where desktop shows 168+ / 3 / 19+ / 502+ — possible animated counter not finishing before screenshot, worth a re-run check", "suggested_fix": "investigate" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/arrows",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-arrows.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Two cards contain a long zero-width-joiner pollution sequence (DOM lines 248 and 251: '⟻‌‍‌‍...' and '⟽‌‌‌...' running 200+ invisible chars) labeled 'Long Left Right Arrow Extender' and 'Long Left Right Arc Extender' — these are not real Unicode characters and copying them produces hidden-character pollution", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "visual-duplicate", "evidence": "Multiple entries titled 'Left Right Arrow' with different glyphs (⇔ line 65, ⟷ line 134, ↩️ line 158 [labeled wrong], ⇹ line 261, ↩️ line 158) — the same human-readable name applied to >5 distinct glyphs", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "other", "evidence": "Many wrong glyph→name pairings: ↩️ labeled 'Left Right Arrow' (real name: Leftwards Arrow with Hook), ↪️ labeled 'Right Left Arrow' (real name: Rightwards Arrow with Hook), ⇈ labeled 'Downwards Arrow with Double Stroke' (it points up), ⤴ labeled 'White Right-pointing Triangle Arrow' (it's Arrow Pointing Rightwards Then Curving Upwards), ⥊ labeled 'Right-pointing Triangle with Double Vertical Stroke' (real: Left Barb Up Right Barb Down Harpoon)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "other", "evidence": "Multi-character compound entries '← ⇆', '⟿⟶', '⟹⟸' (DOM lines 269, 281, 284) included as single symbols — these are concatenations, not individual Unicode arrows", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "low", "category": "thin-content", "evidence": "Page has a one-sentence intro ('Direction and flow arrows. Click any symbol to copy it instantly.') and no per-symbol context paragraph; otherwise grid is dense", "suggested_fix": "content-add" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/arrows",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-arrows.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Same ZWJ-pollution and wrong-name issues from desktop are present on mobile; cards visibly stretch horizontally on the polluted entries breaking grid rhythm", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "mobile-issue", "evidence": "Symbol-name labels wrap to 3-4 lines in many cards (e.g. 'Long Double Right Arrow with Triangular End and Stroke') making the grid rows uneven and visually noisy on small viewports", "suggested_fix": "content-trim" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/currency",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-currency.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Multiple wrong glyph→name pairings: ₯ labeled 'Turkish lira' (real: Drachma Sign), ₰ labeled 'Colón Sign' (real: German Penny Sign), ₳ labeled 'Peso Sign (New)' (real: Austral Sign), ₶ labeled 'Shekel Sign' (real: Livre Tournois Sign), ₷ labeled 'Lek Sign' (real: Spesmilo Sign), ₻ labeled 'Dinar Sign' (real: Nordic Mark Sign), ₤ labeled 'Guinean Franc' (real: Lira Sign)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "Two cards titled 'Shekel Sign': ₪ (line 87) and ₶ (line 105) — different glyphs, identical title; the second is mislabeled", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "low", "category": "other", "evidence": "Inconsistent capitalization between curated and generated entries: 'Dollar Sign'/'Euro Sign' vs 'Qatari riyal'/'Pakistani rupee'/'Turkish lira' (lowercase noun)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/currency",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-currency.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Same currency mislabelings as desktop carry through to mobile", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/math",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-math.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Many wrong glyph→name pairings: ⟮ labeled 'Double Left Diagonal Arrow' (real: Mathematical Left Flattened Parenthesis), ⟯ labeled 'Double Right Diagonal Arrow' (real: Mathematical Right Flattened Parenthesis), ⟇/⟈/⟉/⟊/⟋/⟌ all labeled as Curly/Tail 'Arrow' variants (none are arrows — they are White/Black Diamonds with Centred Dot, Z notations, etc.), ⟑/⟒ labeled 'Quotation Mark Arrows' (real: And/Or operators), ⋛ labeled 'Reverse Tilde Operator' (real: Equal To or Greater-Than), ⋜ labeled 'Tilde Operator' (real: Equal To or Less-Than), ⋕ labeled 'Up Right Diagonal Arrow' (real: Equal and Parallel To), ∶ labeled 'Divides' (real: Ratio), ⊘ labeled 'Not Subset or Equal to' (real: Circled Division Slash)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "Two cards titled 'Intersection': ∩ (line 92) and ⋂ (line 110); also 'Per mille Sign' ‰ (line 185) and 'Permille Sign' ‱ (line 203) where the second is actually 'Per Ten Thousand Sign'", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/math",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-math.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Same name/glyph mismatches as desktop. Title labels wrap to 5+ lines on mobile cards (e.g. 'Double Horizontal Line with Double Right and Left Arrowheads') breaking grid rhythm", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/greek",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-greek.png",
+    "issues": [
+      { "severity": "high", "category": "visual-duplicate", "evidence": "TWENTY consecutive cards (DOM lines 110-169) all titled 'Alpha' with different glyphs: Ἀ, ἀ, Ἁ, ἁ, Ἂ, ἂ, Ἃ, ἃ, Ἄ, ἄ, Ἅ, ἅ, then Ἴ, ἶ, Ἵ, ἷ, Ἰ, ἰ, Ἱ, ἱ — the latter eight are Iota with breathing marks (NOT Alpha at all), and even the Alpha-with-breathing-marks should be distinct names, not all 'Alpha'", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "miscategorisation", "evidence": "Eight cards (Ἴ, ἶ, Ἵ, ἷ, Ἰ, ἰ, Ἱ, ἱ) labeled 'Alpha' are actually Greek Iota glyphs with breathing marks — wrong letter entirely", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "other", "evidence": "Three near-identical 'Final sigma' entries (ς, ϲ, Ϲ) with overlapping descriptions; ϲ and Ϲ are actually 'Greek Lunate Sigma' (lowercase/uppercase), not 'Final sigma with stroke'", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/greek",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-greek.png",
+    "issues": [
+      { "severity": "high", "category": "visual-duplicate", "evidence": "Same wall of 20 'Alpha'-titled cards visible on mobile (rendered as small repeated 'Alpha' labels under nearly identical-looking glyphs); especially confusing on phone screens", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/legal",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-legal.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Three wrong glyph→name pairings: ⁇ labeled 'Interpunct-Solidus' (real: Double Question Mark), ⁈ labeled 'Question Mark with Dot Above' (real: Question Exclamation Mark), ⁉ labeled 'Exclamation Mark with Dot Above' (real: Exclamation Question Mark)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "miscategorisation", "evidence": "Punctuation marks (⁇, ⁈, ⁉, †, ‡) and the ⚖️ Balance Scale emoji are filed under Legal & Trade — the daggers and double-question marks belong in Punctuation, the balance scale is an emoji not a Unicode legal symbol", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/legal",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-legal.png",
+    "issues": [
+      { "severity": "medium", "category": "other", "evidence": "Same wrong names and miscategorisations as desktop; otherwise layout is clean (small page, only 13 symbols)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/shapes",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-shapes.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Dingbat circled-number glyphs (❶ through ❿, lines 191-219) are labeled with nonsense dice-style names: ❶ 'Die Six of One', ❷ 'Die One of Two', ❸ 'Die Two of Two', ❹ 'Die Three of Two', ❺ 'Die Four of Two', ❻ 'Die Five of Two', then ❼ 'Decimal Number Seven Alternative' etc. Real names: Dingbat Negative Circled Digit One/Two/Three…", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "other", "evidence": "Multiple wrong glyph→name pairings: ✃/✄ both labeled 'Game Die' (they are scissors dingbats — Lower Blade Scissors and Black Scissors), ◁ labeled 'Less-than Symbol' (real: White Left-Pointing Triangle), ⬠ labeled 'Black Rightwards Arrow' (real: Black Pentagon), ⬡ labeled 'White Square With Right Half Black' (real: White Pentagon), ❓ labeled 'Question Mark Exclamation Mark' (real: Black Question Mark Ornament), ◻️ labeled 'Squircle' (real: White Medium Square), ▬ labeled 'Medium Black Up-Pointing Triangle' (real: Black Rectangle), ◆ labeled 'White Diamond' (real: Black Diamond)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "miscategorisation", "evidence": "✈️ Airplane emoji and ❄ Snowflake (likely also ❇️ Decorative Star, ⚡-style ornaments) appear in Shapes & Stars; airplane belongs in Weather/Travel or Emoji, not geometric shapes", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "Many 'White Diamond'/'White Medium Diamond'/'White Square'/'Black Square' entries with overlapping titles for distinct glyphs (◇/◆/◆️/❆️/⬛/⬛️/■, etc.)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/shapes",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-shapes.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Same wrong names and miscategorisations as desktop visible on mobile", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/punctuation",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-punctuation.png",
+    "issues": [
+      { "severity": "high", "category": "literal-escape", "evidence": "USER-FLAGGED CONFIRMED: First 4 cards display literal '\\u201C', '\\u201D', '\\u2018', '\\u2019' as raw text (DOM lines 29, 32, 35, 38). Source confirmed at src/data/symbols.ts line 172 — `symbol: \"\\\\u201C\"` is a double-escaped string, not the actual Unicode character. Fix is to replace the four entries' symbol values with the literal characters \", \", ', '.", "suggested_fix": "data-fix", "target_file": "src/data/symbols.ts" },
+      { "severity": "high", "category": "visual-duplicate", "evidence": "ELEVEN consecutive cards (DOM lines 78-105) all titled 'Reference mark, used as a legal symbol' with different glyphs: ⁂, ⁃, ⁁, ⁁⁁, ⁂⁂, ‣, ⁀, ‥, ⁁•, ⁂•. Identical name, distinct glyphs — boilerplate description leaked through to titles", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "other", "evidence": "Multi-character compound entries treated as single symbols: '⁁⁁', '⁂⁂', '•••', '••••', '⁂⁂⁂', '⁅⁅', '⁃⁃' — these are concatenations of single chars, not real Unicode codepoints", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "high", "category": "other", "evidence": "Wrong glyph→name pairings: ‗ 'Double Low-Right Half Ring' (real: Double Low Line), ‿ 'Interpunct-Solida' (real: Undertie), ″ 'Three Right-Pointing Angle Quotation Marks' (real: Double Prime), ‴ 'Caret Mark' (real: Triple Prime), ‶ 'Fits' (real: Reversed Double Prime), ‵ 'Double Low-Left Half Block' (real: Reversed Prime), ‷ 'Single Low-Left Half Block' (real: Reversed Triple Prime), ⁅ 'Superscript Four' (real: Left Square Bracket with Quill), ⁆ 'Double Exclamation Mark' (real: Right Square Bracket with Quill), ⁋ 'Inverted Double Quotation Mark' (real: Reversed Pilcrow), ⁌ 'Right Double Angle Quotation Mark Or Left-Pointing Angle Quotation Mark' (real: Black Leftwards Bullet), ⁎ 'Reference Mark' (real: Low Asterisk), ⁍ 'Inverted Double Angle Quotation Mark' (real: Black Rightwards Bullet), ⁊ 'Tironian Sign Et' is correct but display glyph reads as '7'", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "After the broken \\uXXXX entries, four MORE cards exist with the same titles ('Left Single Quotation Mark' line 122, 'Right Single Quotation Mark' line 125, 'Left Double Quotation Mark' line 128, 'Right Double Quotation Mark' line 131) — when the data fix is applied, the user will see TWO entries per quotation mark name (one curated, one generated)", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/punctuation",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-punctuation.png",
+    "issues": [
+      { "severity": "high", "category": "literal-escape", "evidence": "Same literal '\\u201C' etc. text in first 4 cards on mobile (the strings overflow card width and are visibly clipped at the edges of small cards)", "suggested_fix": "data-fix", "target_file": "src/data/symbols.ts" },
+      { "severity": "high", "category": "layout-broken", "evidence": "On mobile the literal '\\u201C' strings are wider than the card glyph slot and get clipped at the right edge — a render-time symptom of the underlying data bug", "suggested_fix": "data-fix", "target_file": "src/data/symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/music",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-music.png",
+    "issues": [
+      { "severity": "medium", "category": "other", "evidence": "♫️ (line 53) labeled 'Heavy Black Heart' — wrong name on a musical-note glyph (the variation-selector form of ♫). Should be 'Beamed Eighth Notes' (already a duplicate of line 35) or removed", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "♭️ 'Heavy Black Flat' (line 56) duplicates ♭ 'Music Flat Sign' (line 44) — only difference is variation selector U+FE0F", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "low", "category": "thin-content", "evidence": "Page has only 10 symbols, no Related Guides section (only 'You Might Also Like' and Quick Links), and a one-sentence intro. No whale glyph found — historical issue appears resolved", "suggested_fix": "content-add" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/music",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-music.png",
+    "issues": [
+      { "severity": "low", "category": "thin-content", "evidence": "Same sparse content on mobile; layout is clean otherwise", "suggested_fix": "content-add" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/chess",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-chess.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Dice are scrambled: ⚀ 'Die Face-1' (correct), ⚅ 'Die Face-6' (correct, but listed second instead of last), then ⚁ 'Dice 2-3' (real: Die Face-2), ⚂ 'Dice 4-5' (real: Die Face-3), ⚃ 'Dice 6' (real: Die Face-4), ⚄ 'Dice Dot Five' (real: Die Face-5). Display order is non-monotonic and labels are wrong", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "visual-duplicate", "evidence": "♟️ 'Chess Pawn (emojification)' (line 80) duplicates ♟ 'Black Chess Pawn' (line 62) — only difference is variation selector", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" },
+      { "severity": "medium", "category": "other", "evidence": "Multi-character entries treated as single 'symbols': '♜♞' Chess Piece Pair, '♚♔' King and King Piece Pair, '♜♚' Rook and King Piece Pair (DOM lines 89, 92, 95) — these are concatenations not real codepoints", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  },
+  {
+    "page": "/symbols/chess",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-chess.png",
+    "issues": [
+      { "severity": "high", "category": "other", "evidence": "Same scrambled dice and duplicate pawn issues visible on mobile", "suggested_fix": "data-fix", "target_file": "src/data/generated-symbols.ts" }
+    ],
+    "all_clear": false
+  }
+]

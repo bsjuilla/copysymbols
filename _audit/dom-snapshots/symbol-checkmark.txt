@@ -1,0 +1,123 @@
+✦ CopyChars
+Home
+Symbols
+Emoji
+Kaomoji
+Fancy Text
+Blog
+Tools
+▼
+Collections
+▼
+Platforms
+▼
+©
+Copied!
+✓
+Home
+›
+Symbols
+›
+Shapes & Stars
+›
+Check Mark
+✓
+Check Mark
+SHAPES & STARS
+SYMBOL
+✓
+copy
+HTML
+&#10003;
+copy
+UNICODE
+U+2713
+copy
+ABOUT THIS SYMBOL
+
+A tick or check mark indicating correctness or completion.
+
+U
+UNICODE
+U+2713
+</>
+HTML ENTITY
+&#10003;
+#
+CSS VALUE
+\2713
+≡
+CATEGORY
+Shapes & Stars
+USE IN CODE
+HTML
+&#10003;
+CSS content
+content: "\2713";
+Unicode
+U+2713
+SEARCH KEYWORDS
+check
+tick
+correct
+yes
+done
+MORE LIKE THIS
+More Shapes & Stars Symbols
+View all →
+♡
+★
+Black Star
+♡
+☆
+White Star
+♡
+♥
+Black Heart Suit
+♡
+♡
+White Heart Suit
+♡
+♦
+Black Diamond Suit
+♡
+◇
+White Diamond
+♡
+♣
+Black Club Suit
+♡
+♠
+Black Spade Suit
+♡
+●
+Black Circle
+♡
+○
+White Circle
+♡
+■
+Black Square
+♡
+□
+White Square
+♡
+▲
+Black Up-Pointing Triangle
+♡
+▼
+Black Down-Pointing Triangle
+♡
+❄
+Snowflake
+♡
+✿
+Black Florette
+✦ CopyChars
+
+3000+ symbols, one click away.
+
+Symbols
+Emoji
+Kaomoji
+Text Art
