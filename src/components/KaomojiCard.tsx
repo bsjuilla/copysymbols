@@ -3,13 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import type { Kaomoji } from "@/data/kaomoji";
 
-/**
- * Two interactive zones per card:
- *  - the face is a click-to-copy button (preserves the original UX), and
- *  - the name is a Link to /kaomoji/<slug> so each entry is deep-linkable
- *    and crawlable. `slug` is optional so existing call sites keep working
- *    without it (the link just renders as plain text in that case).
- */
 export default function KaomojiCard({
   kaomoji: k,
   slug,
@@ -31,7 +24,7 @@ export default function KaomojiCard({
     const toastSym = document.getElementById("toast-symbol");
     const toastMsg = document.getElementById("toast-message");
     if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "( ˘ ³˘)";
+      toastSym.textContent = k.face;
       toastMsg.textContent = `Copied ${k.name}`;
       toast.classList.add("show");
       setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);

@@ -4,7 +4,6 @@ import CopyToast from "@/components/CopyToast";
 import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
-export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -21,12 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// ~200-word intros rendered above the symbol grid on each /symbols/[category]
-// page. Added to fix the "thin content" indexing problem flagged in the
-// 2026-05-09 audit — every category page previously had under 30 words of
-// unique copy, so Google was dropping them from the index. Each intro is
-// hand-written to vary openers, mention common platforms (Discord, Instagram,
-// Word, etc.), and surface the Unicode terminology people actually search for.
 const categoryIntros: Record<string, { intro: string }> = {
   arrows: {
     intro:

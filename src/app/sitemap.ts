@@ -88,10 +88,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Per-emoji + per-kaomoji detail pages (Task X — per-item indexability).
-  // Every entry from src/data/emoji.ts and src/data/all-kaomoji.ts is
-  // statically generated, so each gets its own sitemap entry. Together this
-  // adds ~1632 URLs (1074 emoji + ~558 kaomoji).
   const emojiPages = emoji.map(e => ({
     url: `${base}/emoji/${e.id}`,
     lastModified: new Date(),
@@ -106,11 +102,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Dedupe by URL. Necessary because src/data/generated-symbols.ts currently
-  // contains duplicate `id` values (Agent 3's territory) which would otherwise
-  // emit the same /symbol/<id> URL many times — the live sitemap before this
-  // fix had one URL repeated 20× and another 10×. Dedupe also protects against
-  // any accidental overlap between staticPages, categoryPages and symbolPages.
+  // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
+  // that would otherwise emit the same /symbol/<id> URL many times.
   const all = [
     ...staticPages,
     ...categoryPages,
