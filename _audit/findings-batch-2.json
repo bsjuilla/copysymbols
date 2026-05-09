@@ -1,0 +1,531 @@
+[
+  {
+    "page": "/symbols/zodiac",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-zodiac.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Eleven zodiac signs are duplicated in the grid: Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Capricorn, Aquarius, Pisces. The first set (positions 1-12 in the grid) uses base Unicode codepoints (e.g. ♈ U+2648), and the second set re-emits the same signs with a Variation Selector-16 appended (e.g. ♈️ U+2648 U+FE0F). They render identically with the same human title, so the user sees two visually identical 'Aries', 'Cancer', 'Libra', etc. cards.",
+        "evidence": "DOM lines 28-103 contain Aries..Pisces; lines 76-103 then duplicate Capricorn/Aquarius/Pisces/Aries/Cancer/Libra/Scorpio/Gemini/Virgo with the variation selector form. Visually confirmed in symbols-zodiac.png — row 1 has Aries, Cancer, Leo, Virgo, Libra, Scorpio, Capricorn, Aquarius, Pisces; row 2 repeats Pisces, Aries, Cancer, Libra; row 3 repeats Scorpio, Gemini, Virgo.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Zodiac planet symbols are systematically mislabeled — every label is shifted/wrong. Card titled 'Uranus' shows ♄ which is the Saturn symbol. 'Uranus Symbol' shows ♀ which is the Venus symbol. 'Mars Symbol' shows ♃ which is Jupiter. 'Mercury Symbol' shows ♄ which is Saturn (and is also a duplicate glyph of the Uranus card). 'Jupiter Symbol' shows ♁ which is the Earth symbol. 'Saturn Symbol' shows ♆ which is Neptune. 'Venus Symbol' shows ♇ which is Pluto. 'Male Sign' shows ♂ (correct) but 'Men's Sign' / 'Women's Sign' earlier already covers the same.",
+        "evidence": "DOM lines 121-145: '♄️ Uranus', '♀ Uranus Symbol', '♃ Mars Symbol', '♄ Mercury Symbol', '♁ Jupiter Symbol', '♆ Saturn Symbol', '♇ Venus Symbol'. These are not just visually wrong — every glyph→name mapping is off.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "'Waning Gibbous Moon' appears twice — once with glyph 🌜 (which is actually Last Quarter Moon U+1F31C) titled 'Waning Gibbous Moon' (Night Sky line above it also uses 🌙) and once correctly with 🌘 (U+1F316). Mercury also appears twice (☿ and ☿️) with names 'Mercury' and 'Mercury (Emoji)'.",
+        "evidence": "generated-symbols.ts line 13 maps 🌜 to 'Waning Gibbous Moon'; line 197 maps 🌘 to 'Waning Gibbous Moon'. Two cards in DOM (lines 65, 119).",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "low",
+        "description": "'Sun Sign' card shows the glyph '♀♂' (Venus + Mars combined) which is not a Sun symbol — sun in astrology is ☉.",
+        "evidence": "generated-symbols.ts line 193: symbol '♀♂' name 'Sun Sign'. Visible in screenshot row 3.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/zodiac",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-zodiac.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Same data-bug as desktop — duplicate Aries/Taurus/Gemini/Cancer/Leo/Virgo/Libra/Scorpio/Capricorn/Aquarius/Pisces cards visible in the 4-column mobile grid. Row 4 (Capricorn, Aquarius, Pisces, Aries) and Row 5 (Cancer, Libra, Scorpio, Gemini) are visibly the second copy.",
+        "evidence": "symbols-zodiac mobile screenshot, rows 4-6 repeat zodiac signs already shown in rows 1-3.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same planet-symbol labelling errors visible on mobile (Uranus shows Saturn glyph, Mars Symbol shows Jupiter glyph, Saturn Symbol shows Neptune glyph, etc.).",
+        "evidence": "Mobile rows 7-8 of zodiac grid show ♄ ♀ ♃ ♁ ♆ ♇ with wrong labels — same as desktop.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/weather",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-weather.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "'Snowman' appears twice in the grid: once at position 4 (☃ U+2603) titled 'Snowman' and again at the very end (☃️ U+2603 U+FE0F) also titled 'Snowman'. Same glyph, same name, just one with a variation selector — visually indistinguishable.",
+        "evidence": "DOM lines 38-39 and 110-111 both render 'Snowman'.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Several non-weather/non-nature symbols are in the weather category and many are mislabeled. '☄ Last Quarter Moon Symbol' — ☄ is the comet symbol, not a moon phase. '☉ Gibbous Moon Symbol' — ☉ is the Sun symbol. '☈ Waxing Moon Symbol' — ☈ is the thunderstorm symbol, not a moon phase. '☑ Approved Checkmark' — a checkbox, not weather/nature.",
+        "evidence": "DOM lines 91-103: ☄/☉/☈/☑ with wrong labels and clearly non-weather glyphs.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "medium",
+        "description": "'🌃 Sunset' is mislabeled — 🌃 (U+1F303) is 'Night with Stars'. The correct sunset emoji is 🌅.",
+        "evidence": "DOM lines 71-72 show 🌃 with title 'Sunset'.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/weather",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-weather.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Mobile grid also shows two 'Snowman' cards (top of grid and bottom of grid).",
+        "evidence": "Visible in symbols-weather mobile screenshot.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same mislabeled weather/moon cards (☄, ☉, ☈, ☑) visible on mobile.",
+        "evidence": "Mobile rows 7-8 of grid.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/technical",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-technical.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Multiple media-control symbols are wildly mislabeled. '⏺️ Notes' — ⏺ (U+23FA) is the Record button, not 'Notes'. '⏹️ Note With Stem Leftward' and '⏹ Note With Stem Leftward' — ⏹ (U+23F9) is the Stop button, not a musical note. '⏯ Stop Circle (Music, Video, Etc.)' — ⏯ (U+23EF) is Play/Pause, not Stop Circle.",
+        "evidence": "DOM lines 92-103 show this naming mismatch. Cards visible row 3 of desktop screenshot.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Two pairs of duplicated glyphs with copy-pasted names: '⏃ Double Exclamation Mark Object' followed by '⏃⏃ Double Exclamation Mark Object Double Exclamation Mark Object', and '⏌ Leftwards Black Long Dash Arrow' followed by '⏌⏌ Leftwards Black Long Dash Arrow Leftwards Black Long Dash Arrow'. The doubled cards look like data-generation artifacts (the glyph and the title are both literally repeated twice).",
+        "evidence": "DOM lines 113-127.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "medium",
+        "description": "'⏃ Double Exclamation Mark Object' is wrong — ⏃ (U+23C3) is actually 'Dentistry Symbol Light Down And Horizontal With Triangle'. The double-exclamation-mark Unicode codepoint is ‼ (U+203C). '⏌' (U+23CC) is 'Dentistry Symbol Light Vertical With Wave', not a 'Black Long Dash Arrow'. '⏀' (U+23C0) is 'Dentistry Symbol Light Vertical With Triangle', not the runaway 'Leftwards Arrow to Bar Over Rightwards Arrow Over Leftwards Arrow' name shown.",
+        "evidence": "DOM lines 113, 117, 119-121.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "'⏱ Clock, Timer, Stopwatch, etc.' (U+23F1) and '⏱️ Alarm Clock' (U+23F1 U+FE0F) are the same codepoint with VS-16 — they look identical. Also 'Alarm Clock' is the wrong name; 'Alarm Clock' is ⏰ (U+23F0). The card '⏰ Alarm Clock with No Hands' is similarly wrong — ⏰ is a normal alarm clock.",
+        "evidence": "DOM lines 89-91 and 128-133.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "layout-broken",
+        "severity": "medium",
+        "description": "The runaway label 'Leftwards Arrow to Bar Over Rightwards Arrow Over Leftwards Arrow' visibly wraps to ~7 lines and overflows the card height, breaking the otherwise consistent grid row.",
+        "evidence": "Card position 30 in desktop screenshot — markedly taller than its neighbours and text spills over.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/technical",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-technical.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "medium",
+        "description": "Same runaway 'Leftwards Arrow to Bar Over Rightwards Arrow Over Leftwards Arrow' label takes up a 7-line block on mobile, distorting the row height of the 4-column grid.",
+        "evidence": "Visible in symbols-technical mobile screenshot, row 8.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same media-control mislabels (⏺/⏹/⏯ titled 'Notes' and 'Note With Stem Leftward') and dentistry-symbol mislabels visible on mobile.",
+        "evidence": "Mobile rows 7-9.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/superscript",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-superscript.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "USER-FLAGGED 'duplicate 2 cards' confirmed — there are two superficially identical '2'-shaped cards in the grid: position 3 'Superscript Two' (² U+00B2) and position 11 'Subscript Two' (₂ U+2082). At the rendered card size both glyphs read as a small '2' in the title area, and the page-hero glyph above the H1 is also '²' (a third visible '2'). The visual repetition is what the user noticed; the labels differ but the perception is 'three 2 cards'.",
+        "evidence": "DOM lines 35 (²/Superscript Two) and 59 (₂/Subscript Two). Hero glyph also '²' (line 22). Screenshot shows three near-identical '2' glyphs above/inside the grid.",
+        "suggested_fix": "other"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Cards 15-17 are titled 'Superscript Three, Stacked' / 'Superscript Six, Stacked' / 'Superscript Seven, Stacked' / 'Superscript Eight, Stacked' but the first one (₃, U+2083) is actually a SUBSCRIPT three, not a superscript. The 'Stacked' suffix is meaningless — these are just plain superscript (and one subscript) digits already represented elsewhere or out of order. Also '⁽' (U+207D) is titled 'Superscript Right-Parenthesis' but ⁽ is the LEFT parenthesis (right-paren is ⁾).",
+        "evidence": "DOM lines 71-84. Card '₃ Superscript Three, Stacked' visibly differs in baseline from the '³ Superscript Three' card earlier.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "Subscript N (ₙ) and Superscript N (ⁿ) appear; in addition Superscript Three '³' (position 4) and 'Superscript Three, Stacked' '₃' (position 15, actually a subscript) repeat the digit 3 which is confusing.",
+        "evidence": "DOM lines 44-45, 62-63, 38-39, 74-75.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/superscript",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-superscript.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Same user-flagged duplicate '2' visual appears on mobile in a 4-col grid; ² (Superscript Two) and ₂ (Subscript Two) both read as a small '2' in the card. The hero glyph at the top is also '²'.",
+        "evidence": "Mobile screenshot row 1 col 3 ('Superscript Two') and row 3 col 3 ('Subscript Two').",
+        "suggested_fix": "other"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same '*, Stacked' mislabeling and incorrect subscript tagged as superscript visible on mobile (rows 4-5).",
+        "evidence": "symbols-superscript mobile screenshot.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/ui",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/symbols-ui.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "high",
+        "description": "Card title '🔡 Input Symbol forSymbols' is missing a space between 'for' and 'Symbols' — looks like a string-concatenation bug.",
+        "evidence": "DOM line 75. Visible in desktop screenshot row 2 col 5.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Two cards titled 'Black Circle' both showing the ⚫ glyph (positions 20 ⚫️ U+26AB+VS16 and 28 ⚫ U+26AB). Visually identical.",
+        "evidence": "DOM lines 86-87 and 113-114.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Multiple non-UI symbols dumped into UI category, plus several wrong labels. '☗ Chess Pawn' / '☖ Chess Rook' belong in chess. '⚑ Crown' is wrong — ⚑ (U+2691) is 'Black Flag', not crown. '⚔ Diamond Suit' is wrong — ⚔ (U+2694) is 'Crossed Swords', not the diamond suit (♦). '🔑 Closed lock, used for certification as legal symbol' — 🔑 is a key emoji, the title is a copy of the legal-padlock description. '🔢 Input Symbol for Numbers 2' duplicates '🔠 Input Symbol for Numbers' (the '2' suffix suggests a deduping fallback).",
+        "evidence": "DOM lines 71-129. Grid visibly contains chess pieces and the 'Crown' card has a flag glyph.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "medium",
+        "description": "'⚠️ High Temperature Warning' is mislabeled — ⚠ (U+26A0) is the generic warning sign; 'High Temperature Warning' is a different concept. '🔄 Counterclockwise Arrows Button' renders correctly but the codepoint is in fact the 🔃 'Clockwise Vertical Arrows' family — verify.",
+        "evidence": "DOM lines 80-84.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/symbols/ui",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/symbols-ui.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "high",
+        "description": "Same 'Input Symbol forSymbols' missing-space bug visible on mobile.",
+        "evidence": "Mobile row 4 col 4 of UI grid.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "high",
+        "description": "Two 'Black Circle' cards visible on mobile.",
+        "evidence": "Mobile rows 6 col 4 and row 8 col 1.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same chess-pieces / mislabeled flag-as-crown / crossed-swords-as-diamond cards on mobile.",
+        "evidence": "Mobile rows 7-9.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/kaomoji",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/kaomoji.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "high",
+        "description": "14 consecutive kaomoji entries are missing names — only the kaomoji glyph and 'click to copy' are rendered, with no human-readable title. This breaks the visual rhythm of every other card in the grid which has a name underneath.",
+        "evidence": "DOM lines 816-844 (e.g. '(╯≧◕≦╰) click to copy', '(◯ᵕ◯) click to copy', '(^ω^)`Д´) click to copy', etc. — 14 entries with no name).",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-kaomoji.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "Many duplicate human-readable names: 'Sad Tears' appears 3+ times, 'Bear Happy' 2+ times, 'Cool Smile' 3+ times, 'Love Heart' 4+ times, 'Surprised' / 'Surprised Face' / 'Waving Wave' / 'Bear Sad Face' all repeat. Different glyphs but the labels read as duplicates.",
+        "evidence": "DOM lines 95, 365, 1454; 1192, 547; 845, 916, 1490; 772, 1228, etc.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-kaomoji.ts"
+      },
+      {
+        "type": "other",
+        "severity": "low",
+        "description": "Several kaomoji appear malformed (mismatched parens) — e.g. '(◕ω◡(', '(◕ω╵', '(◕ᴗ◕^)', 'ヾ(◕ᴗ◕•', '(╯•╰┻', '(◕✿◕', '(◕˚◕✿', '(◕˚◕'. They look truncated/broken rather than intentional.",
+        "evidence": "DOM lines 402, 393, 396, 399, 1603, 1609, 1618, 1621.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-kaomoji.ts"
+      }
+    ]
+  },
+  {
+    "page": "/kaomoji",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/kaomoji.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "high",
+        "description": "Same nameless-kaomoji and many-duplicates issues from desktop carry over to mobile. Mobile screenshot is 63047px tall — roughly one column of 547 cards. No layout breakage observed but the page is extremely long.",
+        "evidence": "DOM identical to desktop. Mobile screenshot dimensions confirm vertical layout works.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/generated-kaomoji.ts"
+      }
+    ]
+  },
+  {
+    "page": "/emoji",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/emoji.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "medium",
+        "description": "The category buttons at the top ('😀 Smileys & Emotion', '👋 People & Body', '🐶 Animals & Nature', '🍕 Food & Drink', '✈️ Travel & Places', '💡 Objects & Symbols') look like tabs/filters but the page renders all categories on one big grid without filtering — labels suggest interactive filtering that the page doesn't actually do, or the active-state is invisible.",
+        "evidence": "DOM lines 22-27 list the buttons; lines 28-201 render every emoji in one continuous grid with no section headings between categories.",
+        "suggested_fix": "other"
+      },
+      {
+        "type": "thin-content",
+        "severity": "low",
+        "description": "Below the grid there is only a one-line note ('All emoji shown here are standard Unicode emoji…') — no FAQ, no related-pages, no per-category section headings. Page feels light compared to /hearts and /stars which have FAQs.",
+        "evidence": "DOM lines 202-204.",
+        "suggested_fix": "other"
+      }
+    ]
+  },
+  {
+    "page": "/emoji",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/emoji.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "other",
+        "severity": "medium",
+        "description": "Same non-functional category-tab issue on mobile.",
+        "evidence": "Mobile screenshot top section.",
+        "suggested_fix": "other"
+      }
+    ]
+  },
+  {
+    "page": "/hearts",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/hearts.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "'Decorative Hearts' section contains items that are not hearts: 💏 Kiss, 👫 Couple, 💑 Couple with Heart, 🥰 Smiling with Hearts, 😍 Heart Eyes, 😘 Face Blowing Kiss, 💋 Kiss Mark, 💒 Wedding, 💍 Ring — these are romance-adjacent emojis but not hearts.",
+        "evidence": "DOM lines 76-98.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "'Text Hearts (Unicode)' section is mostly NOT hearts. 'ஐ Tamil Om' is a Tamil OM character. 'ვ Georgian' / 'ლ Georgian Heart' / 'ღ Georgian Ghan' / '웃 Korean Heart' / '유 Korean' are Georgian / Korean letters that vaguely resemble hearts in some fonts but are alphabet characters. They render as plain letters in the screenshot.",
+        "evidence": "DOM lines 100-112. Visible in desktop screenshot row of 'Text Hearts' shows literal letters like 'ვ' (rendered as '3'-ish) and 'ი' shapes rather than hearts.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "medium",
+        "description": "Multiple hearts repeat across sections without being labeled as duplicates: ❤ (Classic, Coloured Heart Emoji as ❤️, Text Hearts as ❤️ again, Heart Combinations as ❤❤), ♡ (Classic 'White Heart Suit', Text Hearts 'White Heart'), 💙 (Coloured 'Blue Heart', Text Hearts 'Blue Heart'), 💕 (Coloured 'Two Hearts', combos '💕💕 Double Pink'), 💗, 💝, 🤍, 🖤, 🧡 all reappear.",
+        "evidence": "DOM lines 23-29 vs 100-129.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      },
+      {
+        "type": "other",
+        "severity": "low",
+        "description": "Section title 'Heart Combinations' includes kaomoji-style entries '(*´꒳`*)♡', '♡ヽ(^Д^)ﾉ', '（っ＾▿＾）♥' which are kaomoji, not heart symbols.",
+        "evidence": "DOM lines 152-158.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/hearts",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/hearts.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same Decorative-Hearts (kissing emojis, couples, ring, wedding) and Text-Hearts (Korean/Georgian/Tamil letters) miscategorisation visible on mobile.",
+        "evidence": "Mobile screenshot 'Decorative Hearts' and 'Text Hearts' sections.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/stars",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/stars.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "'Star Emoji' section contains many non-stars: 🌃 Night with Stars, 🌌 Milky Way, 🌙 Crescent Moon, ☀ Sun, 🌛 First Quarter Moon, 🌜 Last Quarter Moon, 🏅 Medal, 🥇 Gold Medal, 🏆 Trophy. These are night-sky / awards items that share thematic vibes but aren't star symbols.",
+        "evidence": "DOM lines 100-128.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      },
+      {
+        "type": "miscategorisation",
+        "severity": "medium",
+        "description": "'Decorative Stars' section includes ❄ Snowflake (a snowflake, not a star), ❅ Tight Trifoliate (a snowflake variant), ❆ Heavy Chevron (mislabeled — ❆ is also a snowflake variant per Unicode 'Heavy Chevron Snowflake').",
+        "evidence": "DOM lines 84-89.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      },
+      {
+        "type": "visual-duplicate",
+        "severity": "low",
+        "description": "⭐ 'Star Emoji' (Classic Stars) and ⭐ 'Star' (Star Emoji section) are the same glyph with different titles. Same for 🌟 (Classic 'Glowing Star' and Star Emoji 'Glowing Star').",
+        "evidence": "DOM lines 47-50 vs 103-107.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/stars",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/stars.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "miscategorisation",
+        "severity": "high",
+        "description": "Same non-star items (medal/trophy/moon/sun/snowflake) visible on mobile in Star Emoji and Decorative Stars sections.",
+        "evidence": "Mobile screenshot 'Star Emoji' section shows 🌃 🌌 🌙 ☀ 🌛 🌜 🏅 🥇 🏆.",
+        "suggested_fix": "data-fix",
+        "target_file": "src/data/symbols.ts"
+      }
+    ]
+  },
+  {
+    "page": "/borders",
+    "viewport": "desktop",
+    "screenshot": "_audit/screenshots/desktop/borders.png",
+    "all_clear": true,
+    "issues": []
+  },
+  {
+    "page": "/borders",
+    "viewport": "mobile",
+    "screenshot": "_audit/screenshots/mobile/borders.png",
+    "all_clear": false,
+    "issues": [
+      {
+        "type": "mobile-issue",
+        "severity": "medium",
+        "description": "The 'Thick line' border (━━━━━━━━━━━━━━━━━━━━, 20 box-drawing chars) extends past the right edge of its card on mobile and also bleeds outside the card in the box-frames section. Wide ASCII borders ('Block line', 'Equals', 'Dashes', 'Double line', 'Wave emoji') visibly clip the right edge of their containers in the mobile screenshot. The box frames (Simple box, Double box, Round box, Star box) extend beyond the card's right padding.",
+        "evidence": "Mobile screenshot 'Simple Lines' section — Thick line and Block line touch/exceed the right edge; Box Frames section — frames overflow rightwards.",
+        "suggested_fix": "other"
+      }
+    ]
+  }
+]
