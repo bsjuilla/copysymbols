@@ -1,38 +1,78 @@
 "use client";
 import { useState } from "react";
 
-const starCategories = [
-  { name: "Classic Stars", stars: [
-    { s: "★", n: "Black Star" }, { s: "☆", n: "White Star" }, { s: "✦", n: "Four Point Star" },
-    { s: "✧", n: "Four Point White" }, { s: "✩", n: "Stress Star" }, { s: "✪", n: "Circled Star" },
-    { s: "✫", n: "Open Centre Star" }, { s: "✬", n: "Black Centre Star" }, { s: "✭", n: "Outlined Star" },
-    { s: "✮", n: "Heavy Outlined Star" }, { s: "✯", n: "Pinwheel Star" }, { s: "✰", n: "Shadowed Star" },
-    { s: "⭐", n: "Star Emoji" }, { s: "🌟", n: "Glowing Star" }, { s: "💫", n: "Dizzy Star" },
-    { s: "⋆", n: "Star Operator" }, { s: "✶", n: "Six Point Star" }, { s: "✷", n: "Eight Point Star" },
-  ]},
-  { name: "Decorative Stars", stars: [
-    { s: "✸", n: "Eight Point Circled" }, { s: "✹", n: "Heavy Eight Point" }, { s: "✺", n: "Twelve Point" },
-    { s: "✻", n: "Teardrop Star" }, { s: "✼", n: "Open Centre Teardrop" }, { s: "✽", n: "Heavy Teardrop" },
-    { s: "✾", n: "Six Petalled Star" }, { s: "✿", n: "Black Florette" }, { s: "❀", n: "White Florette" },
-    { s: "❁", n: "Eight Petalled" }, { s: "❂", n: "Circled White Star" }, { s: "❃", n: "Heavy Teardrop Black" },
-    { s: "❄", n: "Snowflake" }, { s: "❅", n: "Tight Trifoliate" }, { s: "❆", n: "Heavy Chevron" },
-    { s: "❇", n: "Sparkle" }, { s: "❈", n: "Heavy Sparkle" }, { s: "❉", n: "Balloon Spoked" },
-  ]},
-  { name: "Star Emoji", stars: [
-    { s: "🌠", n: "Shooting Star" }, { s: "🌃", n: "Night with Stars" }, { s: "🌌", n: "Milky Way" },
-    { s: "⭐", n: "Star" }, { s: "🌟", n: "Glowing Star" }, { s: "💫", n: "Dizzy" },
-    { s: "✨", n: "Sparkles" }, { s: "🌙", n: "Crescent Moon" }, { s: "☀", n: "Sun" },
-    { s: "🌛", n: "First Quarter Moon" }, { s: "🌜", n: "Last Quarter Moon" }, { s: "🔯", n: "Six Pointed Star" },
-    { s: "⚝", n: "Outlined Star" }, { s: "🏅", n: "Medal" }, { s: "🥇", n: "Gold Medal" },
-    { s: "🏆", n: "Trophy" },
-  ]},
-  { name: "Star Patterns & Combos", stars: [
-    { s: "★★★★★", n: "Five Stars" }, { s: "☆☆☆☆☆", n: "Five Empty Stars" }, { s: "★★★★☆", n: "Four of Five" },
-    { s: "✦✦✦", n: "Triple Star" }, { s: "✧˚ ༘ ⋆｡♡˚", n: "Dreamy Stars" }, { s: "⋆｡°✩", n: "Star Sequence" },
-    { s: "˚★彡", n: "Star Flow" }, { s: "✦✧✦", n: "Star Alternating" }, { s: "★彡", n: "Star Japanese" },
-    { s: "≛", n: "Star Equals" }, { s: "⁂", n: "Asterism" }, { s: "※", n: "Reference Mark" },
-    { s: "⊹", n: "Cross Star" }, { s: "꙳", n: "Star Asterisk" }, { s: "𖡼", n: "Leaf Star" },
-  ]},
+// Sections split into honest categories: pure star Unicode first, then star
+// emoji, then sky/snowflake/award emoji that the audit flagged for being
+// shoved into the star bucket under misleading labels.
+type Section = { name: string; note?: string; stars: { s: string; n: string }[] };
+
+const starCategories: Section[] = [
+  {
+    name: "Classic Stars (Unicode)",
+    note: "Pure star symbols from the Unicode standard — single-character, render the same everywhere.",
+    stars: [
+      { s: "★", n: "Black Star" }, { s: "☆", n: "White Star" }, { s: "✦", n: "Four Point Star" },
+      { s: "✧", n: "Four Point White" }, { s: "✩", n: "Stress Star" }, { s: "✪", n: "Circled Star" },
+      { s: "✫", n: "Open Centre Star" }, { s: "✬", n: "Black Centre Star" }, { s: "✭", n: "Outlined Star" },
+      { s: "✮", n: "Heavy Outlined Star" }, { s: "✯", n: "Pinwheel Star" }, { s: "✰", n: "Shadowed Star" },
+      { s: "⋆", n: "Star Operator" }, { s: "✶", n: "Six Point Star" }, { s: "✷", n: "Eight Point Star" },
+      { s: "✸", n: "Eight Point Circled" }, { s: "✹", n: "Heavy Eight Point" }, { s: "✺", n: "Twelve Point" },
+      { s: "✻", n: "Teardrop Star" }, { s: "✼", n: "Open Centre Teardrop" }, { s: "✽", n: "Heavy Teardrop" },
+      { s: "❂", n: "Circled White Star" }, { s: "⚝", n: "Outlined Star (Variant)" },
+    ],
+  },
+  {
+    name: "Star Emoji",
+    note: "Standard star emoji — render colourful on modern devices.",
+    stars: [
+      { s: "⭐", n: "Star" }, { s: "🌟", n: "Glowing Star" }, { s: "💫", n: "Dizzy Star" },
+      { s: "✨", n: "Sparkles" }, { s: "🌠", n: "Shooting Star" }, { s: "🔯", n: "Six Pointed Star" },
+    ],
+  },
+  {
+    name: "Star-Shaped Text Symbols",
+    note: "Non-star Unicode characters that look starry — punctuation, asterism, dingbats. Useful as bullets or dividers.",
+    stars: [
+      { s: "≛", n: "Star Equals" }, { s: "⁂", n: "Asterism" }, { s: "※", n: "Reference Mark" },
+      { s: "⊹", n: "Cross Star" }, { s: "꙳", n: "Star Asterisk" }, { s: "𖡼", n: "Leaf Star" },
+    ],
+  },
+  {
+    name: "Sky & Night Emoji",
+    note: "Not stars, but star-adjacent — moons, sun, galaxy, night-sky. Honest section for what users often look for under \"stars\".",
+    stars: [
+      { s: "🌃", n: "Night with Stars" }, { s: "🌌", n: "Milky Way" },
+      { s: "🌙", n: "Crescent Moon" }, { s: "☀", n: "Sun" },
+      { s: "🌛", n: "First Quarter Moon" }, { s: "🌜", n: "Last Quarter Moon" },
+    ],
+  },
+  {
+    name: "Snowflake & Florette Dingbats",
+    note: "Snowflakes and floral dingbats from the same Unicode block as stars (U+2740–U+2746) — visually similar, often used together.",
+    stars: [
+      { s: "✾", n: "Six Petalled Star" }, { s: "✿", n: "Black Florette" }, { s: "❀", n: "White Florette" },
+      { s: "❁", n: "Eight Petalled" }, { s: "❃", n: "Heavy Teardrop Black" },
+      { s: "❄", n: "Snowflake" }, { s: "❅", n: "Tight Trifoliate Snowflake" }, { s: "❆", n: "Heavy Chevron Snowflake" },
+      { s: "❇", n: "Sparkle" }, { s: "❈", n: "Heavy Sparkle" }, { s: "❉", n: "Balloon Spoked Asterisk" },
+    ],
+  },
+  {
+    name: "Awards & Ratings Emoji",
+    note: "Medals and trophies — not stars, but commonly used in the same context (rating, ranking, achievement).",
+    stars: [
+      { s: "🏅", n: "Sports Medal" }, { s: "🥇", n: "Gold Medal" }, { s: "🥈", n: "Silver Medal" },
+      { s: "🥉", n: "Bronze Medal" }, { s: "🏆", n: "Trophy" },
+    ],
+  },
+  {
+    name: "Star Patterns & Combos",
+    note: "Pre-arranged decorative combos for bios, captions, and aesthetic posts.",
+    stars: [
+      { s: "★★★★★", n: "Five Stars" }, { s: "☆☆☆☆☆", n: "Five Empty Stars" }, { s: "★★★★☆", n: "Four of Five" },
+      { s: "✦✦✦", n: "Triple Star" }, { s: "✧˚ ༘ ⋆｡♡˚", n: "Dreamy Stars" }, { s: "⋆｡°✩", n: "Star Sequence" },
+      { s: "˚★彡", n: "Star Flow" }, { s: "✦✧✦", n: "Star Alternating" }, { s: "★彡", n: "Star Japanese" },
+    ],
+  },
 ];
 
 export default function StarsClient() {
@@ -51,7 +91,10 @@ export default function StarsClient() {
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.6, maxWidth: 600 }}>Every star symbol, emoji and text star in one place. Click any star to copy it instantly. Perfect for ratings, bios, Discord names and decorations.</p>
       {starCategories.map(cat => (
         <section key={cat.name} style={{ marginBottom: 48 }}>
-          <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>{cat.name}</h2>
+          <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: cat.note ? 6 : 16 }}>{cat.name}</h2>
+          {cat.note && (
+            <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16, lineHeight: 1.5, maxWidth: 700 }}>{cat.note}</p>
+          )}
           <div className="symbols-grid">
             {cat.stars.map(({ s, n }) => (
               <div key={s + n} className={`symbol-card ${copied === s ? "copied" : ""}`} onClick={() => copy(s, n)} title={`Copy ${n}`}>

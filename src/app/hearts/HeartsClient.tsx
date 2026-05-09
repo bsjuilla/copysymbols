@@ -1,57 +1,66 @@
 "use client";
 import { useState } from "react";
 
-const heartCategories = [
+// Sections are split into honest categories: strict heart Unicode first,
+// then heart emoji, then related-but-not-strictly-hearts content (kissing
+// couples, wedding rings, scripts that look heart-shaped). The visual audit
+// flagged the original "Decorative Hearts" and "Text Hearts" sections for
+// mixing actual hearts with non-heart content under misleading labels.
+type Section = { name: string; note?: string; hearts: { s: string; n: string }[] };
+
+const heartCategories: Section[] = [
   {
-    name: "Classic Hearts",
+    name: "Classic Hearts (Unicode)",
+    note: "Pure heart symbols from the Unicode standard — single-character, render the same everywhere.",
     hearts: [
       { s: "❤", n: "Red Heart" }, { s: "♥", n: "Heart Suit" }, { s: "♡", n: "White Heart Suit" },
       { s: "❥", n: "Rotated Heavy Black Heart" }, { s: "❣", n: "Heavy Heart Exclamation" },
       { s: "❦", n: "Floral Heart" }, { s: "❧", n: "Rotated Floral Heart" },
       { s: "🩷", n: "Pink Heart" }, { s: "🤍", n: "White Heart" }, { s: "🖤", n: "Black Heart" },
-    ]
+    ],
   },
   {
     name: "Coloured Heart Emoji",
+    note: "Standard emoji hearts — render as colourful images on modern devices, monochrome on older ones.",
     hearts: [
       { s: "💕", n: "Two Hearts" }, { s: "💞", n: "Revolving Hearts" }, { s: "💓", n: "Beating Heart" },
       { s: "💗", n: "Growing Heart" }, { s: "💖", n: "Sparkling Heart" }, { s: "💘", n: "Heart with Arrow" },
       { s: "💝", n: "Heart with Ribbon" }, { s: "💟", n: "Heart Decoration" }, { s: "💔", n: "Broken Heart" },
       { s: "💛", n: "Yellow Heart" }, { s: "💚", n: "Green Heart" }, { s: "💙", n: "Blue Heart" },
       { s: "💜", n: "Purple Heart" }, { s: "🧡", n: "Orange Heart" }, { s: "🤎", n: "Brown Heart" },
-      { s: "💌", n: "Love Letter" },
-    ]
+      { s: "💌", n: "Love Letter" }, { s: "🫀", n: "Anatomical Heart" }, { s: "🫶", n: "Heart Hands" },
+    ],
   },
   {
-    name: "Decorative Hearts",
+    name: "Romance & Love Emoji",
+    note: "Not technically hearts, but commonly used in love-themed posts: kissing faces, couples, rings, weddings.",
     hearts: [
-      { s: "♥️", n: "Heart Emoji" }, { s: "🫀", n: "Anatomical Heart" }, { s: "💏", n: "Kiss" },
-      { s: "👫", n: "Couple" }, { s: "💑", n: "Couple with Heart" }, { s: "🥰", n: "Smiling with Hearts" },
-      { s: "😍", n: "Heart Eyes" }, { s: "😘", n: "Face Blowing Kiss" }, { s: "💋", n: "Kiss Mark" },
-      { s: "💒", n: "Wedding" }, { s: "💍", n: "Ring" },
-    ]
+      { s: "💏", n: "Kiss" }, { s: "👫", n: "Couple" }, { s: "💑", n: "Couple with Heart" },
+      { s: "🥰", n: "Smiling with Hearts" }, { s: "😍", n: "Heart Eyes" }, { s: "😘", n: "Face Blowing Kiss" },
+      { s: "💋", n: "Kiss Mark" }, { s: "💒", n: "Wedding" }, { s: "💍", n: "Ring" },
+    ],
   },
   {
-    name: "Text Hearts (Unicode)",
+    name: "Heart-Shaped Glyphs from Other Scripts",
+    note: "Letters from Tamil, Georgian, and Korean scripts that resemble hearts in many fonts. These aren't heart Unicode codepoints — they're full letters being used decoratively.",
     hearts: [
-      { s: "ஐ", n: "Tamil Om" }, { s: "ვ", n: "Georgian" }, { s: "ლ", n: "Georgian Heart" },
-      { s: "ღ", n: "Georgian Ghan" }, { s: "웃", n: "Korean Heart" }, { s: "유", n: "Korean" },
-      { s: "♡", n: "White Heart" }, { s: "❤️", n: "Heart Red" }, { s: "💙", n: "Blue Heart" },
-      { s: "🫶", n: "Heart Hands" }, { s: "💝", n: "Heart Ribbon" }, { s: "💗", n: "Pink Heart" },
-      { s: "♥♥", n: "Double Heart" }, { s: "❤❤", n: "Double Red" }, { s: "💕💕", n: "Double Pink" },
-    ]
+      { s: "ஐ", n: "Tamil Om" }, { s: "ვ", n: "Georgian Vin" }, { s: "ლ", n: "Georgian Lasi" },
+      { s: "ღ", n: "Georgian Ghan" }, { s: "웃", n: "Korean Us" }, { s: "유", n: "Korean Yu" },
+    ],
   },
   {
-    name: "Heart Combinations",
+    name: "Heart Combinations & Kaomoji",
+    note: "Pre-arranged decorative combos for bios, captions, and aesthetic posts.",
     hearts: [
       { s: "❤️‍🔥", n: "Heart on Fire" }, { s: "❤️‍🩹", n: "Mending Heart" },
+      { s: "♥♥", n: "Double Heart" }, { s: "❤❤", n: "Double Red" }, { s: "💕💕", n: "Double Pink" },
       { s: "💓💓", n: "Beating x2" }, { s: "🫀💕", n: "Anatomical Love" },
       { s: "♡˖꒰ᵕ̈꒱˖♡", n: "Cute Heart Frame" }, { s: "♡.*・。゚", n: "Sparkle Heart" },
       { s: "˚ʚ♡ɞ˚", n: "Pastel Heart" }, { s: "♡⃛", n: "Heart Sparkle" },
       { s: "♡̷̨", n: "Broken Heart Style" }, { s: "❤︎", n: "Heart Text" },
       { s: "꒰♡꒱", n: "Heart in brackets" }, { s: "(*´꒳`*)♡", n: "Love face" },
       { s: "♡ヽ(^Д^)ﾉ", n: "Excited love" }, { s: "（っ＾▿＾）♥", n: "Happy heart" },
-    ]
+    ],
   },
 ];
 
@@ -84,7 +93,10 @@ export default function HeartsClient() {
 
       {heartCategories.map(cat => (
         <section key={cat.name} style={{ marginBottom: 48 }}>
-          <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>{cat.name}</h2>
+          <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: cat.note ? 6 : 16 }}>{cat.name}</h2>
+          {cat.note && (
+            <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16, lineHeight: 1.5, maxWidth: 700 }}>{cat.note}</p>
+          )}
           <div className="symbols-grid">
             {cat.hearts.map(({ s, n }) => (
               <div key={s + n} className={`symbol-card ${copied === s ? "copied" : ""}`} onClick={() => copy(s, n)} title={`Copy ${n}`}>
