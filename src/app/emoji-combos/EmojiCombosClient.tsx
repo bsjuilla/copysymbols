@@ -1,92 +1,79 @@
 "use client";
 import { useState } from "react";
-
-const comboCategories = [
-  { name: "Aesthetic & Vibes", combos: [
-    { s: "🌙✨", n: "Moon sparkle" }, { s: "✨🌙✨", n: "Sparkle moon" }, { s: "🌙⭐✨", n: "Night sky" },
-    { s: "🌸✨", n: "Blossom sparkle" }, { s: "🌿✨", n: "Nature glow" }, { s: "🦋✨", n: "Butterfly magic" },
-    { s: "💫🌙", n: "Dizzy moon" }, { s: "🌊🐚", n: "Ocean vibes" }, { s: "🍃🌸", n: "Spring" },
-    { s: "☁️🌙", n: "Cloudy night" }, { s: "🌅✨", n: "Sunrise" }, { s: "🌺🌊", n: "Tropical" },
-    { s: "🫧✨", n: "Bubbles" }, { s: "🌙🖤", n: "Dark moon" }, { s: "⭐🌙⭐", n: "Stars night" },
-    { s: "🌷🌸🌹", n: "Flower trio" },
-  ]},
-  { name: "Mood & Emotion", combos: [
-    { s: "💀🔥", n: "Dead fire" }, { s: "🔥💯", n: "Fire hundred" }, { s: "😭💀", n: "Dead laughing" },
-    { s: "🥺👉👈", n: "Shy plea" }, { s: "😌✨", n: "Blessed" }, { s: "🙄💅", n: "Unbothered" },
-    { s: "😤💢", n: "Angry steam" }, { s: "🥰💕", n: "In love" }, { s: "😍❤️", n: "Heart eyes" },
-    { s: "🫶🏽✨", n: "Heart hands glow" }, { s: "💔😭", n: "Heartbroken" }, { s: "😂💀", n: "Hilarious" },
-    { s: "🤭✨", n: "Giggly" }, { s: "😴💤", n: "Sleepy" }, { s: "🤩⭐", n: "Star struck" },
-    { s: "😏🔥", n: "Smug fire" },
-  ]},
-  { name: "Dark & Edgy", combos: [
-    { s: "🖤🖤🖤", n: "Triple black" }, { s: "💀☠️", n: "Skull duo" }, { s: "🌑🔮", n: "Dark mystic" },
-    { s: "⚡🖤", n: "Dark lightning" }, { s: "🕷️🖤", n: "Spider dark" }, { s: "🥀🖤", n: "Dead rose" },
-    { s: "🌑💀", n: "Dark moon skull" }, { s: "⛓️🖤", n: "Chains dark" }, { s: "🔪💀", n: "Edgy" },
-    { s: "🕯️🖤", n: "Candle dark" }, { s: "🌑🌒🌓", n: "Moon phases" }, { s: "🦇🌑", n: "Bat night" },
-  ]},
-  { name: "Soft & Cute", combos: [
-    { s: "🌸🍵", n: "Blossom tea" }, { s: "🐰💕", n: "Bunny love" }, { s: "🍑🌸", n: "Peach blossom" },
-    { s: "☁️🌙", n: "Cloud moon" }, { s: "🍓💖", n: "Berry love" }, { s: "🌷💗", n: "Tulip pink" },
-    { s: "🐾💕", n: "Paw love" }, { s: "🍭🌈", n: "Candy rainbow" }, { s: "🎀💝", n: "Bow heart" },
-    { s: "🌸🎀🌸", n: "Bow blossoms" }, { s: "🧸💕", n: "Bear love" }, { s: "🍰🌸", n: "Cake blossom" },
-    { s: "🌙🌸✨", n: "Night blossom" }, { s: "🍬🌷", n: "Candy tulip" }, { s: "🐱🌸", n: "Cat blossom" },
-    { s: "🎀✨💕", n: "Bow sparkle love" },
-  ]},
-  { name: "Goals & Motivation", combos: [
-    { s: "💪🔥", n: "Strong fire" }, { s: "🏆✨", n: "Trophy glow" }, { s: "🚀💫", n: "Rocket star" },
-    { s: "💰💸", n: "Money moves" }, { s: "📈🔥", n: "Growth fire" }, { s: "👑✨", n: "Crown glow" },
-    { s: "💎👑", n: "Diamond crown" }, { s: "🎯🔥", n: "Target fire" }, { s: "⚡💪", n: "Lightning strength" },
-    { s: "🌟💪", n: "Star strength" }, { s: "🏅🔥", n: "Medal fire" }, { s: "📚☕", n: "Study coffee" },
-  ]},
-  { name: "Nature & Seasons", combos: [
-    { s: "🍂🍁", n: "Autumn leaves" }, { s: "❄️⛄", n: "Winter snow" }, { s: "🌸🌿", n: "Spring green" },
-    { s: "🌊🐠", n: "Ocean fish" }, { s: "🌞🌻", n: "Sunny flower" }, { s: "🍃💨", n: "Windy leaves" },
-    { s: "🌈☁️", n: "Rainbow clouds" }, { s: "⛈️⚡", n: "Storm lightning" }, { s: "🌊🐋", n: "Ocean whale" },
-    { s: "🌙⭐🌟", n: "Night stars" }, { s: "🌺🦋", n: "Flower butterfly" }, { s: "🍄🌿", n: "Mushroom herb" },
-  ]},
-];
+import Link from "next/link";
+import { emojiCombos, comboThemes, getCombosByTheme, type ComboTheme } from "@/data/collections/emoji-combos";
 
 export default function EmojoCombosClient() {
   const [copied, setCopied] = useState<string | null>(null);
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState<ComboTheme | "all">("all");
 
-  const copy = async (s: string, n: string) => {
-    try { await navigator.clipboard.writeText(s); } catch { const ta = document.createElement("textarea"); ta.value = s; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); }
+  const copy = async (e: React.MouseEvent, s: string, n: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try { await navigator.clipboard.writeText(s); }
+    catch { const ta = document.createElement("textarea"); ta.value = s; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); }
     setCopied(s);
-    const toast = document.getElementById("global-toast"); const toastSym = document.getElementById("toast-symbol"); const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) { toastSym.textContent = s; toastMsg.textContent = `Copied ${n}`; toast.classList.add("show"); setTimeout(() => { toast.classList.remove("show"); setCopied(null); }, 1800); }
+    const toast = document.getElementById("global-toast");
+    const toastSym = document.getElementById("toast-symbol");
+    const toastMsg = document.getElementById("toast-message");
+    if (toast && toastSym && toastMsg) {
+      toastSym.textContent = s; toastMsg.textContent = `Copied ${n}`;
+      toast.classList.add("show");
+      setTimeout(() => { toast.classList.remove("show"); setCopied(null); }, 1800);
+    }
   };
 
-  const displayed = active === "all" ? comboCategories : comboCategories.filter(c => c.name === active);
+  const displayedThemes = active === "all" ? comboThemes : comboThemes.filter(t => t.id === active);
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px" }}>
       <div className="section-label">Emoji combinations</div>
       <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
-        🌙✨ Emoji Combinations
+        🌙✨ Emoji Combos — 120 Aesthetic Pairings
       </h1>
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 32, lineHeight: 1.6, maxWidth: 600 }}>
-        Popular emoji combos and pairings. Click any combination to copy it instantly. Perfect for Instagram captions, TikTok bios and text messages.
+        Popular emoji combos across 12 themes — aesthetic, coquette, cottagecore, witchy, Y2K, cozy, and more. Click any combo to copy it, or open its page for the vibe story, related combos, and platform notes. Perfect for Instagram bios, TikTok captions, and posts that need a visual mood.
       </p>
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 36 }}>
         <button className={`cat-pill ${active === "all" ? "active" : ""}`} onClick={() => setActive("all")}>✦ All</button>
-        {comboCategories.map(c => <button key={c.name} className={`cat-pill ${active === c.name ? "active" : ""}`} onClick={() => setActive(c.name)}>{c.name}</button>)}
+        {comboThemes.map(t => (
+          <button key={t.id} className={`cat-pill ${active === t.id ? "active" : ""}`} onClick={() => setActive(t.id)}>{t.name}</button>
+        ))}
       </div>
 
-      {displayed.map(cat => (
-        <section key={cat.name} style={{ marginBottom: 48 }}>
-          <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>{cat.name}</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
-            {cat.combos.map(({ s, n }) => (
-              <div key={s + n} className={`symbol-card ${copied === s ? "copied" : ""}`} onClick={() => copy(s, n)} title={`Copy ${n}`} style={{ padding: "16px 8px" }}>
-                <span style={{ fontSize: "1.6rem", lineHeight: 1 }}>{s}</span>
-                <span className="symbol-name">{n}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
+      {displayedThemes.map(theme => {
+        const items = getCombosByTheme(theme.id);
+        if (items.length === 0) return null;
+        return (
+          <section key={theme.id} style={{ marginBottom: 48 }}>
+            <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>{theme.name}</h2>
+            <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16, lineHeight: 1.5, maxWidth: 700 }}>{theme.description}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 10 }}>
+              {items.map(c => (
+                <Link
+                  key={c.slug}
+                  href={`/emoji-combos/${c.slug}`}
+                  className={`symbol-card ${copied === c.combo ? "copied" : ""}`}
+                  prefetch={false}
+                  style={{ textDecoration: "none", color: "inherit", position: "relative" }}
+                  title={`Open ${c.name} page`}
+                >
+                  <button
+                    onClick={(e) => copy(e, c.combo, c.name)}
+                    aria-label={`Copy ${c.name}`}
+                    style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "2px 6px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === c.combo ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                  >
+                    {copied === c.combo ? "✓" : "COPY"}
+                  </button>
+                  <span style={{ fontSize: "1.6rem", lineHeight: 1.1, marginTop: 4 }}>{c.combo}</span>
+                  <span className="symbol-name">{c.name}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
