@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { categories, symbols } from "@/data/symbols";
 import { emoji } from "@/data/emoji";
 import { allKaomoji } from "@/data/all-kaomoji";
+import { bullets } from "@/data/collections/bullets";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.copychars.com";
@@ -95,11 +96,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const kaomojiPages = allKaomoji.map(k => ({
-    url: `${base}/kaomoji/${k.slug}`,
+  // Skip duplicate-named kaomoji (-2, -3 slug suffixes) — they're noindex'd
+  // at the page level (see /kaomoji/[slug]/page.tsx) to stop Google reporting
+  // them as duplicate canonical (GSC 2026-05-09: /kaomoji/delighted-2).
+  const kaomojiPages = allKaomoji
+    .filter(k => !k.isDuplicate)
+    .map(k => ({
+      url: `${base}/kaomoji/${k.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    }));
+
+  // Per-bullet-point SSG pages (introduced 2026-05-11). Rich per-item content
+  // at /bullet-points/<slug> — each entry has ~400 words of templated-but-
+  // item-specific content to avoid the thin-page indexing problem.
+  const bulletPages = bullets.map(b => ({
+    url: `${base}/bullet-points/${b.slug}`,
     lastModified: new Date(),
     changeFrequency: "yearly" as const,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
@@ -110,6 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...symbolPages,
     ...emojiPages,
     ...kaomojiPages,
+    ...bulletPages,
   ];
   const seen = new Set<string>();
   return all.filter(entry => {

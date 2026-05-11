@@ -47,6 +47,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
     },
+    // Duplicate-named kaomoji (e.g. 4x "Rage Face") would otherwise compete
+    // for the same canonical signal — GSC reported /kaomoji/delighted-2 as
+    // such on 2026-05-09. First occurrence stays indexed; -2, -3, ... go noindex.
+    ...(k.isDuplicate ? { robots: { index: false, follow: true } } : {}),
     ...canonical(`/kaomoji/${slug}`),
   };
 }
