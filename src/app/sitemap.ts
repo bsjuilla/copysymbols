@@ -3,6 +3,7 @@ import { categories, symbols } from "@/data/symbols";
 import { emoji } from "@/data/emoji";
 import { allKaomoji } from "@/data/all-kaomoji";
 import { bullets } from "@/data/collections/bullets";
+import { borders } from "@/data/collections/borders";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.copychars.com";
@@ -118,6 +119,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Per-border SSG pages (introduced 2026-05-11). Same rich-page strategy
+  // as bullets — full body content per divider for indexability.
+  const borderPages = borders.map(b => ({
+    url: `${base}/borders/${b.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
+  }));
+
   // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
   // that would otherwise emit the same /symbol/<id> URL many times.
   const all = [
@@ -127,6 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...emojiPages,
     ...kaomojiPages,
     ...bulletPages,
+    ...borderPages,
   ];
   const seen = new Set<string>();
   return all.filter(entry => {
