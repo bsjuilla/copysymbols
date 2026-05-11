@@ -8,6 +8,8 @@ import { stars } from "@/data/collections/stars";
 import { lennyFaces } from "@/data/collections/lenny";
 import { emojiCombos } from "@/data/collections/emoji-combos";
 import { hearts } from "@/data/collections/hearts";
+import { textArt } from "@/data/collections/text-art";
+import { bioTemplates } from "@/data/collections/bio-templates";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.copychars.com";
@@ -160,6 +162,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const textArtPages = textArt.map(t => ({
+    url: `${base}/text-art/${t.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
+  }));
+
+  const bioTemplatePages = bioTemplates.map(b => ({
+    url: `${base}/bio-templates/${b.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
   // that would otherwise emit the same /symbol/<id> URL many times.
   const all = [
@@ -174,6 +190,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...lennyPages,
     ...comboPages,
     ...heartPages,
+    ...textArtPages,
+    ...bioTemplatePages,
   ];
   const seen = new Set<string>();
   return all.filter(entry => {

@@ -1,99 +1,99 @@
 "use client";
 import { useState } from "react";
-
-const bioCategories = [
-  {
-    platform: "Instagram", icon: "📸",
-    bios: [
-      { name: "Aesthetic Minimal", text: "˚ ༘♡ ⋆｡˚\n✦ [your name] ✦\n↳ living my best life\n⊹ ˚. ᵎᵎ 🌙" },
-      { name: "Cute & Soft", text: "꒰ ˘͈ᵕ˘͈ ꒱\n✿ [name] ✿\n─── ・ 。゚☆: *.☽ .* :☆゚. ───\nlover of sunsets & soft things 🌸" },
-      { name: "Dark Aesthetic", text: "꧁ [YOUR NAME] ꧂\n▸ born in chaos ◂\n━━━━━━━━━━━━\n🖤 not for the faint-hearted 🖤" },
-      { name: "Minimalist", text: "[name] • [age]\n────────────\n[city] | [passion]\n✦ living intentionally" },
-      { name: "Sparkle Vibes", text: "✨ [name] ✨\n┊ ┊ ┊ ┊\n┊ ┊ ┊ ✦\n┊ ┊ ☆\n┊ ★\n☆ dreaming big" },
-      { name: "Bold Statement", text: "★━━━━━━★\n[YOUR NAME]\n★━━━━━━★\n↳ on my own terms\n💫 unapologetically me" },
-    ]
-  },
-  {
-    platform: "Discord", icon: "🎮",
-    bios: [
-      { name: "Gamer Aesthetic", text: "⚔️ [name] ⚔️\n─────────────\n▸ gamer | [game]\n▸ [rank] player\n▸ dm's open 🎮" },
-      { name: "Chill Vibes", text: "꧁[name]꧂\n┌─── ∘°❉°∘ ───┐\n│  just vibing   │\n└─── ∘°❉°∘ ───┘\n🎵 music is life" },
-      { name: "Server Owner", text: "⊱ [NAME] ⊰\n━━━━━━━━━━━\nServer Owner 👑\n[Server Name]\n━━━━━━━━━━━\n📩 open for collab" },
-      { name: "Anime Fan", text: "彡★[name]★彡\n✿ anime lover ✿\n▸ [fav anime]\n▸ [fav character]\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧" },
-      { name: "Coder", text: "{ [name] }\n──────────\n> developer 💻\n> [language] lover\n> always learning\n──────────\n⌨️ building cool stuff" },
-    ]
-  },
-  {
-    platform: "TikTok", icon: "🎵",
-    bios: [
-      { name: "Creator Vibe", text: "✨ [name] ✨\n🎬 content creator\n📍 [city]\n↓ new video every [day]" },
-      { name: "Trendy Gen Z", text: "💀 [name] 💀\nnot like other girls\njk i'm worse 🔥\nfollow for chaos" },
-      { name: "Soft Aesthetic", text: "🌙 [name] 🌙\n˚ ༘♡ ⋆｡˚\ndaydreamer ☁️\nart | music | vibes" },
-      { name: "Business Owner", text: "👑 [name]\n─────────\n[Business Name] 🛍️\nlink below ↓\nDM for collabs ✨" },
-    ]
-  },
-  {
-    platform: "Twitter / X", icon: "🐦",
-    bios: [
-      { name: "Professional", text: "[Name] | [Role] @ [Company] • [interest] • [interest] • Opinions my own 🔁 ≠ endorsement" },
-      { name: "Casual", text: "[name] ✦ [city] • lover of [thing] & [thing] • occasionally funny • always tired 😭" },
-      { name: "Creator", text: "making [content type] 🎬 • [niche] creator • [followers] building in public • ✉️ [email]" },
-      { name: "Developer", text: "[name] → building [project] • [language] dev • open source enthusiast • tweets about code & coffee ☕" },
-    ]
-  },
-];
+import Link from "next/link";
+import { bioTemplates, bioVibes, bioPlatforms, getBioTemplatesByVibe, type BioVibe } from "@/data/collections/bio-templates";
 
 export default function BioClient() {
   const [copied, setCopied] = useState<string | null>(null);
-  const [active, setActive] = useState("Instagram");
+  const [activeVibe, setActiveVibe] = useState<BioVibe | "all">("all");
 
-  const copy = async (text: string, name: string) => {
-    try { await navigator.clipboard.writeText(text); } catch { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); }
-    setCopied(name);
-    const toast = document.getElementById("global-toast"); const toastSym = document.getElementById("toast-symbol"); const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) { toastSym.textContent = "📝"; toastMsg.textContent = `Copied ${name} bio`; toast.classList.add("show"); setTimeout(() => { toast.classList.remove("show"); setCopied(null); }, 2000); }
+  const copy = async (e: React.MouseEvent, text: string, name: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try { await navigator.clipboard.writeText(text); }
+    catch { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta); }
+    setCopied(text);
+    const toast = document.getElementById("global-toast");
+    const toastSym = document.getElementById("toast-symbol");
+    const toastMsg = document.getElementById("toast-message");
+    if (toast && toastSym && toastMsg) {
+      toastSym.textContent = "📝"; toastMsg.textContent = `Copied ${name}`;
+      toast.classList.add("show");
+      setTimeout(() => { toast.classList.remove("show"); setCopied(null); }, 1800);
+    }
   };
 
-  const activeCat = bioCategories.find(c => c.platform === active)!;
+  const displayedVibes = activeVibe === "all" ? bioVibes : bioVibes.filter(v => v.id === activeVibe);
 
   return (
-    <div style={{ maxWidth: 1000, margin: "0 auto", padding: "48px 24px" }}>
-      <div className="section-label">Bio templates</div>
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px" }}>
+      <div className="section-label">Ready-to-paste bios</div>
       <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
-        Aesthetic Bio Templates
+        📝 Bio Templates — {bioTemplates.length} for Instagram, TikTok & more
       </h1>
-      <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 32, lineHeight: 1.6, maxWidth: 600 }}>
-        Ready-made bio templates with symbols and decorations. Click any bio to copy it. Replace the [bracketed] parts with your own info.
+      <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 32, lineHeight: 1.6, maxWidth: 640 }}>
+        Ready-to-paste bio templates for Instagram, TikTok, LinkedIn, Twitter/X, Bumble and YouTube. {bioTemplates.length} templates across 12 vibes — aesthetic, professional, minimalist, cottagecore, coquette, Y2K, witchy, humorous, dating, streamer, artist, athlete. Each has fillable <code style={{ background: "var(--bg3)", padding: "1px 6px", borderRadius: 4 }}>{`{PLACEHOLDERS}`}</code> and a per-platform char-limit check.
       </p>
 
-      {/* Platform tabs */}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 36 }}>
-        {bioCategories.map(c => (
-          <button key={c.platform} className={`cat-pill ${active === c.platform ? "active" : ""}`} onClick={() => setActive(c.platform)}>
-            {c.icon} {c.platform}
-          </button>
+      {/* Vibe filter */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
+        <button className={`cat-pill ${activeVibe === "all" ? "active" : ""}`} onClick={() => setActiveVibe("all")}>✦ All vibes</button>
+        {bioVibes.map(v => (
+          <button key={v.id} className={`cat-pill ${activeVibe === v.id ? "active" : ""}`} onClick={() => setActiveVibe(v.id)}>{v.name}</button>
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
-        {activeCat.bios.map(({ name, text }) => (
-          <div key={name} onClick={() => copy(text, name)}
-            style={{ background: "var(--surface)", border: `1px solid ${copied === name ? "var(--accent)" : "var(--border)"}`, borderRadius: 14, padding: 20, cursor: "pointer", transition: "all 0.18s" }}
-            onMouseEnter={e => { if (copied !== name) (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
-            onMouseLeave={e => { if (copied !== name) (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.transform = ""; }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-              <span style={{ fontSize: 13, fontWeight: 500, color: "var(--accent)" }}>{name}</span>
-              <span style={{ fontSize: 11, color: copied === name ? "var(--accent)" : "var(--text3)" }}>{copied === name ? "✓ copied!" : "click to copy"}</span>
+      {/* Platform legend */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40, fontSize: 12, color: "var(--text3)" }}>
+        {bioPlatforms.map(p => (
+          <span key={p.id} style={{ padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)" }}>
+            {p.name} · {p.charLimit} chars
+          </span>
+        ))}
+      </div>
+
+      {displayedVibes.map(vibe => {
+        const items = getBioTemplatesByVibe(vibe.id);
+        if (items.length === 0) return null;
+        return (
+          <section key={vibe.id} style={{ marginBottom: 48 }}>
+            <h2 className="font-display" style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>{vibe.name}</h2>
+            <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16, lineHeight: 1.5, maxWidth: 700 }}>{vibe.description}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
+              {items.map(b => {
+                const pMeta = bioPlatforms.find(p => p.id === b.platform);
+                const overLimit = pMeta && b.charCount > pMeta.charLimit;
+                return (
+                  <Link
+                    key={b.slug}
+                    href={`/bio-templates/${b.slug}`}
+                    prefetch={false}
+                    style={{ background: "var(--surface)", border: `1px solid ${copied === b.template ? "var(--accent)" : "var(--border)"}`, borderRadius: 12, padding: "16px 16px 14px", display: "flex", flexDirection: "column", gap: 10, textDecoration: "none", color: "inherit", transition: "border-color 0.15s", position: "relative" }}
+                  >
+                    <button
+                      onClick={(e) => copy(e, b.template, b.name)}
+                      aria-label={`Copy ${b.name}`}
+                      style={{ position: "absolute", top: 12, right: 12, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === b.template ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                    >
+                      {copied === b.template ? "✓ COPIED" : "COPY"}
+                    </button>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingRight: 70 }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text)" }}>{b.name}</div>
+                    </div>
+                    <div style={{ display: "flex", gap: 6, fontSize: 10, fontFamily: "DM Mono, monospace", color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                      <span style={{ color: "var(--accent)" }}>{pMeta?.name ?? b.platform}</span>
+                      <span>·</span>
+                      <span style={{ color: overLimit ? "#ff6b6b" : "var(--text3)" }}>{b.charCount}/{pMeta?.charLimit}</span>
+                    </div>
+                    <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 12, color: "var(--text2)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.6, maxHeight: 140, overflow: "hidden" }}>{b.template}</pre>
+                    <div style={{ fontSize: 11, color: "var(--accent)", marginTop: "auto" }}>open →</div>
+                  </Link>
+                );
+              })}
             </div>
-            <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--text2)", whiteSpace: "pre-wrap", margin: 0, lineHeight: 1.7 }}>{text}</pre>
-          </div>
-        ))}
-      </div>
-
-      <section style={{ marginTop: 56, padding: "24px", background: "var(--surface)", borderRadius: 14, border: "1px solid var(--border)" }}>
-        <h2 style={{ fontSize: 17, fontWeight: 600, color: "var(--text)", marginBottom: 10 }}>💡 How to use these bio templates</h2>
-        <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.8 }}>Click any template to copy it. Then paste it into your bio editor and replace the [bracketed text] with your own info. The symbols and decorations will appear exactly as shown on the template.</p>
-      </section>
+          </section>
+        );
+      })}
     </div>
   );
 }
