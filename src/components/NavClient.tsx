@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type NavChild = { href: string; label: string };
 type NavLink = { href?: string; label: string; children?: NavChild[] };
@@ -55,58 +55,192 @@ const links: NavLink[] = [
 export default function NavClient() {
   const path = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
-  const toggle = (label: string) => setOpenMenu(prev => prev === label ? null : label);
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+    setMobileExpanded(null);
+  }, [path]);
+
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const toggleDesktop = (label: string) =>
+    setOpenMenu(prev => (prev === label ? null : label));
+  const toggleMobileSection = (label: string) =>
+    setMobileExpanded(prev => (prev === label ? null : label));
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setMobileExpanded(null);
+  };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
-      {links.map(l => {
-        if (l.children) {
-          const children = l.children;
-          const isOpen = openMenu === l.label;
+    <>
+      {/* ── Desktop nav (hidden on mobile via CSS) ── */}
+      <div className="nav-desktop">
+        {links.map(l => {
+          if (l.children) {
+            const isOpen = openMenu === l.label;
+            return (
+              <div key={l.label} style={{ position: "relative" }}>
+                <button
+                  onClick={() => toggleDesktop(l.label)}
+                  className="nav-link"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 4 }}
+                >
+                  {l.label}
+                  <span style={{ fontSize: 9, opacity: 0.6, transition: "transform 0.2s", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>▼</span>
+                </button>
+                {isOpen && (
+                  <>
+                    <div style={{ position: "fixed", inset: 0, zIndex: 199 }} onClick={() => setOpenMenu(null)} />
+                    <div style={{ position: "absolute", top: "100%", left: 0, background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: 8, minWidth: 200, zIndex: 200, boxShadow: "0 8px 32px rgba(0,0,0,0.5)", marginTop: 4 }}>
+                      {l.children.map(c => (
+                        <Link
+                          key={c.href}
+                          href={c.href}
+                          onClick={() => setOpenMenu(null)}
+                          style={{ display: "block", padding: "8px 12px", fontSize: 13, color: path === c.href ? "var(--accent)" : "var(--text2)", textDecoration: "none", borderRadius: 6, transition: "all 0.12s", whiteSpace: "nowrap" }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--surface)"; (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = path === c.href ? "var(--accent)" : "var(--text2)"; }}
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          }
           return (
-            <div key={l.label} style={{ position: "relative" }}>
-              <button
-                onClick={() => toggle(l.label)}
-                className="nav-link"
-                style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 4 }}
-              >
-                {l.label}
-                <span style={{ fontSize: 9, opacity: 0.6, transition: "transform 0.2s", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>▼</span>
-              </button>
-              {isOpen && (
-                <>
-                  {/* Backdrop */}
-                  <div style={{ position: "fixed", inset: 0, zIndex: 199 }} onClick={() => setOpenMenu(null)} />
-                  <div style={{ position: "absolute", top: "100%", left: 0, background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: 8, minWidth: 200, zIndex: 200, boxShadow: "0 8px 32px rgba(0,0,0,0.5)", marginTop: 4 }}>
-                    {children.map(c => (
-                      <Link
-                        key={c.href}
-                        href={c.href}
-                        onClick={() => setOpenMenu(null)}
-                        style={{ display: "block", padding: "8px 12px", fontSize: 13, color: path === c.href ? "var(--accent)" : "var(--text2)", textDecoration: "none", borderRadius: 6, transition: "all 0.12s", whiteSpace: "nowrap" }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--surface)"; (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = path === c.href ? "var(--accent)" : "var(--text2)"; }}
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+            <Link
+              key={l.href}
+              href={l.href!}
+              className={`nav-link ${path === l.href ? "active" : ""}`}
+            >
+              {l.label}
+            </Link>
           );
+        })}
+      </div>
+
+      {/* ── Hamburger button (visible only on mobile via CSS) ── */}
+      <button
+        className="nav-hamburger"
+        onClick={() => setMobileOpen(o => !o)}
+        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+        aria-expanded={mobileOpen}
+      >
+        {mobileOpen
+          ? <span style={{ fontSize: 20, lineHeight: 1 }}>✕</span>
+          : <span style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+              <span style={{ display: "block", width: 20, height: 2, background: "var(--text2)", borderRadius: 2 }} />
+              <span style={{ display: "block", width: 20, height: 2, background: "var(--text2)", borderRadius: 2 }} />
+              <span style={{ display: "block", width: 14, height: 2, background: "var(--text2)", borderRadius: 2 }} />
+            </span>
         }
-        return (
-          <Link
-            key={l.href}
-            href={l.href!}
-            className={`nav-link ${path.startsWith(l.href!) ? "active" : ""}`}
+      </button>
+
+      {/* ── Mobile drawer ── */}
+      {mobileOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            style={{ position: "fixed", inset: 0, zIndex: 299, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+            onClick={closeMobile}
+          />
+          {/* Drawer panel */}
+          <div
+            style={{
+              position: "fixed",
+              top: 56,
+              right: 0,
+              bottom: 0,
+              width: "min(320px, 100vw)",
+              zIndex: 300,
+              background: "var(--bg2)",
+              borderLeft: "1px solid var(--border)",
+              overflowY: "auto",
+              padding: "8px 0 32px",
+            }}
           >
-            {l.label}
-          </Link>
-        );
-      })}
-    </div>
+            {links.map(l => {
+              if (l.children) {
+                const expanded = mobileExpanded === l.label;
+                return (
+                  <div key={l.label}>
+                    <button
+                      onClick={() => toggleMobileSection(l.label)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "12px 20px",
+                        background: "none",
+                        border: "none",
+                        color: "var(--text2)",
+                        fontSize: 15,
+                        fontFamily: "inherit",
+                        fontWeight: 500,
+                        cursor: "pointer",
+                        textAlign: "left",
+                      }}
+                    >
+                      {l.label}
+                      <span style={{ fontSize: 10, opacity: 0.6, transition: "transform 0.2s", transform: expanded ? "rotate(180deg)" : "rotate(0)" }}>▼</span>
+                    </button>
+                    {expanded && (
+                      <div style={{ background: "var(--bg3)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+                        {l.children.map(c => (
+                          <Link
+                            key={c.href}
+                            href={c.href}
+                            onClick={closeMobile}
+                            style={{
+                              display: "block",
+                              padding: "10px 20px 10px 32px",
+                              fontSize: 14,
+                              color: path === c.href ? "var(--accent)" : "var(--text3)",
+                              textDecoration: "none",
+                            }}
+                          >
+                            {c.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href!}
+                  onClick={closeMobile}
+                  style={{
+                    display: "block",
+                    padding: "12px 20px",
+                    fontSize: 15,
+                    fontWeight: 500,
+                    color: path === l.href ? "var(--accent)" : "var(--text2)",
+                    textDecoration: "none",
+                    borderBottom: "1px solid var(--border)",
+                  }}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </>
   );
 }

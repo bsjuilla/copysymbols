@@ -122,7 +122,7 @@ export default async function EmojiDetailPage({ params }: Props) {
         <div className="detail-layout" style={{ display: "flex", gap: 20, alignItems: "flex-start", marginBottom: 40, flexWrap: "wrap" }}>
 
           {/* Hero */}
-          <div style={{ width: 320, flexShrink: 0 }}>
+          <div style={{ width: 320, flexShrink: 0, maxWidth: "100%" }}>
             <div
               style={{
                 position: "relative",
