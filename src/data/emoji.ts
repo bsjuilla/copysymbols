@@ -1126,6 +1126,49 @@ export const emoji: EmojiRecord[] = [
   { id: "flower-cards", emoji: "🎴", name: "Flower Cards", category: "activities", keywords: ["flower","cards","activities","emoji"] },
   { id: "bowling", emoji: "🎳", name: "Bowling", category: "activities", keywords: ["bowling","activities","emoji"] },
   { id: "maracas", emoji: "🪇", name: "Maracas", category: "activities", keywords: ["maracas","activities","emoji"] },
+
+  // ── RARE & UNCOMMON — added 2026-05-13 ──
+
+  // Smileys & Emotion — newer Unicode additions (15.0 / 16.0)
+  { id: "shaking-face", emoji: "🫨", name: "Shaking Face", category: "smileys", keywords: ["shaking","trembling","vibrating","dizzy","smileys","emoji"] },
+  { id: "face-with-bags", emoji: "🫩", name: "Face with Bags Under Eyes", category: "smileys", keywords: ["tired","sleepy","bags","eyes","exhausted","smileys","emoji"] },
+  { id: "splatter", emoji: "🫟", name: "Splatter", category: "smileys", keywords: ["splatter","blob","mess","paint","smileys","emoji"] },
+
+  // People & Body — accessibility + rare gestures
+  { id: "deaf-person", emoji: "🧏", name: "Deaf Person", category: "people", keywords: ["deaf","sign","language","accessibility","people","emoji"] },
+  { id: "hair-pick", emoji: "🪮", name: "Hair Pick", category: "people", keywords: ["hair","pick","comb","grooming","afro","people","emoji"] },
+
+  // Animals & Nature — mythical, new species, rare sea life
+  { id: "dragon-face", emoji: "🐲", name: "Dragon Face", category: "animals", keywords: ["dragon","mythical","fantasy","beast","animals","emoji"] },
+  { id: "dragon", emoji: "🐉", name: "Dragon", category: "animals", keywords: ["dragon","full","mythical","fantasy","animals","emoji"] },
+  { id: "jellyfish", emoji: "🪼", name: "Jellyfish", category: "animals", keywords: ["jellyfish","ocean","sea","sting","animals","emoji"] },
+  { id: "coral", emoji: "🪸", name: "Coral", category: "animals", keywords: ["coral","reef","ocean","sea","ecosystem","animals","emoji"] },
+  { id: "phoenix", emoji: "🐦‍🔥", name: "Phoenix", category: "animals", keywords: ["phoenix","fire","bird","mythical","rebirth","animals","emoji"] },
+  { id: "goose", emoji: "🪿", name: "Goose", category: "animals", keywords: ["goose","bird","honk","waterfowl","animals","emoji"] },
+  { id: "black-bird", emoji: "🐦‍⬛", name: "Black Bird", category: "animals", keywords: ["black","bird","crow","raven","dark","animals","emoji"] },
+  { id: "brown-mushroom", emoji: "🍄‍🟫", name: "Brown Mushroom", category: "animals", keywords: ["brown","mushroom","fungi","foraging","animals","emoji"] },
+  { id: "moose", emoji: "🫎", name: "Moose", category: "animals", keywords: ["moose","elk","antlers","canada","animals","emoji"] },
+  { id: "donkey", emoji: "🫏", name: "Donkey", category: "animals", keywords: ["donkey","mule","stubborn","farm","animals","emoji"] },
+
+  // Food & Drink — uncommon additions
+  { id: "lime", emoji: "🍋‍🟩", name: "Lime", category: "food", keywords: ["lime","citrus","green","sour","food","emoji"] },
+
+  // Travel & Places — rare transport
+  { id: "slide", emoji: "🛝", name: "Slide", category: "travel", keywords: ["slide","playground","children","park","travel","emoji"] },
+  { id: "aerial-tramway", emoji: "🚡", name: "Aerial Tramway", category: "travel", keywords: ["aerial","tramway","cable","car","mountain","travel","emoji"] },
+  { id: "mountain-cableway", emoji: "🚠", name: "Mountain Cableway", category: "travel", keywords: ["mountain","cableway","gondola","ski","travel","emoji"] },
+  { id: "suspension-railway", emoji: "🚟", name: "Suspension Railway", category: "travel", keywords: ["suspension","railway","monorail","transport","travel","emoji"] },
+
+  // Objects & Symbols — obscure but useful
+  { id: "fingerprint", emoji: "🫆", name: "Fingerprint", category: "objects", keywords: ["fingerprint","identity","security","biometric","unique","objects","emoji"] },
+  { id: "mouse-trap", emoji: "🪤", name: "Mouse Trap", category: "objects", keywords: ["mouse","trap","catch","bait","objects","emoji"] },
+  { id: "khanda", emoji: "🪯", name: "Khanda", category: "objects", keywords: ["khanda","sikh","religion","symbol","objects","emoji"] },
+  { id: "wireless", emoji: "🛜", name: "Wireless", category: "objects", keywords: ["wireless","wifi","internet","signal","network","objects","emoji"] },
+  { id: "razor", emoji: "🪒", name: "Razor", category: "objects", keywords: ["razor","shave","blade","grooming","objects","emoji"] },
+  { id: "plunger", emoji: "🪠", name: "Plunger", category: "objects", keywords: ["plunger","unclog","toilet","plumbing","objects","emoji"] },
+  { id: "thread", emoji: "🧵", name: "Thread", category: "objects", keywords: ["thread","sewing","needle","stitch","craft","objects","emoji"] },
+  { id: "yarn", emoji: "🧶", name: "Yarn", category: "objects", keywords: ["yarn","knit","crochet","craft","wool","objects","emoji"] },
+  { id: "identification-card", emoji: "🪪", name: "Identification Card", category: "objects", keywords: ["id","card","identity","license","passport","objects","emoji"] },
 ];
 
 // Build all lookup maps in a single pass at module load. Build-time only;
