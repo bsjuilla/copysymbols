@@ -24,6 +24,7 @@ const links: NavLink[] = [
       { href: "/aesthetic-text", label: "ａ Aesthetic Text" },
       { href: "/mirror-text", label: "↕ Mirror Text" },
       { href: "/symbol-builder", label: "✦ Symbol Builder" },
+      { href: "/character-counter", label: "# Character Counter" },
     ],
   },
   {
