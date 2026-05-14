@@ -29,6 +29,8 @@ const links: NavLink[] = [
       { href: "/zalgo-text", label: "z̴ Zalgo Text" },
       { href: "/invisible-character", label: "• Invisible Character" },
       { href: "/username-generator", label: "👤 Username Generator" },
+      { href: "/morse-code", label: "·− Morse Code" },
+      { href: "/binary-translator", label: "01 Binary Translator" },
     ],
   },
   {
