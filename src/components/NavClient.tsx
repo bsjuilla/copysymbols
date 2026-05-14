@@ -13,6 +13,7 @@ const links: NavLink[] = [
   { href: "/emoji", label: "Emoji" },
   { href: "/kaomoji", label: "Kaomoji" },
   { href: "/fancy-text", label: "Fancy Text" },
+  { href: "/username-generator", label: "Username Generator" },
   { href: "/blog", label: "Blog" },
   {
     label: "Tools",
