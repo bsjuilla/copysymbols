@@ -10,6 +10,7 @@ import { emojiCombos } from "@/data/collections/emoji-combos";
 import { hearts } from "@/data/collections/hearts";
 import { textArt } from "@/data/collections/text-art";
 import { bioTemplates } from "@/data/collections/bio-templates";
+import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.copychars.com";
@@ -172,6 +173,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Per-style fancy-text sub-pages (introduced 2026-05-14). Each style targets
+  // its own long-tail keyword (e.g. "bold text generator", "cursive text
+  // generator") via /fancy-text/[slug] with focused metadata + FAQ schema.
+  const fancyTextStylePages = fancyTextStyles.map(s => ({
+    url: `${base}/fancy-text/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
   // that would otherwise emit the same /symbol/<id> URL many times.
   const all = [
@@ -188,6 +199,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...heartPages,
     ...textArtPages,
     ...bioTemplatePages,
+    ...fancyTextStylePages,
   ];
   const seen = new Set<string>();
   return all.filter(entry => {
