@@ -1,12 +1,29 @@
-import { notFound } from "next/navigation";
-import { getSymbolBySlug, getSymbolsByCategory, categories } from "@/data/symbols";
+import { notFound, redirect } from "next/navigation";
+import { getSymbolBySlug, getSymbolsByCategory, categories, symbols } from "@/data/symbols";
 import { richDescriptions } from "@/data/symbol-descriptions";
 import CopyToast from "@/components/CopyToast";
 import SymbolCopyButtons from "@/components/SymbolCopyButtons";
 import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
-export const dynamic = "force-dynamic";
+
+// Prerender every known symbol page at build time. Unknown slugs still hit
+// this route (dynamicParams default = true) so the gen-* redirect logic
+// below can fire and send Google to a relevant category page instead of 404.
+export async function generateStaticParams() {
+  return symbols.map(s => ({ slug: s.id }));
+}
+
+// Stale gen-{category}-{name}-{timestamp} URLs from old generated-symbols.ts
+// batches still appear in Google's index (GSC 2026-05-14: 30+ such 404s).
+// When we can't resolve the slug, fall back to the category landing page so
+// link equity is preserved and GSC stops flagging them as 404.
+function staleGenRedirect(slug: string): string | null {
+  const m = slug.match(/^gen-([a-z]+)-/);
+  if (!m) return null;
+  const cat = m[1];
+  return categories.some(c => c.id === cat) ? `/symbols/${cat}` : null;
+}
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -30,7 +47,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SymbolDetailPage({ params }: Props) {
   const { slug } = await params;
   const s = getSymbolBySlug(slug);
-  if (!s) notFound();
+  if (!s) {
+    const target = staleGenRedirect(slug);
+    if (target) redirect(target);
+    notFound();
+  }
   const richDesc = richDescriptions[slug] ?? s.description;
 
   const cat = categories.find(c => c.id === s!.category);
