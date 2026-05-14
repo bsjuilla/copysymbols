@@ -1,6 +1,40 @@
 import type { NextConfig } from "next";
 
+// Content-Security-Policy.
+// 'unsafe-inline' on script-src is unavoidable: Next.js injects inline runtime
+// scripts and we render JSON-LD as inline <script type="application/ld+json">.
+// For a static-export site with no user input, this is acceptable — there's
+// no path for an attacker to inject runtime scripts. Other directives (img,
+// frame-ancestors, object) still provide meaningful protection.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https:",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  "upgrade-insecure-requests",
+].join("; ");
+
+const SECURITY_HEADERS = [
+  { key: "Content-Security-Policy", value: CSP },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+  },
+];
+
 const nextConfig: NextConfig = {
+  async headers() {
+    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+  },
   async redirects() {
     return [
       // ── Original 4 (GSC May 9 batch) — closest-symbol redirects ───────────────

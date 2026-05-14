@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main style={{ minHeight: "calc(100vh - 56px)" }}>{children}</main>
         <footer style={{ borderTop: "1px solid var(--border)", padding: "32px 24px", marginTop: 64 }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
+          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-start", gap: 24 }}>
             <div>
               <span className="font-display" style={{ fontWeight: 700, color: "var(--accent)", fontSize: 15 }}>✦ CopyChars</span>
               <p style={{ fontSize: 13, color: "var(--text3)", marginTop: 4 }}>3000+ symbols, one click away.</p>
@@ -44,6 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {["symbols","emoji","kaomoji","text-art"].map(p => (
                 <Link key={p} href={`/${p}`} className="nav-link" style={{ fontSize: 13, textTransform: "capitalize" }}>{p.replace("-"," ")}</Link>
               ))}
+            </div>
+            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+              <Link href="/privacy" className="nav-link" style={{ fontSize: 13 }}>Privacy</Link>
+              <Link href="/terms" className="nav-link" style={{ fontSize: 13 }}>Terms</Link>
+              <Link href="/cookies" className="nav-link" style={{ fontSize: 13 }}>Cookies</Link>
             </div>
           </div>
         </footer>

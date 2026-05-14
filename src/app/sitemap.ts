@@ -53,6 +53,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/username-generator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/morse-code`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/binary-translator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    // Legal pages — low priority for SEO but needed in sitemap for completeness
+    { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${base}/cookies`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
     // NEW — Dedicated symbol pages
     { url: `${base}/checkmark`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/degree-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
