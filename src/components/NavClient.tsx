@@ -28,6 +28,7 @@ const links: NavLink[] = [
       { href: "/upside-down-text", label: "ǝ Upside Down" },
       { href: "/zalgo-text", label: "z̴ Zalgo Text" },
       { href: "/invisible-character", label: "• Invisible Character" },
+      { href: "/username-generator", label: "👤 Username Generator" },
     ],
   },
   {
