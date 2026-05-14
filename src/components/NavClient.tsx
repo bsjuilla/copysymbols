@@ -25,6 +25,9 @@ const links: NavLink[] = [
       { href: "/mirror-text", label: "↕ Mirror Text" },
       { href: "/symbol-builder", label: "✦ Symbol Builder" },
       { href: "/character-counter", label: "# Character Counter" },
+      { href: "/upside-down-text", label: "ǝ Upside Down" },
+      { href: "/zalgo-text", label: "z̴ Zalgo Text" },
+      { href: "/invisible-character", label: "• Invisible Character" },
     ],
   },
   {

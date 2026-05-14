@@ -47,6 +47,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/mirror-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/symbol-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/character-counter`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/upside-down-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/zalgo-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${base}/invisible-character`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     // NEW — Dedicated symbol pages
     { url: `${base}/checkmark`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${base}/degree-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
