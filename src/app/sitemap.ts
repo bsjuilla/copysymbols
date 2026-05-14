@@ -56,13 +56,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/sparkle-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/smiley-face-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/number-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    // Platform pages
-    { url: `${base}/symbols-for/instagram`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbols-for/discord`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbols-for/whatsapp`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbols-for/twitter`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbols-for/tiktok`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbols-for/facebook`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    // Platform pages — OMITTED until the /symbols-for/[platform] routes are built.
+    // These returned 404 when present in the sitemap (no page.tsx files exist yet).
     // Blog — original
     { url: `${base}/blog/how-to-type-copyright`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/currency-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },

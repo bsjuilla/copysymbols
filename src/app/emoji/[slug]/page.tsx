@@ -97,6 +97,31 @@ export default async function EmojiDetailPage({ params }: Props) {
     ],
   };
 
+  // Build unique, content-rich description for this specific emoji.
+  const meaningKeywords = e!.keywords
+    .filter(k => !["emoji", e!.category, e!.name.toLowerCase()].includes(k.toLowerCase()))
+    .slice(0, 4);
+  const cpString = cps.join(" ");
+
+  // Category-specific opening sentence varies the page copy across all categories.
+  const categoryOpeners: Record<string, string> = {
+    smileys:    `The ${e!.name} emoji (${e!.emoji}) is a face and expression emoji in the Unicode standard, used to convey specific emotions, moods, and reactions in digital conversations.`,
+    people:     `The ${e!.name} emoji (${e!.emoji}) represents a person, gesture, or body-language expression in the Unicode emoji standard, widely used to personalise messages and add human context.`,
+    animals:    `The ${e!.name} emoji (${e!.emoji}) depicts an animal or nature element from the Unicode emoji standard, popular in wildlife content, pet posts, and nature-themed messaging.`,
+    food:       `The ${e!.name} emoji (${e!.emoji}) represents a food or drink item in the Unicode emoji standard, used in recipes, restaurant recommendations, and food-focused social media.`,
+    travel:     `The ${e!.name} emoji (${e!.emoji}) is a travel, place, or transport emoji in the Unicode standard, used to describe destinations, journeys, and modes of getting around.`,
+    objects:    `The ${e!.name} emoji (${e!.emoji}) represents an everyday object or symbol in the Unicode emoji standard, used to reference tools, tech, and tangible items in digital communication.`,
+    activities: `The ${e!.name} emoji (${e!.emoji}) is an activities, sports, or hobbies emoji in the Unicode standard, used in posts about recreation, fitness, and leisure.`,
+  };
+  const opener = categoryOpeners[e!.category] ??
+    `The ${e!.name} emoji (${e!.emoji}) is a Unicode emoji in the ${catName} category, used across digital platforms to add visual expression to text.`;
+
+  const usageLine = meaningKeywords.length > 0
+    ? `People commonly use ${e!.emoji} in contexts relating to ${meaningKeywords.join(", ")}.`
+    : `It is recognised and rendered on iOS, Android, macOS, Windows, and all major web browsers.`;
+
+  const techLine = `Its Unicode codepoint${cps.length > 1 ? "s are" : " is"} ${cpString} — part of the ${catName} block in the Unicode standard. You can copy ${e!.emoji} by clicking the button above, then paste it anywhere with Ctrl+V (Windows / Linux) or Cmd+V (Mac).`;
+
   return (
     <>
       <CopyToast />
@@ -182,10 +207,10 @@ export default async function EmojiDetailPage({ params }: Props) {
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "24px 28px" }}>
               <div className="section-label" style={{ marginBottom: 10 }}>About this emoji</div>
               <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.8, margin: 0 }}>
-                The <strong style={{ color: "var(--text)" }}>{e!.name} emoji</strong> ({e!.emoji}) is part of the {catName} category in the Unicode emoji standard. Click the {e!.emoji} above to copy it to your clipboard, then paste it into Instagram captions, Twitter posts, WhatsApp messages, Discord chats, work documents, or anywhere else you write text.
+                {opener} {usageLine}
               </p>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7, marginTop: 12, marginBottom: 0 }}>
-                Looking for the <strong style={{ color: "var(--text)" }}>{e!.name.toLowerCase()} emoji copy and paste</strong>? You&apos;re in the right place — every emoji on CopyChars works on iPhone, Android, Mac, Windows and the web.
+                {techLine} Paste it into Instagram captions, Twitter / X posts, WhatsApp messages, Discord, TikTok bios, or any other app — the <strong style={{ color: "var(--text)" }}>{e!.name.toLowerCase()} emoji copy paste</strong> works on iPhone, Android, Mac, and Windows without any additional software.
               </p>
             </div>
 

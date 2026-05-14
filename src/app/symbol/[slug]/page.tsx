@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getSymbolBySlug, getSymbolsByCategory, categories } from "@/data/symbols";
+import { richDescriptions } from "@/data/symbol-descriptions";
 import CopyToast from "@/components/CopyToast";
 import SymbolCopyButtons from "@/components/SymbolCopyButtons";
 import SymbolCard from "@/components/SymbolCard";
@@ -13,10 +14,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = getSymbolBySlug(slug);
   if (!s) return {};
+  const desc = richDescriptions[slug] ?? s.description;
+  // Auto-generated symbols have low-quality data — exclude from Google index.
+  const isGenerated = slug.startsWith("gen-");
   return {
     title: `${s.symbol} ${s.name} — Copy & Paste`,
     description: `Copy the ${s.name} symbol (${s.symbol}). Unicode: ${s.unicode}, HTML: ${s.html}. ${s.description}`,
     alternates: { canonical: `https://www.copychars.com/symbol/${slug}` },
+    ...(isGenerated ? { robots: { index: false, follow: false } } : {}),
+    // suppress unused-variable warning — desc is used below in the page body
+    openGraph: { description: desc.slice(0, 200) },
   };
 }
 
@@ -24,6 +31,7 @@ export default async function SymbolDetailPage({ params }: Props) {
   const { slug } = await params;
   const s = getSymbolBySlug(slug);
   if (!s) notFound();
+  const richDesc = richDescriptions[slug] ?? s.description;
 
   const cat = categories.find(c => c.id === s!.category);
   const related = getSymbolsByCategory(s!.category).filter(r => r.id !== s!.id).slice(0, 16);
@@ -274,7 +282,7 @@ export default async function SymbolDetailPage({ params }: Props) {
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "24px 28px" }}>
               <div className="section-label" style={{ marginBottom: 10 }}>About this symbol</div>
               <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.8, margin: 0 }}>
-                {s!.description}
+                {richDesc}
               </p>
             </div>
 
