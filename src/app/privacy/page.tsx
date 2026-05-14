@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "May 14, 2026";
-const CONTACT_EMAIL = "business060407@gmail.com"; // change this if you set up a custom contact address
+// Set up via Cloudflare Email Routing (free) to forward to your real address.
+const CONTACT_EMAIL = "contact@copychars.com";
 
 export default function PrivacyPage() {
   return (

@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "May 14, 2026";
-const CONTACT_EMAIL = "business060407@gmail.com"; // change this if you set up a custom contact address
+// Set up via Cloudflare Email Routing (free) to forward to your real address.
+const CONTACT_EMAIL = "contact@copychars.com";
 
 export default function TermsPage() {
   return (
@@ -68,7 +69,7 @@ export default function TermsPage() {
 
         <section>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>8. Governing law</h2>
-          <p>These Terms are governed by the laws of <strong>[YOUR COUNTRY/JURISDICTION]</strong>, without regard to its conflict-of-law principles. Any dispute arising from these Terms shall be brought exclusively in the courts of <strong>[YOUR JURISDICTION]</strong>. <em>(Please update this section to reflect your actual country and state/province before publishing — leaving it as-is may cause this clause to be unenforceable.)</em></p>
+          <p>These Terms are governed by the laws applicable in the European Union, including the EU General Data Protection Regulation (GDPR) and any mandatory consumer-protection laws of your country of residence within the EU, EEA, or United Kingdom. Nothing in these Terms limits or excludes any non-waivable right you have under applicable consumer-protection law. Disputes will be resolved in accordance with the law of your country of residence where required by mandatory rules, otherwise in accordance with applicable EU law.</p>
         </section>
 
         <section>
