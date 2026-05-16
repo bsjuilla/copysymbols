@@ -55,12 +55,11 @@ export default function TextDecoratorClient({ faqs }: { faqs: Array<{ q: string;
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 10, marginBottom: 48 }}>
         {decorators.map(d => {
           const wrapped = d.wrap(previewSource);
-          const copyable = d.wrap(previewSource);
           const isCopied = copiedId === d.id;
           return (
             <div
               key={d.id}
-              onClick={() => handleCopy(d.id, d.name, copyable)}
+              onClick={() => handleCopy(d.id, d.name, wrapped)}
               style={{
                 background: "var(--surface)",
                 border: `1px solid ${isCopied ? "var(--accent)" : "var(--border)"}`,
