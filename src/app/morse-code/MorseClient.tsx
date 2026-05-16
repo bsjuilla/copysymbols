@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo, useRef, useCallback } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 // International Morse code (ITU-R M.1677-1).
 const MORSE: Record<string, string> = {
@@ -32,8 +33,8 @@ export default function MorseClient({ faqs }: { faqs: Array<{ q: string; a: stri
   const [mode, setMode] = useState<Mode>("encode");
   const [input, setInput] = useState("");
   const [wpm, setWpm] = useState(15);
-  const [copied, setCopied] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const { copy: copyToast, copied } = useCopyToast();
   const audioCtxRef = useRef<AudioContext | null>(null);
   const stopFlagRef = useRef(false);
 
@@ -47,27 +48,10 @@ export default function MorseClient({ faqs }: { faqs: Array<{ q: string; a: stri
     setMode(m => m === "encode" ? "decode" : "encode");
   };
 
-  const copy = async () => {
-    if (!output) return;
-    try { await navigator.clipboard.writeText(output); }
-    catch {
-      const ta = document.createElement("textarea");
-      ta.value = output;
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    const toast = document.getElementById("global-toast");
-    const toastSym = document.getElementById("toast-symbol");
-    const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "·";
-      toastMsg.textContent = mode === "encode" ? "Copied morse code" : "Copied text";
-      toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);
-    }
-  };
+  const copy = () => copyToast(output, {
+    symbol: "·",
+    label: mode === "encode" ? "Copied morse code" : "Copied text",
+  });
 
   // Audio playback at 600 Hz. Dot duration = 1.2 / WPM seconds (PARIS standard).
   const playMorse = useCallback(async () => {

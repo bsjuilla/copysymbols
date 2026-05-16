@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 // Encode text → binary by going through UTF-8 bytes (handles emoji + non-Latin
 // natively). Each byte becomes 8 binary digits, separated by spaces.
@@ -40,7 +41,7 @@ type Mode = "encode" | "decode";
 export default function BinaryClient({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const [mode, setMode] = useState<Mode>("encode");
   const [input, setInput] = useState("");
-  const [copied, setCopied] = useState(false);
+  const { copy: copyToast, copied } = useCopyToast();
 
   const decoded = useMemo(() => decode(input), [input]);
   const output = mode === "encode" ? encode(input) : decoded.text;
@@ -61,27 +62,10 @@ export default function BinaryClient({ faqs }: { faqs: Array<{ q: string; a: str
     setMode(m => m === "encode" ? "decode" : "encode");
   };
 
-  const copy = async () => {
-    if (!output) return;
-    try { await navigator.clipboard.writeText(output); }
-    catch {
-      const ta = document.createElement("textarea");
-      ta.value = output;
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    const toast = document.getElementById("global-toast");
-    const toastSym = document.getElementById("toast-symbol");
-    const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "01";
-      toastMsg.textContent = mode === "encode" ? "Copied binary" : "Copied text";
-      toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);
-    }
-  };
+  const copy = () => copyToast(output, {
+    symbol: "01",
+    label: mode === "encode" ? "Copied binary" : "Copied text",
+  });
 
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 24px" }}>

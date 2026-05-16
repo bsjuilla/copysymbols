@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 const ABOVE = ["̍","̎","̄","̅","̿","̑","̆","̐","͒","͗","͑","̇","̈","̊","͂","̓","̈","͊","͋","͌","̃","̂","̌","͐","̀","́","̋","̏","̒","̓","̔","̽","̉","ͅ","͛","ͣ","ͤ","ͥ","ͦ","ͧ","ͨ","ͩ","ͪ","ͫ","ͬ","ͭ","ͮ","ͯ"];
 const MIDDLE = ["̕","̛","̀","́","͘","̡","̢","̧","̨","̴","̵","̶","͜","͝","͞","͟","͠","͢","̸","̷","͡"];
@@ -34,34 +35,17 @@ export default function ZalgoClient({ faqs }: { faqs: Array<{ q: string; a: stri
   const [middle, setMiddle] = useState(true);
   const [below, setBelow] = useState(true);
   const [seed, setSeed] = useState(0);
-  const [copied, setCopied] = useState(false);
+  const { copy: copyToast, copied } = useCopyToast();
 
   const output = useMemo(
     () => zalgoize(input, { intensity, above, middle, below, seed }),
     [input, intensity, above, middle, below, seed]
   );
 
-  const copy = async () => {
-    if (!output) return;
-    try { await navigator.clipboard.writeText(output); }
-    catch {
-      const ta = document.createElement("textarea");
-      ta.value = output;
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    const toast = document.getElementById("global-toast");
-    const toastSym = document.getElementById("toast-symbol");
-    const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "z̴";
-      toastMsg.textContent = "Copied zalgo text";
-      toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);
-    }
-  };
+  const copy = () => copyToast(output, {
+    symbol: "z̴",
+    label: "Copied zalgo text",
+  });
 
   const toggleStyle = (active: boolean) => ({
     background: active ? "var(--accent)" : "var(--surface)",
