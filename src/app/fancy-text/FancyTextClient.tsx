@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { STYLES, type FancyTextStyle } from "@/lib/fancy-text-styles";
 
 const GROUP_LABELS: Record<FancyTextStyle["group"], string> = {
@@ -118,7 +119,7 @@ export default function FancyTextClient({ initialFocusSlug, showHubLink }: Props
 
       {showHubLink && (
         <div style={{ textAlign: "center", marginTop: 24, marginBottom: 32 }}>
-          <a href="/fancy-text" style={{ color: "var(--accent)", fontSize: 14, textDecoration: "none" }}>← All {STYLES.length} fancy text styles</a>
+          <Link href="/fancy-text" style={{ color: "var(--accent)", fontSize: 14, textDecoration: "none" }}>← All {STYLES.length} fancy text styles</Link>
         </div>
       )}
 

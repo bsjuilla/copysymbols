@@ -4,11 +4,30 @@ import CopyToast from "@/components/CopyToast";
 import BioLineItem from "./BioLineItem";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "How to Make a Line in Instagram Bio — Dividers Copy & Paste";
+const DESCRIPTION = "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.";
+const SLUG = "instagram-bio-lines";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "How to Make a Line in Instagram Bio — Dividers Copy & Paste",
-  description: "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.",
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: ["instagram bio line","instagram bio divider","aesthetic line copy paste"],
-  ...canonical("/blog/instagram-bio-lines"),
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 const lines = [
@@ -24,6 +43,7 @@ const lines = [
 export default function BlogInstagramLines() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CopyToast />
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "48px 24px" }}>
         <Link href="/blog" style={{ color: "var(--text3)", textDecoration: "none", fontSize: 13 }}>

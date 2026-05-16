@@ -59,6 +59,13 @@ export default async function ComboDetailPage({ params }: Props) {
     .slice(0, 12);
 
   const baseUrl = "https://www.copychars.com";
+  const faqs = [
+    { q: `What does the ${c!.name} emoji combo mean?`, a: `${c!.name} is a ${theme?.name ?? c!.theme}-themed combo. ${c!.vibe}` },
+    { q: `How do I add emoji combos to my Instagram bio?`, a: `Click the ${c!.combo} above to copy it. Open Instagram → your profile → Edit Profile → Bio. Paste the combo into your bio field with Ctrl+V (Cmd+V on Mac, or long-press → Paste on mobile). Save. The combo renders as colored emojis everywhere your bio appears.` },
+    { q: `Will this combo render on every device?`, a: `On modern iOS (≥14), Android (≥11), Mac, Windows 10+, and the web — yes. Older systems may show some emojis as a fallback or a placeholder box. The ${c!.emojiCount} emojis in this combo are standard Unicode and have wide compatibility.` },
+    { q: `Can I use this combo on TikTok or Twitter?`, a: `Yes — both platforms render emoji combos natively in bios, captions, and comments. TikTok captions support up to 2,200 characters, Twitter posts 280, Twitter bio 160. This combo is short enough to fit any of those.` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -80,6 +87,14 @@ export default async function ComboDetailPage({ params }: Props) {
           url: `${baseUrl}/emoji-combos`,
         },
         url: `${baseUrl}/emoji-combos/${slug}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -207,12 +222,7 @@ export default async function ComboDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `What does the ${c!.name} emoji combo mean?`, a: `${c!.name} is a ${theme?.name ?? c!.theme}-themed combo. ${c!.vibe}` },
-            { q: `How do I add emoji combos to my Instagram bio?`, a: `Click the ${c!.combo} above to copy it. Open Instagram → your profile → Edit Profile → Bio. Paste the combo into your bio field with Ctrl+V (Cmd+V on Mac, or long-press → Paste on mobile). Save. The combo renders as colored emojis everywhere your bio appears.` },
-            { q: `Will this combo render on every device?`, a: `On modern iOS (≥14), Android (≥11), Mac, Windows 10+, and the web — yes. Older systems may show some emojis as a fallback or a placeholder box. The ${c!.emojiCount} emojis in this combo are standard Unicode and have wide compatibility.` },
-            { q: `Can I use this combo on TikTok or Twitter?`, a: `Yes — both platforms render emoji combos natively in bios, captions, and comments. TikTok captions support up to 2,200 characters, Twitter posts 280, Twitter bio 160. This combo is short enough to fit any of those.` },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

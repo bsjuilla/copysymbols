@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   keywords: ["copy paste symbols","special characters","emoji copy","arrow symbols","currency symbols","greek letters","kaomoji"],
   openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
   robots: { index: true, follow: true },
+  themeColor: "#0a0a0f",
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "CopyChars" },
   verification: { google: "yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" },
   // NOTE: do NOT set alternates.canonical here. A root-level canonical is
   // inherited by every child route that doesn't override it, causing every
@@ -21,10 +23,46 @@ export const metadata: Metadata = {
   // canonical via `canonical("/its-path")` from "@/lib/canonical".
 };
 
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.copychars.com/#website",
+      url: "https://www.copychars.com",
+      name: "CopyChars",
+      description: "Copy and paste 3000+ special characters, symbols, arrows, currency signs, Greek letters, emoji, and kaomoji.",
+      publisher: { "@id": "https://www.copychars.com/#organization" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://www.copychars.com/search?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.copychars.com/#organization",
+      name: "CopyChars",
+      url: "https://www.copychars.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.copychars.com/favicon.svg",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
         <header style={{ borderBottom: "1px solid var(--border)", background: "rgba(10,10,15,0.88)", backdropFilter: "blur(12px)", position: "sticky", top: 0, zIndex: 100 }}>
           <nav style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 56, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <Link href="/" style={{ textDecoration: "none" }}>

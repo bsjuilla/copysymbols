@@ -21,9 +21,47 @@ const items = [
   { symbol: "⚖", name: "Scales of Justice", unicode: "U+2696", use: "Law and justice" },
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Copyright Symbol", item: `${baseUrl}/copyright-symbol` },
+      ],
+    },
+    {
+      "@type": "DefinedTerm",
+      name: "Copyright Symbol",
+      termCode: "U+00A9",
+      description: "The copyright symbol © (U+00A9) is used in legal notices, documents, and content attribution worldwide. Related IP marks include ™ (U+2122), ® (U+00AE), ℠ (U+2120), and ℗ (U+2117).",
+      inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Unicode Symbols",
+        url: `${baseUrl}/symbols`,
+      },
+      url: `${baseUrl}/copyright-symbol`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "How do I type the copyright symbol on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 0169 on the numeric keypad to produce ©." } },
+        { "@type": "Question", name: "How do I type the copyright symbol on Mac?", acceptedAnswer: { "@type": "Answer", text: "Press Option + G to produce ©." } },
+        { "@type": "Question", name: "How do I type the copyright symbol on iPhone or Android?", acceptedAnswer: { "@type": "Answer", text: "Hold the C key on the iPhone keyboard — © appears in the popup. The same long-press works on most Android keyboards." } },
+        { "@type": "Question", name: "What is the HTML entity for the copyright symbol?", acceptedAnswer: { "@type": "Answer", text: "Use &copy; or the numeric reference &#169; to render © in HTML." } },
+        { "@type": "Question", name: "How do I get the copyright symbol in Microsoft Word?", acceptedAnswer: { "@type": "Answer", text: "Type (c) and Word autocorrects it to ©." } },
+      ],
+    },
+  ],
+};
+
 export default function CopyrightSymbolPage() {
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Copyright Symbol ©

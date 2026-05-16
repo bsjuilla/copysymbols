@@ -75,6 +75,29 @@ export default async function BorderDetailPage({ params }: Props) {
   const previewChar = b!.char.length > 32 ? b!.char.slice(0, 32) + "…" : b!.char;
   const charLength = Array.from(b!.char).length;
 
+  // Long combos render in monospace at a smaller, full-width size; single
+  // characters get the large hero treatment.
+  const isWide = charLength > 4;
+
+  const faqs = [
+    {
+      q: `What is the ${b!.name} divider?`,
+      a: `${b!.name} is a ${widthLabel(b!.width).toLowerCase()} text divider in the ${catMeta?.name ?? b!.category} family. ${b!.usageNote}`,
+    },
+    {
+      q: `Will ${b!.name} render correctly on every platform?`,
+      a: `${b!.name} is built from Unicode characters supported across iOS, Android, Windows, Mac, Linux, and all modern browsers. Some older fonts or apps without full Unicode support may fall back to placeholder boxes (□) for less common glyphs. In monospaced contexts (terminal, code blocks) the alignment will be pixel-perfect.`,
+    },
+    {
+      q: `Can I use ${b!.name} in an Instagram bio?`,
+      a: `Yes — paste it as a regular line in your bio. Instagram allows up to 150 characters in the bio, so check the length first (this divider is ${charLength} chars). Pair it with line breaks for a clean multi-section bio.`,
+    },
+    {
+      q: `How is this different from the standard <hr> rule?`,
+      a: `An HTML <hr> is a semantic horizontal rule rendered by the browser at a fixed thickness and width. ${b!.name} is plain text — you control its width by how many characters you paste, and it works inside any text field (bios, captions, messages, plain emails) where HTML doesn't.`,
+    },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -98,12 +121,16 @@ export default async function BorderDetailPage({ params }: Props) {
         },
         url: `${baseUrl}/borders/${slug}`,
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
+      },
     ],
   };
-
-  // Long combos render in monospace at a smaller, full-width size; single
-  // characters get the large hero treatment.
-  const isWide = charLength > 4;
 
   return (
     <>

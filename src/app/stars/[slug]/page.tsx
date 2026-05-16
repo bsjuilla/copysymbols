@@ -64,6 +64,13 @@ export default async function StarDetailPage({ params }: Props) {
     return cp != null ? "U+" + cp.toString(16).toUpperCase().padStart(4, "0") : "";
   }).filter(Boolean);
 
+  const faqs = [
+    { q: `What does the ${s!.name} symbol mean?`, a: `${s!.name} is a Unicode star character${s!.unicode ? ` at codepoint ${s!.unicode}` : ""} in the ${catMeta?.name ?? s!.category} family. ${s!.usageNote}` },
+    { q: `How do I type ${s!.char} on a keyboard?`, a: `The easiest method is to click the ${s!.char} at the top of this page — it copies to your clipboard instantly. There's no dedicated key on most keyboards${s!.unicode ? `, but you can enter it via Unicode input methods using ${s!.unicode}` : ""}.` },
+    { q: `Will ${s!.char} display correctly on Instagram and TikTok?`, a: `Yes — both Instagram and TikTok render this character natively in bios, captions, and comments on iOS, Android, and desktop web. The visual may vary slightly between system fonts but the meaning is universal.` },
+    { q: `Is ${s!.name} the same as the ⭐ emoji?`, a: `Not exactly. ⭐ (U+2B50) is an emoji that renders as a colored yellow/gold star on most platforms. ${s!.name} (${s!.char}) is${s!.category === "Classic" || s!.category === "Outlined" ? " a text-style glyph rendered in the surrounding text colour, not as an emoji" : " a different glyph in the star family with its own shape and use case"}.` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -86,6 +93,14 @@ export default async function StarDetailPage({ params }: Props) {
           url: `${baseUrl}/stars`,
         },
         url: `${baseUrl}/stars/${slug}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -225,12 +240,7 @@ export default async function StarDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `What does the ${s!.name} symbol mean?`, a: `${s!.name} is a Unicode star character${s!.unicode ? ` at codepoint ${s!.unicode}` : ""} in the ${catMeta?.name ?? s!.category} family. ${s!.usageNote}` },
-            { q: `How do I type ${s!.char} on a keyboard?`, a: `The easiest method is to click the ${s!.char} at the top of this page — it copies to your clipboard instantly. There's no dedicated key on most keyboards${s!.unicode ? `, but you can enter it via Unicode input methods using ${s!.unicode}` : ""}.` },
-            { q: `Will ${s!.char} display correctly on Instagram and TikTok?`, a: `Yes — both Instagram and TikTok render this character natively in bios, captions, and comments on iOS, Android, and desktop web. The visual may vary slightly between system fonts but the meaning is universal.` },
-            { q: `Is ${s!.name} the same as the ⭐ emoji?`, a: `Not exactly. ⭐ (U+2B50) is an emoji that renders as a colored yellow/gold star on most platforms. ${s!.name} (${s!.char}) is${s!.category === "Classic" || s!.category === "Outlined" ? " a text-style glyph rendered in the surrounding text colour, not as an emoji" : " a different glyph in the star family with its own shape and use case"}.` },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

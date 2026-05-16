@@ -393,17 +393,17 @@ export default function CommunityClient() {
   const [showAuth, setShowAuth] = useState(false);
   const [tick, setTick] = useState(0);
 
-  useEffect(() => {
-    seedIfEmpty();
-    setUser(getCurrentUser());
-    refresh();
-  }, []);
-
   const refresh = useCallback(() => {
     setCreations(getCreations());
     setUser(getCurrentUser());
     setTick(t => t + 1);
   }, []);
+
+  useEffect(() => {
+    seedIfEmpty();
+    setUser(getCurrentUser());
+    refresh();
+  }, [refresh]);
 
   const publicCreations = creations.filter(c => c.visibility === "public");
 

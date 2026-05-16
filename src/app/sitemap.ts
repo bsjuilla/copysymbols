@@ -10,6 +10,7 @@ import { emojiCombos } from "@/data/collections/emoji-combos";
 import { hearts } from "@/data/collections/hearts";
 import { textArt } from "@/data/collections/text-art";
 import { bioTemplates } from "@/data/collections/bio-templates";
+import { platformIds } from "@/data/collections/platforms";
 import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -68,8 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/sparkle-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/smiley-face-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${base}/number-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    // Platform pages — OMITTED until the /symbols-for/[platform] routes are built.
-    // These returned 404 when present in the sitemap (no page.tsx files exist yet).
     // Blog — original
     { url: `${base}/blog/how-to-type-copyright`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
     { url: `${base}/blog/currency-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
@@ -193,6 +192,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const platformPages = platformIds.map(p => ({
+    url: `${base}/symbols-for/${p}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
   // that would otherwise emit the same /symbol/<id> URL many times.
   const all = [
@@ -210,6 +216,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...textArtPages,
     ...bioTemplatePages,
     ...fancyTextStylePages,
+    ...platformPages,
   ];
   const seen = new Set<string>();
   return all.filter(entry => {
