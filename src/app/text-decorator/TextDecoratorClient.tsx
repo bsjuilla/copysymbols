@@ -4,7 +4,7 @@ import { decorators } from "@/data/text-decorators";
 import { useCopyToast } from "@/lib/use-copy-toast";
 
 export default function TextDecoratorClient({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("your text");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const { copy } = useCopyToast();
 
@@ -55,29 +55,27 @@ export default function TextDecoratorClient({ faqs }: { faqs: Array<{ q: string;
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 10, marginBottom: 48 }}>
         {decorators.map(d => {
           const wrapped = d.wrap(previewSource);
-          const copyable = d.wrap(input);
+          const copyable = d.wrap(previewSource);
           const isCopied = copiedId === d.id;
-          const canCopy = !!input;
           return (
             <div
               key={d.id}
-              onClick={() => canCopy && handleCopy(d.id, d.name, copyable)}
+              onClick={() => handleCopy(d.id, d.name, copyable)}
               style={{
                 background: "var(--surface)",
                 border: `1px solid ${isCopied ? "var(--accent)" : "var(--border)"}`,
                 borderRadius: 12,
                 padding: "14px 16px",
-                cursor: canCopy ? "pointer" : "default",
+                cursor: "pointer",
                 transition: "all 0.18s",
-                opacity: canCopy ? 1 : 0.85,
               }}
-              onMouseEnter={e => { if (canCopy) (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; }}
               onMouseLeave={e => { if (!isCopied) (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, gap: 8 }}>
                 <span style={{ fontSize: 12, fontWeight: 600, color: "var(--text2)" }}>{d.name}</span>
                 <span style={{ fontSize: 11, color: isCopied ? "var(--accent)" : "var(--text3)" }}>
-                  {isCopied ? "✓ copied" : canCopy ? "click to copy" : "preview"}
+                  {isCopied ? "✓ copied" : "click to copy"}
                 </span>
               </div>
               <div style={{ fontSize: "1.05rem", color: "var(--text)", lineHeight: 1.5, wordBreak: "break-word", minHeight: 22 }}>

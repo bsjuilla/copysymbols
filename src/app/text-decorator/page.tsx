@@ -2,46 +2,37 @@ import type { Metadata } from "next";
 import CopyToast from "@/components/CopyToast";
 import TextDecoratorClient from "./TextDecoratorClient";
 import { canonical } from "@/lib/canonical";
-import { decorators } from "@/data/text-decorators";
 
 export const metadata: Metadata = {
-  title: "Text Decorator — Wrap Text in 30+ Aesthetic Frames",
-  description: `Type one word and get ${decorators.length} decoratively-wrapped variants — sparkle frames, lace brackets, hearts, stars, kaomoji and more. Click any card to copy. Works in Instagram bios, TikTok captions, Discord nicknames.`,
+  title: "Text Decorator — Wrap Any Text in 30+ Aesthetic Frames",
+  description: "Type any word or phrase and instantly wrap it in 30+ decorative frames — sparkles, hearts, brackets, kaomoji and more. Free, no signup, one-click copy.",
   keywords: ["text decorator","decorate text","aesthetic text wrapper","fancy text frames","sparkle text","cute text wrapper","instagram bio decoration","tiktok caption frames","symbol text wrapper"],
   ...canonical("/text-decorator"),
 };
 
 const faqs = [
   {
-    q: "What does the text decorator do?",
-    a: `It wraps any text you type with decorative Unicode characters — sparkles, brackets, stars, hearts, kaomoji and more. You get ${decorators.length} pre-made frame styles, one click copies the wrapped version to your clipboard. The decorations are plain Unicode characters, so they paste anywhere.`,
+    q: "What is a text decorator?",
+    a: "A text decorator wraps your text in decorative Unicode characters (sparkles, hearts, brackets) so it stands out in bios, captions, and chat messages.",
   },
   {
-    q: "Where can I use these decorated text styles?",
-    a: "Instagram bios and captions, TikTok captions and usernames, Discord nicknames, Twitter/X display names, Tumblr posts, Reddit titles, WhatsApp status — anywhere that accepts plain text. A few platforms (LinkedIn, some forums) strip uncommon symbols, but most modern apps render them fine.",
+    q: "Can I use decorated text on Instagram?",
+    a: "Yes. The decorations are real Unicode characters that render on Instagram, TikTok, Discord, Twitter, and most other platforms. They're text — not images.",
   },
   {
-    q: "Why does the frame look broken on some devices?",
-    a: "Each decorator uses Unicode characters from different blocks — some sparkles and kaomoji glyphs are missing on older devices (Android 6 and below, older Windows fonts). On modern iOS, Android 10+, Windows 11 and macOS the frames render correctly. If a card looks like a row of tofu boxes, that style isn't supported on your current device.",
-  },
-  {
-    q: "Are the decorations counted as characters in Instagram or TikTok?",
-    a: "Yes. Every decoration character counts toward bio and caption character limits. Sparkle frames add about 8–10 characters; simple wrappers like stars or hearts add about 4. If you're tight on the limit, use a single-character wrapper (Stars, Hearts, Diamond) rather than a multi-glyph one (Sparkle Frame, Lenny Frame).",
-  },
-  {
-    q: "Can I make my own custom decorator?",
-    a: "Not in this tool — these are pre-built frames you click to copy. If you need a custom symbol combination, try the Symbol Builder tool which lets you assemble your own prefix and suffix from any of our symbols.",
+    q: "Does decorated text break search?",
+    a: "Hashtags and @mentions still work, but the decorated words themselves aren't searchable. Use decorations around — not inside — words you want to remain searchable.",
   },
 ];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
+  mainEntity: [
+    { "@type": "Question", name: "What is a text decorator?", acceptedAnswer: { "@type": "Answer", text: "A text decorator wraps your text in decorative Unicode characters (sparkles, hearts, brackets) so it stands out in bios, captions, and chat messages." } },
+    { "@type": "Question", name: "Can I use decorated text on Instagram?", acceptedAnswer: { "@type": "Answer", text: "Yes. The decorations are real Unicode characters that render on Instagram, TikTok, Discord, Twitter, and most other platforms. They're text — not images." } },
+    { "@type": "Question", name: "Does decorated text break search?", acceptedAnswer: { "@type": "Answer", text: "Hashtags and @mentions still work, but the decorated words themselves aren't searchable. Use decorations around — not inside — words you want to remain searchable." } },
+  ],
 };
 
 export default function TextDecoratorPage() {
