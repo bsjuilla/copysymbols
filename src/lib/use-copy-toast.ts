@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Copies text to clipboard and shows the global toast (#global-toast,
@@ -29,6 +29,14 @@ export function useCopyToast(): {
   copied: boolean;
 } {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
 
   const copy = useCallback(async (text: string, opts: CopyOptions = {}) => {
     if (!text) return;
@@ -48,17 +56,27 @@ export function useCopyToast(): {
     const toast = document.getElementById("global-toast");
     const sym = document.getElementById("toast-symbol");
     const msg = document.getElementById("toast-message");
+    // Clear any stale timer from a previous copy click so the new
+    // 1800ms window starts fresh and the old timer doesn't flip
+    // `copied` off mid-display.
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+    }
     if (toast && sym && msg) {
       sym.textContent = opts.symbol ?? "✓";
       msg.textContent = opts.label ?? "Copied!";
       toast.classList.add("show");
-      setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         toast.classList.remove("show");
         setCopied(false);
+        timerRef.current = null;
       }, 1800);
     } else {
       // Toast DOM not mounted — still clear the local flag.
-      setTimeout(() => setCopied(false), 1800);
+      timerRef.current = setTimeout(() => {
+        setCopied(false);
+        timerRef.current = null;
+      }, 1800);
     }
   }, []);
 

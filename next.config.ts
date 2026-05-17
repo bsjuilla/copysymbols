@@ -97,14 +97,18 @@ const nextConfig: NextConfig = {
       { source: "/symbol/pi-lower", destination: "/symbol/pi", permanent: true },
       { source: "/symbol/zero-width", destination: "/symbols/technical", permanent: true },
 
-      // Misleading gen-zodiac-* slugs — id text doesn't match the glyph/name
-      // (e.g. id says "uranus" but the symbol is Saturn). Redirect to the
-      // zodiac category so users land on a topical page.
-      { source: "/symbol/gen-zodiac-uranus-1777453978473", destination: "/symbols/zodiac", permanent: true },
-      { source: "/symbol/gen-zodiac-mars-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
-      { source: "/symbol/gen-zodiac-jupiter-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
-      { source: "/symbol/gen-zodiac-saturn-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
-      { source: "/symbol/gen-zodiac-venus-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
+      // Misleading gen-zodiac-* slugs — id text didn't match the glyph/name
+      // (e.g. id said "uranus" but the symbol was Saturn). The 5 data entries
+      // were renamed with a "-v2" suffix so the slug matches the glyph and
+      // doesn't collide with any old slug (the renames rotate planet names,
+      // so without a discriminator a request for "jupiter" would chain-301
+      // through to "earth"). These 301s point cached inbound links to the
+      // corrected slug.
+      { source: "/symbol/gen-zodiac-uranus-1777453978473", destination: "/symbol/gen-zodiac-saturn-1777453978473-v2", permanent: true },
+      { source: "/symbol/gen-zodiac-mars-symbol-1777710194996", destination: "/symbol/gen-zodiac-jupiter-symbol-1777710194996-v2", permanent: true },
+      { source: "/symbol/gen-zodiac-jupiter-symbol-1777710194996", destination: "/symbol/gen-zodiac-earth-symbol-1777710194996-v2", permanent: true },
+      { source: "/symbol/gen-zodiac-saturn-symbol-1777710194996", destination: "/symbol/gen-zodiac-neptune-symbol-1777710194996-v2", permanent: true },
+      { source: "/symbol/gen-zodiac-venus-symbol-1777710194996", destination: "/symbol/gen-zodiac-pluto-symbol-1777710194996-v2", permanent: true },
     ];
   },
 };
