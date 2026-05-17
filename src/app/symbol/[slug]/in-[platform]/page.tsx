@@ -4,6 +4,8 @@ import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 import { symbols } from "@/data/symbols";
 import { platformIds, getPlatform } from "@/data/collections/platforms";
+import SymbolCopyButtons from "@/components/SymbolCopyButtons";
+import CopyToast from "@/components/CopyToast";
 
 export const dynamicParams = false;
 
@@ -29,8 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = symbolById.get(slug);
   const p = getPlatform(platform);
   if (!s || !p) return { title: "Not found" };
-  const title = `${s.name} Symbol for ${p.name} — Copy & Paste | CopyChars`;
-  const description = `Use the ${s.name} symbol (${s.symbol}) in ${p.name}. One-click copy, platform-specific tips, related symbols.`;
+  // Short per-page title — root layout's metadata.title.template
+  // auto-appends the brand suffix, so we keep this short for SERP fit.
+  const title = `${s.name} for ${p.name} — Copy & Paste`;
+  // Vary description per platform using tagline + bioLimit so each of the
+  // 6 platform variants ships unique copy (avoid boilerplate dup penalty).
+  const description = `Add ${s.name} ${s.symbol} to your ${p.name} bio (limit ${p.bioLimit} chars) — ${p.tagline.toLowerCase()}. One-tap copy and ${p.name}-friendly related symbols.`;
   return {
     title,
     description,
@@ -71,12 +77,14 @@ export default async function SymbolInPlatformPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://www.copychars.com" },
       { "@type": "ListItem", position: 2, name: s!.name, item: `https://www.copychars.com/symbol/${s!.id}` },
-      { "@type": "ListItem", position: 3, name: `in ${p!.name}`, item: `https://www.copychars.com/symbol/${s!.id}/in-${p!.id}` },
+      { "@type": "ListItem", position: 3, name: p!.name, item: `https://www.copychars.com/symbols-for/${p!.id}` },
+      { "@type": "ListItem", position: 4, name: `${s!.name} for ${p!.name}`, item: `https://www.copychars.com/symbol/${s!.id}/in-${p!.id}` },
     ],
   };
 
   return (
     <>
+      <CopyToast />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -132,6 +140,8 @@ export default async function SymbolInPlatformPage({ params }: Props) {
               {s!.unicode}
             </div>
           )}
+          {/* Copy buttons — same component used on the parent symbol detail page. */}
+          <SymbolCopyButtons symbol={s!} />
         </div>
 
         {/* Platform-specific paragraph */}
