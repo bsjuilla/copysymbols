@@ -24,4 +24,15 @@ const encoded = b.encode("hello");
 const decoded = b.decode!(encoded);
 if (decoded !== "hello") throw new Error(`Braille round-trip failed: "${decoded}"`);
 
+// Braille digit round-trip
+const digitEnc = b.encode("hello 123");
+const digitDec = b.decode!(digitEnc);
+if (digitDec !== "hello 123") throw new Error(`Braille digit round-trip failed: "${digitDec}"`);
+
+// Pig-latin edge cases
+const pl = translatorById.get("english-to-pig-latin")!;
+if (pl.encode("rhythm") !== "rhythm") throw new Error(`pig-latin vowel-less: got "${pl.encode("rhythm")}"`);
+if (pl.encode("123 hello") !== "123 ellohay") throw new Error(`pig-latin mixed: got "${pl.encode("123 hello")}"`);
+if (pl.encode("Apple") !== "Appleway") throw new Error(`pig-latin capitalized vowel-start: got "${pl.encode("Apple")}"`);
+
 console.log("translators smoke test passed");

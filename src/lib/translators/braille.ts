@@ -16,7 +16,22 @@ function encode(input: string): string {
 
 const REVERSE = Object.fromEntries(Object.entries(MAP).map(([k, v]) => [v, k]));
 function decode(input: string): string {
-  return input.split("").map(c => REVERSE[c] ?? c).join("");
+  let out = "";
+  const chars = Array.from(input); // handle code points correctly
+  for (let i = 0; i < chars.length; i++) {
+    const c = chars[i];
+    if (c === "⠼" && i + 1 < chars.length) {
+      const next = chars[i + 1];
+      const numKey = "⠼" + next;
+      if (REVERSE[numKey]) {
+        out += REVERSE[numKey];
+        i++; // consumed the digit
+        continue;
+      }
+    }
+    out += REVERSE[c] ?? c;
+  }
+  return out;
 }
 
 export const brailleTranslator: Translator = {
