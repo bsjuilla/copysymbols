@@ -74,6 +74,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/binary-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // NEW (audit pass 2 Task 4) — text decorator tool
     { url: `${BASE}/text-decorator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // NEW (audit pass 3 Task 2) — translator index page (children at /translate/<id>)
+    { url: `${BASE}/translate`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Legal pages — low priority for SEO but needed in sitemap for completeness
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
