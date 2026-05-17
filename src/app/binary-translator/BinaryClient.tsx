@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 // Encode text → binary by going through UTF-8 bytes (handles emoji + non-Latin
 // natively). Each byte becomes 8 binary digits, separated by spaces.
@@ -9,28 +10,29 @@ function encode(text: string): string {
   return Array.from(bytes).map(b => b.toString(2).padStart(8, "0")).join(" ");
 }
 
-// Decode binary → text. Strip everything that isn't 0/1/space, group into
-// 8-bit bytes, then decode the byte array as UTF-8.
-function decode(binary: string): string {
+function decode(binary: string): { text: string; skipped: number } {
   const cleaned = binary.replace(/[^01\s]/g, "").trim();
-  if (!cleaned) return "";
-  // Split on whitespace; if user pasted a single unbroken binary string,
-  // split into 8-bit chunks.
+  if (!cleaned) return { text: "", skipped: 0 };
   const tokens = cleaned.split(/\s+/);
-  let bits = "";
-  for (const t of tokens) bits += t;
-  if (bits.length % 8 !== 0) {
-    // Pad with leading zeros to nearest byte. Better than dropping bits.
-    bits = bits.padStart(Math.ceil(bits.length / 8) * 8, "0");
-  }
   const bytes: number[] = [];
-  for (let i = 0; i < bits.length; i += 8) {
-    bytes.push(parseInt(bits.slice(i, i + 8), 2));
+  let skipped = 0;
+  if (tokens.length === 1 && tokens[0].length > 8) {
+    const t = tokens[0];
+    const padded = t.padStart(Math.ceil(t.length / 8) * 8, "0");
+    for (let i = 0; i < padded.length; i += 8) {
+      bytes.push(parseInt(padded.slice(i, i + 8), 2));
+    }
+  } else {
+    for (const t of tokens) {
+      if (!t) continue;
+      if (t.length < 1 || t.length > 8) { skipped++; continue; }
+      bytes.push(parseInt(t.padStart(8, "0"), 2));
+    }
   }
   try {
-    return new TextDecoder("utf-8", { fatal: false }).decode(new Uint8Array(bytes));
+    return { text: new TextDecoder("utf-8", { fatal: false }).decode(new Uint8Array(bytes)), skipped };
   } catch {
-    return "(invalid UTF-8)";
+    return { text: "(invalid UTF-8)", skipped };
   }
 }
 
@@ -39,12 +41,11 @@ type Mode = "encode" | "decode";
 export default function BinaryClient({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const [mode, setMode] = useState<Mode>("encode");
   const [input, setInput] = useState("");
-  const [copied, setCopied] = useState(false);
+  const { copy: copyToast, copied } = useCopyToast();
 
-  const output = useMemo(
-    () => mode === "encode" ? encode(input) : decode(input),
-    [input, mode]
-  );
+  const decoded = useMemo(() => decode(input), [input]);
+  const output = mode === "encode" ? encode(input) : decoded.text;
+  const decodeSkipped = mode === "decode" ? decoded.skipped : 0;
 
   const stats = useMemo(() => {
     if (mode === "encode") {
@@ -61,27 +62,10 @@ export default function BinaryClient({ faqs }: { faqs: Array<{ q: string; a: str
     setMode(m => m === "encode" ? "decode" : "encode");
   };
 
-  const copy = async () => {
-    if (!output) return;
-    try { await navigator.clipboard.writeText(output); }
-    catch {
-      const ta = document.createElement("textarea");
-      ta.value = output;
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    const toast = document.getElementById("global-toast");
-    const toastSym = document.getElementById("toast-symbol");
-    const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "01";
-      toastMsg.textContent = mode === "encode" ? "Copied binary" : "Copied text";
-      toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);
-    }
-  };
+  const copy = () => copyToast(output, {
+    symbol: "01",
+    label: mode === "encode" ? "Copied binary" : "Copied text",
+  });
 
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 24px" }}>
@@ -123,6 +107,11 @@ export default function BinaryClient({ faqs }: { faqs: Array<{ q: string; a: str
           onFocus={e => e.target.style.borderColor = "var(--accent)"}
           onBlur={e => e.target.style.borderColor = "var(--border)"}
         />
+        {decodeSkipped > 0 && (
+          <div style={{ marginTop: 8, fontSize: 12, color: "var(--coral)" }}>
+            Skipped {decodeSkipped} malformed {decodeSkipped === 1 ? "token" : "tokens"} (each binary group must be 1–8 bits).
+          </div>
+        )}
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>

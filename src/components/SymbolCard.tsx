@@ -69,18 +69,21 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
   }, [id, symbol, name]);
 
   return (
-    <div
+    <button
+      type="button"
       className={`symbol-card ${copied ? "copied" : ""} ${selected ? "copied" : ""}`}
       onClick={handleCopy}
       title={`${selectable ? "Select" : "Copy"} ${name}`}
-      style={{ position: "relative" }}
+      style={{ position: "relative", font: "inherit", color: "inherit", textAlign: "center", width: "100%" }}
     >
       {selectable && selected && (
         <div style={{ position: "absolute", top: 6, right: 6, width: 14, height: 14, borderRadius: "50%", background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: "var(--bg)" }}>✓</div>
       )}
       {!selectable && (
         <button
+          type="button"
           onClick={toggleFav}
+          aria-pressed={isFav}
           title={isFav ? "Remove from favourites" : "Add to favourites"}
           style={{ position: "absolute", top: 4, right: 4, background: "none", border: "none", cursor: "pointer", fontSize: 10, color: isFav ? "var(--accent)" : "var(--text3)", padding: 2, lineHeight: 1, opacity: 0.7, zIndex: 2 }}
         >
@@ -89,6 +92,6 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
       )}
       <span className="symbol-char" aria-hidden="true">{symbol}</span>
       <span className="symbol-name">{name}</span>
-    </div>
+    </button>
   );
 }

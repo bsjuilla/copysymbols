@@ -20,9 +20,47 @@ const items = [
   { symbol: "√", name: "Square Root", unicode: "U+221A", use: "Radical sign" },
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Pi Symbol", item: `${baseUrl}/pi-symbol` },
+      ],
+    },
+    {
+      "@type": "DefinedTerm",
+      name: "Pi Symbol",
+      termCode: "U+03C0",
+      description: "The pi symbol π (U+03C0) is the ratio of a circle's circumference to its diameter, approximately 3.14159265. Related forms include Π (U+03A0 uppercase pi), ∏ (U+220F n-ary product), τ (U+03C4 tau), and φ (U+03C6 phi).",
+      inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Greek Letters & Math Constants",
+        url: `${baseUrl}/symbols/greek`,
+      },
+      url: `${baseUrl}/pi-symbol`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "How do I type the pi symbol on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 227 on the numeric keypad to produce π." } },
+        { "@type": "Question", name: "How do I type the pi symbol on Mac?", acceptedAnswer: { "@type": "Answer", text: "Press Option + P to produce π." } },
+        { "@type": "Question", name: "What is the HTML entity for the pi symbol?", acceptedAnswer: { "@type": "Answer", text: "Use &pi; or the numeric reference &#960; to render π in HTML." } },
+        { "@type": "Question", name: "How do I write pi in LaTeX?", acceptedAnswer: { "@type": "Answer", text: "Use \\pi for lowercase π and \\Pi for uppercase Π in LaTeX math mode." } },
+        { "@type": "Question", name: "What does the pi symbol mean?", acceptedAnswer: { "@type": "Answer", text: "π is the ratio of a circle's circumference to its diameter, approximately 3.14159265." } },
+      ],
+    },
+  ],
+};
+
 export default function PiSymbolPage() {
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Pi Symbol π

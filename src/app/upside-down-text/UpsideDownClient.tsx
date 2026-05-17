@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 const FLIP: Record<string, string> = {
   a:"ɐ",b:"q",c:"ɔ",d:"p",e:"ǝ",f:"ɟ",g:"ƃ",h:"ɥ",i:"ᴉ",j:"ɾ",k:"ʞ",l:"l",m:"ɯ",n:"u",o:"o",p:"d",q:"b",r:"ɹ",s:"s",t:"ʇ",u:"n",v:"ʌ",w:"ʍ",x:"x",y:"ʎ",z:"z",
@@ -16,30 +17,13 @@ function flipText(s: string): string {
 
 export default function UpsideDownClient({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const [input, setInput] = useState("hello world");
-  const [copied, setCopied] = useState(false);
+  const { copy: copyToast, copied } = useCopyToast();
   const output = flipText(input);
 
-  const copy = async () => {
-    if (!output) return;
-    try { await navigator.clipboard.writeText(output); }
-    catch {
-      const ta = document.createElement("textarea");
-      ta.value = output;
-      document.body.appendChild(ta); ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    const toast = document.getElementById("global-toast");
-    const toastSym = document.getElementById("toast-symbol");
-    const toastMsg = document.getElementById("toast-message");
-    if (toast && toastSym && toastMsg) {
-      toastSym.textContent = "ǝ";
-      toastMsg.textContent = "Copied upside down text";
-      toast.classList.add("show");
-      setTimeout(() => { toast.classList.remove("show"); setCopied(false); }, 1800);
-    }
-  };
+  const copy = () => copyToast(output, {
+    symbol: "ǝ",
+    label: "Copied upside down text",
+  });
 
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 24px" }}>

@@ -10,197 +10,292 @@ import { emojiCombos } from "@/data/collections/emoji-combos";
 import { hearts } from "@/data/collections/hearts";
 import { textArt } from "@/data/collections/text-art";
 import { bioTemplates } from "@/data/collections/bio-templates";
+import { platformIds } from "@/data/collections/platforms";
 import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
+import { translators } from "@/lib/translators";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.copychars.com";
+const BASE = "https://www.copychars.com";
 
-  const staticPages = [
-    { url: base, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
-    { url: `${base}/symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/emoji`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/kaomoji`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/text-art`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${base}/fancy-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/text-repeater`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+// curated = the hand-authored symbols; excludes the gen-* slugs from
+// generated-symbols.ts. The cross matrix /symbol/<slug>/in-<platform> is
+// only built for curated symbols (matches generateStaticParams in the page).
+const curatedSymbols = symbols.filter(s => !s.id.startsWith("gen-"));
+
+// Next 16 multi-sitemap mechanism: generateSitemaps() returns the family
+// list, and the default export receives { id: Promise<string> } and returns
+// only that family's URLs. Output paths are /sitemap/<id>.xml plus the
+// auto-generated /sitemap.xml index pointing at each child.
+//
+// id was a number/string in <=15 and became Promise<string> in v16
+// (see node_modules/next/dist/docs/.../sitemap.md version history).
+export async function generateSitemaps() {
+  return [
+    { id: "static" },
+    { id: "symbols" },
+    { id: "emoji" },
+    { id: "kaomoji" },
+    { id: "collections" },
+    { id: "new-tools" },
+  ];
+}
+
+export default async function sitemap(props: {
+  id: Promise<string>;
+}): Promise<MetadataRoute.Sitemap> {
+  const id = await props.id;
+  switch (id) {
+    case "static":
+      return dedupe(staticSitemap());
+    case "symbols":
+      return dedupe(symbolsSitemap());
+    case "emoji":
+      return dedupe(emojiSitemap());
+    case "kaomoji":
+      return dedupe(kaomojiSitemap());
+    case "collections":
+      return dedupe(collectionsSitemap());
+    case "new-tools":
+      return dedupe(newToolsSitemap());
+    default:
+      return [];
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Family: static — top-level routes, tool pages, blog posts, legal pages,
+// dedicated symbol landing pages, and the /symbols-for/<platform> hub pages.
+// -----------------------------------------------------------------------------
+function staticSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${BASE}/symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/emoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/text-art`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/fancy-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/text-repeater`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Blog index
-    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     // NOTE: /community and /search are intentionally OMITTED.
     //   /community  — empty user-content page (~40 words live content); excluded
     //                 to avoid "Crawled — currently not indexed" noise.
     //                 Page itself sets robots: { index: false } as belt-and-braces.
     //   /search     — robots.ts disallows /search and the page sets index:false.
     // Mega pages
-    { url: `${base}/hearts`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/stars`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/borders`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/lenny-face`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/bullet-points`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/bio-templates`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
-    { url: `${base}/emoji-combos`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${base}/bio-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE}/hearts`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/stars`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/borders`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/lenny-face`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/bullet-points`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/bio-templates`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/emoji-combos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/bio-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Tools
-    { url: `${base}/small-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/superscript-generator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/strikethrough-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/aesthetic-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/mirror-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/symbol-builder`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/character-counter`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/upside-down-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/zalgo-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/invisible-character`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/username-generator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/morse-code`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/binary-translator`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE}/small-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/superscript-generator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/strikethrough-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/aesthetic-text`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/mirror-text`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/symbol-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/character-counter`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/upside-down-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/zalgo-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/invisible-character`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/username-generator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/morse-code`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/binary-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // NEW (audit pass 2 Task 4) — text decorator tool
+    { url: `${BASE}/text-decorator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Legal pages — low priority for SEO but needed in sitemap for completeness
-    { url: `${base}/privacy`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
-    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
-    { url: `${base}/cookies`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
-    // NEW — Dedicated symbol pages
-    { url: `${base}/checkmark`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/degree-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/infinity-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/pi-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/copyright-symbol`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/arrow-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${base}/flower-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/sparkle-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/smiley-face-text`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/number-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    // Platform pages — OMITTED until the /symbols-for/[platform] routes are built.
-    // These returned 404 when present in the sitemap (no page.tsx files exist yet).
+    { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    // Dedicated symbol pages
+    { url: `${BASE}/checkmark`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/degree-symbol`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/infinity-symbol`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/pi-symbol`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/copyright-symbol`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/arrow-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/flower-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/sparkle-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/smiley-face-text`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/number-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Blog — original
-    { url: `${base}/blog/how-to-type-copyright`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
-    { url: `${base}/blog/currency-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
-    { url: `${base}/blog/trademark-vs-registered`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
-    { url: `${base}/blog/greek-alphabet-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.7 },
-    { url: `${base}/blog/instagram-bio-lines`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${BASE}/blog/how-to-type-copyright`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${BASE}/blog/currency-symbols-list`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${BASE}/blog/trademark-vs-registered`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${BASE}/blog/greek-alphabet-list`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${BASE}/blog/instagram-bio-lines`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     // Blog — new
-    { url: `${base}/blog/check-mark-symbol`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/degree-symbol-copy-paste`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/infinity-symbol`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/arrow-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/star-symbols`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/heart-symbols`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/discord-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/blog/instagram-symbols`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
-    { url: `${base}/blog/math-symbols-list`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
-    { url: `${base}/blog/bullet-point-copy-paste`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.8 },
+    { url: `${BASE}/blog/check-mark-symbol`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/degree-symbol-copy-paste`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/infinity-symbol`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/arrow-symbols-list`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/star-symbols`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/heart-symbols`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/discord-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/instagram-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/math-symbols-list`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE}/blog/bullet-point-copy-paste`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
   ];
 
-  const categoryPages = categories.map(cat => ({
-    url: `${base}/symbols/${cat.id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
+  // /symbols-for/<platform> hub pages (introduced audit pass 1).
+  const platformPages: MetadataRoute.Sitemap = platformIds.map(p => ({
+    url: `${BASE}/symbols-for/${p}`,
+    lastModified: now,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  const symbolPages = symbols.map(s => ({
-    url: `${base}/symbol/${s.id}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  return [...staticPages, ...platformPages];
+}
+
+// -----------------------------------------------------------------------------
+// Family: symbols — category indexes, per-symbol pages, the new cross matrix
+// /symbol/<slug>/in-<platform>, and fancy-text style sub-pages.
+// -----------------------------------------------------------------------------
+function symbolsSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  const categoryPages: MetadataRoute.Sitemap = categories.map(cat => ({
+    url: `${BASE}/symbols/${cat.id}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const symbolPages: MetadataRoute.Sitemap = symbols.map(s => ({
+    url: `${BASE}/symbol/${s.id}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.6,
   }));
 
-  const emojiPages = emoji.map(e => ({
-    url: `${base}/emoji/${e.id}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
+  // NEW (audit pass 2 Task 5) — /symbol/<slug>/in-<platform> cross matrix.
+  // Built only from curated symbols (gen-* slugs are excluded; matches the
+  // page's generateStaticParams). ~curatedSymbols.length × platformIds.length.
+  const crossMatrixPages: MetadataRoute.Sitemap = curatedSymbols.flatMap(s =>
+    platformIds.map(p => ({
+      url: `${BASE}/symbol/${s.id}/in-${p}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    })),
+  );
+
+  // Per-style fancy-text sub-pages.
+  const fancyTextStylePages: MetadataRoute.Sitemap = fancyTextStyles.map(s => ({
+    url: `${BASE}/fancy-text/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
+  return [...categoryPages, ...symbolPages, ...crossMatrixPages, ...fancyTextStylePages];
+}
+
+// -----------------------------------------------------------------------------
+// Family: emoji — per-emoji pages.
+// -----------------------------------------------------------------------------
+function emojiSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  return emoji.map(e => ({
+    url: `${BASE}/emoji/${e.id}`,
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+}
+
+// -----------------------------------------------------------------------------
+// Family: kaomoji — per-kaomoji pages, with duplicates filtered out.
+// -----------------------------------------------------------------------------
+function kaomojiSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   // Skip duplicate-named kaomoji (-2, -3 slug suffixes) — they're noindex'd
   // at the page level (see /kaomoji/[slug]/page.tsx) to stop Google reporting
   // them as duplicate canonical (GSC 2026-05-09: /kaomoji/delighted-2).
-  const kaomojiPages = allKaomoji
+  return allKaomoji
     .filter(k => !k.isDuplicate)
     .map(k => ({
-      url: `${base}/kaomoji/${k.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
+      url: `${BASE}/kaomoji/${k.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly",
       priority: 0.6,
     }));
+}
+
+// -----------------------------------------------------------------------------
+// Family: collections — per-item pages for bullets, borders, stars, lenny
+// faces, emoji combos, hearts, text art, bio templates.
+// -----------------------------------------------------------------------------
+function collectionsSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
 
   // Per-bullet-point SSG pages (introduced 2026-05-11). Rich per-item content
   // at /bullet-points/<slug> — each entry has ~400 words of templated-but-
   // item-specific content to avoid the thin-page indexing problem.
-  const bulletPages = bullets.map(b => ({
-    url: `${base}/bullet-points/${b.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const bulletPages: MetadataRoute.Sitemap = bullets.map(b => ({
+    url: `${BASE}/bullet-points/${b.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
   // Per-border SSG pages (introduced 2026-05-11). Same rich-page strategy
   // as bullets — full body content per divider for indexability.
-  const borderPages = borders.map(b => ({
-    url: `${base}/borders/${b.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const borderPages: MetadataRoute.Sitemap = borders.map(b => ({
+    url: `${BASE}/borders/${b.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const starPages = stars.map(s => ({
-    url: `${base}/stars/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const starPages: MetadataRoute.Sitemap = stars.map(s => ({
+    url: `${BASE}/stars/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const lennyPages = lennyFaces.map(l => ({
-    url: `${base}/lenny-face/${l.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const lennyPages: MetadataRoute.Sitemap = lennyFaces.map(l => ({
+    url: `${BASE}/lenny-face/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const comboPages = emojiCombos.map(c => ({
-    url: `${base}/emoji-combos/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const comboPages: MetadataRoute.Sitemap = emojiCombos.map(c => ({
+    url: `${BASE}/emoji-combos/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const heartPages = hearts.map(h => ({
-    url: `${base}/hearts/${h.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const heartPages: MetadataRoute.Sitemap = hearts.map(h => ({
+    url: `${BASE}/hearts/${h.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const textArtPages = textArt.map(t => ({
-    url: `${base}/text-art/${t.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly" as const,
+  const textArtPages: MetadataRoute.Sitemap = textArt.map(t => ({
+    url: `${BASE}/text-art/${t.slug}`,
+    lastModified: now,
+    changeFrequency: "yearly",
     priority: 0.7,
   }));
 
-  const bioTemplatePages = bioTemplates.map(b => ({
-    url: `${base}/bio-templates/${b.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
+  const bioTemplatePages: MetadataRoute.Sitemap = bioTemplates.map(b => ({
+    url: `${BASE}/bio-templates/${b.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  // Per-style fancy-text sub-pages (introduced 2026-05-14). Each style targets
-  // its own long-tail keyword (e.g. "bold text generator", "cursive text
-  // generator") via /fancy-text/[slug] with focused metadata + FAQ schema.
-  const fancyTextStylePages = fancyTextStyles.map(s => ({
-    url: `${base}/fancy-text/${s.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  // Dedupe by URL — generated-symbols.ts can contain duplicate `id` values
-  // that would otherwise emit the same /symbol/<id> URL many times.
-  const all = [
-    ...staticPages,
-    ...categoryPages,
-    ...symbolPages,
-    ...emojiPages,
-    ...kaomojiPages,
+  return [
     ...bulletPages,
     ...borderPages,
     ...starPages,
@@ -209,10 +304,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...heartPages,
     ...textArtPages,
     ...bioTemplatePages,
-    ...fancyTextStylePages,
   ];
+}
+
+// -----------------------------------------------------------------------------
+// Family: new-tools — the /translate/<pair> family (audit pass 2 Task 3).
+// Kept in its own sitemap so future translator additions don't churn the
+// large symbols sitemap.
+// -----------------------------------------------------------------------------
+function newToolsSitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  return translators.map(t => ({
+    url: `${BASE}/translate/${t.id}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+}
+
+// -----------------------------------------------------------------------------
+// Helper: dedupe by URL.
+// generated-symbols.ts can contain duplicate `id` values that would otherwise
+// emit the same /symbol/<id> URL many times; we also dedupe defensively in
+// every family in case future data sources overlap.
+// -----------------------------------------------------------------------------
+function dedupe(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
   const seen = new Set<string>();
-  return all.filter(entry => {
+  return entries.filter(entry => {
     if (seen.has(entry.url)) return false;
     seen.add(entry.url);
     return true;

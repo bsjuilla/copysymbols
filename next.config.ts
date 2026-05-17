@@ -29,6 +29,7 @@ const SECURITY_HEADERS = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
   },
+  { key: "Content-Signal", value: "search=yes, ai-input=yes, ai-train=no" },
 ];
 
 const nextConfig: NextConfig = {
@@ -95,6 +96,15 @@ const nextConfig: NextConfig = {
       // Renamed/dropped slugs Google still has cached
       { source: "/symbol/pi-lower", destination: "/symbol/pi", permanent: true },
       { source: "/symbol/zero-width", destination: "/symbols/technical", permanent: true },
+
+      // Misleading gen-zodiac-* slugs — id text doesn't match the glyph/name
+      // (e.g. id says "uranus" but the symbol is Saturn). Redirect to the
+      // zodiac category so users land on a topical page.
+      { source: "/symbol/gen-zodiac-uranus-1777453978473", destination: "/symbols/zodiac", permanent: true },
+      { source: "/symbol/gen-zodiac-mars-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
+      { source: "/symbol/gen-zodiac-jupiter-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
+      { source: "/symbol/gen-zodiac-saturn-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
+      { source: "/symbol/gen-zodiac-venus-symbol-1777710194996", destination: "/symbols/zodiac", permanent: true },
     ];
   },
 };

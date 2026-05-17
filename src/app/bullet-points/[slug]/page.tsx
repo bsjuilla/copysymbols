@@ -64,6 +64,25 @@ export default async function BulletDetailPage({ params }: Props) {
     return cp != null ? "U+" + cp.toString(16).toUpperCase().padStart(4, "0") : "";
   }).filter(Boolean);
 
+  const faqs = [
+    {
+      q: `What is the ${b!.name} symbol?`,
+      a: `The ${b!.name} (${b!.char}) is a Unicode character in the ${catMeta?.name ?? b!.category} family${b!.unicode ? `, with the codepoint ${b!.unicode}` : ""}. It looks like a ${b!.looksLike} and works as a list marker, decorative bullet, or visual separator in any text field that accepts Unicode.`,
+    },
+    {
+      q: `How do I type ${b!.char} on a keyboard?`,
+      a: `The fastest way is to click the ${b!.char} at the top of this page — it copies to your clipboard instantly. There's no standard keyboard shortcut for this bullet on most keyboards${b!.unicode ? `, but you can also enter it as the Unicode codepoint ${b!.unicode} via your operating system's character picker` : ""}.`,
+    },
+    {
+      q: `Where does ${b!.char} render correctly?`,
+      a: `${b!.char} is part of the Unicode standard, so it renders on iPhone, Android, Mac, Windows, Linux, modern browsers, Word, Google Docs, Notion, Instagram, LinkedIn, Discord, Slack, and almost every app made in the last decade. Older terminals or systems missing the relevant font may show a fallback box.`,
+    },
+    {
+      q: `Can I use ${b!.char} in my Instagram or LinkedIn bio?`,
+      a: `Yes — Unicode bullets work directly in Instagram bios, LinkedIn headlines, Twitter posts, TikTok bios, and YouTube descriptions. Just copy ${b!.char} from this page and paste it where you write your bio. No special formatting needed.`,
+    },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -86,6 +105,14 @@ export default async function BulletDetailPage({ params }: Props) {
           url: `${baseUrl}/bullet-points`,
         },
         url: `${baseUrl}/bullet-points/${slug}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -236,24 +263,7 @@ export default async function BulletDetailPage({ params }: Props) {
         {/* FAQ for SEO depth */}
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            {
-              q: `What is the ${b!.name} symbol?`,
-              a: `The ${b!.name} (${b!.char}) is a Unicode character in the ${catMeta?.name ?? b!.category} family${b!.unicode ? `, with the codepoint ${b!.unicode}` : ""}. It looks like a ${b!.looksLike} and works as a list marker, decorative bullet, or visual separator in any text field that accepts Unicode.`,
-            },
-            {
-              q: `How do I type ${b!.char} on a keyboard?`,
-              a: `The fastest way is to click the ${b!.char} at the top of this page — it copies to your clipboard instantly. There&apos;s no standard keyboard shortcut for this bullet on most keyboards${b!.unicode ? `, but you can also enter it as the Unicode codepoint ${b!.unicode} via your operating system&apos;s character picker` : ""}.`,
-            },
-            {
-              q: `Where does ${b!.char} render correctly?`,
-              a: `${b!.char} is part of the Unicode standard, so it renders on iPhone, Android, Mac, Windows, Linux, modern browsers, Word, Google Docs, Notion, Instagram, LinkedIn, Discord, Slack, and almost every app made in the last decade. Older terminals or systems missing the relevant font may show a fallback box (□).`,
-            },
-            {
-              q: `Can I use ${b!.char} in my Instagram or LinkedIn bio?`,
-              a: `Yes — Unicode bullets work directly in Instagram bios, LinkedIn headlines, Twitter posts, TikTok bios, and YouTube descriptions. Just copy ${b!.char} from this page and paste it where you write your bio. No special formatting needed.`,
-            },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

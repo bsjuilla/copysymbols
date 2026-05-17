@@ -64,23 +64,41 @@ export default async function SymbolDetailPage({ params }: Props) {
     { label: "Category", value: cat?.name || "", color: "var(--accent)", icon: "≡" },
   ];
 
-  // JSON-LD: BreadcrumbList for this symbol detail page so Google understands
-  // the site's category hierarchy when indexing 1,000+ symbol pages.
+  // JSON-LD: BreadcrumbList + DefinedTerm for this symbol detail page so Google
+  // understands the site's category hierarchy when indexing 1,000+ symbol pages.
+  // Skip schema entirely for gen-* slugs (noindex'd, no schema waste).
   const baseUrl = "https://www.copychars.com";
-  const jsonLd = {
+  const isGenerated = slug.startsWith("gen-");
+  const jsonLd = isGenerated ? null : {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
-      ...(cat
-        ? [{ "@type": "ListItem", position: 3, name: cat.name, item: `${baseUrl}/symbols/${cat.id}` }]
-        : []),
+    "@graph": [
       {
-        "@type": "ListItem",
-        position: cat ? 4 : 3,
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+          { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+          ...(cat
+            ? [{ "@type": "ListItem", position: 3, name: cat.name, item: `${baseUrl}/symbols/${cat.id}` }]
+            : []),
+          {
+            "@type": "ListItem",
+            position: cat ? 4 : 3,
+            name: s!.name,
+            item: `${baseUrl}/symbol/${slug}`,
+          },
+        ],
+      },
+      {
+        "@type": "DefinedTerm",
         name: s!.name,
-        item: `${baseUrl}/symbol/${slug}`,
+        description: `${s!.name} (${s!.symbol}) — Unicode ${s!.unicode}, HTML ${s!.html}. ${richDesc}`,
+        termCode: s!.unicode,
+        inDefinedTermSet: {
+          "@type": "DefinedTermSet",
+          name: "Unicode Symbols",
+          url: `${baseUrl}/symbols`,
+        },
+        url: `${baseUrl}/symbol/${slug}`,
       },
     ],
   };
@@ -88,10 +106,12 @@ export default async function SymbolDetailPage({ params }: Props) {
   return (
     <>
       <CopyToast />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
 
       <style>{`
         .sym-hero-card {

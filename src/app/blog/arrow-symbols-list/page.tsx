@@ -2,14 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Arrow Symbols — Complete List of 200+ Copy Paste Arrows";
+const DESCRIPTION = "Every Unicode arrow symbol with name and code. Right, left, up, down, double, curved, bold, and decorative arrows. Click any to copy.";
+const SLUG = "arrow-symbols-list";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Arrow Symbols — Complete List of 200+ Copy Paste Arrows",
-  description: "Every Unicode arrow symbol with name and code. Right, left, up, down, double, curved, bold, and decorative arrows. Click any to copy.",
-  ...canonical("/blog/arrow-symbols-list"),
+  title: TITLE,
+  description: DESCRIPTION,
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 export default function BlogPost() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 28, fontSize: 13, color: "var(--text3)" }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
@@ -33,5 +54,6 @@ export default function BlogPost() {
 <p><strong>Windows:</strong> Alt+26 for &rarr;, Alt+27 for &larr;, Alt+24 for &uarr;, Alt+25 for &darr;.</p>
 <p style="margin-top:0.75rem"><strong>HTML:</strong> &amp;rarr; &amp;larr; &amp;uarr; &amp;darr; for the four basic arrows.</p>` }} />
     </div>
+    </>
   );
 }

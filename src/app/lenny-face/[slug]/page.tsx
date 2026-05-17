@@ -60,6 +60,13 @@ export default async function LennyDetailPage({ params }: Props) {
   const parent = l!.variantOf ? getLennyBySlug(l!.variantOf) : null;
 
   const baseUrl = "https://www.copychars.com";
+  const faqs = [
+    { q: `What does ${l!.face} mean?`, a: `${l!.name} is read as the ${mood?.name ?? l!.mood} variant of the Lenny face family. ${l!.usageNote}` },
+    { q: `How do I type the Lenny face on a keyboard?`, a: `There's no keyboard shortcut for Lenny — it's built from combining diacritics that aren't on standard layouts. Copy ${l!.face} from this page (one click on the big copy button above) and paste it anywhere with Ctrl+V (Cmd+V on Mac).` },
+    { q: `Will ${l!.face} render correctly on every platform?`, a: `On modern iOS, Android, Mac, Windows, Linux and web browsers — yes. Older systems or apps with limited Unicode support may render the combining marks as separate characters or omit them entirely, breaking the eyebrow placement. Test in your target app before relying on it.` },
+    { q: `Where did Lenny faces come from?`, a: `The original ( ͡° ͜ʖ ͡°) appeared on 4chan in 2012 and spread through Reddit, Discord, and the wider internet as a versatile reaction face. The "Lenny" name comes from a comment that called the leering smile "Lenny". Hundreds of variants now exist — this site catalogs the most useful 150.` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -81,6 +88,14 @@ export default async function LennyDetailPage({ params }: Props) {
           url: `${baseUrl}/lenny-face`,
         },
         url: `${baseUrl}/lenny-face/${slug}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -214,12 +229,7 @@ export default async function LennyDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `What does ${l!.face} mean?`, a: `${l!.name} is read as the ${mood?.name ?? l!.mood} variant of the Lenny face family. ${l!.usageNote}` },
-            { q: `How do I type the Lenny face on a keyboard?`, a: `There's no keyboard shortcut for Lenny — it's built from combining diacritics that aren't on standard layouts. Copy ${l!.face} from this page (one click on the big copy button above) and paste it anywhere with Ctrl+V (Cmd+V on Mac).` },
-            { q: `Will ${l!.face} render correctly on every platform?`, a: `On modern iOS, Android, Mac, Windows, Linux and web browsers — yes. Older systems or apps with limited Unicode support may render the combining marks as separate characters or omit them entirely, breaking the eyebrow placement. Test in your target app before relying on it.` },
-            { q: `Where did Lenny faces come from?`, a: `The original ( ͡° ͜ʖ ͡°) appeared on 4chan in 2012 and spread through Reddit, Discord, and the wider internet as a versatile reaction face. The "Lenny" name comes from a comment that called the leering smile "Lenny". Hundreds of variants now exist — this site catalogs the most useful 150.` },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

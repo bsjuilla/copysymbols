@@ -18,9 +18,47 @@ const items = [
   { symbol: "∫", name: "Integral", unicode: "U+222B", use: "Calculus integral" },
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Infinity Symbol", item: `${baseUrl}/infinity-symbol` },
+      ],
+    },
+    {
+      "@type": "DefinedTerm",
+      name: "Infinity Symbol",
+      termCode: "U+221E",
+      description: "The infinity symbol ∞ (U+221E) represents endlessness in mathematics, philosophy, and popular culture. Related forms include ⧞ (U+29DE), ♾ (U+267E), ∝ (U+221D), ≈ (U+2248), and ∫ (U+222B).",
+      inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Unicode Symbols",
+        url: `${baseUrl}/symbols`,
+      },
+      url: `${baseUrl}/infinity-symbol`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "How do I type the infinity symbol on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 236 on the numeric keypad to produce ∞." } },
+        { "@type": "Question", name: "How do I type the infinity symbol on Mac?", acceptedAnswer: { "@type": "Answer", text: "Press Option + 5 to produce ∞." } },
+        { "@type": "Question", name: "What is the HTML entity for the infinity symbol?", acceptedAnswer: { "@type": "Answer", text: "Use &infin; or the numeric reference &#8734; to render ∞ in HTML." } },
+        { "@type": "Question", name: "How do I write infinity in LaTeX?", acceptedAnswer: { "@type": "Answer", text: "Use \\infty in math mode to render ∞ in LaTeX documents." } },
+        { "@type": "Question", name: "What does the infinity symbol mean?", acceptedAnswer: { "@type": "Answer", text: "The ∞ sign represents endlessness in mathematics, philosophy, and popular culture." } },
+      ],
+    },
+  ],
+};
+
 export default function InfinitySymbolPage() {
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Infinity Symbol ∞

@@ -18,9 +18,47 @@ const items = [
   { symbol: "″", name: "Double Prime", unicode: "U+2033", use: "Seconds of arc" },
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Degree Symbol", item: `${baseUrl}/degree-symbol` },
+      ],
+    },
+    {
+      "@type": "DefinedTerm",
+      name: "Degree Symbol",
+      termCode: "U+00B0",
+      description: "The degree sign ° (U+00B0) is used for temperatures and angles. Related forms include ℃ (U+2103 Celsius), ℉ (U+2109 Fahrenheit), ′ (U+2032 arc minute), and ″ (U+2033 arc second).",
+      inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Unicode Symbols",
+        url: `${baseUrl}/symbols`,
+      },
+      url: `${baseUrl}/degree-symbol`,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "How do I type the degree symbol on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 0176 on the numeric keypad to produce °." } },
+        { "@type": "Question", name: "How do I type the degree symbol on Mac?", acceptedAnswer: { "@type": "Answer", text: "Press Option + Shift + 8 to produce °." } },
+        { "@type": "Question", name: "How do I type the degree symbol on iPhone or Android?", acceptedAnswer: { "@type": "Answer", text: "Hold the 0 key on the iPhone, iPad, or Android numeric keyboard — ° appears in the popup." } },
+        { "@type": "Question", name: "What is the HTML entity for the degree symbol?", acceptedAnswer: { "@type": "Answer", text: "Use &deg; or the numeric reference &#176; to render ° in HTML." } },
+        { "@type": "Question", name: "How do I insert a degree symbol in Google Docs?", acceptedAnswer: { "@type": "Answer", text: "Go to Insert then Special characters and search 'degree' to insert °." } },
+      ],
+    },
+  ],
+};
+
 export default function DegreeSymbolPage() {
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Degree Symbol °

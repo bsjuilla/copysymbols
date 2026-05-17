@@ -2,14 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Star Symbols ★ ☆ Copy & Paste — Every Star Character";
+const DESCRIPTION = "Copy star symbols instantly. Filled stars, outline stars, sparkle stars, and emoji stars. Complete guide with Unicode values and uses.";
+const SLUG = "star-symbols";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Star Symbols ★ ☆ Copy & Paste — Every Star Character",
-  description: "Copy star symbols instantly. Filled stars, outline stars, sparkle stars, and emoji stars. Complete guide with Unicode values and uses.",
-  ...canonical("/blog/star-symbols"),
+  title: TITLE,
+  description: DESCRIPTION,
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 export default function BlogPost() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 28, fontSize: 13, color: "var(--text3)" }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
@@ -32,5 +53,6 @@ export default function BlogPost() {
 <p><strong>Windows:</strong> Alt+9733 for &#9733;, Alt+9734 for &#9734;.</p>
 <p style="margin-top:0.75rem"><strong>HTML:</strong> &amp;#9733; for &#9733;, &amp;#9734; for &#9734;.</p>` }} />
     </div>
+    </>
   );
 }

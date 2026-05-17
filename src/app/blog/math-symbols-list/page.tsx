@@ -2,14 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Math Symbols — Complete Unicode Mathematics Reference";
+const DESCRIPTION = "Complete list of math symbols. Operators, comparison, calculus, set theory, and logic symbols with Unicode values and HTML codes.";
+const SLUG = "math-symbols-list";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Math Symbols — Complete Unicode Mathematics Reference",
-  description: "Complete list of math symbols. Operators, comparison, calculus, set theory, and logic symbols with Unicode values and HTML codes.",
-  ...canonical("/blog/math-symbols-list"),
+  title: TITLE,
+  description: DESCRIPTION,
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 export default function BlogPost() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 28, fontSize: 13, color: "var(--text3)" }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
@@ -37,5 +58,6 @@ export default function BlogPost() {
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Logic Symbols</h2>
 <p><strong>&and; (U+2227)</strong> AND &bull; <strong>&or; (U+2228)</strong> OR &bull; <strong>&not; (U+00AC)</strong> NOT &bull; <strong>&rArr; (U+21D2)</strong> implies &bull; <strong>&hArr; (U+21D4)</strong> iff &bull; <strong>&#8756; (U+2234)</strong> therefore &bull; <strong>&#8757; (U+2235)</strong> because.</p>` }} />
     </div>
+    </>
   );
 }

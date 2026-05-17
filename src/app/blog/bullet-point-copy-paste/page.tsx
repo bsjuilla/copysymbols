@@ -2,14 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Bullet Point Symbols • Copy & Paste — All Bullet Characters";
+const DESCRIPTION = "Copy bullet point symbols instantly. Round, square, arrow, and hollow bullets for lists, bios, and documents. Keyboard shortcuts included.";
+const SLUG = "bullet-point-copy-paste";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Bullet Point Symbols • Copy & Paste — All Bullet Characters",
-  description: "Copy bullet point symbols instantly. Round, square, arrow, and hollow bullets for lists, bios, and documents. Keyboard shortcuts included.",
-  ...canonical("/blog/bullet-point-copy-paste"),
+  title: TITLE,
+  description: DESCRIPTION,
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 export default function BlogPost() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 28, fontSize: 13, color: "var(--text3)" }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
@@ -38,5 +59,6 @@ export default function BlogPost() {
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">How to Type &bull; on Any Device</h2>
 <p><strong>Windows:</strong> Alt+7 or Alt+0149. <strong>Mac:</strong> Option+8. <strong>HTML:</strong> &amp;bull; or &amp;#8226;.</p>` }} />
     </div>
+    </>
   );
 }

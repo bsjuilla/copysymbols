@@ -67,6 +67,13 @@ export default async function HeartDetailPage({ params }: Props) {
   const isMultiline = h!.char.includes("\n");
   const isWide = charLength > 6 || isMultiline;
 
+  const faqs = [
+    { q: `What does the ${h!.name} symbol mean?`, a: `${h!.name} ${h!.char} is a heart in the ${catMeta?.name ?? h!.category} family. ${h!.usageNote}` },
+    { q: `How do I type ${h!.char} on a keyboard?`, a: `Click the ${h!.char} at the top of this page — it copies to your clipboard instantly. On Mac you can also press Option+Shift+2 for ™, but there is no built-in keyboard shortcut for most hearts${h!.unicode ? `. You can enter it via Unicode input as ${h!.unicode}` : ""}.` },
+    { q: `Is ${h!.name} appropriate for a non-romantic context?`, a: h!.category === "Romance" ? `This heart reads as explicitly romantic. For friends, family or platonic use, prefer 💛, 💜, 🩷, or the plain ♡ outline heart.` : h!.category === "Combo" ? `Yes — combo hearts read as decorative aesthetic rather than romantic. They suit bios, captions, and casual posts.` : `Yes — most hearts read as friendly affection or general "love" rather than strictly romantic. Context (and the recipient) shapes the read.` },
+    { q: `Will ${h!.char} render correctly on every device?`, a: `On modern iOS (≥14), Android (≥11), Mac, Windows 10+, and modern browsers — yes. Some newer hearts (🩷 🩵 🩶 added 2022, 🫀 🫁 🫶 added 2021-22) and ZWJ combos (❤️‍🔥) require recent OS versions; older devices may show fallbacks.` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -89,6 +96,14 @@ export default async function HeartDetailPage({ params }: Props) {
           url: `${baseUrl}/hearts`,
         },
         url: `${baseUrl}/hearts/${slug}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -243,12 +258,7 @@ export default async function HeartDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `What does the ${h!.name} symbol mean?`, a: `${h!.name} ${h!.char} is a heart in the ${catMeta?.name ?? h!.category} family. ${h!.usageNote}` },
-            { q: `How do I type ${h!.char} on a keyboard?`, a: `Click the ${h!.char} at the top of this page — it copies to your clipboard instantly. On Mac you can also press Option+Shift+2 for ™, but there is no built-in keyboard shortcut for most hearts${h!.unicode ? `. You can enter it via Unicode input as ${h!.unicode}` : ""}.` },
-            { q: `Is ${h!.name} appropriate for a non-romantic context?`, a: h!.category === "Romance" ? `This heart reads as explicitly romantic. For friends, family or platonic use, prefer 💛, 💜, 🩷, or the plain ♡ outline heart.` : h!.category === "Combo" ? `Yes — combo hearts read as decorative aesthetic rather than romantic. They suit bios, captions, and casual posts.` : `Yes — most hearts read as friendly affection or general "love" rather than strictly romantic. Context (and the recipient) shapes the read.` },
-            { q: `Will ${h!.char} render correctly on every device?`, a: `On modern iOS (≥14), Android (≥11), Mac, Windows 10+, and modern browsers — yes. Some newer hearts (🩷 🩵 🩶 added 2022, 🫀 🫁 🫶 added 2021-22) and ZWJ combos (❤️‍🔥) require recent OS versions; older devices may show fallbacks.` },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

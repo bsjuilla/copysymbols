@@ -2,11 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Greek Alphabet Symbols — Complete List α β γ Copy & Paste";
+const DESCRIPTION = "Complete Greek alphabet with uppercase and lowercase letters, names and their common uses in math, science and everyday language. Copy any Greek letter.";
+const SLUG = "greek-alphabet-list";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Greek Alphabet Symbols — Complete List α β γ Copy & Paste",
-  description: "Complete Greek alphabet with uppercase and lowercase letters, names and their common uses in math, science and everyday language. Copy any Greek letter.",
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: ["greek alphabet copy paste","greek letters list","alpha beta gamma symbols","greek symbols math","all greek letters"],
-  ...canonical("/blog/greek-alphabet-list"),
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 const greekLetters = [
@@ -38,6 +57,8 @@ const greekLetters = [
 
 export default function BlogGreek() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ fontSize: 13, color: "var(--text3)", marginBottom: 8 }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link> › <Link href="/symbols/greek" style={{ color: "var(--text3)", textDecoration: "none" }}>Greek Letters</Link>
@@ -76,5 +97,6 @@ export default function BlogGreek() {
         <Link href="/symbol/omega-upper" className="cat-pill">Ω Omega</Link>
       </div>
     </div>
+    </>
   );
 }

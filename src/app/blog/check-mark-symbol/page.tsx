@@ -2,14 +2,35 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
+const TITLE = "Check Mark Symbol ✓ — Complete Guide to Tick Marks";
+const DESCRIPTION = "Everything about the check mark symbol. Unicode values, keyboard shortcuts for every device, and when to use each variant.";
+const SLUG = "check-mark-symbol";
+const PUBLISHED = "2026-03-01T00:00:00Z";
+const MODIFIED = "2026-05-09T00:00:00Z";
+
 export const metadata: Metadata = {
-  title: "Check Mark Symbol ✓ — Complete Guide to Tick Marks",
-  description: "Everything about the check mark symbol. Unicode values, keyboard shortcuts for every device, and when to use each variant.",
-  ...canonical("/blog/check-mark-symbol"),
+  title: TITLE,
+  description: DESCRIPTION,
+  ...canonical(`/blog/${SLUG}`),
+  openGraph: { type: "article", publishedTime: PUBLISHED, modifiedTime: MODIFIED, authors: ["https://www.copychars.com/about"] },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: TITLE,
+  description: DESCRIPTION,
+  datePublished: PUBLISHED.slice(0, 10),
+  dateModified: MODIFIED.slice(0, 10),
+  author: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  publisher: { "@type": "Organization", name: "CopyChars", url: "https://www.copychars.com" },
+  mainEntityOfPage: `https://www.copychars.com/blog/${SLUG}`,
 };
 
 export default function BlogPost() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div style={{ maxWidth: 740, margin: "0 auto", padding: "48px 24px" }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 28, fontSize: 13, color: "var(--text3)" }}>
         <Link href="/" style={{ color: "var(--text3)", textDecoration: "none" }}>Home</Link>
@@ -33,5 +54,6 @@ export default function BlogPost() {
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">When to Use &#9745; vs &#10003; vs &#9989;</h2>
 <p>Use <strong>&#10003; or &#10004;</strong> in plain text, emails, and spreadsheets. Use <strong>&#9745;</strong> when you want to show a completed checkbox. Use <strong>&#9989;</strong> in social media and messaging apps where emoji are supported.</p>` }} />
     </div>
+    </>
   );
 }

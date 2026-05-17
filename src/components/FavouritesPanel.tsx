@@ -78,8 +78,8 @@ export default function FavouritesPanel() {
               <p style={{ fontSize: 13, color: "var(--text3)" }}>Your recently copied symbols will appear here.</p>
             ) : (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {recent.slice(0, 16).map(r => (
-                  <span key={r.id + Math.random()} title={r.name} onClick={() => copy(r.symbol, r.name)}
+                {recent.slice(0, 16).map((r, idx) => (
+                  <span key={`${r.id}-${idx}`} title={r.name} onClick={() => copy(r.symbol, r.name)}
                     style={{ fontSize: "1.2rem", cursor: "pointer", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "4px 8px", transition: "border-color 0.15s" }}>
                     {r.symbol}
                   </span>
