@@ -14,7 +14,7 @@ if (!src.includes("useRef")) {
 if (!src.includes("clearTimeout")) {
   errors.push("use-copy-toast.ts must call clearTimeout to cancel stale timers");
 }
-if (!src.match(/useEffect\([^)]*\)\s*=>\s*\(\)\s*=>\s*\{[^}]*clearTimeout/s)) {
+if (!src.match(/useEffect\([^)]*\)\s*=>\s*\(\)\s*=>\s*\{[^}]*clearTimeout/)) {
   errors.push("use-copy-toast.ts must have a useEffect cleanup that clears the timer on unmount");
 }
 
