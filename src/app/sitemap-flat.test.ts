@@ -25,6 +25,22 @@ async function check() {
     if (body.includes(`${BASE}${url}`)) throw new Error(`sitemap should not contain: ${url}`);
   }
 
+  // Must NOT contain any gen-* slugs — they're noindex'd at the page level
+  // and submitting them trains Google to discount the whole sitemap.
+  // (B2 fix, GSC 2026-05-28 "Excluded by 'noindex' tag" report.)
+  if (body.includes("/symbol/gen-")) {
+    throw new Error("sitemap should not contain gen-* slugs (B2 regression)");
+  }
+
+  // robots.txt smoke check — must disallow /_next/ for Googlebot
+  // (GSC 2026-05-28 "Crawled - currently not indexed" report.)
+  const robotsRes = await fetch(`${BASE}/robots.txt`);
+  if (robotsRes.status !== 200) throw new Error(`expected robots 200, got ${robotsRes.status}`);
+  const robots = await robotsRes.text();
+  if (!robots.includes("/_next/")) {
+    throw new Error("robots.txt should disallow /_next/ (B10 follow-up)");
+  }
+
   console.log(`sitemap-flat smoke test passed (body ~${(body.length / 1024).toFixed(0)} KB)`);
 }
 

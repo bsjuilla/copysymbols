@@ -1,5 +1,13 @@
 import { MetadataRoute } from "next";
 
+// /_next/ paths (build chunks, image-optimization, RSC) are routinely picked
+// up by Googlebot and end up in GSC's "Crawled - currently not indexed"
+// bucket, wasting crawl budget on assets that are never user-facing URLs.
+// Disallowing them stops the noise without breaking rendering (Google does
+// not need to fetch /_next/static/* to render JS-rendered pages — Next ships
+// the HTML pre-rendered).
+const SHARED_DISALLOW = ["/search", "/community", "/api", "/_next/"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -16,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
           "Perplexity-User",
         ],
         allow: "/",
-        disallow: ["/search", "/community", "/api"],
+        disallow: SHARED_DISALLOW,
       },
       {
         userAgent: [
@@ -37,7 +45,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/search", "/community", "/api"],
+        disallow: SHARED_DISALLOW,
       },
     ],
     sitemap: "https://www.copychars.com/sitemap.xml",

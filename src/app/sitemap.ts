@@ -125,8 +125,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
 
-    // ---- /symbol/<slug> for all symbols (curated + gen-*) ----------------
-    ...symbols.map(s => ({
+    // ---- /symbol/<slug> for curated symbols only -------------------------
+    // gen-* slugs are intentionally excluded: src/app/symbol/[slug]/page.tsx
+    // emits robots:{ index:false } for them, so listing them in the sitemap
+    // submits ~270 noindex'd URLs to Google and trains it to discount the
+    // whole sitemap as a quality signal. GSC 2026-05-28 "Excluded by
+    // 'noindex' tag" report confirms this was happening. The /symbol/[slug]
+    // route still builds gen-* pages so existing inbound links keep working;
+    // they just aren't advertised.
+    ...curatedSymbols.map(s => ({
       url: `${BASE}/symbol/${s.id}`,
       lastModified: now,
       changeFrequency: "yearly" as const,
