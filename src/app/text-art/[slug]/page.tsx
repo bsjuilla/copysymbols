@@ -60,6 +60,13 @@ export default async function TextArtDetailPage({ params }: Props) {
   const baseUrl = "https://www.copychars.com";
   const isMultiline = t!.lines > 1;
 
+  const faqs = [
+    { q: `What is the ${t!.name} text art?`, a: `${t!.name} is a piece of ${catMeta?.name?.toLowerCase() ?? t!.category.toLowerCase()} ASCII/Unicode art — ${t!.lines} ${t!.lines === 1 ? "line" : "lines"} of text characters arranged to draw a picture. ${t!.vibeNote}` },
+    { q: `Why doesn't the art look right when I paste it into Twitter/Instagram?`, a: isMultiline ? `Multi-line text art needs a monospaced font (where every character is the same width) to align. Twitter, Instagram, TikTok, and most native mobile text fields use proportional fonts where ' ' is narrower than 'M'. The columns misalign and the art breaks. Use Discord/Slack code blocks, terminals, or paste into a monospaced editor instead.` : `Single-line art usually copies fine. If something looks off, check that the destination supports the full Unicode block — some older fonts miss specific characters and substitute boxes.` },
+    { q: `Can I use this in my Discord status or username?`, a: `Single-line text art works in Discord status messages and (sometimes) usernames depending on Discord's current filter rules. Multi-line art doesn't fit a status. For longer art, post it inside a code block in a channel.` },
+    { q: `How do I make my own text art?`, a: `Start with a monospaced editor and a reference image. ASCII art uses characters like \\\\ / | _ - ( ) for outlines and # @ % . for shading. Unicode art uses box-drawing characters (─ │ ┌ ┐ └ ┘) for clean rectangles and ░ ▒ ▓ █ for filled shading. Browse the rest of this collection for inspiration.` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -70,6 +77,14 @@ export default async function TextArtDetailPage({ params }: Props) {
           { "@type": "ListItem", position: 2, name: "Text Art", item: `${baseUrl}/text-art` },
           { "@type": "ListItem", position: 3, name: t!.name, item: `${baseUrl}/text-art/${slug}` },
         ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -202,12 +217,7 @@ export default async function TextArtDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `What is the ${t!.name} text art?`, a: `${t!.name} is a piece of ${catMeta?.name?.toLowerCase() ?? t!.category.toLowerCase()} ASCII/Unicode art — ${t!.lines} ${t!.lines === 1 ? "line" : "lines"} of text characters arranged to draw a picture. ${t!.vibeNote}` },
-            { q: `Why doesn't the art look right when I paste it into Twitter/Instagram?`, a: isMultiline ? `Multi-line text art needs a monospaced font (where every character is the same width) to align. Twitter, Instagram, TikTok, and most native mobile text fields use proportional fonts where ' ' is narrower than 'M'. The columns misalign and the art breaks. Use Discord/Slack code blocks, terminals, or paste into a monospaced editor instead.` : `Single-line art usually copies fine. If something looks off, check that the destination supports the full Unicode block — some older fonts miss specific characters and substitute boxes.` },
-            { q: `Can I use this in my Discord status or username?`, a: `Single-line text art works in Discord status messages and (sometimes) usernames depending on Discord's current filter rules. Multi-line art doesn't fit a status. For longer art, post it inside a code block in a channel.` },
-            { q: `How do I make my own text art?`, a: `Start with a monospaced editor and a reference image. ASCII art uses characters like \\\\ / | _ - ( ) for outlines and # @ % . for shading. Unicode art uses box-drawing characters (─ │ ┌ ┐ └ ┘) for clean rectangles and ░ ▒ ▓ █ for filled shading. Browse the rest of this collection for inspiration.` },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>

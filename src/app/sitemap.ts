@@ -30,8 +30,18 @@ const curatedSymbols = symbols.filter(s => !s.id.startsWith("gen-"));
 // with the metadata file convention. Collapsing back to one flat sitemap
 // restores the canonical URL Google has been tracking for months. Total
 // URL count (~3,650) is well under Google's 50K per-sitemap limit.
+// Stable per-deploy `lastmod`. Previously `new Date()` made every URL look
+// freshly modified on every crawl, which Google ignores as a quality signal
+// (and can downgrade the whole sitemap). Bump SITEMAP_FALLBACK_DATE manually
+// when content materially changes, or set BUILD_DATE in the deploy env so
+// every deploy carries the build date as lastmod. (Audit section 7.2.)
+const SITEMAP_FALLBACK_DATE = "2026-05-28T00:00:00Z";
+const SITEMAP_LAST_MODIFIED = process.env.BUILD_DATE
+  ? new Date(process.env.BUILD_DATE)
+  : new Date(SITEMAP_FALLBACK_DATE);
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = SITEMAP_LAST_MODIFIED;
 
   const all: MetadataRoute.Sitemap = [
     // ---- Static top-level routes -----------------------------------------

@@ -68,6 +68,13 @@ export default async function BioTemplateDetailPage({ params }: Props) {
   const baseUrl = "https://www.copychars.com";
   const overLimit = pMeta && b!.charCount > pMeta.charLimit;
 
+  const faqs = [
+    { q: `Can I just copy this template and paste it into ${pMeta?.name ?? b!.platform}?`, a: `Yes — but replace the {PLACEHOLDER} fields first. Paste the template into a notes app, swap each {NAME}, {ROLE}, {CITY} (etc.) with your own text, then copy the filled-in version and paste it into your ${pMeta?.name ?? b!.platform} bio. ${pMeta?.name === "TikTok" ? "TikTok's 80-char limit is tight — count your filled version before saving." : ""}` },
+    { q: `Will the line breaks show on ${pMeta?.name ?? b!.platform}?`, a: pMeta?.name === "Twitter / X" ? "Twitter/X preserves line breaks in your bio but renders them as space on the public profile view in some clients. The breaks survive the data but visual presentation varies." : pMeta?.name === "TikTok" ? "TikTok bios render line breaks correctly on iOS and Android. Web view sometimes collapses them — preview before saving." : "Yes — Instagram, LinkedIn, Bumble, and YouTube About sections all preserve \\n line breaks in bios." },
+    { q: `Why does this template use ${b!.vibe.toLowerCase()} decorations?`, a: `${vibe?.description ?? `The ${b!.vibe.toLowerCase()} aesthetic signals a specific mood — the decorations are part of that signal.`} ${b!.vibeNote}` },
+    { q: `Can I edit the decorations or shorten the template?`, a: "Absolutely. Templates are starting points — keep what works, drop what doesn't. If you need a shorter version, remove a line or two; if you want a different feel, swap the decorations (✦ → ♡, ─ → ━, etc.). Browse other templates on this page for decoration ideas." },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -78,6 +85,14 @@ export default async function BioTemplateDetailPage({ params }: Props) {
           { "@type": "ListItem", position: 2, name: "Bio Templates", item: `${baseUrl}/bio-templates` },
           { "@type": "ListItem", position: 3, name: b!.name, item: `${baseUrl}/bio-templates/${slug}` },
         ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
       },
     ],
   };
@@ -218,12 +233,7 @@ export default async function BioTemplateDetailPage({ params }: Props) {
 
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
-          {[
-            { q: `Can I just copy this template and paste it into ${pMeta?.name ?? b!.platform}?`, a: `Yes — but replace the {PLACEHOLDER} fields first. Paste the template into a notes app, swap each {NAME}, {ROLE}, {CITY} (etc.) with your own text, then copy the filled-in version and paste it into your ${pMeta?.name ?? b!.platform} bio. ${pMeta?.name === "TikTok" ? "TikTok's 80-char limit is tight — count your filled version before saving." : ""}` },
-            { q: `Will the line breaks show on ${pMeta?.name ?? b!.platform}?`, a: pMeta?.name === "Twitter / X" ? "Twitter/X preserves line breaks in your bio but renders them as space on the public profile view in some clients. The breaks survive the data but visual presentation varies." : pMeta?.name === "TikTok" ? "TikTok bios render line breaks correctly on iOS and Android. Web view sometimes collapses them — preview before saving." : "Yes — Instagram, LinkedIn, Bumble, and YouTube About sections all preserve \\n line breaks in bios." },
-            { q: `Why does this template use ${b!.vibe.toLowerCase()} decorations?`, a: `${vibe?.description ?? `The ${b!.vibe.toLowerCase()} aesthetic signals a specific mood — the decorations are part of that signal.`} ${b!.vibeNote}` },
-            { q: `Can I edit the decorations or shorten the template?`, a: "Absolutely. Templates are starting points — keep what works, drop what doesn't. If you need a shorter version, remove a line or two; if you want a different feel, swap the decorations (✦ → ♡, ─ → ━, etc.). Browse other templates on this page for decoration ideas." },
-          ].map(({ q, a }) => (
+          {faqs.map(({ q, a }) => (
             <div key={q} style={{ marginBottom: 24, paddingBottom: 24, borderBottom: "1px solid var(--border)" }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
               <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>
