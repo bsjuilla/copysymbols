@@ -47,12 +47,27 @@ const faqJsonLd = {
   })),
 };
 
+const baseUrl = "https://www.copychars.com";
+const appJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Character Counter",
+  applicationCategory: "UtilityApplication",
+  operatingSystem: "Any (web browser)",
+  url: `${baseUrl}/character-counter`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
+
 export default function CharacterCounterPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
       />
       <CopyToast />
       <CharacterCounterClient faqs={faqs} />

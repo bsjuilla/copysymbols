@@ -47,12 +47,27 @@ const faqJsonLd = {
   })),
 };
 
+const baseUrl = "https://www.copychars.com";
+const appJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Morse Code Translator",
+  applicationCategory: "UtilityApplication",
+  operatingSystem: "Any (web browser)",
+  url: `${baseUrl}/morse-code`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
+
 export default function MorseCodePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
       />
       <CopyToast />
       <MorseClient faqs={faqs} />

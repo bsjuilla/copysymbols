@@ -12,6 +12,42 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.copychars.com" },
 };
 
+const baseUrl = "https://www.copychars.com";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "CopyChars",
+      alternateName: "Copy Chars",
+      url: baseUrl,
+      description: "Copy and paste 3000+ Unicode symbols, emoji, kaomoji and special characters.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: `${baseUrl}/search?q={search_term_string}` },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Organization",
+      name: "CopyChars",
+      url: baseUrl,
+      logo: `${baseUrl}/icon.png`,
+    },
+    {
+      "@type": "ItemList",
+      name: "Symbol Categories",
+      itemListElement: categories.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${baseUrl}/symbols/${c.id}`,
+        name: c.name,
+      })),
+    },
+  ],
+};
+
 export default function HomePage() {
   const popular = getPopularSymbols();
   const allCategories = categories.map(cat => ({
@@ -22,6 +58,7 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CopyToast />
       <HomeClient
         popular={popular.map(s => ({ id: s.id, symbol: s.symbol, name: s.name }))}
