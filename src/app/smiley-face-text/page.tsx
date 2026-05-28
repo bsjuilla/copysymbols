@@ -27,9 +27,41 @@ const classicFaces = [
   ":)", ":-)", ":D", ":-D", "xD", "=)", ":P", ";)", "T_T", ">_<", "*_*", "^_^", "^.^", ":o", "O_o",
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Smiley Face Text", item: `${baseUrl}/smiley-face-text` },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      name: "Smiley Face Text Symbols",
+      itemListElement: [
+        ...unicodeSmileys.map((it, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `${it.symbol} ${it.name}`,
+        })),
+        ...classicFaces.map((s, i) => ({
+          "@type": "ListItem",
+          position: unicodeSmileys.length + i + 1,
+          name: s,
+        })),
+      ],
+    },
+  ],
+};
+
 export default function SmileyFaceTextPage() {
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Smiley Face Text ☺

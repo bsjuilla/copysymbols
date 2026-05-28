@@ -36,9 +36,34 @@ const items = [
   { symbol: "»", name: "Double Right Chevron", unicode: "U+00BB", use: "Double chevron" },
 ];
 
+const baseUrl = "https://www.copychars.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "Symbols", item: `${baseUrl}/symbols` },
+        { "@type": "ListItem", position: 3, name: "Arrow Symbols", item: `${baseUrl}/arrow-symbols` },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      name: "Arrow Symbols",
+      itemListElement: items.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${it.symbol} ${it.name}`,
+      })),
+    },
+  ],
+};
+
 export default function ArrowSymbolsPage() {
   return (
     <div style={{ maxWidth: 1000, margin: "0 auto", padding: "48px 24px" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="section-label">Copy & Paste</div>
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
         Arrow Symbols → ←

@@ -12,6 +12,28 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.copychars.com" },
 };
 
+// Site-wide WebSite + SearchAction + Organization already ship from
+// src/app/layout.tsx (siteJsonLd). Only emit the homepage-specific
+// CollectionPage + ItemList here to avoid duplicating the site triple.
+const baseUrl = "https://www.copychars.com";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  url: baseUrl,
+  name: "CopyChars — Symbol Categories",
+  mainEntity: {
+    "@type": "ItemList",
+    name: "Symbol Categories",
+    itemListElement: categories.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${baseUrl}/symbols/${c.id}`,
+      name: c.name,
+    })),
+  },
+};
+
 export default function HomePage() {
   const popular = getPopularSymbols();
   const allCategories = categories.map(cat => ({
@@ -22,6 +44,7 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CopyToast />
       <HomeClient
         popular={popular.map(s => ({ id: s.id, symbol: s.symbol, name: s.name }))}

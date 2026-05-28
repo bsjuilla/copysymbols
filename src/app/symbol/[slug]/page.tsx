@@ -15,14 +15,22 @@ export async function generateStaticParams() {
 }
 
 // Stale gen-{category}-{name}-{timestamp} URLs from old generated-symbols.ts
-// batches still appear in Google's index (GSC 2026-05-14: 30+ such 404s).
-// When we can't resolve the slug, fall back to the category landing page so
-// link equity is preserved and GSC stops flagging them as 404.
+// batches still appear in Google's index (GSC 2026-05-28: 293 such 404s after
+// commit 992bd34 dropped 319 gen-* entries — only 36 of those got explicit
+// redirects in next.config.ts). When we can't resolve the slug, fall back
+// to a relevant page so link equity is preserved and GSC stops flagging
+// them as 404.
+//
+// Priority order:
+//   1. /symbols/<category>  — slug names a category that still exists
+//   2. /symbols             — category was dropped, hub is the safest target
+//   3. null                 — slug is not gen-* at all → real 404
 function staleGenRedirect(slug: string): string | null {
   const m = slug.match(/^gen-([a-z]+)-/);
   if (!m) return null;
   const cat = m[1];
-  return categories.some(c => c.id === cat) ? `/symbols/${cat}` : null;
+  if (categories.some(c => c.id === cat)) return `/symbols/${cat}`;
+  return "/symbols";
 }
 
 interface Props { params: Promise<{ slug: string }> }

@@ -43,12 +43,27 @@ const faqJsonLd = {
   })),
 };
 
+const baseUrl = "https://www.copychars.com";
+const appJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Upside Down Text Generator",
+  applicationCategory: "UtilityApplication",
+  operatingSystem: "Any (web browser)",
+  url: `${baseUrl}/upside-down-text`,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
+
 export default function UpsideDownTextPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
       />
       <CopyToast />
       <UpsideDownClient faqs={faqs} />
