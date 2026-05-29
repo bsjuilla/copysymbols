@@ -42,3 +42,8 @@ next-env.d.ts
 
 # graphify (local knowledge-graph cache)
 /src/graphify-out/
+
+# graphify / ruflo analysis artifacts (local only)
+graphify-out/
+.graphify_*
+ruvector.db

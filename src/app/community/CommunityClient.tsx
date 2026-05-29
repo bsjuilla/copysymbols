@@ -56,7 +56,7 @@ function CreateForm({ user, onPost }: { user: UserProfile; onPost: () => void })
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [visibility, setVisibility] = useState<"public"|"private">("public");
-  const [preview, setPreview] = useState(false);
+  const [, setPreview] = useState(false);
   const [error, setError] = useState("");
 
   const quickSymbols = ["ʕ•ᴥ•ʔ","(◕‿◕)","✦","★","♡","❤","♥","✿","❀","•","·","꧁","꧂","彡","✨","🌙","💫","⭐","🔥","💎","👑","🌸","🎵","🌊"];
@@ -292,6 +292,7 @@ function CreationCard({ creation, user, onUpdate }: { creation: Creation; user: 
 // ─── Hall of Fame ────────────────────────────────────────────────
 function HallOfFame({ creations }: { creations: Creation[] }) {
   const top = [...creations].filter(c => c.visibility === "public").sort((a, b) => b.likes - a.likes).slice(0, 10);
+  // eslint-disable-next-line react-hooks/purity -- client-only Hall of Fame ("use client" island, never prerendered); Date.now() defines a cosmetic rolling 7-day window, recomputed each render by design.
   const topWeek = [...creations].filter(c => c.visibility === "public" && Date.now() - c.createdAt < 604800000).sort((a, b) => b.likes - a.likes).slice(0, 5);
 
   return (
@@ -333,7 +334,7 @@ function HallOfFame({ creations }: { creations: Creation[] }) {
 }
 
 // ─── Profile Page ────────────────────────────────────────────────
-function ProfilePage({ user, onUpdate }: { user: UserProfile; onUpdate: () => void }) {
+function ProfilePage({ user }: { user: UserProfile; onUpdate: () => void }) {
   const creations = getCreations().filter(c => c.authorId === user.id);
   const totalLikes = creations.reduce((sum, c) => sum + c.likes, 0);
 
@@ -407,6 +408,10 @@ export default function CommunityClient() {
 
   const publicCreations = creations.filter(c => c.visibility === "public");
 
+  // Single time snapshot for the "weekly" 7-day window below. Client-only feed
+  // ("use client", no SSR), recomputed each render by design.
+  // eslint-disable-next-line react-hooks/purity -- see comment above; deliberate client-side clock read.
+  const now = Date.now();
   const filtered = publicCreations
     .filter(c => filter === "All" || c.category === filter)
     .filter(c => !search || c.name.toLowerCase().includes(search.toLowerCase()) || c.symbol.includes(search) || c.tags.some(t => t.includes(search.toLowerCase())))
@@ -414,8 +419,8 @@ export default function CommunityClient() {
       if (sort === "newest") return b.createdAt - a.createdAt;
       if (sort === "most-liked") return b.likes - a.likes;
       if (sort === "weekly") {
-        const aW = Date.now() - a.createdAt < 604800000 ? a.likes : 0;
-        const bW = Date.now() - b.createdAt < 604800000 ? b.likes : 0;
+        const aW = now - a.createdAt < 604800000 ? a.likes : 0;
+        const bW = now - b.createdAt < 604800000 ? b.likes : 0;
         return bW - aW;
       }
       return 0;

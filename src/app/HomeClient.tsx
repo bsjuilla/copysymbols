@@ -77,7 +77,7 @@ const TESTIMONIALS = [
 
 // ─── INLINE MINI SYMBOL CARD ─────────────────────────────────────────────────
 
-function MiniCard({ symbol, name, id }: SymbolItem) {
+function MiniCard({ symbol, name }: SymbolItem) {
   const [copied, setCopied] = useState(false);
 
   const copy = useCallback(() => {

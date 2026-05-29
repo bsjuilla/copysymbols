@@ -71,10 +71,12 @@ export default function NavClient() {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical hydration guard: flips to client-only render after mount to avoid an SSG hydration mismatch. Intentional one-shot.
   useEffect(() => { setMounted(true); }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets menu state in response to an external App Router path change; there is no event-handler equivalent for a route change.
     setMobileOpen(false);
     setMobileExpanded(null);
   }, [path]);
@@ -82,6 +84,7 @@ export default function NavClient() {
   // Animate in when opened, animate out before unmounting
   useEffect(() => {
     if (mobileOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- drawerVisible intentionally lags mobileOpen by one render to trigger the CSS slide-in transition (mount off-screen at translateX(100%), then animate to translateX(0)).
       setDrawerVisible(true);
     } else {
       setDrawerVisible(false);

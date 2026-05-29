@@ -194,7 +194,7 @@ export default async function HeartDetailPage({ params }: Props) {
               <div style={{ fontSize: 32, marginBottom: 8 }}>{isMultiline ? "♥" : h!.char}</div>
               <h3 style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>Bios & dating profiles</h3>
               <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>
-                Hearts are the universal "what I&apos;m about" signal in Instagram and TikTok bios. Drop {h!.char} between sections — name, role, link in bio — to soften the layout. On Hinge/Bumble bios, hearts make a profile read warm rather than transactional.
+                Hearts are the universal &ldquo;what I&apos;m about&rdquo; signal in Instagram and TikTok bios. Drop {h!.char} between sections — name, role, link in bio — to soften the layout. On Hinge/Bumble bios, hearts make a profile read warm rather than transactional.
               </p>
             </div>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16, padding: "20px 22px" }}>
