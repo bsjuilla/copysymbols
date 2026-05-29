@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 // Lazy load the overlay so it doesn't bloat the initial bundle
 const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 
-export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }) {
+export default function SearchBar() {
   const [open, setOpen] = useState(false);
 
   // Global keyboard shortcut: press / to open

@@ -7,11 +7,12 @@ export default function FavouritesPanel() {
   const [favs, setFavs] = useState<FavItem[]>([]);
   const [recent, setRecent] = useState<FavItem[]>([]);
   const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState<string | null>(null);
+  const [, setCopied] = useState<string | null>(null);
 
   useEffect(() => {
     if (!open) return;
     try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- browser-only: localStorage is undefined during SSG prerender, so favourites/recent must hydrate in an effect, not during render. Lazy-gated on `open`.
       setFavs(JSON.parse(localStorage.getItem("copychars-favs") || "[]"));
       setRecent(JSON.parse(localStorage.getItem("copychars-recent") || "[]"));
     } catch {}

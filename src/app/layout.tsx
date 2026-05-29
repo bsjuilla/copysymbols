@@ -1,7 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
 import NavClient from "@/components/NavClient";
+
+// Next 16 moved themeColor out of the metadata export into a dedicated
+// viewport export (see node_modules/next/dist/docs/.../generate-viewport.md).
+// Keeping it in metadata emits an "Unsupported metadata themeColor" build
+// warning on every page render.
+export const viewport: Viewport = {
+  themeColor: "#0a0a0f",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -13,7 +21,6 @@ export const metadata: Metadata = {
   keywords: ["copy paste symbols","special characters","emoji copy","arrow symbols","currency symbols","greek letters","kaomoji"],
   openGraph: { type: "website", siteName: "CopyChars", locale: "en_US" },
   robots: { index: true, follow: true },
-  themeColor: "#0a0a0f",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "CopyChars" },
   verification: { google: "yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" },
   // NOTE: do NOT set alternates.canonical here. A root-level canonical is

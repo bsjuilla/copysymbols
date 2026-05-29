@@ -71,7 +71,7 @@ function searchAll(query: string): Result[] {
       }
     }
     results.push(...kaoResults);
-  } catch (e) {
+  } catch {
     // data not available yet
   }
 
@@ -149,6 +149,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- handleCopy is a stable useCallback declared below; adding it to deps triggers a TS used-before-declaration error, and its identity is stable so omitting it is safe.
   }, [isOpen, results, activeIndex, onClose]);
 
   // Scroll active item into view

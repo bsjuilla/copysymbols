@@ -1416,6 +1416,5 @@ export const heartCategories: { id: HeartCategory; name: string; description: st
 
 // Compile-time invariant check (will throw at module load if counts drift):
 if (hearts.length !== 150) {
-  // eslint-disable-next-line no-console
   console.warn(`hearts.ts: expected 150 items, found ${hearts.length}`);
 }

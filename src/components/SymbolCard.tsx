@@ -19,6 +19,7 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
   useEffect(() => {
     try {
       const favs = JSON.parse(localStorage.getItem("copychars-favs") || "[]");
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- browser-only: reads favourite status from localStorage (undefined during SSG prerender) and re-syncs when the card's id changes.
       setIsFav(favs.some((f: { id: string }) => f.id === id));
     } catch {}
   }, [id]);
