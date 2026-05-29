@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { emojiCombos, comboThemes, getCombosByTheme, type ComboTheme } from "@/data/collections/emoji-combos";
+import { comboThemes, getCombosByTheme, type ComboTheme } from "@/data/collections/emoji-combos";
 
 export default function EmojoCombosClient() {
   const [copied, setCopied] = useState<string | null>(null);

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { textArt, textArtCategories, getTextArtByCategory } from "@/data/collections/text-art";
+import { textArtCategories, getTextArtByCategory } from "@/data/collections/text-art";
 
 export default function TextArtClient() {
   const [copied, setCopied] = useState<string | null>(null);

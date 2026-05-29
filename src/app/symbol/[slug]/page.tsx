@@ -404,7 +404,7 @@ export default async function SymbolDetailPage({ params }: Props) {
           <div className="section-label" style={{ marginBottom: 12 }}>Search keywords</div>
           <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
             {s!.keywords.map(k => (
-              <Link key={k} href={`/search?q=${encodeURIComponent(k)}`} className="keyword-tag">
+              <Link key={k} href={`/search?q=${encodeURIComponent(k)}`} rel="nofollow" className="keyword-tag">
                 {k}
               </Link>
             ))}
