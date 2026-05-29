@@ -473,6 +473,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
             <Link
               href={`/search?q=${encodeURIComponent(query)}`}
               onClick={onClose}
+              rel="nofollow"
               style={{ marginLeft: "auto", fontSize: 12, color: "var(--accent)", textDecoration: "none" }}
             >
               Full search page →

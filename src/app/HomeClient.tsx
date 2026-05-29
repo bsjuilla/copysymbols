@@ -473,6 +473,7 @@ export default function HomeClient({
               <Link
                 key={q}
                 href={`/search?q=${encodeURIComponent(q)}`}
+                rel="nofollow"
                 style={{ fontSize: 12, color: "var(--text3)", textDecoration: "none", padding: "3px 11px", borderRadius: 100, border: "1px solid var(--border)", transition: "all 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.color = "var(--text3)"; }}
@@ -740,6 +741,7 @@ export default function HomeClient({
               <Link
                 key={tag}
                 href={`/search?q=${encodeURIComponent(tag.split(" ").slice(1).join(" "))}`}
+                rel="nofollow"
                 style={{ fontSize: 13, color: "var(--text2)", textDecoration: "none", padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", transition: "all 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.color = "var(--text2)"; }}
