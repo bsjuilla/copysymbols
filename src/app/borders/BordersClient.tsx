@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { borders, borderCategories, getBordersByCategory } from "@/data/collections/borders";
+import { borderCategories, getBordersByCategory } from "@/data/collections/borders";
 
 export default function BordersClient() {
   const [copied, setCopied] = useState<string | null>(null);

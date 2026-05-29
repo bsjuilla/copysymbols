@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { bullets, bulletCategories, getBulletsByCategory } from "@/data/collections/bullets";
+import { bulletCategories, getBulletsByCategory } from "@/data/collections/bullets";
 
 export default function BulletsClient() {
   const [copied, setCopied] = useState<string | null>(null);
