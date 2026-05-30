@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 import NavClient from "@/components/NavClient";
+
+// Google AdSense publisher ID (public — also appears in the loader URL).
+const ADSENSE_CLIENT = "ca-pub-5637152198888305";
 
 // Next 16 moved themeColor out of the metadata export into a dedicated
 // viewport export (see node_modules/next/dist/docs/.../generate-viewport.md).
@@ -66,6 +70,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        {/* Google AdSense loader (next/script, root layout = loads on every
+            route exactly once). Required for site verification + ad serving. */}
+        <Script
+          id="adsbygoogle-init"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
