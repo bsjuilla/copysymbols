@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import TwemojiImg from "@/components/TwemojiImg";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 
@@ -538,6 +539,47 @@ export default function HomeClient({
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+
+        {/* ── NEW & FEATURED ──────────────────────────────────────────────── */}
+        <section style={{ margin: "40px 0 8px" }}>
+          <div className="section-label">New &amp; featured</div>
+          <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 20 }}>Fresh Collections</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 14 }}>
+            {/* Flags — Twemoji images so they render on Windows too */}
+            <Link href="/flags" className="cat-card" style={{ textDecoration: "none" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Country Flags</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+              </div>
+              <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+                {["🇺🇸", "🇬🇧", "🇯🇵", "🇧🇷", "🇮🇳", "🇨🇦"].map((g, i) => (
+                  <TwemojiImg key={i} glyph={g} size={26} />
+                ))}
+              </div>
+              <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>All 249 country flag emoji — copy &amp; paste for bios, names and posts.</p>
+            </Link>
+
+            {/* Gaming symbols */}
+            <Link href="/gaming-symbols" className="cat-card" style={{ textDecoration: "none" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Gaming Symbols</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+              </div>
+              <div style={{ fontSize: "1.5rem", color: "var(--text)", letterSpacing: "0.05em", marginBottom: 12, lineHeight: 1.3 }}>꧁༒☬꧂ ⚔ ♛ ツ</div>
+              <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>Stylish name symbols for Free Fire, PUBG, BGMI, COD &amp; more.</p>
+            </Link>
+
+            {/* Alphabets */}
+            <Link href="/alphabets" className="cat-card" style={{ textDecoration: "none" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Alphabets &amp; Scripts</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+              </div>
+              <div style={{ fontSize: "1.5rem", color: "var(--text)", letterSpacing: "0.08em", marginBottom: 12, lineHeight: 1.3 }}>あ 中 한 Я ع</div>
+              <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>Japanese, Chinese, Korean, Russian &amp; Arabic letters, with romanization.</p>
+            </Link>
+          </div>
+        </section>
 
         {/* ── STATS BAR ───────────────────────────────────────────────────── */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", margin: "40px 0 56px" }}>
