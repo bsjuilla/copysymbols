@@ -17,6 +17,7 @@ import { translators } from "@/lib/translators";
 import { AESTHETICS } from "@/data/aesthetics";
 import { FLAGS } from "@/data/flags";
 import { GAMING_SYMBOL_SETS } from "@/data/gaming-symbols";
+import { SCRIPTS } from "@/data/scripts";
 
 const BASE = "https://www.copychars.com";
 
@@ -59,6 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/flags`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Gaming name symbols hub (spokes at /gaming-symbols/<slug>).
     { url: `${BASE}/gaming-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // Alphabets & scripts hub (spokes at /alphabets/<slug>).
+    { url: `${BASE}/alphabets`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/text-art`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/fancy-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/text-repeater`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -297,6 +300,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ---- /gaming-symbols/<slug> spoke pages (games + styles) -------------
     ...GAMING_SYMBOL_SETS.map(s => ({
       url: `${BASE}/gaming-symbols/${s.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+
+    // ---- /alphabets/<slug> script pages ---------------------------------
+    ...SCRIPTS.map(s => ({
+      url: `${BASE}/alphabets/${s.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
