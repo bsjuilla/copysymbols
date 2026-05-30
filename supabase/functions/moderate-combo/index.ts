@@ -18,9 +18,11 @@
 // the project's tsconfig + eslint). Deploy it separately (Supabase dashboard or
 // `supabase functions deploy moderate-combo`).
 
-// Runs on the Deno runtime (Supabase Edge Functions). `Deno` is a built-in
-// global there — no import or declaration needed. This file is excluded from
-// the Next.js tsconfig/eslint, so it never reaches the site build.
+// Runs on the Deno runtime (Supabase Edge Functions). The import below loads the
+// built-in Deno/Supabase type definitions so Deno.serve / Deno.env type-check in
+// the dashboard editor; it has no runtime effect. This file is excluded from the
+// Next.js tsconfig/eslint, so it never reaches the site build.
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const GITHUB_TOKEN = Deno.env.get("GITHUB_TOKEN") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
