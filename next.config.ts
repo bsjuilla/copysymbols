@@ -3,16 +3,27 @@ import type { NextConfig } from "next";
 // Content-Security-Policy.
 // 'unsafe-inline' on script-src is unavoidable: Next.js injects inline runtime
 // scripts and we render JSON-LD as inline <script type="application/ld+json">.
-// For a static-export site with no user input, this is acceptable — there's
-// no path for an attacker to inject runtime scripts. Other directives (img,
-// frame-ancestors, object) still provide meaningful protection.
+// Other directives (img, frame-ancestors, object) still provide meaningful
+// protection.
+//
+// connect-src: 'self' plus the Supabase project origin (env-gated) so the
+// community-combos UGC feature can submit/read over the Supabase REST API.
+// If NEXT_PUBLIC_SUPABASE_URL is unset, connect-src stays exactly 'self' —
+// the UGC feature is dormant and CSP is unchanged.
+const SUPABASE_ORIGIN = (() => {
+  const u = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!u) return "";
+  try { return new URL(u).origin; } catch { return ""; }
+})();
+const CONNECT_SRC = ["'self'", SUPABASE_ORIGIN].filter(Boolean).join(" ");
+
 const CSP = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  `connect-src ${CONNECT_SRC}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

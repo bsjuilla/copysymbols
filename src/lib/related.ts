@@ -146,6 +146,7 @@ export function relatedForSymbol(category: string, id: string): RelatedLink[] {
 export function relatedForEmoji(): RelatedLink[] {
   return dedupeCap([
     { href: "/emoji-combos", label: "Emoji Combos" },
+    { href: "/community-combos", label: "Community Combos" },
     { href: "/kaomoji", label: "Kaomoji Faces" },
     { href: "/symbols", label: "Symbols & Special Characters" },
     { href: "/aesthetic", label: "Aesthetic Bio Symbols" },

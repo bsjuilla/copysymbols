@@ -74,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/bio-templates`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/couple-bio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/emoji-combos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/community-combos`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
     { url: `${BASE}/bio-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Tools
     { url: `${BASE}/small-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
