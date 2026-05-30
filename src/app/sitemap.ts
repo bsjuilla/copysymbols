@@ -72,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/lenny-face`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/bullet-points`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/bio-templates`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/couple-bio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/emoji-combos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/bio-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Tools

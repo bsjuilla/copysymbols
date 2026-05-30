@@ -47,3 +47,6 @@ next-env.d.ts
 graphify-out/
 .graphify_*
 ruvector.db
+
+.claude-flow/
+build-*.log
