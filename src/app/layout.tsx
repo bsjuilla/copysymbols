@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p style={{ fontSize: 13, color: "var(--text3)", marginTop: 4 }}>3000+ symbols, one click away.</p>
             </div>
             <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-              {["symbols","emoji","kaomoji","text-art"].map(p => (
+              {["symbols","emoji","kaomoji","aesthetic","text-art"].map(p => (
                 <Link key={p} href={`/${p}`} className="nav-link" style={{ fontSize: 13, textTransform: "capitalize" }}>{p.replace("-"," ")}</Link>
               ))}
             </div>
