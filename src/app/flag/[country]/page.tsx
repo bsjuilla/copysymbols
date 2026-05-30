@@ -7,6 +7,8 @@ import { FLAGS, getFlag, flagEmoji, flagCodePoints } from "@/data/flags";
 import { canonical } from "@/lib/canonical";
 import CopyToast from "@/components/CopyToast";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
+import TwemojiImg from "@/components/TwemojiImg";
+import { twemojiSvgUrl } from "@/lib/twemoji";
 
 interface Props { params: Promise<{ country: string }> }
 
@@ -179,7 +181,7 @@ export default async function FlagDetailPage({ params }: Props) {
                 }}
               />
               <div style={{ position: "relative", zIndex: 1 }}>
-                <EmojiCopyButton glyph={glyph} name={`${flag.name} flag`} />
+                <EmojiCopyButton glyph={glyph} name={`${flag.name} flag`} imageSrc={twemojiSvgUrl(glyph)} />
                 <h1
                   className="font-display"
                   style={{
@@ -284,7 +286,7 @@ export default async function FlagDetailPage({ params }: Props) {
                   style={{ textDecoration: "none", color: "inherit" }}
                   prefetch={false}
                 >
-                  <span style={{ fontSize: "1.8rem", lineHeight: 1 }}>{flagEmoji(n.a2)}</span>
+                  <TwemojiImg glyph={flagEmoji(n.a2)} size={29} />
                   <span className="symbol-name">{n.name}</span>
                 </Link>
               ))}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FLAGS, FLAG_REGIONS, flagsByRegion, flagEmoji } from "@/data/flags";
 import { canonical } from "@/lib/canonical";
+import TwemojiImg from "@/components/TwemojiImg";
 
 export const metadata: Metadata = {
   title: "Flag Emoji — Copy & Paste All Country Flags 🏳️",
@@ -83,7 +84,7 @@ export default function FlagsHubPage() {
                   style={{ textDecoration: "none", color: "inherit" }}
                   prefetch={false}
                 >
-                  <span style={{ fontSize: "1.8rem", lineHeight: 1 }}>{flagEmoji(f.a2)}</span>
+                  <TwemojiImg glyph={flagEmoji(f.a2)} size={29} />
                   <span className="symbol-name">{f.name}</span>
                 </Link>
               ))}
