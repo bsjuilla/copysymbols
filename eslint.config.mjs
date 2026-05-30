@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Throwaway one-off data-migration scripts — not shipped code.
     "_audit/**",
+    // Supabase Edge Functions are Deno (not part of the Next build/lint).
+    "supabase/**",
   ]),
   {
     rules: {
