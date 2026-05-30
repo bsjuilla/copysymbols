@@ -149,6 +149,7 @@ export function relatedForEmoji(): RelatedLink[] {
     { href: "/kaomoji", label: "Kaomoji Faces" },
     { href: "/symbols", label: "Symbols & Special Characters" },
     { href: "/aesthetic", label: "Aesthetic Bio Symbols" },
+    { href: "/couple-bio", label: "Couple Bio Symbols" },
     { href: "/bio-templates", label: "Bio Templates" },
     { href: "/fancy-text", label: "Fancy Text Generator" },
     { href: "/render-test", label: "Symbol & Emoji Render Test" },
