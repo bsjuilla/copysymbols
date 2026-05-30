@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
-import Script from "next/script";
 import NavClient from "@/components/NavClient";
 
 // Google AdSense publisher ID (public — also appears in the loader URL).
@@ -27,6 +26,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "CopyChars" },
   verification: { google: "yGoLQmu-h_wGHF5PgU0E5PrwzAav803ZRkX2x0XWmLw" },
+  // Google AdSense site-ownership meta tag (modern AdSense's primary verification
+  // signal). Renders <meta name="google-adsense-account" content="ca-pub-..."> in
+  // <head>, server-side and guaranteed crawlable.
+  other: { "google-adsense-account": ADSENSE_CLIENT },
   // NOTE: do NOT set alternates.canonical here. A root-level canonical is
   // inherited by every child route that doesn't override it, causing every
   // page to advertise the homepage as its canonical (Google then de-dupes
@@ -70,14 +73,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {/* Google AdSense loader (next/script, root layout = loads on every
-            route exactly once). Required for site verification + ad serving. */}
-        <Script
-          id="adsbygoogle-init"
+        {/* Google AdSense loader as a RAW <script> (not next/script). next/script
+            only emitted a <link rel=preload> + a JS-injected tag, which AdSense's
+            crawler — reading raw HTML without running our JS — could not see, so
+            verification failed. React 19 hoists this async script into <head> and
+            renders it as a real tag in the server HTML. Paired with the
+            google-adsense-account meta tag (metadata.other below) for verification. */}
+        <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
         <script
           type="application/ld+json"
