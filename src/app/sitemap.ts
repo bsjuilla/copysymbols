@@ -16,6 +16,7 @@ import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
 import { translators } from "@/lib/translators";
 import { AESTHETICS } from "@/data/aesthetics";
 import { FLAGS } from "@/data/flags";
+import { GAMING_SYMBOL_SETS } from "@/data/gaming-symbols";
 
 const BASE = "https://www.copychars.com";
 
@@ -56,6 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Country flag emoji hub (spokes at /flag/<country>).
     { url: `${BASE}/flags`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // Gaming name symbols hub (spokes at /gaming-symbols/<slug>).
+    { url: `${BASE}/gaming-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/text-art`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/fancy-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/text-repeater`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -289,6 +292,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.6,
+    })),
+
+    // ---- /gaming-symbols/<slug> spoke pages (games + styles) -------------
+    ...GAMING_SYMBOL_SETS.map(s => ({
+      url: `${BASE}/gaming-symbols/${s.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 
