@@ -40,6 +40,7 @@ const links: NavLink[] = [
       { href: "/hearts", label: "❤ Heart Symbols" },
       { href: "/stars", label: "★ Star Symbols" },
       { href: "/bio-builder", label: "🛠️ Bio Builder" },
+      { href: "/gaming-symbols", label: "🎮 Gaming Symbols" },
       { href: "/borders", label: "─ Borders & Lines" },
       { href: "/lenny-face", label: "( ͡° ͜ʖ ͡°) Lenny Faces" },
       { href: "/bullet-points", label: "• Bullet Points" },
