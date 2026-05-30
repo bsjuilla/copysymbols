@@ -48,6 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/emoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Timely Unicode 17.0 / Emoji 17.0 land-grab page (shipped iOS 26.4, Mar 2026).
+    { url: `${BASE}/new-emoji-2026`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/text-art`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/fancy-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
