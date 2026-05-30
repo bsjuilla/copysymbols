@@ -18,8 +18,9 @@
 // the project's tsconfig + eslint). Deploy it separately (Supabase dashboard or
 // `supabase functions deploy moderate-combo`).
 
-// deno-lint-ignore-file
-declare const Deno: { env: { get(k: string): string | undefined }; serve(h: (req: Request) => Promise<Response>): void };
+// Runs on the Deno runtime (Supabase Edge Functions). `Deno` is a built-in
+// global there — no import or declaration needed. This file is excluded from
+// the Next.js tsconfig/eslint, so it never reaches the site build.
 
 const GITHUB_TOKEN = Deno.env.get("GITHUB_TOKEN") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
