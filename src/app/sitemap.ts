@@ -15,6 +15,7 @@ import { platformIds } from "@/data/collections/platforms";
 import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
 import { translators } from "@/lib/translators";
 import { AESTHETICS } from "@/data/aesthetics";
+import { FLAGS } from "@/data/flags";
 
 const BASE = "https://www.copychars.com";
 
@@ -53,6 +54,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Timely Unicode 17.0 / Emoji 17.0 land-grab page (shipped iOS 26.4, Mar 2026).
     { url: `${BASE}/new-emoji-2026`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Country flag emoji hub (spokes at /flag/<country>).
+    { url: `${BASE}/flags`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/text-art`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/fancy-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/text-repeater`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -278,6 +281,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+
+    // ---- /flag/<country> per-country flag pages (249 ISO 3166-1) ---------
+    ...FLAGS.map(f => ({
+      url: `${BASE}/flag/${f.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
   ];
 
