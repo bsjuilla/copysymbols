@@ -13,6 +13,7 @@ import { bioTemplates } from "@/data/collections/bio-templates";
 import { platformIds } from "@/data/collections/platforms";
 import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
 import { translators } from "@/lib/translators";
+import { AESTHETICS } from "@/data/aesthetics";
 
 const BASE = "https://www.copychars.com";
 
@@ -253,6 +254,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/translate/${t.id}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+
+    // ---- Aesthetic / trend collection pages (P2) -------------------------
+    { url: `${BASE}/aesthetic`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...AESTHETICS.map(a => ({
+      url: `${BASE}/aesthetic/${a.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
   ];
