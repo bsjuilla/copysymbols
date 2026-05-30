@@ -23,18 +23,25 @@ const ADSENSE_SCRIPT = "https://pagead2.googlesyndication.com https://*.googlesy
 const ADSENSE_FRAME = "https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google https://www.googletagservices.com";
 const ADSENSE_CONNECT = "https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.adtrafficquality.google https://*.google-analytics.com";
 
-const CONNECT_SRC = ["'self'", SUPABASE_ORIGIN, ADSENSE_CONNECT].filter(Boolean).join(" ");
+// Google's Consent Management Platform (Funding Choices) — the GDPR consent
+// message AdSense serves to EEA/UK/Switzerland visitors. Without these origins
+// the consent banner is blocked by CSP and EEA ad revenue is lost.
+const CMP_SCRIPT = "https://fundingchoicesmessages.google.com https://www.gstatic.com";
+const CMP_FRAME = "https://fundingchoicesmessages.google.com";
+const CMP_CONNECT = "https://fundingchoicesmessages.google.com";
+
+const CONNECT_SRC = ["'self'", SUPABASE_ORIGIN, ADSENSE_CONNECT, CMP_CONNECT].filter(Boolean).join(" ");
 
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${ADSENSE_SCRIPT}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${ADSENSE_SCRIPT} ${CMP_SCRIPT}`,
   "style-src 'self' 'unsafe-inline'",
   // img-src already permits any https origin, which covers ad creatives + pixels.
   "img-src 'self' data: https:",
   "font-src 'self' data:",
   `connect-src ${CONNECT_SRC}`,
-  // Ad creatives render inside Google ad iframes.
-  `frame-src 'self' ${ADSENSE_FRAME}`,
+  // Ad creatives + the consent message render inside Google iframes.
+  `frame-src 'self' ${ADSENSE_FRAME} ${CMP_FRAME}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
