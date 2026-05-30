@@ -158,6 +158,21 @@ export function relatedForEmoji(): RelatedLink[] {
   ]);
 }
 
+/** Contextual links for a /flag/<country> detail page. */
+export function relatedForFlag(): RelatedLink[] {
+  return dedupeCap([
+    { href: "/flags", label: "All Country Flag Emoji" },
+    { href: "/emoji", label: "Emoji" },
+    { href: "/emoji-combos", label: "Emoji Combos" },
+    { href: "/aesthetic", label: "Aesthetic Bio Symbols" },
+    { href: "/bio-templates", label: "Bio Templates" },
+    { href: "/symbols", label: "Symbols & Special Characters" },
+    { href: "/fancy-text", label: "Fancy Text Generator" },
+    { href: "/render-test", label: "Symbol & Emoji Render Test" },
+    ...TOP_PLATFORMS.map(p => ({ href: `/symbols-for/${p.id}`, label: `Symbols for ${p.name}` })),
+  ]);
+}
+
 /** Contextual links for a /kaomoji/<slug> detail page. */
 export function relatedForKaomoji(): RelatedLink[] {
   return dedupeCap([

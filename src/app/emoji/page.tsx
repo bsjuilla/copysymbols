@@ -16,12 +16,18 @@ export default function EmojiPage() {
       <CopyToast />
       {/* Contextual link to the timely Unicode 17.0 page (keeps it off orphan
           status and passes equity from this high-traffic hub). */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 24px 0" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 24px 0", display: "flex", gap: 10, flexWrap: "wrap" }}>
         <Link
           href="/new-emoji-2026"
           style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 100, padding: "8px 16px", fontSize: 14, color: "var(--accent)", textDecoration: "none" }}
         >
           ✨ New: Unicode 17.0 emoji (2026) — copy the 8 newest emoji →
+        </Link>
+        <Link
+          href="/flags"
+          style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 100, padding: "8px 16px", fontSize: 14, color: "var(--accent)", textDecoration: "none" }}
+        >
+          🏳️‍🌈 All 249 country flag emoji — copy & paste →
         </Link>
       </div>
       <EmojiPageClient />
