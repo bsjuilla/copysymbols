@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForEmoji } from "@/lib/related";
 import {
   emoji,
   emojiCategories,
@@ -266,6 +268,11 @@ export default async function EmojiDetailPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <RelatedLinks
+          links={relatedForEmoji()}
+          heading="Related — kaomoji, symbols & bio tools"
+        />
       </div>
     </>
   );

@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForKaomoji } from "@/lib/related";
 import {
   allKaomoji,
   getKaomojiBySlug,
@@ -236,6 +238,11 @@ export default async function KaomojiDetailPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <RelatedLinks
+          links={relatedForKaomoji()}
+          heading="Related — Lenny faces, emoji & bio tools"
+        />
       </div>
     </>
   );
