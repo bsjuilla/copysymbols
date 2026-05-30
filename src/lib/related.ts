@@ -158,6 +158,20 @@ export function relatedForEmoji(): RelatedLink[] {
   ]);
 }
 
+/** Contextual links for an /alphabets/<slug> script page. */
+export function relatedForScript(): RelatedLink[] {
+  return dedupeCap([
+    { href: "/alphabets", label: "All Alphabets & Scripts" },
+    { href: "/symbols", label: "Symbols & Special Characters" },
+    { href: "/fancy-text", label: "Fancy Text Generator" },
+    { href: "/gaming-symbols", label: "Gaming Name Symbols" },
+    { href: "/emoji", label: "Emoji" },
+    { href: "/aesthetic", label: "Aesthetic Symbols" },
+    { href: "/username-generator", label: "Username Generator" },
+    ...TOP_PLATFORMS.map(p => ({ href: `/symbols-for/${p.id}`, label: `Symbols for ${p.name}` })),
+  ]);
+}
+
 /** Contextual links for a /gaming-symbols/<slug> page. */
 export function relatedForGaming(): RelatedLink[] {
   return dedupeCap([
