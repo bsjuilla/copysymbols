@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { categories, symbols } from "@/data/symbols";
 import { emoji } from "@/data/emoji";
 import { allKaomoji } from "@/data/all-kaomoji";
+import { kaomojiCategories } from "@/data/kaomoji";
 import { bullets } from "@/data/collections/bullets";
 import { borders } from "@/data/collections/borders";
 import { stars } from "@/data/collections/stars";
@@ -261,6 +262,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/aesthetic`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
     ...AESTHETICS.map(a => ({
       url: `${BASE}/aesthetic/${a.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+
+    // ---- /kaomoji/mood/<mood> spoke pages (P3) ---------------------------
+    ...kaomojiCategories.map(c => ({
+      url: `${BASE}/kaomoji/mood/${c.id}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
