@@ -34,6 +34,41 @@ const jsonLd = {
   },
 };
 
+// Homepage FAQ — AI-extractable brand/category answers (AEO, P4). Rendered
+// visibly below AND mirrored in FAQPage schema so the two never diverge.
+const faqs = [
+  {
+    q: "What is CopyChars?",
+    a: "CopyChars is a free website to copy and paste over 3,000 Unicode symbols, emoji, kaomoji and special characters. Click any character and it is copied to your clipboard instantly — no app and no sign-up needed.",
+  },
+  {
+    q: "How do I copy and paste a symbol?",
+    a: "Click any symbol on CopyChars and it is copied automatically. Then paste it with Ctrl+V (Cmd+V on Mac), or long-press and tap Paste on a phone — in bios, posts, documents and chats.",
+  },
+  {
+    q: "Do these symbols work on Instagram, TikTok and Discord?",
+    a: "Yes. Every character on CopyChars is real Unicode text, so it pastes into Instagram bios, TikTok captions, Discord names and messages, and anywhere else that accepts text.",
+  },
+  {
+    q: "Is CopyChars free?",
+    a: "Yes. CopyChars is completely free to use and does not require an account.",
+  },
+  {
+    q: "What is the difference between symbols, emoji and kaomoji?",
+    a: "Symbols are single Unicode characters such as ★, → and ©. Emoji are the colourful pictographs such as 😀 and 🎀. Kaomoji are Japanese text faces built from characters, such as (◕‿◕) and ʕ•ᴥ•ʔ.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function HomePage() {
   const popular = getPopularSymbols();
   const allCategories = categories.map(cat => ({
@@ -54,6 +89,17 @@ export default function HomePage() {
         mathSymbols={symbols.filter(s => s.category === "math").slice(0, 16).map(s => ({ id: s.id, symbol: s.symbol, name: s.name }))}
         totalSymbols={symbols.length}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <section style={{ maxWidth: 760, margin: "0 auto", padding: "32px 24px 64px" }}>
+        <div className="section-label" style={{ marginBottom: 12 }}>FAQ</div>
+        <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 24 }}>Frequently asked questions</h2>
+        {faqs.map(({ q, a }) => (
+          <div key={q} style={{ marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid var(--border)" }}>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
+            <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7 }}>{a}</p>
+          </div>
+        ))}
+      </section>
     </>
   );
 }
