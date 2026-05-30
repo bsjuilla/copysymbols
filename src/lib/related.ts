@@ -92,6 +92,7 @@ const TOP_PLATFORMS: { id: string; name: string }[] = [
 const UNIVERSAL_TOOLS: RelatedLink[] = [
   { href: "/fancy-text", label: "Fancy Text Generator" },
   { href: "/bio-templates", label: "Bio Templates" },
+  { href: "/render-test", label: "Symbol & Emoji Render Test" },
 ];
 
 function dedupeCap(links: RelatedLink[], cap = 18): RelatedLink[] {
@@ -150,6 +151,7 @@ export function relatedForEmoji(): RelatedLink[] {
     { href: "/aesthetic", label: "Aesthetic Bio Symbols" },
     { href: "/bio-templates", label: "Bio Templates" },
     { href: "/fancy-text", label: "Fancy Text Generator" },
+    { href: "/render-test", label: "Symbol & Emoji Render Test" },
     ...TOP_PLATFORMS.map(p => ({ href: `/symbols-for/${p.id}`, label: `Symbols for ${p.name}` })),
   ]);
 }
