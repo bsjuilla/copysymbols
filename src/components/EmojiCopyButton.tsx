@@ -9,10 +9,18 @@ export default function EmojiCopyButton({
   glyph,
   name,
   size = "clamp(5rem, 12vw, 9rem)",
+  imageSrc,
 }: {
   glyph: string;
   name: string;
   size?: string;
+  /**
+   * Optional display-only image (e.g. a Twemoji SVG URL). When set, the button
+   * SHOWS this image instead of the text glyph, but the click still copies the
+   * real `glyph`. Used on /flag and /new-emoji-2026 so flags / brand-new emoji
+   * render on Windows. Omitted everywhere else → unchanged text-glyph behaviour.
+   */
+  imageSrc?: string;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -57,17 +65,37 @@ export default function EmojiCopyButton({
         width: "100%",
       }}
     >
-      <span
-        style={{
-          fontSize: size,
-          lineHeight: 1,
-          display: "block",
-          filter: "drop-shadow(0 0 40px rgba(200,169,110,0.18))",
-          transition: "transform 0.2s ease",
-        }}
-      >
-        {glyph}
-      </span>
+      {imageSrc ? (
+        // display-only third-party CDN SVG; next/image adds no value for a static
+        // remote SVG and would need remotePatterns config.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={imageSrc}
+          alt={glyph}
+          decoding="async"
+          draggable={false}
+          style={{
+            width: size,
+            height: size,
+            objectFit: "contain",
+            display: "block",
+            filter: "drop-shadow(0 0 40px rgba(200,169,110,0.18))",
+            transition: "transform 0.2s ease",
+          }}
+        />
+      ) : (
+        <span
+          style={{
+            fontSize: size,
+            lineHeight: 1,
+            display: "block",
+            filter: "drop-shadow(0 0 40px rgba(200,169,110,0.18))",
+            transition: "transform 0.2s ease",
+          }}
+        >
+          {glyph}
+        </span>
+      )}
       <span
         style={{
           fontSize: 12,

@@ -6,6 +6,7 @@ import { canonical } from "@/lib/canonical";
 import { codePointInfo } from "@/lib/unicode-blocks";
 import { relatedForEmoji } from "@/lib/related";
 import { NEW_EMOJI_2026, glyphOf } from "@/data/new-emoji-2026";
+import { twemojiSvgUrl } from "@/lib/twemoji";
 
 export const metadata: Metadata = {
   title: "New Emoji 2026 — Unicode 17.0 Emoji to Copy & Paste",
@@ -97,8 +98,10 @@ export default function NewEmoji2026Page() {
         and Ballet Dancer. Click any emoji below to copy it instantly.
       </p>
       <p style={{ fontSize: 14, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>
-        If a glyph below shows as an empty box (□), your device has not yet updated to the Unicode 17.0 font — see
-        &ldquo;How to get the new emoji on your phone&rdquo; below.
+        Each emoji below is shown as a preview image so you can see it on any device. When you click it you copy the
+        real Unicode character — that character only appears as the finished emoji on devices updated to the Unicode
+        17.0 font (iPhone needs iOS 26.4 or later), and may still show as a box (□) for anyone you send it to who
+        hasn&rsquo;t updated yet. See &ldquo;How to get the new emoji on your phone&rdquo; below.
       </p>
 
       <section style={{ marginBottom: 48 }}>
@@ -119,7 +122,7 @@ export default function NewEmoji2026Page() {
                   gap: 14,
                 }}
               >
-                <EmojiCopyButton glyph={glyph} name={e.name} size="clamp(3.2rem, 8vw, 4.6rem)" />
+                <EmojiCopyButton glyph={glyph} name={e.name} size="clamp(3.2rem, 8vw, 4.6rem)" imageSrc={twemojiSvgUrl(glyph)} />
                 <h2
                   className="font-display"
                   style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--text)", margin: 0, textAlign: "center" }}
