@@ -6,6 +6,9 @@ import SymbolCopyButtons from "@/components/SymbolCopyButtons";
 import SymbolCard from "@/components/SymbolCard";
 import Link from "next/link";
 import type { Metadata } from "next";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForSymbol } from "@/lib/related";
+import { codePointInfo } from "@/lib/unicode-blocks";
 
 // Prerender every known symbol page at build time. Unknown slugs still hit
 // this route (dynamicParams default = true) so the gen-* redirect logic
@@ -65,11 +68,18 @@ export default async function SymbolDetailPage({ params }: Props) {
   const cat = categories.find(c => c.id === s!.category);
   const related = getSymbolsByCategory(s!.category).filter(r => r.id !== s!.id).slice(0, 16);
 
+  // Data depth (P0): decimal code point + Unicode block name. Two genuinely
+  // unique facts per glyph (not boilerplate) to help thin pages off page 5.
+  const cp = codePointInfo(s!.symbol);
   const specs = [
     { label: "Unicode", value: s!.unicode, color: "var(--teal)", icon: "U" },
     { label: "HTML Entity", value: s!.html, color: "var(--purple)", icon: "</>" },
     { label: "CSS Value", value: s!.css, color: "var(--coral)", icon: "#" },
     { label: "Category", value: cat?.name || "", color: "var(--accent)", icon: "≡" },
+    ...(cp ? [
+      { label: "Code Point", value: String(cp.decimal), color: "var(--coral)", icon: "10" },
+      { label: "Unicode Block", value: cp.block, color: "var(--accent)", icon: "▦" },
+    ] : []),
   ];
 
   // JSON-LD: BreadcrumbList + DefinedTerm for this symbol detail page so Google
@@ -432,6 +442,11 @@ export default async function SymbolDetailPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <RelatedLinks
+          links={relatedForSymbol(s!.category, slug)}
+          heading="Related collections, tools & platforms"
+        />
 
       </div>
     </>
