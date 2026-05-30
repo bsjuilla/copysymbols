@@ -4,7 +4,7 @@ import Link from "next/link";
 import NavClient from "@/components/NavClient";
 
 // Google AdSense publisher ID (public — also appears in the loader URL).
-const ADSENSE_CLIENT = "ca-pub-5637152198888305";
+const ADSENSE_CLIENT = "ca-pub-5652501264934418";
 
 // Next 16 moved themeColor out of the metadata export into a dedicated
 // viewport export (see node_modules/next/dist/docs/.../generate-viewport.md).
