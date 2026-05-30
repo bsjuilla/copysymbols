@@ -2,6 +2,7 @@ import { kaomojiCategories } from "@/data/kaomoji";
 import { allKaomoji } from "@/data/all-kaomoji";
 import KaomojiPageClient from "./KaomojiPageClient";
 import CopyToast from "@/components/CopyToast";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { canonical } from "@/lib/canonical";
 
@@ -45,6 +46,17 @@ export default function KaomojiPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* Browse by mood — hub→spoke links to the per-mood pages (P3). */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 24px 0" }}>
+        <div className="section-label" style={{ marginBottom: 10 }}>Browse kaomoji by mood</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {kaomojiCategories.map(c => (
+            <Link key={c.id} href={`/kaomoji/mood/${c.id}`} className="cat-pill" style={{ textDecoration: "none" }}>
+              {c.icon} {c.name}
+            </Link>
+          ))}
+        </div>
+      </div>
       <KaomojiPageClient allKaomoji={allKaomoji} categories={kaomojiCategories} />
     </>
   );

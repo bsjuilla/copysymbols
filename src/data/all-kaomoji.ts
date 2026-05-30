@@ -4,6 +4,7 @@
 // and the by-mood lookup used by /kaomoji/[slug] and the sitemap.
 
 import { kaomoji, type Kaomoji } from "./kaomoji";
+import { extraKaomoji } from "./kaomoji-extra";
 import { slugify } from "@/lib/slug";
 
 // `isDuplicate` is true for the 2nd, 3rd, ... occurrence of a name. Pages for
@@ -19,7 +20,10 @@ const _bySlug = new Map<string, KaomojiWithSlug>();
 const _byMood = new Map<string, KaomojiWithSlug[]>();
 const _all: KaomojiWithSlug[] = [];
 
-for (const k of kaomoji) {
+// Existing kaomoji are processed FIRST so their slugs never change; the extra
+// curated set (P3) is appended after — any name collision makes the extra the
+// `-2` noindex'd duplicate, preserving every existing canonical URL.
+for (const k of [...kaomoji, ...extraKaomoji]) {
   const base = slugify(k.name) || k.id;
   const occurrences = (_seen.get(base) ?? 0) + 1;
   _seen.set(base, occurrences);
