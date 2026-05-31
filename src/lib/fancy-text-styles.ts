@@ -390,3 +390,27 @@ export const STYLES: FancyTextStyle[] = [
 export function findStyle(slug: string): FancyTextStyle | undefined {
   return STYLES.find(s => s.slug === slug);
 }
+
+// Common search-term aliases per style (display-cased). People search "cursive"
+// far more than "script", "bubble" more than "circled", etc. These let the
+// existing /fancy-text/<slug> page target that real-world vocabulary in its
+// title, keywords and copy — capturing the high-volume terms WITHOUT spinning up
+// duplicate /cursive-text URLs that would cannibalise the same query.
+export const STYLE_ALIASES: Record<string, string[]> = {
+  script: ["Cursive", "Calligraphy"],
+  "bold-script": ["Fancy Cursive"],
+  "old-english": ["Gothic", "Blackletter"],
+  "bold-old-english": ["Bold Gothic"],
+  "double-struck": ["Outline", "Blackboard"],
+  monospace: ["Typewriter", "Code"],
+  circled: ["Bubble"],
+  "full-width": ["Vaporwave", "Aesthetic", "Wide"],
+  "faux-cyrillic": ["Russian"],
+  "faux-greek": ["Greek"],
+  "small-caps": ["Tiny Caps"],
+};
+
+/** Common-name aliases for a style slug (display-cased), or []. */
+export function aliasesFor(slug: string): string[] {
+  return STYLE_ALIASES[slug] ?? [];
+}
