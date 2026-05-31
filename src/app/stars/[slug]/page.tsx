@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = getStarBySlug(slug);
   if (!s) return {};
-  const title = `${s.name} ${s.char} — Star Symbol Copy & Paste | CopyChars`;
+  const title = `${s.name} ${s.char} — Star Symbol Copy & Paste`;
   const description = `Copy the ${s.name} (${s.char}) for free. ${s.usageNote} Paste into Instagram, TikTok, Discord, Word docs or anywhere you write text.`;
   const url = `https://www.copychars.com/stars/${slug}`;
   return {

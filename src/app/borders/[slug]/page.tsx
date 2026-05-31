@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const b = getBorderBySlug(slug);
   if (!b) return {};
   const previewChar = b.char.slice(0, 24);
-  const title = `${b.name} — Border & Divider Copy & Paste | CopyChars`;
+  const title = `${b.name} — Border & Divider Copy & Paste`;
   const description = `Copy the ${b.name} (${previewChar}) for free. ${b.usageNote} Paste into Discord, Instagram bio, Notion, Tumblr or anywhere you write text.`;
   const url = `https://www.copychars.com/borders/${slug}`;
   return {

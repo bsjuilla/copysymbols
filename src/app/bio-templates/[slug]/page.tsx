@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const b = getBioTemplateBySlug(slug);
   if (!b) return {};
   const pMeta = platformMeta(b.platform);
-  const title = `${b.name} — ${pMeta?.name ?? b.platform} Bio Template | CopyChars`;
+  const title = `${b.name} — ${pMeta?.name ?? b.platform} Bio Template`;
   const description = `Ready-to-paste ${b.vibe.toLowerCase()} bio template for ${pMeta?.name ?? b.platform}. ${b.vibeNote} Fill in ${b.placeholders.length} placeholders and paste.`;
   const url = `https://www.copychars.com/bio-templates/${slug}`;
   return {
