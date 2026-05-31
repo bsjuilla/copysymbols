@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import CopyToast from "@/components/CopyToast";
 import FancyTextClient from "../FancyTextClient";
 import { canonical } from "@/lib/canonical";
-import { STYLES, findStyle } from "@/lib/fancy-text-styles";
+import { STYLES, findStyle, aliasesFor } from "@/lib/fancy-text-styles";
 
 interface Props { params: Promise<{ style: string }> }
 
@@ -15,10 +15,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { style } = await params;
   const s = findStyle(style);
   if (!s) return {};
+  const aliases = aliasesFor(s.slug);
+  const primary = aliases[0];
+  // Lead the title with the common search term (e.g. "Cursive") where one exists,
+  // keeping the technical label in parentheses so existing rankings hold.
+  const title = primary
+    ? `${primary} Text Generator (${s.label}) — Copy & Paste ${s.example}`
+    : `${s.label} Text Generator — Copy & Paste ${s.example}`;
+  const description = primary
+    ? `Convert any text to ${primary.toLowerCase()} text — also called ${s.label.toLowerCase()} (${s.example}). ${s.description} Works on Instagram, TikTok, Discord, X, WhatsApp. One click to copy.`
+    : `${s.description} Convert any text to ${s.label.toLowerCase()} (${s.example}). Works on Instagram, TikTok, Discord, X, WhatsApp. One click to copy.`;
   return {
-    title: `${s.label} Text Generator — Copy & Paste ${s.example}`,
-    description: `${s.description} Convert any text to ${s.label.toLowerCase()} (${s.example}). Works on Instagram, TikTok, Discord, X, WhatsApp. One click to copy.`,
+    title,
+    description,
     keywords: [
+      ...aliases.flatMap(a => [`${a.toLowerCase()} text generator`, `${a.toLowerCase()} text copy paste`, `${a.toLowerCase()} font`]),
       `${s.label.toLowerCase()} text generator`,
       `${s.label.toLowerCase()} text copy paste`,
       `${s.label.toLowerCase()} font`,
@@ -33,6 +44,8 @@ export default async function FancyTextStylePage({ params }: Props) {
   const { style } = await params;
   const s = findStyle(style);
   if (!s) notFound();
+
+  const aliases = aliasesFor(s!.slug);
 
   // Per-style FAQ (3 entries — focused on the specific style for AI citations)
   const faqs = [
@@ -71,6 +84,11 @@ export default async function FancyTextStylePage({ params }: Props) {
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 48px" }}>
         <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40, marginBottom: 16 }}>
           <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 20 }}>About {s.label.toLowerCase()} text</h2>
+          {aliases.length > 0 && (
+            <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 24 }}>
+              {s.label} text is also known as <strong style={{ color: "var(--text)" }}>{aliases.join(", ").toLowerCase()}</strong> text. Type in the box above to convert any letters instantly, then copy and paste.
+            </p>
+          )}
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {faqs.map(f => (
               <div key={f.q}>
