@@ -50,6 +50,9 @@ export default function GamingSymbolsHub() {
         <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.8, margin: 0 }}>
           Gaming symbols are the decorative Unicode characters players paste into in-game names, clan tags and bios — wings ꧁༒☬꧂, swords ⚔, crowns ♛, skulls ☠ and the sweaty ツ tags. Pick your game for symbols and ready-made name templates that fit its name field, or pick a style to grab a themed set. Every symbol is real Unicode, so it pastes anywhere you type your name.
         </p>
+        <p style={{ fontSize: 14, color: "var(--text3)", lineHeight: 1.7, margin: "12px 0 0" }}>
+          Tip: a few ornate symbols (like the ꧁ ꧂ wings and ༒) render perfectly in your game and on phones, but may show as a box on some Windows desktops — that is just a font gap, the copied character is still correct and shows properly in-game.
+        </p>
       </div>
 
       {GAMING_KINDS.map(kind => {

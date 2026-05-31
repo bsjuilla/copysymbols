@@ -123,7 +123,7 @@ export default async function GamingSymbolSpoke({ params }: Props) {
             {s.name} symbols
           </h2>
           <p style={{ fontSize: 14, color: "var(--text3)", margin: "0 0 16px" }}>
-            Click any symbol to copy it. Mix and match to build your own name.
+            Click any symbol to copy it. Mix and match to build your own name. A few ornate symbols may show as a box on Windows desktop, but they render correctly in-game and on phones — the copied character is still right.
           </p>
           <GamingCopyGrid items={s.symbols} variant="symbol" />
         </section>
