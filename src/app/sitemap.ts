@@ -103,6 +103,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/morse-code`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/binary-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/roman-numerals`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/uwu-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/runes`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/render-test`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // NEW (audit pass 2 Task 4) — text decorator tool
     { url: `${BASE}/text-decorator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
