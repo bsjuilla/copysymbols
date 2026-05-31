@@ -33,6 +33,8 @@ const links: NavLink[] = [
       { href: "/morse-code", label: "·− Morse Code" },
       { href: "/binary-translator", label: "01 Binary Translator" },
       { href: "/roman-numerals", label: "🏛️ Roman Numerals" },
+      { href: "/uwu-translator", label: "🐱 UwU Translator" },
+      { href: "/runes", label: "🗿 Runes" },
     ],
   },
   {
