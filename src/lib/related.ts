@@ -158,6 +158,20 @@ export function relatedForEmoji(): RelatedLink[] {
   ]);
 }
 
+/** Contextual links for the /roman-numerals tool page. */
+export function relatedForRoman(): RelatedLink[] {
+  return dedupeCap([
+    { href: "/number-symbols", label: "Number Symbols" },
+    { href: "/binary-translator", label: "Binary Translator" },
+    { href: "/morse-code", label: "Morse Code" },
+    { href: "/symbols", label: "Symbols & Special Characters" },
+    { href: "/alphabets", label: "Alphabets & Scripts" },
+    { href: "/fancy-text", label: "Fancy Text Generator" },
+    { href: "/character-counter", label: "Character Counter" },
+    { href: "/superscript-generator", label: "Superscript Generator" },
+  ]);
+}
+
 /** Contextual links for an /alphabets/<slug> script page. */
 export function relatedForScript(): RelatedLink[] {
   return dedupeCap([
