@@ -44,6 +44,7 @@ const links: NavLink[] = [
       { href: "/gaming-symbols", label: "🎮 Gaming Symbols" },
       { href: "/alphabets", label: "🔤 Alphabets & Scripts" },
       { href: "/flags", label: "🏳️ Country Flags" },
+      { href: "/seasonal", label: "🎉 Seasonal Symbols" },
       { href: "/borders", label: "─ Borders & Lines" },
       { href: "/lenny-face", label: "( ͡° ͜ʖ ͡°) Lenny Faces" },
       { href: "/bullet-points", label: "• Bullet Points" },

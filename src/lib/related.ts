@@ -158,6 +158,20 @@ export function relatedForEmoji(): RelatedLink[] {
   ]);
 }
 
+/** Contextual links for a /seasonal/<occasion> page. */
+export function relatedForSeasonal(): RelatedLink[] {
+  return dedupeCap([
+    { href: "/seasonal", label: "All Seasonal Symbols" },
+    { href: "/emoji", label: "Emoji" },
+    { href: "/emoji-combos", label: "Emoji Combos" },
+    { href: "/hearts", label: "Heart Symbols ♥" },
+    { href: "/stars", label: "Star Symbols ★" },
+    { href: "/aesthetic", label: "Aesthetic Symbols" },
+    { href: "/bio-templates", label: "Bio Templates" },
+    ...TOP_PLATFORMS.map(p => ({ href: `/symbols-for/${p.id}`, label: `Symbols for ${p.name}` })),
+  ]);
+}
+
 /** Contextual links for the /roman-numerals tool page. */
 export function relatedForRoman(): RelatedLink[] {
   return dedupeCap([
