@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const e = getEmojiBySlug(slug);
   if (!e) return {};
-  const title = `${e.name} Emoji ${e.emoji} — Copy & Paste | CopyChars`;
+  const title = `${e.name} Emoji ${e.emoji} — Copy & Paste`;
   const description = `Copy the ${e.name} emoji (${e.emoji}) for free. Paste ${e.emoji} into Instagram, Twitter, WhatsApp, Discord or any app. Part of the ${categoryName(e.category)} category.`;
   const url = `https://www.copychars.com/emoji/${slug}`;
   return {

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const h = getHeartBySlug(slug);
   if (!h) return {};
-  const title = `${h.name} ${h.char} — Heart Symbol Copy & Paste | CopyChars`;
+  const title = `${h.name} ${h.char} — Heart Symbol Copy & Paste`;
   const description = `Copy the ${h.name} heart (${h.char}) for free. ${h.usageNote} Paste into Instagram, TikTok, WhatsApp, Discord or anywhere you write text.`;
   const url = `https://www.copychars.com/hearts/${slug}`;
   return {

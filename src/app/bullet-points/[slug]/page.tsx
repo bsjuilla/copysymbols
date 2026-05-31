@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const b = getBulletBySlug(slug);
   if (!b) return {};
-  const title = `${b.name} ${b.char} — Bullet Point Symbol Copy & Paste | CopyChars`;
+  const title = `${b.name} ${b.char} — Bullet Point Symbol Copy & Paste`;
   const description = `Copy the ${b.name} bullet (${b.char}) for free. ${b.usageNote} Paste into Word, Google Docs, Instagram, LinkedIn, Discord or anywhere you write lists.`;
   const url = `https://www.copychars.com/bullet-points/${slug}`;
   return {

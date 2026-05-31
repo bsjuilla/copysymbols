@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = getPlatform(platform);
   if (!p) return {};
   const symbolCount = p.categories.reduce((sum, c) => sum + c.symbols.length, 0);
-  const title = `${symbolCount}+ Symbols for ${p.name} — Copy & Paste | CopyChars`;
+  const title = `${symbolCount}+ Symbols for ${p.name} — Copy & Paste`;
   const description = `${p.tagline} ${symbolCount}+ symbols across ${p.categories.length} categories. Click any symbol to copy it instantly. ${p.bioLimit}-char ${p.name} bio limit covered.`;
   return {
     title,

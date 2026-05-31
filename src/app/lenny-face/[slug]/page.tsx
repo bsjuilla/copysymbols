@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const l = getLennyBySlug(slug);
   if (!l) return {};
-  const title = `${l.name} Lenny Face ${l.face} — Copy & Paste | CopyChars`;
+  const title = `${l.name} Lenny Face ${l.face} — Copy & Paste`;
   const description = `Copy the ${l.name} Lenny ${l.face} for free. ${l.usageNote} Paste into Discord, Reddit, Twitter, WhatsApp or anywhere you write text.`;
   const url = `https://www.copychars.com/lenny-face/${slug}`;
   return {

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const t = getTextArtBySlug(slug);
   if (!t) return {};
-  const title = `${t.name} ASCII Text Art — Copy & Paste | CopyChars`;
+  const title = `${t.name} ASCII Text Art — Copy & Paste`;
   const description = `Copy the ${t.name} text art for free. ${t.vibeNote} Paste into Discord, Reddit, terminals or anywhere monospaced text renders.`;
   const url = `https://www.copychars.com/text-art/${slug}`;
   return {
