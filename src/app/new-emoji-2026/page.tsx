@@ -1,22 +1,32 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
 import CopyToast from "@/components/CopyToast";
 import RelatedLinks from "@/components/RelatedLinks";
 import { canonical } from "@/lib/canonical";
 import { codePointInfo } from "@/lib/unicode-blocks";
 import { relatedForEmoji } from "@/lib/related";
-import { NEW_EMOJI_2026, glyphOf } from "@/data/new-emoji-2026";
+import {
+  NEW_EMOJI_2026,
+  glyphOf,
+  PLATFORM_SUPPORT,
+  SUPPORT_LAST_CHECKED,
+  SUPPORT_STATUS_LABEL,
+  type SupportStatus,
+} from "@/data/new-emoji-2026";
 import { twemojiSvgUrl } from "@/lib/twemoji";
 
 export const metadata: Metadata = {
   title: "New Emoji 2026 — Unicode 17.0 Emoji to Copy & Paste",
   description:
-    "The 8 new emoji of 2026 from Unicode 17.0 — added to iPhone in iOS 26.4. Copy and paste the new 2026 emoji: Distorted Face, Orca, Treasure Chest, Trombone and more.",
+    "The 8 new emoji of 2026 from Unicode 17.0, with a per-platform support tracker (iPhone, Android, Windows, WhatsApp) so you know if they show yet. Copy Distorted Face, Orca, Treasure Chest, Trombone and more.",
   keywords: [
     ...NEW_EMOJI_2026.flatMap(e => e.searchTerms),
     "new emoji 2026",
     "unicode 17 emoji",
     "ios 26.4 emoji",
+    "are the new emoji supported yet",
+    "new emoji android support",
   ],
   ...canonical("/new-emoji-2026"),
 };
@@ -43,6 +53,10 @@ const faqs = [
   {
     q: "How do I get the new emoji on iPhone?",
     a: "Update your iPhone to iOS 26.4 or later: open Settings, tap General, then Software Update, and install the latest version. After updating, the new 2026 emoji appear in the standard emoji keyboard.",
+  },
+  {
+    q: "Are the 2026 emoji supported on Android and Windows yet?",
+    a: "They roll out at different times on each platform. As of " + SUPPORT_LAST_CHECKED + ", they are available on iPhone, iPad and Mac (iOS/iPadOS/macOS 26.4), and are rolling out across 2026 on Android (via system and Gboard updates), Windows, Samsung and WhatsApp. See the platform support table above for the current status of each.",
   },
 ];
 
@@ -74,6 +88,12 @@ const jsonLd = {
       })),
     },
   ],
+};
+
+const STATUS_COLOR: Record<SupportStatus, string> = {
+  shipped: "#3fb950",
+  rolling: "#d29922",
+  expected: "#8b949e",
 };
 
 export default function NewEmoji2026Page() {
@@ -169,6 +189,53 @@ export default function NewEmoji2026Page() {
             );
           })}
         </div>
+      </section>
+
+      {/* ── PLATFORM SUPPORT TRACKER ──────────────────────────────────── */}
+      <section style={{ marginBottom: 48 }}>
+        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
+          Can you use the 2026 emoji yet? Platform support
+        </h2>
+        <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16 }}>
+          The Unicode 17.0 set ships at different times on each platform. Status as last checked on {SUPPORT_LAST_CHECKED}.
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {PLATFORM_SUPPORT.map(p => (
+            <div
+              key={p.platform}
+              style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "14px 16px", display: "flex", gap: 14, alignItems: "flex-start", flexWrap: "wrap" }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  padding: "4px 10px",
+                  borderRadius: 100,
+                  color: STATUS_COLOR[p.status],
+                  background: `${STATUS_COLOR[p.status]}1a`,
+                  border: `1px solid ${STATUS_COLOR[p.status]}40`,
+                  minWidth: 96,
+                  textAlign: "center",
+                }}
+              >
+                {p.status === "shipped" ? "✓ " : p.status === "rolling" ? "↻ " : "… "}
+                {SUPPORT_STATUS_LABEL[p.status]}
+              </span>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ fontSize: 14.5, fontWeight: 600, color: "var(--text)", marginBottom: 2 }}>{p.platform}</div>
+                <div style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>{p.detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ fontSize: 13.5, color: "var(--text2)", lineHeight: 1.7, marginTop: 16 }}>
+          Not sure if one of these will show for the person you&rsquo;re messaging? Paste it into the{" "}
+          <Link href="/render-test" style={{ color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}>
+            Render Test
+          </Link>{" "}
+          to get a per-device verdict, or send them the friend-test link to check on their own phone.
+        </p>
       </section>
 
       <section style={{ marginBottom: 48 }}>
