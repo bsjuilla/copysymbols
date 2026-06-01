@@ -35,6 +35,7 @@ const links: NavLink[] = [
       { href: "/roman-numerals", label: "🏛️ Roman Numerals" },
       { href: "/uwu-translator", label: "🐱 UwU Translator" },
       { href: "/runes", label: "🗿 Runes" },
+      { href: "/discord-timestamp", label: "🕑 Discord Timestamp" },
     ],
   },
   {
