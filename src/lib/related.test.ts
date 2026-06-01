@@ -1,11 +1,12 @@
 // Test: the cross-silo internal-linking layer (src/lib/related.ts).
 //
 // Guards the SEO contract these links exist to enforce:
-//   1. A curated symbol page links across ALL adjacent silos + its platform spokes.
-//   2. gen-* (noindex) symbol pages do NOT emit /symbol/<id>/in-<platform> spokes.
-//   3. Every anchor is descriptive — never "more" / "click here" / "read more".
-//   4. No duplicate hrefs survive dedupe.
-//   5. Emoji / kaomoji detail pages reach their expected cross-silo + tool hubs.
+//   1. A curated symbol page links across ALL adjacent silos + the platform hubs
+//      (/symbols-for/<platform> — the old per-symbol /in-<platform> spokes were
+//      removed; that route was a Next-16-broken partial segment that 404'd).
+//   2. Every anchor is descriptive — never "more" / "click here" / "read more".
+//   3. No duplicate hrefs survive dedupe.
+//   4. Emoji / kaomoji detail pages reach their expected cross-silo + tool hubs.
 //
 // No test framework is configured in this repo — plain imports, throw on
 // failure, console.log on pass. Run with: npx tsx src/lib/related.test.ts
@@ -44,8 +45,8 @@ function assertDescriptiveAnchors(links: RelatedLink[], label: string): void {
   }
 }
 
-// ── 1. Curated symbol page links across all adjacent silos + platform spokes ──
-const heart = relatedForSymbol("shapes", "heart-filled");
+// ── 1. Curated symbol page links across all adjacent silos + platform hubs ────
+const heart = relatedForSymbol("shapes");
 assertIncludesAll(
   heart,
   [
@@ -57,23 +58,16 @@ assertIncludesAll(
     "/kaomoji",
     "/fancy-text",
     "/bio-templates",
-    "/symbol/heart-filled/in-instagram",
-    "/symbol/heart-filled/in-tiktok",
-    "/symbol/heart-filled/in-discord",
+    "/symbols-for/instagram",
+    "/symbols-for/tiktok",
+    "/symbols-for/discord",
   ],
-  "relatedForSymbol(shapes, heart-filled)",
+  "relatedForSymbol(shapes)",
 );
 
-// ── 2. gen-* symbols are noindex → no platform spokes ────────────────────────
-const gen = relatedForSymbol("shapes", "gen-foo-123");
-for (const h of hrefs(gen)) {
-  assert(!h.startsWith("/symbol/gen-foo-123/in-"), `gen-* symbol must not emit platform spoke, found "${h}"`);
-}
-
-// ── 3 + 4. Descriptive anchors + dedupe across every result ──────────────────
+// ── 2 + 3. Descriptive anchors + dedupe across every result ──────────────────
 const allResults: { label: string; links: RelatedLink[] }[] = [
-  { label: "relatedForSymbol(shapes, heart-filled)", links: heart },
-  { label: "relatedForSymbol(shapes, gen-foo-123)", links: gen },
+  { label: "relatedForSymbol(shapes)", links: heart },
   { label: "relatedForEmoji()", links: relatedForEmoji() },
   { label: "relatedForKaomoji()", links: relatedForKaomoji() },
 ];

@@ -447,7 +447,7 @@ export default async function SymbolDetailPage({ params }: Props) {
         )}
 
         <RelatedLinks
-          links={relatedForSymbol(s!.category, slug)}
+          links={relatedForSymbol(s!.category)}
           heading="Related collections, tools & platforms"
         />
 

@@ -174,13 +174,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
 
-    // ---- /symbol/<slug>/in-<platform> cross matrix — REMOVED from sitemap ----
-    // The ~1,680 "<symbol> for <platform>" pages are near-duplicate thin content
-    // (body differs only by the platform name) and were the bulk of GSC
-    // "Discovered/Crawled - currently not indexed". They are now noindex'd at the
-    // page level (symbol/[slug]/in-[platform]/page.tsx) and excluded here so the
-    // sitemap advertises only genuinely-indexable URLs and crawl budget goes to
-    // the base symbol pages + the rich /symbols-for/<platform> hubs.
+    // ---- /symbol/<slug>/in-<platform> cross matrix — ROUTE DELETED -----------
+    // These ~1,300 "<symbol> for <platform>" pages were near-duplicate thin
+    // content AND the route (a partial-segment `in-[platform]` folder) 404'd
+    // under Next 16, so they were both removed from this sitemap and the route
+    // deleted; old URLs now 308-redirect to the base /symbol/<slug> page
+    // (next.config.ts). Crawl budget goes to the base symbol pages + the rich
+    // /symbols-for/<platform> hubs, which own these intents.
 
     // ---- Per-style fancy-text sub-pages ----------------------------------
     ...fancyTextStyles.map(st => ({
