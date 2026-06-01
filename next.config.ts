@@ -75,6 +75,12 @@ const nextConfig: NextConfig = {
       // base symbol page so the equity consolidates and nothing 404s.
       { source: "/symbol/:slug/in-:platform", destination: "/symbol/:slug", permanent: true },
 
+      // ── Renamed kaomoji mood slug (GSC 404, last crawled 2026-05-23) ─────────
+      // /kaomoji/cool-indifferent was an earlier combined mood page. The mood
+      // taxonomy was later split; the live equivalent is the "Cool & Confident"
+      // spoke at /kaomoji/mood/cool. 308 so Google consolidates onto it.
+      { source: "/kaomoji/cool-indifferent", destination: "/kaomoji/mood/cool", permanent: true },
+
       // ── Original 4 (GSC May 9 batch) — closest-symbol redirects ───────────────
       { source: "/symbol/gen-greek-uppercase-delta-with-macron-1778250469107", destination: "/symbol/delta", permanent: true },
       { source: "/symbol/gen-greek-uppercase-alpha-with-macron-1778250469107", destination: "/symbols/greek", permanent: true },
