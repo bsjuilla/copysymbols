@@ -19,8 +19,8 @@ const labelStyle: React.CSSProperties = {
   letterSpacing: "0.05em",
 };
 
-export default function GameNameChecker() {
-  const [slug, setSlug] = useState(GAME_NAME_RULES[0].slug);
+export default function GameNameChecker({ lockedGame }: { lockedGame?: string }) {
+  const [slug, setSlug] = useState(lockedGame ?? GAME_NAME_RULES[0].slug);
   const [name, setName] = useState("");
   const { copy } = useCopyToast();
 
@@ -32,30 +32,34 @@ export default function GameNameChecker() {
 
   return (
     <div style={{ marginBottom: 8 }}>
-      {/* Game selector */}
-      <div style={{ ...labelStyle, marginBottom: 8 }}>Choose your game</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 22 }}>
-        {GAME_NAME_RULES.map((g) => {
-          const active = g.slug === slug;
-          return (
-            <button
-              key={g.slug}
-              type="button"
-              onClick={() => setSlug(g.slug)}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 14px", borderRadius: 100, cursor: "pointer",
-                fontSize: 13.5, fontWeight: 600,
-                color: active ? "var(--bg)" : "var(--text2)",
-                background: active ? "var(--accent)" : "var(--surface)",
-                border: `1px solid ${active ? "var(--accent)" : "var(--border)"}`,
-              }}
-            >
-              <span aria-hidden>{g.icon}</span>
-              {g.name}
-            </button>
-          );
-        })}
-      </div>
+      {/* Game selector — hidden when the page is locked to one game. */}
+      {!lockedGame && (
+        <>
+          <div style={{ ...labelStyle, marginBottom: 8 }}>Choose your game</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 22 }}>
+            {GAME_NAME_RULES.map((g) => {
+              const active = g.slug === slug;
+              return (
+                <button
+                  key={g.slug}
+                  type="button"
+                  onClick={() => setSlug(g.slug)}
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 7, padding: "8px 14px", borderRadius: 100, cursor: "pointer",
+                    fontSize: 13.5, fontWeight: 600,
+                    color: active ? "var(--bg)" : "var(--text2)",
+                    background: active ? "var(--accent)" : "var(--surface)",
+                    border: `1px solid ${active ? "var(--accent)" : "var(--border)"}`,
+                  }}
+                >
+                  <span aria-hidden>{g.icon}</span>
+                  {g.name}
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
 
       {/* Name input */}
       <label htmlFor="game-name" style={{ ...labelStyle, display: "block", marginBottom: 6 }}>
