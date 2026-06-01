@@ -203,3 +203,47 @@ export const PLATFORM_LABELS: Record<Platform, string> = {
   windows: "Windows",
   discord: "Discord",
 };
+
+// ── Text vs emoji presentation (VS-15 / VS-16) ───────────────────────────────
+// Many symbols (zodiac ♈, suits ♥, sun ☀, warning ⚠, ™ ® ©) have TWO looks: a
+// monochrome TEXT form and a colourful EMOJI form. Appending U+FE0E forces the
+// text look; U+FE0F forces the emoji look. This answers the common "I want the
+// plain symbol, NOT the emoji" request. We only offer the toggle for code points
+// that genuinely have both presentations (Misc Symbols + Dingbats ranges, minus
+// the well-known text-only chars like stars ★ ☆ and the chess pieces, plus a
+// curated list of dual-use symbols outside those ranges).
+const VS15 = String.fromCodePoint(0xfe0e); // text presentation selector (U+FE0E)
+const VS16 = String.fromCodePoint(0xfe0f); // emoji presentation selector (U+FE0F)
+
+const VARIATION_TEXT_ONLY = new Set<number>([
+  0x2605, 0x2606, // ★ ☆ stars (text-only; ⭐ is the emoji star)
+  0x2654, 0x2655, 0x2656, 0x2657, 0x2658, // ♔♕♖♗♘ white chess (pawn ♙ excluded too)
+  0x2659, 0x265a, 0x265b, 0x265c, 0x265d, 0x265e, // ♙♚♛♜♝♞ chess (no emoji form)
+]);
+
+const VARIATION_EXTRA = new Set<number>([
+  0x00a9, 0x00ae, 0x2122, 0x2139, // © ® ™ ℹ
+  0x2194, 0x2195, 0x2196, 0x2197, 0x2198, 0x2199, 0x21a9, 0x21aa, // arrows
+  0x231a, 0x231b, 0x24c2, // ⌚ ⌛ Ⓜ
+  0x25aa, 0x25ab, 0x25b6, 0x25c0, 0x25fb, 0x25fc, 0x25fd, 0x25fe, // squares/triangles
+  0x2b05, 0x2b06, 0x2b07, 0x2b1b, 0x2b1c, 0x2b50, 0x2b55, // arrows, star, circles
+  0x203c, 0x2049, 0x3030, 0x303d, 0x3297, 0x3299, // ‼ ⁉ 〰 〽 ㊗ ㊙
+]);
+
+/**
+ * If the grapheme is a single dual-presentation symbol, returns its forced
+ * text and emoji variants (with VS-15 / VS-16 appended). Otherwise null.
+ */
+export function emojiVariation(grapheme: string): { text: string; emoji: string } | null {
+  const cps = Array.from(grapheme, (c) => c.codePointAt(0)!);
+  if (cps.length !== 1) return null; // skip chars that already carry a selector / ZWJ
+  const cp = cps[0];
+  if (VARIATION_TEXT_ONLY.has(cp)) return null;
+  const dualUse =
+    (cp >= 0x2600 && cp <= 0x26ff) || // Miscellaneous Symbols
+    (cp >= 0x2700 && cp <= 0x27bf) || // Dingbats
+    VARIATION_EXTRA.has(cp);
+  if (!dualUse) return null;
+  const base = String.fromCodePoint(cp);
+  return { text: base + VS15, emoji: base + VS16 };
+}

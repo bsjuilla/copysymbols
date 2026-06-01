@@ -1,7 +1,8 @@
 "use client";
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { codePointInfo } from "@/lib/unicode-blocks";
-import { renderSafety, PLATFORM_LABELS, type Platform, type Verdict } from "@/lib/render-safety";
+import { renderSafety, emojiVariation, PLATFORM_LABELS, type Platform, type Verdict } from "@/lib/render-safety";
+import { useCopyToast } from "@/lib/use-copy-toast";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
 
 // Split a string into user-perceived characters (graphemes). Prefer
@@ -55,6 +56,20 @@ const codeStyle: React.CSSProperties = {
   color: "var(--text)",
 };
 
+const vsBtnStyle: React.CSSProperties = {
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: 4,
+  padding: "8px 6px",
+  borderRadius: 8,
+  cursor: "pointer",
+  background: "var(--surface)",
+  border: "1px solid var(--border)",
+  color: "var(--text)",
+};
+
 const VERDICT: Record<Verdict, { color: string; mark: string; word: string }> = {
   safe: { color: "#3fb950", mark: "✓", word: "works" },
   risky: { color: "#d29922", mark: "!", word: "risky" },
@@ -99,6 +114,7 @@ const DEFAULT_INPUT = "★ 😀 𝖋𝖗𝖆𝖐 🫨";
 export default function RenderTestClient() {
   const [input, setInput] = useState(DEFAULT_INPUT);
   const [shareCopied, setShareCopied] = useState(false);
+  const { copy } = useCopyToast();
   const { chars, codePointCount } = useMemo(() => analyze(input), [input]);
 
   // Friend-test: if someone opened a shared ?text= link, load that text so they
@@ -115,18 +131,12 @@ export default function RenderTestClient() {
 
   const copyShareLink = useCallback(async () => {
     const url = `${window.location.origin}/render-test?text=${encodeURIComponent(input)}`;
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = url; ta.style.position = "fixed"; ta.style.opacity = "0";
-      document.body.appendChild(ta); ta.focus(); ta.select();
-      try { document.execCommand("copy"); } catch {}
-      document.body.removeChild(ta);
-    }
+    // useCopyToast handles the clipboard write (+ textarea fallback) AND pops the
+    // shared toast, so the share button gives the same feedback as every other copy.
+    await copy(url, { symbol: "🔗", label: "Copied test link!" });
     setShareCopied(true);
     setTimeout(() => setShareCopied(false), 1600);
-  }, [input]);
+  }, [input, copy]);
 
   return (
     <div style={{ marginBottom: 8 }}>
@@ -193,6 +203,7 @@ export default function RenderTestClient() {
           {chars.map((c, i) => {
             const first = codePointInfo(c.grapheme);
             const safety = renderSafety(c.grapheme);
+            const variation = emojiVariation(c.grapheme);
             return (
               <div key={`${c.grapheme}-${i}`} style={cardStyle}>
                 <div
@@ -231,6 +242,33 @@ export default function RenderTestClient() {
                       <div style={{ fontSize: "1.5rem", lineHeight: 1.2 }}>{safety.safer}</div>
                     </div>
                     <EmojiCopyButton glyph={safety.safer} name="safer character" size="1.2rem" />
+                  </div>
+                )}
+
+                {/* Text vs emoji presentation toggle (VS-15 / VS-16). */}
+                {variation && (
+                  <div style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 10px" }}>
+                    <div style={{ ...labelStyle, marginBottom: 6 }}>Copy as text or emoji</div>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <button
+                        type="button"
+                        onClick={() => copy(variation.text, { symbol: variation.text, label: "Copied text style" })}
+                        style={vsBtnStyle}
+                        title="Forces the plain monochrome look (variation selector U+FE0E)"
+                      >
+                        <span style={{ fontSize: "1.4rem", lineHeight: 1 }}>{variation.text}</span>
+                        <span style={{ fontSize: 10.5, color: "var(--text3)" }}>Text</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => copy(variation.emoji, { symbol: variation.emoji, label: "Copied emoji style" })}
+                        style={vsBtnStyle}
+                        title="Forces the colourful emoji look (variation selector U+FE0F)"
+                      >
+                        <span style={{ fontSize: "1.4rem", lineHeight: 1 }}>{variation.emoji}</span>
+                        <span style={{ fontSize: 10.5, color: "var(--text3)" }}>Emoji</span>
+                      </button>
+                    </div>
                   </div>
                 )}
 
