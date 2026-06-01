@@ -24,7 +24,7 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
     } catch {}
   }, [id]);
 
-  const handleCopy = useCallback(async (e: React.MouseEvent) => {
+  const handleCopy = useCallback(async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (selectable && onSelect) {
       onSelect(symbol, name);
@@ -69,13 +69,26 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
     } catch {}
   }, [id, symbol, name]);
 
+  // The card is a div with role="button" (not a <button>) because it contains
+  // its own favourite <button>. A <button> nested inside a <button> is invalid
+  // HTML — the browser silently un-nests it during parsing, so the hydrated
+  // client DOM no longer matches the server-rendered HTML, which throws a React
+  // hydration error (#418) on every page using this card. role + tabIndex +
+  // keyboard handler preserve full button semantics and keyboard accessibility.
+  const handleKey = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") handleCopy(e);
+  }, [handleCopy]);
+
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
+      aria-label={`${selectable ? "Select" : "Copy"} ${name}`}
       className={`symbol-card ${copied ? "copied" : ""} ${selected ? "copied" : ""}`}
       onClick={handleCopy}
+      onKeyDown={handleKey}
       title={`${selectable ? "Select" : "Copy"} ${name}`}
-      style={{ position: "relative", font: "inherit", color: "inherit", textAlign: "center", width: "100%" }}
+      style={{ position: "relative", textAlign: "center", width: "100%" }}
     >
       {selectable && selected && (
         <div style={{ position: "absolute", top: 6, right: 6, width: 14, height: 14, borderRadius: "50%", background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, color: "var(--bg)" }}>✓</div>
@@ -93,6 +106,6 @@ export default function SymbolCard({ symbol, name, id, selectable = false, selec
       )}
       <span className="symbol-char" aria-hidden="true">{symbol}</span>
       <span className="symbol-name">{name}</span>
-    </button>
+    </div>
   );
 }
