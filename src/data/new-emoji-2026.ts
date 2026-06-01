@@ -87,3 +87,36 @@ export const NEW_EMOJI_2026: NewEmoji[] = [
 export function glyphOf(e: NewEmoji): string {
   return String.fromCodePoint(...e.codePoints);
 }
+
+// ── Per-platform support tracker ─────────────────────────────────────────────
+// "Can I use the new emoji yet?" is a recurring search through the staggered
+// 2026 rollout. This is a dated, honest status table. Update the date + statuses
+// as platforms ship. Conservative by design: only Apple is marked "shipped"
+// (the verified iOS 26.4 date); everything else is "rolling out" or "expected"
+// because exact ship dates aren't confirmed.
+export type SupportStatus = "shipped" | "rolling" | "expected";
+
+export interface PlatformSupport {
+  platform: string;
+  status: SupportStatus;
+  detail: string;
+}
+
+/** When this support table was last reviewed. */
+export const SUPPORT_LAST_CHECKED = "1 June 2026";
+
+export const PLATFORM_SUPPORT: PlatformSupport[] = [
+  { platform: "iPhone & iPad (iOS / iPadOS)", status: "shipped", detail: "Available in iOS 26.4 / iPadOS 26.4 (24 March 2026). Update, then the new emoji appear in the keyboard." },
+  { platform: "Mac (macOS)", status: "shipped", detail: "Available in the macOS update released alongside iOS 26.4." },
+  { platform: "Android (Google / Gboard)", status: "rolling", detail: "Rolling out across 2026 through system and Gboard font updates — keep both up to date." },
+  { platform: "Samsung (One UI)", status: "expected", detail: "Expected later in 2026 in a One UI update; Samsung ships its own emoji designs." },
+  { platform: "Windows", status: "rolling", detail: "Rolling out in 2026 with the Windows system emoji-font update." },
+  { platform: "WhatsApp", status: "rolling", detail: "WhatsApp uses its own emoji font; the 2026 set is rolling out during 2026." },
+  { platform: "Discord, X (Twitter), Slack", status: "rolling", detail: "These draw their own emoji images — the new emoji appear once each service updates its set; until then they show as a ▯ box in text." },
+];
+
+export const SUPPORT_STATUS_LABEL: Record<SupportStatus, string> = {
+  shipped: "Available",
+  rolling: "Rolling out",
+  expected: "Expected",
+};
