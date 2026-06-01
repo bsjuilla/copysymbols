@@ -67,6 +67,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ── Removed cross-matrix → base symbol page ──────────────────────────────
+      // The /symbol/<slug>/in-<platform> route was deleted (it relied on a
+      // partial-segment dynamic folder `in-[platform]`, which Next 16 treats as a
+      // literal folder — so every one of those ~1,300 URLs 404'd while sitting in
+      // the sitemap and internal links). 308-redirect any historical URL to the
+      // base symbol page so the equity consolidates and nothing 404s.
+      { source: "/symbol/:slug/in-:platform", destination: "/symbol/:slug", permanent: true },
+
       // ── Original 4 (GSC May 9 batch) — closest-symbol redirects ───────────────
       { source: "/symbol/gen-greek-uppercase-delta-with-macron-1778250469107", destination: "/symbol/delta", permanent: true },
       { source: "/symbol/gen-greek-uppercase-alpha-with-macron-1778250469107", destination: "/symbols/greek", permanent: true },

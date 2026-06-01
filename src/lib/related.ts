@@ -5,8 +5,8 @@
 // content silo orphaned from the others, which caps topical authority and
 // keeps deep pages buried (GSC: avg position ~47). This module produces a
 // deduped set of *descriptive-anchor* contextual links that connect a detail
-// page to adjacent silos, hub pages, relevant tools, and — for curated
-// symbols — their own /symbol/<slug>/in-<platform> spoke pages.
+// page to adjacent silos, hub pages, relevant tools, and the indexable
+// /symbols-for/<platform> hubs.
 //
 // Pure + deterministic (build-time safe). No React, no data-file imports —
 // callers pass the few primitives needed, so this stays decoupled and
@@ -110,9 +110,8 @@ function dedupeCap(links: RelatedLink[], cap = 18): RelatedLink[] {
 /**
  * Contextual links for a /symbol/<id> detail page.
  * @param category symbol category id (e.g. "shapes")
- * @param id       symbol slug; gen-* slugs are noindex so they skip platform spokes
  */
-export function relatedForSymbol(category: string, id: string): RelatedLink[] {
+export function relatedForSymbol(category: string): RelatedLink[] {
   const links: RelatedLink[] = [];
 
   // Adjacent symbol categories (sibling spokes).
@@ -131,13 +130,10 @@ export function relatedForSymbol(category: string, id: string): RelatedLink[] {
   );
   links.push(...UNIVERSAL_TOOLS);
 
-  // Platform spokes — link the hub down to its own cross-matrix pages.
-  // Only for curated (indexable) symbols; gen-* pages are noindex.
-  if (!id.startsWith("gen-")) {
-    for (const p of TOP_PLATFORMS) {
-      links.push({ href: `/symbol/${id}/in-${p.id}`, label: `Use this symbol on ${p.name}` });
-    }
-  }
+  // Platform hubs — the real, indexable "symbols for <platform>" pages.
+  // (Replaces the old per-symbol /symbol/<id>/in-<platform> spokes, whose route
+  // was a Next-16-broken partial-segment folder that 404'd.)
+  links.push(...TOP_PLATFORMS.map(p => ({ href: `/symbols-for/${p.id}`, label: `Symbols for ${p.name}` })));
 
   return dedupeCap(links);
 }
