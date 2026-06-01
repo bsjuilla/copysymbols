@@ -20,6 +20,10 @@ const posts = [
   { href: "/blog/instagram-symbols", title: "Instagram Symbols — Copy & Paste for Bios and Captions", desc: "Best symbols for Instagram bios and captions. Stars, hearts, arrows, flowers, and dividers.", icon: "✦", category: "How-To" },
   { href: "/blog/math-symbols-list", title: "Math Symbols — Complete Unicode Mathematics Reference", desc: "Every math symbol: operators, comparison, calculus, set theory, and logic with Unicode codes.", icon: "∑", category: "Reference" },
   { href: "/blog/bullet-point-copy-paste", title: "Bullet Point Symbols • — All Bullet Characters Copy & Paste", desc: "Round, square, arrow, hollow bullets for lists, bios, and documents. Keyboard shortcuts included.", icon: "•", category: "How-To" },
+  // New 3 (2026-06 content push)
+  { href: "/blog/aesthetic-instagram-bio", title: "How to Make an Aesthetic Instagram Bio", desc: "Style your name with Unicode fonts, add copy-paste dividers and symbols, and lay it out so it looks clean on a phone.", icon: "✿", category: "How-To" },
+  { href: "/blog/zodiac-signs-symbols", title: "Zodiac Signs ♈ — Every Symbol, Date and Meaning", desc: "All 12 zodiac glyphs to copy, with dates, element, ruling planet, and the meaning behind each sign.", icon: "♎", category: "Reference" },
+  { href: "/blog/discord-fonts", title: "How to Get Fancy Fonts in Your Discord Name", desc: "Discord has no font setting — here's the Unicode trick people use to style names and messages, with styles to copy.", icon: "𝓓", category: "How-To" },
 ];
 
 const categoryColors: Record<string, string> = {

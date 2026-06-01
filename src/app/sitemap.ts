@@ -142,6 +142,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/instagram-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/math-symbols-list`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${BASE}/blog/bullet-point-copy-paste`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    // Blog — 2026-06 content push (original long-form guides)
+    { url: `${BASE}/blog/aesthetic-instagram-bio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/zodiac-signs-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/discord-fonts`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
     // ---- /symbols-for/<platform> hub pages (pass 1) ----------------------
     ...platformIds.map(p => ({
