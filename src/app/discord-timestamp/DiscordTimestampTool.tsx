@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 // Discord renders <t:UNIX:STYLE> as a localised timestamp in each viewer's own
 // timezone. We build that code from a date the user picks, and show a live
@@ -71,6 +72,7 @@ export default function DiscordTimestampTool() {
   const [dt, setDt] = useState("");
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const { copy: copyToast } = useCopyToast();
 
   useEffect(() => {
     // Browser-only: the default timestamp is computed from the visitor's local
@@ -89,20 +91,10 @@ export default function DiscordTimestampTool() {
   const unix = date && !isNaN(date.getTime()) ? Math.floor(date.getTime() / 1000) : null;
 
   async function copy(text: string, key: string) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try { document.execCommand("copy"); } catch {}
-      document.body.removeChild(ta);
-    }
-    setCopied(key);
+    // useCopyToast handles the clipboard write (+ textarea fallback) AND pops the
+    // shared toast, so this matches the copy feedback used everywhere else.
+    await copyToast(text, { symbol: "🕑", label: "Copied timestamp" });
+    setCopied(key); // inline "✓ COPIED" on the clicked row
     setTimeout(() => setCopied((c) => (c === key ? null : c)), 1400);
   }
 

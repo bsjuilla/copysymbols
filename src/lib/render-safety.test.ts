@@ -2,7 +2,7 @@
 //
 // No test framework configured — plain imports, throw on failure, console.log on
 // pass. Run with: npx tsx src/lib/render-safety.test.ts
-import { renderSafety, type Verdict } from "./render-safety";
+import { renderSafety, emojiVariation, type Verdict } from "./render-safety";
 
 function assert(cond: boolean, msg: string): void {
   if (!cond) throw new Error(msg);
@@ -60,5 +60,25 @@ assert(
   safeAll.ios === "safe" && safeAll.android === "safe" && safeAll.windows === "safe" && safeAll.discord === "safe",
   "arrow should be safe on all four platforms",
 );
+
+// ── emojiVariation (VS-15 / VS-16 dual-presentation) ─────────────────────────
+const cpsOf = (s: string) => Array.from(s, c => c.codePointAt(0)!);
+
+const aries = emojiVariation("♈"); // U+2648 — has both presentations
+assert(aries !== null, "♈ (zodiac) should have a text/emoji variation");
+assert(cpsOf(aries!.text).join(",") === "9800,65038", `♈ text form should end in U+FE0E, got ${cpsOf(aries!.text)}`);
+assert(cpsOf(aries!.emoji).join(",") === "9800,65039", `♈ emoji form should end in U+FE0F, got ${cpsOf(aries!.emoji)}`);
+
+const heartSuit = emojiVariation("♥"); // U+2665 — dual
+assert(heartSuit !== null, "♥ heart suit should have a variation");
+
+const tm = emojiVariation("™"); // U+2122 — dual (curated extra)
+assert(tm !== null, "™ should have a variation");
+
+assert(emojiVariation("★") === null, "★ (U+2605) is text-only — no variation toggle");
+assert(emojiVariation("♚") === null, "♚ chess king is text-only — no variation toggle");
+assert(emojiVariation("A") === null, "plain letter has no variation");
+assert(emojiVariation("😀") === null, "emoji-only char has no text/emoji toggle");
+assert(emojiVariation("♈️") === null, "a char that already carries a selector is skipped");
 
 console.log("render-safety.ts tests passed");

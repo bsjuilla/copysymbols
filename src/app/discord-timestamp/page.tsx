@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import CopyToast from "@/components/CopyToast";
 import DiscordTimestampTool from "./DiscordTimestampTool";
 
 const TITLE = "Discord Timestamp Generator — Copy <t:…> Time Codes";
@@ -71,6 +72,7 @@ export default function DiscordTimestampPage() {
       </p>
 
       <DiscordTimestampTool />
+      <CopyToast />
 
       <section style={{ marginTop: 48 }}>
         <h2 className="font-display" style={subH2}>Why timestamps beat typing the time</h2>

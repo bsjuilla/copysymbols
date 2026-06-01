@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
+import CopyToast from "@/components/CopyToast";
+import { useCopyToast } from "@/lib/use-copy-toast";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -65,6 +67,7 @@ export default function BioBuilderClient() {
   const [blocks, setBlocks]           = useState<Block[]>(DEFAULT_BLOCKS);
   const [activeBlock, setActiveBlock] = useState<string | null>(null);
   const [copied, setCopied]           = useState(false);
+  const { copy: copyToast }           = useCopyToast();
   const [symGroup, setSymGroup]       = useState(0);
   const [tab, setTab]                 = useState<"symbols"|"dividers">("dividers");
   const [dragging, setDragging]       = useState<string | null>(null);
@@ -115,11 +118,12 @@ export default function BioBuilderClient() {
   }, [addBlock]);
 
   const copyBio = useCallback(() => {
-    navigator.clipboard.writeText(bio).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }, [bio]);
+    // useCopyToast does the clipboard write (+ textarea fallback) and pops the
+    // shared toast, matching the copy feedback used across the site.
+    void copyToast(bio, { symbol: "📝", label: "Copied bio!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [bio, copyToast]);
 
   const clearAll = useCallback(() => {
     setBlocks([{ id: uid(), type: "text", content: "" }]);
@@ -148,6 +152,7 @@ export default function BioBuilderClient() {
 
   return (
     <>
+      <CopyToast />
       <style>{`
         .bb-wrap { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
         .bb-header { margin-bottom: 32px; }
