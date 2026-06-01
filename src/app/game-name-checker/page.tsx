@@ -108,6 +108,24 @@ export default function GameNameCheckerPage() {
         </div>
       </section>
 
+      <section style={{ marginTop: 40 }}>
+        <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 14 }}>
+          Per-game name guides
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 10 }}>
+          {GAME_NAME_RULES.map((g) => (
+            <Link
+              key={g.slug}
+              href={`/${g.slug}-name`}
+              style={{ display: "flex", alignItems: "center", gap: 10, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "12px 14px", textDecoration: "none", color: "inherit" }}
+            >
+              <span style={{ fontSize: "1.4rem", lineHeight: 1 }} aria-hidden>{g.icon}</span>
+              <span style={{ fontSize: 14, fontWeight: 600, color: "var(--text)" }}>{g.name.split(/\s*[(/]/)[0].trim()} name</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <div style={{ marginTop: 32, display: "flex", gap: 10, flexWrap: "wrap" }}>
         <Link href="/gaming-symbols" className="cat-pill">Gaming Symbols</Link>
         <Link href="/username-generator" className="cat-pill">Username Generator</Link>
