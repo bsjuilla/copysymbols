@@ -208,3 +208,24 @@ export const AESTHETICS: Aesthetic[] = [
 export function getAesthetic(slug: string): Aesthetic | undefined {
   return AESTHETICS.find(a => a.slug === slug);
 }
+
+// The signature "font" of each aesthetic — a fancy-text style slug (see
+// src/lib/fancy-text-styles.ts). This is the one element the vibe bundle was
+// missing: each aesthetic now ships font + symbols + kaomoji + dividers + bio
+// as one kit. Values are real STYLES slugs; all render on modern iOS/Android/
+// Windows (blackletter old-english for goth/grunge is the authentic look and is
+// the same style /fancy-text already serves). Falls back to bold-script.
+export const AESTHETIC_FONT: Record<string, string> = {
+  coquette: "bold-script",
+  y2k: "double-struck",
+  cottagecore: "italic",
+  kawaii: "circled",
+  fairycore: "script",
+  dreamcore: "small-caps",
+  goth: "old-english",
+  grunge: "bold-old-english",
+  kidcore: "filled-circled",
+  soft: "italic",
+  baddie: "bold-italic",
+  weirdcore: "full-width",
+};

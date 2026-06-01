@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { AESTHETICS, getAesthetic } from "@/data/aesthetics";
+import { AESTHETICS, getAesthetic, AESTHETIC_FONT } from "@/data/aesthetics";
+import { findStyle } from "@/lib/fancy-text-styles";
 import { canonical } from "@/lib/canonical";
 import { relatedForEmoji } from "@/lib/related";
 import CopyToast from "@/components/CopyToast";
@@ -41,6 +42,12 @@ export default async function AestheticDetailPage({ params }: Props) {
   const baseUrl = "https://www.copychars.com";
   const firstSentence = a!.description.split(". ")[0] + ".";
 
+  // The vibe's signature font — the element that turns the page into a complete
+  // "kit" (font + symbols + kaomoji + dividers + bio). Falls back to bold-script.
+  const fontStyle = findStyle(AESTHETIC_FONT[a!.slug] ?? "bold-script") ?? findStyle("bold-script")!;
+  const fontSamples = [a!.name.toLowerCase(), "your name", "aesthetic", "bestie"]
+    .map(w => ({ symbol: fontStyle.transform(w), name: `"${w}"` }));
+
   const faqs = [
     {
       q: `What is the ${a!.name} aesthetic?`,
@@ -57,6 +64,10 @@ export default async function AestheticDetailPage({ params }: Props) {
     {
       q: `What kaomoji fit the ${a!.name} aesthetic?`,
       a: `Kaomoji like ${a!.kaomoji.slice(0, 3).join("  ")} match the ${a!.name} vibe. Copy any of them from the Kaomoji section above and drop them into your bio or captions.`,
+    },
+    {
+      q: `What font goes with the ${a!.name} aesthetic?`,
+      a: `The ${fontStyle.label} font matches the ${a!.name} vibe — for example ${fontStyle.transform(a!.name.toLowerCase())}. Copy a sample from the Font section above, or type your own name in it on the Fancy Text generator.`,
     },
   ];
 
@@ -120,6 +131,9 @@ export default async function AestheticDetailPage({ params }: Props) {
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.6 }}>
             {a!.tagline}
           </p>
+          <p style={{ fontSize: 14.5, color: "var(--text3)", lineHeight: 1.6, marginTop: 10 }}>
+            The complete {a!.name.toLowerCase()} kit — a matching font, symbols, kaomoji, dividers and a ready-to-paste bio, all in one place.
+          </p>
         </div>
 
         {/* ── DEFINITION BLOCK (AI-SEO lead) ──────────────────────────── */}
@@ -128,6 +142,18 @@ export default async function AestheticDetailPage({ params }: Props) {
             {a!.description}
           </p>
         </div>
+
+        {/* ── FONT ────────────────────────────────────────────────────── */}
+        <h2 className="font-display" style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+          {a!.name} Font
+        </h2>
+        <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7, marginBottom: 16, maxWidth: 640 }}>
+          The signature {a!.name} look uses the <strong>{fontStyle.label}</strong> font. Tap a sample to copy it, or{" "}
+          <Link href={`/fancy-text/${fontStyle.slug}`} style={{ color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}>
+            type your own name in {fontStyle.label}
+          </Link>.
+        </p>
+        <CopySymbolGrid items={fontSamples} columns="repeat(auto-fill, minmax(160px, 1fr))" />
 
         {/* ── SYMBOLS ─────────────────────────────────────────────────── */}
         <h2 className="font-display" style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>
