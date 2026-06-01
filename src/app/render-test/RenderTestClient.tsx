@@ -1,6 +1,7 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { codePointInfo } from "@/lib/unicode-blocks";
+import { renderSafety, PLATFORM_LABELS, type Platform, type Verdict } from "@/lib/render-safety";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
 
 // Split a string into user-perceived characters (graphemes). Prefer
@@ -12,17 +13,6 @@ function toGraphemes(input: string): string[] {
     return Array.from(seg.segment(input), s => s.segment);
   }
   return Array.from(input);
-}
-
-// Honest, plain-English device-support note keyed off the first code point.
-function supportNote(cp: number): string {
-  if (cp >= 0x1fa70)
-    return "Very new character (recent Unicode) — likely shows as a box on devices that aren't fully up to date.";
-  if (cp >= 0x1f000)
-    return "Emoji/pictograph — shows on most modern devices; may box on older ones.";
-  if (cp >= 0x2190)
-    return "Symbol — renders on essentially all modern devices.";
-  return "Basic character — renders everywhere.";
 }
 
 interface CharInfo {
@@ -65,9 +55,78 @@ const codeStyle: React.CSSProperties = {
   color: "var(--text)",
 };
 
+const VERDICT: Record<Verdict, { color: string; mark: string; word: string }> = {
+  safe: { color: "#3fb950", mark: "✓", word: "works" },
+  risky: { color: "#d29922", mark: "!", word: "risky" },
+  box: { color: "#f85149", mark: "▯", word: "boxes" },
+};
+
+const PLATFORM_ORDER: Platform[] = ["ios", "android", "windows", "discord"];
+
+function PlatformBadges({ byPlatform }: { byPlatform: Record<Platform, Verdict> }) {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+      {PLATFORM_ORDER.map(p => {
+        const vd = VERDICT[byPlatform[p]];
+        return (
+          <span
+            key={p}
+            title={`${PLATFORM_LABELS[p]}: ${vd.word}`}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              fontSize: 11.5,
+              fontWeight: 600,
+              padding: "3px 8px",
+              borderRadius: 100,
+              color: vd.color,
+              background: `${vd.color}1a`,
+              border: `1px solid ${vd.color}40`,
+            }}
+          >
+            <span aria-hidden style={{ fontWeight: 700 }}>{vd.mark}</span>
+            {PLATFORM_LABELS[p]}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+const DEFAULT_INPUT = "★ 😀 𝖋𝖗𝖆𝖐 🫨";
+
 export default function RenderTestClient() {
-  const [input, setInput] = useState("→ 😀 ❤ ʕ•ᴥ•ʔ 🎀 🫪");
+  const [input, setInput] = useState(DEFAULT_INPUT);
+  const [shareCopied, setShareCopied] = useState(false);
   const { chars, codePointCount } = useMemo(() => analyze(input), [input]);
+
+  // Friend-test: if someone opened a shared ?text= link, load that text so they
+  // can see whether it renders on THEIR device. Client-only (reads window) and
+  // set after mount, so the server HTML and first client render match (no
+  // hydration mismatch).
+  useEffect(() => {
+    try {
+      const t = new URLSearchParams(window.location.search).get("text");
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- browser-only: prefill from the shared ?text= link (unknown during SSG prerender).
+      if (t) setInput(t);
+    } catch {}
+  }, []);
+
+  const copyShareLink = useCallback(async () => {
+    const url = `${window.location.origin}/render-test?text=${encodeURIComponent(input)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = url; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand("copy"); } catch {}
+      document.body.removeChild(ta);
+    }
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 1600);
+  }, [input]);
 
   return (
     <div style={{ marginBottom: 8 }}>
@@ -97,9 +156,26 @@ export default function RenderTestClient() {
         onBlur={e => (e.target.style.borderColor = "var(--border)")}
       />
 
-      <div style={{ fontSize: 13, color: "var(--text2)", margin: "12px 0 20px" }}>
-        {chars.length.toLocaleString()} character{chars.length === 1 ? "" : "s"},{" "}
-        {codePointCount.toLocaleString()} code point{codePointCount === 1 ? "" : "s"}
+      <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", margin: "12px 0 20px" }}>
+        <div style={{ fontSize: 13, color: "var(--text2)" }}>
+          {chars.length.toLocaleString()} character{chars.length === 1 ? "" : "s"},{" "}
+          {codePointCount.toLocaleString()} code point{codePointCount === 1 ? "" : "s"}
+        </div>
+        {chars.length > 0 && (
+          <button
+            type="button"
+            onClick={copyShareLink}
+            style={{
+              fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 100, cursor: "pointer",
+              color: shareCopied ? "#3fb950" : "var(--text2)",
+              background: "var(--surface)",
+              border: `1px solid ${shareCopied ? "#3fb95066" : "var(--border)"}`,
+            }}
+            title="Copy a link that opens this exact text — send it to a friend to see if it renders on their device"
+          >
+            {shareCopied ? "✓ Link copied" : "🔗 Copy friend-test link"}
+          </button>
+        )}
       </div>
 
       {chars.length === 0 ? (
@@ -110,13 +186,13 @@ export default function RenderTestClient() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
             gap: 14,
           }}
         >
           {chars.map((c, i) => {
             const first = codePointInfo(c.grapheme);
-            const note = supportNote(c.codePoints[0]);
+            const safety = renderSafety(c.grapheme);
             return (
               <div key={`${c.grapheme}-${i}`} style={cardStyle}>
                 <div
@@ -131,6 +207,33 @@ export default function RenderTestClient() {
                   {c.grapheme}
                 </div>
 
+                {/* Per-platform render-safety verdict. */}
+                <PlatformBadges byPlatform={safety.byPlatform} />
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: "var(--text2)",
+                    lineHeight: 1.5,
+                    background: "var(--bg)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 8,
+                    padding: "8px 10px",
+                  }}
+                >
+                  {safety.reason}
+                </div>
+
+                {/* Nearest-safe swap, when the input is a risky fancy-font char. */}
+                {safety.safer && (
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, background: "rgba(63,185,80,0.08)", border: "1px solid rgba(63,185,80,0.30)", borderRadius: 8, padding: "8px 10px" }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ ...labelStyle, color: "#3fb950" }}>Safer version</div>
+                      <div style={{ fontSize: "1.5rem", lineHeight: 1.2 }}>{safety.safer}</div>
+                    </div>
+                    <EmojiCopyButton glyph={safety.safer} name="safer character" size="1.2rem" />
+                  </div>
+                )}
+
                 {/* Per-code-point breakdown. */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   {c.codePoints.map((cp, j) => {
@@ -138,10 +241,7 @@ export default function RenderTestClient() {
                     return (
                       <div
                         key={j}
-                        style={{
-                          borderTop: j === 0 ? "none" : "1px solid var(--border)",
-                          paddingTop: j === 0 ? 0 : 8,
-                        }}
+                        style={{ borderTop: "1px solid var(--border)", paddingTop: 8 }}
                       >
                         <div style={{ ...codeStyle, fontSize: 14, fontWeight: 600 }}>
                           {info?.hex}
@@ -170,21 +270,6 @@ export default function RenderTestClient() {
                     </div>
                   </div>
                 )}
-
-                {/* Device-support note. */}
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: "var(--text2)",
-                    lineHeight: 1.5,
-                    background: "var(--bg)",
-                    border: "1px solid var(--border)",
-                    borderRadius: 8,
-                    padding: "8px 10px",
-                  }}
-                >
-                  {note}
-                </div>
 
                 {/* Copy button — reuses EmojiCopyButton + the page's CopyToast. */}
                 <div style={{ marginTop: "auto" }}>
