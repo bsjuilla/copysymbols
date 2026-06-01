@@ -30,11 +30,19 @@ const CMP_SCRIPT = "https://fundingchoicesmessages.google.com https://www.gstati
 const CMP_FRAME = "https://fundingchoicesmessages.google.com";
 const CMP_CONNECT = "https://fundingchoicesmessages.google.com";
 
-const CONNECT_SRC = ["'self'", SUPABASE_ORIGIN, ADSENSE_CONNECT, CMP_CONNECT].filter(Boolean).join(" ");
+// Cloudflare Web Analytics (RUM beacon). The domain is proxied through
+// Cloudflare, which auto-injects beacon.min.js into every HTML response. Without
+// these origins the beacon is blocked by CSP — that throws a console error on
+// every page load AND drops all Cloudflare analytics data. The script loads from
+// static.cloudflareinsights.com and POSTs metrics to cloudflareinsights.com.
+const CLOUDFLARE_SCRIPT = "https://static.cloudflareinsights.com";
+const CLOUDFLARE_CONNECT = "https://cloudflareinsights.com https://static.cloudflareinsights.com";
+
+const CONNECT_SRC = ["'self'", SUPABASE_ORIGIN, ADSENSE_CONNECT, CMP_CONNECT, CLOUDFLARE_CONNECT].filter(Boolean).join(" ");
 
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${ADSENSE_SCRIPT} ${CMP_SCRIPT}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${ADSENSE_SCRIPT} ${CMP_SCRIPT} ${CLOUDFLARE_SCRIPT}`,
   "style-src 'self' 'unsafe-inline'",
   // img-src already permits any https origin, which covers ad creatives + pixels.
   "img-src 'self' data: https:",
