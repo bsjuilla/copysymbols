@@ -146,6 +146,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/aesthetic-instagram-bio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/zodiac-signs-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/discord-fonts`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/tiktok-username-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/heart-emoji-meanings`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // New tool — Discord timestamp generator
+    { url: `${BASE}/discord-timestamp`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
     // ---- /symbols-for/<platform> hub pages (pass 1) ----------------------
     ...platformIds.map(p => ({

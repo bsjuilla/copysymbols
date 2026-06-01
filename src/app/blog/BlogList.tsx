@@ -24,6 +24,8 @@ const posts = [
   { href: "/blog/aesthetic-instagram-bio", title: "How to Make an Aesthetic Instagram Bio", desc: "Style your name with Unicode fonts, add copy-paste dividers and symbols, and lay it out so it looks clean on a phone.", icon: "✿", category: "How-To" },
   { href: "/blog/zodiac-signs-symbols", title: "Zodiac Signs ♈ — Every Symbol, Date and Meaning", desc: "All 12 zodiac glyphs to copy, with dates, element, ruling planet, and the meaning behind each sign.", icon: "♎", category: "Reference" },
   { href: "/blog/discord-fonts", title: "How to Get Fancy Fonts in Your Discord Name", desc: "Discord has no font setting — here's the Unicode trick people use to style names and messages, with styles to copy.", icon: "𝓓", category: "How-To" },
+  { href: "/blog/tiktok-username-symbols", title: "Best Symbols for TikTok Usernames and Bios", desc: "Which symbols work in a TikTok @handle vs nickname, fonts and dividers to copy, and what TikTok quietly strips out.", icon: "✦", category: "How-To" },
+  { href: "/blog/heart-emoji-meanings", title: "Heart Emoji Meanings — Every Colour Explained", desc: "What each heart means: ❤️ red, 🧡 orange, 💛 yellow, 💚 green, 💙 blue, 💜 purple, 🖤 black, 🤍 white and the special hearts.", icon: "💜", category: "Reference" },
 ];
 
 const categoryColors: Record<string, string> = {
