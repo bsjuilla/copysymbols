@@ -106,6 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/uwu-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/runes`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/render-test`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/game-name-checker`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // NEW (audit pass 2 Task 4) — text decorator tool
     { url: `${BASE}/text-decorator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // NEW (audit pass 3 Task 2) — translator index page (children at /translate/<id>)

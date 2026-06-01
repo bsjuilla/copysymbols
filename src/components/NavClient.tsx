@@ -36,6 +36,7 @@ const links: NavLink[] = [
       { href: "/uwu-translator", label: "🐱 UwU Translator" },
       { href: "/runes", label: "🗿 Runes" },
       { href: "/discord-timestamp", label: "🕑 Discord Timestamp" },
+      { href: "/game-name-checker", label: "🎮 Game Name Checker" },
     ],
   },
   {
