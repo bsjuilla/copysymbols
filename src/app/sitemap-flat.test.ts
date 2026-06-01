@@ -14,7 +14,7 @@ async function check() {
     "/translate/text-to-braille",
     "/translate/english-to-pig-latin",
     "/symbols-for/instagram",                       // pass-1
-    "/symbol/heart/in-instagram",                   // pass-2 cross matrix
+    "/flag/france",                                 // flags set
   ];
   for (const url of mustHave) {
     if (!body.includes(url)) throw new Error(`sitemap missing url: ${url}`);
@@ -25,6 +25,13 @@ async function check() {
     if (body.includes(`${BASE}${url}`)) throw new Error(`sitemap should not contain: ${url}`);
   }
 
+  // Must NOT contain the /symbol/<slug>/in-<platform> cross matrix — those ~1,680
+  // pages are noindex'd (near-duplicate thin content) and were removed from the
+  // sitemap so it advertises only indexable URLs.
+  if (body.includes("/in-instagram") || body.includes("/in-discord")) {
+    throw new Error("sitemap should not contain the in-<platform> cross matrix (noindex'd)");
+  }
+
   // Must NOT contain any gen-* slugs — they're noindex'd at the page level
   // and submitting them trains Google to discount the whole sitemap.
   // (B2 fix, GSC 2026-05-28 "Excluded by 'noindex' tag" report.)
@@ -32,13 +39,17 @@ async function check() {
     throw new Error("sitemap should not contain gen-* slugs (B2 regression)");
   }
 
-  // robots.txt smoke check — must disallow /_next/ for Googlebot
-  // (GSC 2026-05-28 "Crawled - currently not indexed" report.)
+  // robots.txt smoke check — must 200, must disallow /search, and must NOT
+  // block /_next/ (Googlebot needs /_next/static/*.css + *.js to render the
+  // page; blocking it caused unstyled renders → "Crawled - currently not indexed").
   const robotsRes = await fetch(`${BASE}/robots.txt`);
   if (robotsRes.status !== 200) throw new Error(`expected robots 200, got ${robotsRes.status}`);
   const robots = await robotsRes.text();
-  if (!robots.includes("/_next/")) {
-    throw new Error("robots.txt should disallow /_next/ (B10 follow-up)");
+  if (!robots.includes("Disallow: /search")) {
+    throw new Error("robots.txt should disallow /search");
+  }
+  if (robots.includes("/_next/")) {
+    throw new Error("robots.txt should NOT block /_next/ (Google needs CSS/JS to render)");
   }
 
   console.log(`sitemap-flat smoke test passed (body ~${(body.length / 1024).toFixed(0)} KB)`);
