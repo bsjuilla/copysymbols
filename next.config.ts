@@ -69,9 +69,9 @@ const nextConfig: NextConfig = {
     return [
       // ── Original 4 (GSC May 9 batch) — closest-symbol redirects ───────────────
       { source: "/symbol/gen-greek-uppercase-delta-with-macron-1778250469107", destination: "/symbol/delta", permanent: true },
-      { source: "/symbol/gen-greek-uppercase-alpha-with-macron-1778250469107", destination: "/symbol/gen-greek-alpha-1777389154567", permanent: true },
-      { source: "/symbol/gen-shapes-permille-sign-1778250487269", destination: "/symbol/gen-math-2030", permanent: true },
-      { source: "/symbol/gen-shapes-fits-1778250487269", destination: "/symbol/gen-math-2031", permanent: true },
+      { source: "/symbol/gen-greek-uppercase-alpha-with-macron-1778250469107", destination: "/symbols/greek", permanent: true },
+      { source: "/symbol/gen-shapes-permille-sign-1778250487269", destination: "/symbols/math", permanent: true },
+      { source: "/symbol/gen-shapes-fits-1778250487269", destination: "/symbols/math", permanent: true },
 
       // ── GSC May 12 batch (30 stale gen-* URLs) ────────────────────────────────
       // generated-symbols.ts was rewritten 2026-05-09 with new IDs; the slugs

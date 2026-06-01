@@ -1,12 +1,15 @@
 import { MetadataRoute } from "next";
 
-// /_next/ paths (build chunks, image-optimization, RSC) are routinely picked
-// up by Googlebot and end up in GSC's "Crawled - currently not indexed"
-// bucket, wasting crawl budget on assets that are never user-facing URLs.
-// Disallowing them stops the noise without breaking rendering (Google does
-// not need to fetch /_next/static/* to render JS-rendered pages — Next ships
-// the HTML pre-rendered).
-const SHARED_DISALLOW = ["/search", "/community", "/api", "/_next/"];
+// Block only app routes with no indexable value: /search (search results,
+// also noindex), /community (empty UGC queue, noindex), /api (JSON endpoints).
+//
+// /_next/ is deliberately NOT blocked: every page links its stylesheet and JS
+// from /_next/static/*, and Googlebot must fetch those to RENDER the page for
+// its rendered-DOM index + layout/CWV signals. Blocking them made Googlebot
+// render unstyled/broken pages — a real quality downgrade that fed GSC
+// "Crawled - currently not indexed". The /_next/* sub-resources are never
+// indexed as search results, so there is no "noise" downside to allowing them.
+const SHARED_DISALLOW = ["/search", "/community", "/api"];
 
 export default function robots(): MetadataRoute.Robots {
   return {

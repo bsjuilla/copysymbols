@@ -40,6 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    // These ~1,680 "<symbol> for <platform>" pages are near-duplicates (the body
+    // differs only by the platform name), so Google crawls but won't index them —
+    // they were the bulk of GSC "Discovered/Crawled - currently not indexed".
+    // noindex (follow stays on, so link equity still flows to the base symbol
+    // page + the /symbols-for/<platform> hubs, which own these intents). Also
+    // removed from the sitemap. The pages still build for any long-tail inbound link.
+    robots: { index: false, follow: true },
     ...canonical(`/symbol/${s.id}/in-${p.id}`),
     openGraph: {
       title,

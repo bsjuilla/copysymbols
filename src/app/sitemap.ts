@@ -174,17 +174,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
 
-    // ---- /symbol/<slug>/in-<platform> cross matrix (pass 2 Task 5) -------
-    // Built only from curated symbols (gen-* slugs are excluded; matches the
-    // page's generateStaticParams). ~curatedSymbols.length × platformIds.length.
-    ...curatedSymbols.flatMap(s =>
-      platformIds.map(p => ({
-        url: `${BASE}/symbol/${s.id}/in-${p}`,
-        lastModified: now,
-        changeFrequency: "yearly" as const,
-        priority: 0.5,
-      })),
-    ),
+    // ---- /symbol/<slug>/in-<platform> cross matrix — REMOVED from sitemap ----
+    // The ~1,680 "<symbol> for <platform>" pages are near-duplicate thin content
+    // (body differs only by the platform name) and were the bulk of GSC
+    // "Discovered/Crawled - currently not indexed". They are now noindex'd at the
+    // page level (symbol/[slug]/in-[platform]/page.tsx) and excluded here so the
+    // sitemap advertises only genuinely-indexable URLs and crawl budget goes to
+    // the base symbol pages + the rich /symbols-for/<platform> hubs.
 
     // ---- Per-style fancy-text sub-pages ----------------------------------
     ...fancyTextStyles.map(st => ({

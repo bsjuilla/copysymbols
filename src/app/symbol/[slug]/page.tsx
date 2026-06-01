@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getSymbolBySlug, getSymbolsByCategory, categories, symbols } from "@/data/symbols";
 import { richDescriptions } from "@/data/symbol-descriptions";
 import CopyToast from "@/components/CopyToast";
@@ -60,7 +60,10 @@ export default async function SymbolDetailPage({ params }: Props) {
   const s = getSymbolBySlug(slug);
   if (!s) {
     const target = staleGenRedirect(slug);
-    if (target) redirect(target);
+    // permanentRedirect → 308 (not redirect()'s 307). A 308 tells Google the
+    // old gen-* URL is permanently moved, so it consolidates/drops it instead
+    // of keeping it indexed and recrawling (GSC "Page with redirect").
+    if (target) permanentRedirect(target);
     notFound();
   }
   const richDesc = richDescriptions[slug] ?? s.description;
