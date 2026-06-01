@@ -8,13 +8,14 @@ import RenderTestClient from "./RenderTestClient";
 export const metadata: Metadata = {
   title: "Symbol & Emoji Render Test — Will It Show on Every Device?",
   description:
-    "Paste any symbol or emoji to see its Unicode code point, block, and whether it will render on iPhone, Android and Windows — or show as an empty box.",
+    "Paste any symbol, emoji or fancy font to see if it works on iPhone, Android, Windows and Discord — or shows as an empty ▯ box. Get a safer version of risky fonts and a link to test it on a friend's phone.",
   keywords: [
     "will my emoji show as a box",
+    "will my font work on discord",
     "unicode character inspector",
-    "what character is this",
     "emoji compatibility checker",
-    "check if symbol works",
+    "check if symbol works on iphone",
+    "why do fonts turn into boxes",
   ],
   ...canonical("/render-test"),
 };
@@ -43,6 +44,14 @@ const faqs = [
   {
     q: "Why does the same emoji look different on iPhone and Android?",
     a: "Unicode defines what an emoji means, not exactly how it looks. Each platform draws its own artwork — Apple, Google, Microsoft, Samsung and others each ship a different emoji font. So the same code point (the same underlying character) is rendered with a different style on each system. The character is identical; only the picture differs.",
+  },
+  {
+    q: "Will my fancy font work on Discord and iPhone?",
+    a: "It depends on the font. The bold, italic, cursive (script) and monospace fancy fonts render almost everywhere, including Discord and iPhone. Blackletter (𝔣𝔯𝔞𝔨𝔱𝔲𝔯) and double-struck (𝕕𝕠𝕦𝕓𝕝𝕖) fonts are the risky ones — they often show as plain letters or boxes on iPhone, Android and Discord on the web. Paste your styled name above and each character shows a per-platform verdict; for a risky font it also offers a safer Bold version you can copy instead.",
+  },
+  {
+    q: "How do I check if a symbol works on my friend's phone?",
+    a: "Paste the text above and press \"Copy friend-test link\". That copies a link with your exact text baked in. Send it to your friend — when they open it on their phone, the tool loads your text so they can see whether it renders for them or shows as a box. It is the only way to be 100% sure, because what displays depends on the other person's device and app.",
   },
 ];
 
