@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
 
@@ -16,6 +17,13 @@ const fractions = [
   { symbol: "⅜", name: "Three Eighths" }, { symbol: "⅝", name: "Five Eighths" }, { symbol: "⅞", name: "Seven Eighths" },
 ];
 const superscripts = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"].map((s,i) => ({ symbol: s, name: `Superscript ${i}` }));
+
+const faqs = [
+  { q: "What is the difference between ① and the number 1?", a: "① is a single typographic character — a circled number that exists as one Unicode symbol. The number 1 you type is a plain digit. Because ① is a real character, it copies and pastes as a single unit and keeps its circle anywhere, unlike a 1 you would have to draw a circle around manually." },
+  { q: "Are these Roman numerals real characters or just letters?", a: "Both versions exist. The ones on this page (Ⅰ Ⅴ Ⅹ) are dedicated Unicode Roman numeral characters, so Ⅻ is a single glyph for twelve. You can also spell Roman numerals with ordinary capital letters (X, V, I). The dedicated characters are tidier for things like clock faces and chapter numbers; the letters are more widely understood." },
+  { q: "How do I type a fraction like ½?", a: "The common fractions (½ ¼ ¾ ⅓ ⅔ and the eighths) are single Unicode characters, so the easiest way is to click one above to copy it. They look cleaner than typing 1/2 and stay aligned on a single line." },
+  { q: "Do circled and superscript numbers work everywhere?", a: "The circled numbers ①–⑳, Roman numerals, common fractions, and superscript digits are all long-established characters that render on nearly every device. They are plain text, so they paste into bios, documents, and messages without needing any special font." },
+];
 
 const baseUrl = "https://www.copychars.com";
 const jsonLd = {
@@ -36,6 +44,14 @@ const jsonLd = {
         "@type": "ListItem",
         position: i + 1,
         name: `${it.symbol} ${it.name}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     },
   ],
@@ -60,6 +76,33 @@ export default function NumberSymbolsPage() {
       <CopySymbolGrid items={fractions} columns="repeat(auto-fill, minmax(130px, 1fr))" />
       <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Superscript Numbers</h2>
       <CopySymbolGrid items={superscripts} columns="repeat(auto-fill, minmax(110px, 1fr))" />
+
+      <section style={{ marginTop: 48 }}>
+        <h2 className="font-display" style={subH2}>What these number symbols are for</h2>
+        <p style={proseP}>
+          Each group answers a different need. <strong>Circled numbers</strong> (①②③) make clean, self-contained list markers and step counts that do not rely on your software&apos;s list formatting. <strong>Roman numerals</strong> (Ⅰ Ⅴ Ⅹ) suit chapter and volume numbers, clock faces, and anywhere a classic look fits. <strong>Fractions</strong> (½ ¼ ¾) keep recipes and measurements on a single tidy line. And <strong>superscript digits</strong> (¹ ² ³) handle footnote marks and simple exponents without leaving the flow of your text. Because every one is a real character, they survive copy and paste intact.
+        </p>
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2 className="font-display" style={{ ...subH2, marginBottom: 20 }}>Frequently asked questions</h2>
+        {faqs.map(({ q, a }) => (
+          <div key={q} style={{ marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid var(--border)" }}>
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{q}</h3>
+            <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7, margin: 0 }}>{a}</p>
+          </div>
+        ))}
+      </section>
+
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 32 }}>
+        <Link href="/roman-numerals" className="cat-pill">Roman Numerals</Link>
+        <Link href="/superscript-generator" className="cat-pill">Superscript Generator</Link>
+        <Link href="/symbols/math" className="cat-pill">Math Symbols</Link>
+        <Link href="/symbols" className="cat-pill">All Symbols</Link>
+      </div>
     </div>
   );
 }
+
+const subH2: React.CSSProperties = { fontSize: 20, fontWeight: 700, color: "var(--text)", margin: "0 0 12px", letterSpacing: "-0.01em" };
+const proseP: React.CSSProperties = { fontSize: 15.5, color: "var(--text2)", lineHeight: 1.75, marginBottom: 24 };
