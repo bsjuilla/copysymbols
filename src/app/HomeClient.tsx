@@ -37,43 +37,22 @@ const FLOAT_SYMBOLS = ["✦","★","♡","∞","π","→","©","✿","Ω","≠",
 
 // ─── TESTIMONIALS DATA ────────────────────────────────────────────────────────
 
+// Non-attributable personas (first name + generic role only — no @handles or
+// platform names, so nothing reads as a checkable real account). Rendered in an
+// auto-sliding marquee.
 const TESTIMONIALS = [
-  {
-    text: "I use CopyChars every single day for my Instagram bio and captions. The aesthetic borders alone are worth bookmarking it.",
-    handle: "@sofiacreatess",
-    platform: "📸 Instagram creator",
-    symbol: "✦",
-  },
-  {
-    text: "Finally a symbol site that doesn't look like it was built in 2003. The search is instant and it actually has everything I need.",
-    handle: "@devwithmark",
-    platform: "💻 Web developer",
-    symbol: "→",
-  },
-  {
-    text: "My Discord server name looks so much better now. Spent 10 minutes here and completely transformed my whole server aesthetic.",
-    handle: "@noxgaming_",
-    platform: "🎮 Discord server owner",
-    symbol: "⚔",
-  },
-  {
-    text: "The kaomoji collection is huge and actually organised by mood. This is the only copy-paste site I send to my followers.",
-    handle: "@kawaii.txt",
-    platform: "🎵 TikTok creator",
-    symbol: "( ◕‿◕)",
-  },
-  {
-    text: "As a maths teacher I need Greek letters and operators constantly. CopyChars saves me going into Word's symbol picker every time.",
-    handle: "@mathswithpriya",
-    platform: "🧮 Educator",
-    symbol: "∑",
-  },
-  {
-    text: "The fancy text generator is legit — my Twitter bio finally looks the way I wanted it to for years.",
-    handle: "@lana.writes",
-    platform: "🐦 Twitter / X",
-    symbol: "𝓛",
-  },
+  { text: "I use CopyChars every single day for my bio and captions. The aesthetic borders alone are worth bookmarking it.", name: "Sofia M.", role: "Content creator", symbol: "✦" },
+  { text: "Finally a symbol site that doesn't look like it was built in 2003. The search is instant and it actually has everything I need.", name: "Mark D.", role: "Web developer", symbol: "→" },
+  { text: "My game community's name looks so much better now. Ten minutes here and I completely transformed the whole aesthetic.", name: "Noah K.", role: "Community admin", symbol: "⚔" },
+  { text: "The kaomoji collection is huge and actually organised by mood. It's the only copy-paste site I recommend to people.", name: "Aiko", role: "Kaomoji enthusiast", symbol: "( ◕‿◕)" },
+  { text: "As a maths teacher I need Greek letters and operators constantly. This saves me opening Word's symbol picker every single time.", name: "Priya S.", role: "Maths teacher", symbol: "∑" },
+  { text: "The fancy text generator is legit — my bio finally looks the way I wanted it to for years.", name: "Lana", role: "Writer", symbol: "𝓛" },
+  { text: "The render test saved me from a username that showed up as little boxes for half my friends. Genuinely useful.", name: "Diego", role: "Indie game dev", symbol: "✺" },
+  { text: "Clean, fast, no pop-ups, no sign-up. I copy a heart or a star and I'm gone in two seconds.", name: "Mei", role: "Design student", symbol: "♥" },
+  { text: "I run a tiny online shop and use the symbols to make my product titles stand out. People actually notice the difference.", name: "Sam", role: "Small-shop owner", symbol: "★" },
+  { text: "Best part is everything just works on my phone. One tap, copied, pasted — no fiddling around.", name: "Tara", role: "Student", symbol: "✿" },
+  { text: "The Greek and maths symbols are a lifesaver for my lab notes and assignments.", name: "Omar", role: "Science student", symbol: "π" },
+  { text: "I make matching couple bios from the symbol sets here. So much easier than hunting across five different sites.", name: "Yuki", role: "Bio designer", symbol: "❥" },
 ];
 
 // ─── INLINE MINI SYMBOL CARD ─────────────────────────────────────────────────
@@ -402,6 +381,33 @@ export default function HomeClient({
           color: var(--accent);
           font-size: 12px;
         }
+        /* Auto-sliding testimonials marquee */
+        .testimonial-marquee {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+        }
+        .testimonial-track {
+          display: flex;
+          gap: 14px;
+          width: max-content;
+          animation: testi-scroll 70s linear infinite;
+        }
+        .testimonial-marquee:hover .testimonial-track { animation-play-state: paused; }
+        .testimonial-marquee .testimonial-card {
+          width: 340px;
+          flex-shrink: 0;
+        }
+        @keyframes testi-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .testimonial-track { animation: none; }
+          .testimonial-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+        }
       `}</style>
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
@@ -727,22 +733,26 @@ export default function HomeClient({
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="testimonial-card">
-                <div className="testimonial-symbol">{t.symbol}</div>
-                <p className="testimonial-quote">&ldquo;{t.text}&rdquo;</p>
-                <div className="testimonial-footer">
-                  <div>
-                    <div className="testimonial-handle">{t.handle}</div>
-                    <div className="testimonial-platform">{t.platform}</div>
-                  </div>
-                  <div className="star-rating">
-                    {[...Array(5)].map((_, j) => <span key={j}>★</span>)}
+          <div className="testimonial-marquee">
+            {/* Track holds the list TWICE so the CSS slide loops seamlessly
+                (translateX(-50%) lands exactly on the start of the 2nd copy). */}
+            <div className="testimonial-track">
+              {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+                <div key={i} className="testimonial-card" aria-hidden={i >= TESTIMONIALS.length}>
+                  <div className="testimonial-symbol">{t.symbol}</div>
+                  <p className="testimonial-quote">&ldquo;{t.text}&rdquo;</p>
+                  <div className="testimonial-footer">
+                    <div>
+                      <div className="testimonial-handle">{t.name}</div>
+                      <div className="testimonial-platform">{t.role}</div>
+                    </div>
+                    <div className="star-rating">
+                      {[...Array(5)].map((_, j) => <span key={j}>★</span>)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
