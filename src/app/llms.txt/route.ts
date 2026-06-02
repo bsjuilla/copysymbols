@@ -10,6 +10,7 @@
 import { categories } from "@/data/symbols";
 import { AESTHETICS } from "@/data/aesthetics";
 import { kaomojiCategories } from "@/data/kaomoji";
+import { EMOJI_MEANINGS } from "@/data/emoji-meanings";
 
 export const dynamic = "force-static";
 
@@ -66,6 +67,14 @@ export async function GET(): Promise<Response> {
   sections.push(line("/emoji", "Emoji", "1,000+ emoji to copy and paste, by category."));
   sections.push(line("/new-emoji-2026", "New Emoji 2026 (Unicode 17.0)", "The newest emoji, shipped to iOS 26.4 in March 2026."));
   sections.push(line("/emoji-combos", "Emoji Combos", "Aesthetic emoji combinations for bios."));
+  sections.push(line("/emoji-meanings", "Emoji Meanings", "A dictionary of what each emoji and combo means, with tone + examples."));
+  sections.push("");
+
+  // Emoji meanings — per-entry "what does X mean" pages (strong AI-search intent).
+  sections.push("## Emoji meanings (what each emoji/combo means)");
+  for (const e of EMOJI_MEANINGS) {
+    sections.push(line(`/emoji-meanings/${e.slug}`, `What does ${e.emoji} (${e.name}) mean`, e.short));
+  }
   sections.push("");
 
   // Kaomoji

@@ -8,6 +8,7 @@ import { borders } from "@/data/collections/borders";
 import { stars } from "@/data/collections/stars";
 import { lennyFaces } from "@/data/collections/lenny";
 import { emojiCombos } from "@/data/collections/emoji-combos";
+import { EMOJI_MEANINGS } from "@/data/emoji-meanings";
 import { hearts } from "@/data/collections/hearts";
 import { textArt } from "@/data/collections/text-art";
 import { bioTemplates } from "@/data/collections/bio-templates";
@@ -87,6 +88,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/couple-bio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/emoji-combos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/community-combos`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
+    // Emoji meaning dictionary (hub + per-entry "what does X mean" pages).
+    { url: `${BASE}/emoji-meanings`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...EMOJI_MEANINGS.map((e) => ({
+      url: `${BASE}/emoji-meanings/${e.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     { url: `${BASE}/bio-builder`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     // Tools
     { url: `${BASE}/small-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },

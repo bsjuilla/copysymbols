@@ -54,6 +54,7 @@ const links: NavLink[] = [
       { href: "/bullet-points", label: "• Bullet Points" },
       { href: "/bio-templates", label: "📝 Bio Templates" },
       { href: "/emoji-combos", label: "🌙✨ Emoji Combos" },
+      { href: "/emoji-meanings", label: "💬 Emoji Meanings" },
       { href: "/text-art", label: "🎨 Text Art" },
     ],
   },
