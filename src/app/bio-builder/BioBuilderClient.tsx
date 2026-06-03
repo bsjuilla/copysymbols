@@ -162,7 +162,7 @@ export default function BioBuilderClient() {
           padding: 8px 18px; border-radius: 100px;
           border: 1px solid var(--border); background: var(--bg3);
           color: var(--text2); font-size: 13px; font-weight: 500;
-          cursor: pointer; font-family: 'DM Sans', sans-serif;
+          cursor: pointer; font-family: var(--font-dm-sans), sans-serif;
           transition: all 0.15s;
         }
         .bb-platform-btn.active { color: var(--bg); border-color: transparent; }
@@ -190,13 +190,13 @@ export default function BioBuilderClient() {
         .bb-drag-handle:active { cursor: grabbing; }
         .bb-block-input {
           flex: 1; background: none; border: none; outline: none;
-          color: var(--text); font-family: 'DM Mono', monospace;
+          color: var(--text); font-family: var(--font-dm-mono), monospace;
           font-size: 13px; line-height: 1.6; padding: 8px 0; resize: none;
           min-height: 36px;
         }
         .bb-block-input::placeholder { color: var(--text3); }
         .bb-block-divider {
-          flex: 1; padding: 8px 0; font-family: 'DM Mono', monospace;
+          flex: 1; padding: 8px 0; font-family: var(--font-dm-mono), monospace;
           font-size: 13px; color: var(--text2); line-height: 1.6;
           word-break: break-all; white-space: pre-wrap;
         }
@@ -210,7 +210,7 @@ export default function BioBuilderClient() {
         .bb-add-text-btn {
           width: 100%; background: none; border: 1px dashed var(--border);
           border-radius: 10px; color: var(--text3); font-size: 13px;
-          padding: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+          padding: 10px; cursor: pointer; font-family: var(--font-dm-sans), sans-serif;
           transition: all 0.15s; margin-top: 4px;
         }
         .bb-add-text-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -220,7 +220,7 @@ export default function BioBuilderClient() {
         .bb-picker-tabs { display: flex; border-bottom: 1px solid var(--border); }
         .bb-picker-tab {
           flex: 1; padding: 12px; background: none; border: none;
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+          font-family: var(--font-dm-sans), sans-serif; font-size: 13px; font-weight: 500;
           color: var(--text3); cursor: pointer; transition: all 0.15s;
           border-bottom: 2px solid transparent; margin-bottom: -1px;
         }
@@ -230,7 +230,7 @@ export default function BioBuilderClient() {
         .bb-sym-group-tab {
           padding: 3px 10px; border-radius: 100px; border: 1px solid var(--border);
           background: var(--bg3); color: var(--text3); font-size: 11px;
-          cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+          cursor: pointer; font-family: var(--font-dm-sans), sans-serif; transition: all 0.15s;
         }
         .bb-sym-group-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(200,169,110,0.08); }
         .bb-sym-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 5px; margin-bottom: 8px; }
@@ -247,7 +247,7 @@ export default function BioBuilderClient() {
           border-radius: 10px; cursor: pointer; transition: all 0.15s;
         }
         .bb-div-btn:hover { border-color: var(--accent); background: rgba(200,169,110,0.06); }
-        .bb-div-preview { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text2); flex: 1; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .bb-div-preview { font-family: var(--font-dm-mono), monospace; font-size: 11px; color: var(--text2); flex: 1; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
         .bb-div-label { font-size: 10px; color: var(--text3); flex-shrink: 0; }
         .bb-add-icon { font-size: 14px; color: var(--text3); flex-shrink: 0; }
 
@@ -278,26 +278,26 @@ export default function BioBuilderClient() {
         .bb-profile-handle { font-size: 10px; color: var(--text3); margin-bottom: 10px; }
         .bb-phone-bio {
           font-size: 11px; line-height: 1.65; color: var(--text2);
-          white-space: pre-wrap; text-align: left; font-family: 'DM Mono', monospace;
+          white-space: pre-wrap; text-align: left; font-family: var(--font-dm-mono), monospace;
           word-break: break-word; max-height: 160px; overflow: hidden;
         }
         .bb-phone-stats { display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid var(--border); margin: 0 -16px; }
         .bb-phone-stat { text-align: center; }
         .bb-phone-stat-n { font-size: 13px; font-weight: 600; color: var(--text); }
         .bb-phone-stat-l { font-size: 9px; color: var(--text3); }
-        .bb-phone-follow { margin: 10px 0 0; background: var(--accent); color: var(--bg); border: none; border-radius: 8px; width: 100%; padding: 7px; font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+        .bb-phone-follow { margin: 10px 0 0; background: var(--accent); color: var(--bg); border: none; border-radius: 8px; width: 100%; padding: 7px; font-size: 12px; font-weight: 600; font-family: var(--font-dm-sans), sans-serif; cursor: pointer; }
 
         /* ── Char counter ── */
         .bb-char-bar-wrap { padding: 12px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
         .bb-char-bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
         .bb-char-bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s, background 0.3s; }
-        .bb-char-count { font-family: 'DM Mono', monospace; font-size: 11px; flex-shrink: 0; }
+        .bb-char-count { font-family: var(--font-dm-mono), monospace; font-size: 11px; flex-shrink: 0; }
 
         /* ── Copy section ── */
         .bb-copy-section { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
         .bb-copy-btn {
           flex: 1; padding: 12px; border-radius: 12px; border: none;
-          font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+          font-family: var(--font-dm-sans), sans-serif; font-size: 14px; font-weight: 600;
           cursor: pointer; transition: all 0.2s;
           background: var(--accent); color: var(--bg);
         }
@@ -306,7 +306,7 @@ export default function BioBuilderClient() {
         .bb-clear-btn {
           padding: 12px 16px; border-radius: 12px;
           border: 1px solid var(--border); background: var(--bg3);
-          color: var(--text3); font-family: 'DM Sans', sans-serif;
+          color: var(--text3); font-family: var(--font-dm-sans), sans-serif;
           font-size: 13px; cursor: pointer; transition: all 0.15s;
         }
         .bb-clear-btn:hover { border-color: var(--coral); color: var(--coral); }
@@ -519,7 +519,7 @@ export default function BioBuilderClient() {
           {/* ── RIGHT: Phone mockup ── */}
           <div className="bb-phone-wrap">
             <div style={{ textAlign: "center", marginBottom: 12 }}>
-              <span style={{ fontSize: 11, color: "var(--text3)", fontFamily: "DM Mono, monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <span style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Live preview — {platform.label}
               </span>
             </div>
@@ -567,7 +567,7 @@ export default function BioBuilderClient() {
                   <div style={{ padding: "10px 0 0", borderTop: "1px solid var(--border)", marginTop: 8 }}>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                       {["Member","Verified","Active"].map(r => (
-                        <span key={r} style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, background: "rgba(88,101,242,0.2)", color: "#7289DA", fontFamily: "DM Mono, monospace" }}>{r}</span>
+                        <span key={r} style={{ fontSize: 9, padding: "2px 7px", borderRadius: 4, background: "rgba(88,101,242,0.2)", color: "#7289DA", fontFamily: "var(--font-dm-mono), monospace" }}>{r}</span>
                       ))}
                     </div>
                   </div>

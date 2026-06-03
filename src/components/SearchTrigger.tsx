@@ -39,7 +39,7 @@ export default function SearchTrigger() {
           cursor: "pointer",
           color: "var(--text3)",
           fontSize: 13,
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "var(--font-dm-sans), sans-serif",
           transition: "all 0.15s",
         }}
         onMouseEnter={e => {
@@ -58,7 +58,7 @@ export default function SearchTrigger() {
         <span style={{
           background: "var(--bg3)",
           border: "1px solid var(--border2)",
-          fontFamily: "'DM Mono', monospace",
+          fontFamily: "var(--font-dm-mono), monospace",
           fontSize: 10,
           padding: "1px 5px",
           borderRadius: 4,

@@ -200,7 +200,7 @@ export default async function FlagDetailPage({ params }: Props) {
                   style={{
                     fontSize: 12,
                     color: "var(--accent)",
-                    fontFamily: "DM Mono, monospace",
+                    fontFamily: "var(--font-dm-mono), monospace",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     textDecoration: "none",
@@ -228,20 +228,20 @@ export default async function FlagDetailPage({ params }: Props) {
             {/* Specs grid */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode (regional indicators)</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{cps}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode (regional indicators)</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{cps}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>ISO Alpha-2</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{flag.a2}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>ISO Alpha-2</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{flag.a2}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>ISO Alpha-3</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{flag.a3}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>ISO Alpha-3</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{flag.a3}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Continent</div>
-                <Link href={`/flags#${flag.region.toLowerCase()}`} style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)", textDecoration: "none" }}>{flag.region}</Link>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Continent</div>
+                <Link href={`/flags#${flag.region.toLowerCase()}`} style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)", textDecoration: "none" }}>{flag.region}</Link>
               </div>
             </div>
           </div>

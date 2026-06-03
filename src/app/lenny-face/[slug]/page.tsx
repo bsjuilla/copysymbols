@@ -127,7 +127,7 @@ export default async function LennyDetailPage({ params }: Props) {
                 <h1 className="font-display" style={{ marginTop: 24, marginBottom: 6, fontSize: "clamp(1.3rem, 3vw, 1.6rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em" }}>
                   {l!.name}
                 </h1>
-                <Link href="/lenny-face" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+                <Link href="/lenny-face" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
                   {mood?.name ?? l!.mood}
                 </Link>
               </div>
@@ -150,15 +150,15 @@ export default async function LennyDetailPage({ params }: Props) {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Mood</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{mood?.name ?? l!.mood}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Mood</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{mood?.name ?? l!.mood}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)" }}>{Array.from(l!.face).length} chars</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)" }}>{Array.from(l!.face).length} chars</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {l!.keywords.map(k => (
                     <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{k}</span>

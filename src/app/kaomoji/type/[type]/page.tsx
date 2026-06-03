@@ -137,7 +137,7 @@ export default async function KaomojiTypePage({ params }: Props) {
           <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 5vw, 2.6rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", marginBottom: 8 }}>
             {t!.name} Kaomoji
           </h1>
-          <p style={{ fontSize: 14, color: "var(--text3)", fontFamily: "DM Mono, monospace", letterSpacing: "0.04em" }}>
+          <p style={{ fontSize: 14, color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.04em" }}>
             {items.length} copy-and-paste {nameLower} text faces
           </p>
         </header>

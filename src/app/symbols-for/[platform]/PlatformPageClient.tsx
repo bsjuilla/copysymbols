@@ -36,13 +36,13 @@ export default function PlatformPageClient({ platform }: Props) {
       </p>
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40, fontSize: 12, color: "var(--text3)" }}>
-        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "DM Mono, monospace" }}>
+        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "var(--font-dm-mono), monospace" }}>
           📏 {platform.bioLimit}-char bio limit
         </span>
-        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "DM Mono, monospace" }}>
+        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "var(--font-dm-mono), monospace" }}>
           {totalSymbols} symbols
         </span>
-        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "DM Mono, monospace" }}>
+        <span style={{ padding: "4px 12px", borderRadius: 100, border: "1px solid var(--border)", background: "var(--bg)", fontFamily: "var(--font-dm-mono), monospace" }}>
           {platform.categories.length} categories
         </span>
       </div>

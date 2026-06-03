@@ -62,7 +62,7 @@ export default function LennyClient() {
                 <button
                   onClick={(e) => copy(e, l.face, l.name)}
                   aria-label={`Copy ${l.name}`}
-                  style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === l.face ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                  style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === l.face ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                 >
                   {copied === l.face ? "✓ COPIED" : "COPY"}
                 </button>
@@ -93,7 +93,7 @@ export default function LennyClient() {
                     <button
                       onClick={(e) => copy(e, l.face, l.name)}
                       aria-label={`Copy ${l.name}`}
-                      style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === l.face ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                      style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === l.face ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                     >
                       {copied === l.face ? "✓" : "COPY"}
                     </button>

@@ -143,7 +143,7 @@ export default async function BulletDetailPage({ params }: Props) {
                 <h1 className="font-display" style={{ marginTop: 24, marginBottom: 6, fontSize: "clamp(1.3rem, 3vw, 1.6rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em" }}>
                   {b!.name} Bullet
                 </h1>
-                <Link href="/bullet-points" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+                <Link href="/bullet-points" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
                   {catMeta?.name ?? b!.category}
                 </Link>
               </div>
@@ -163,15 +163,15 @@ export default async function BulletDetailPage({ params }: Props) {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{b!.unicode || cps.join(" ") || "—"}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{b!.unicode || cps.join(" ") || "—"}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{catMeta?.name ?? b!.category}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{catMeta?.name ?? b!.category}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {b!.keywords.map(k => (
                     <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{k}</span>
@@ -197,7 +197,7 @@ export default async function BulletDetailPage({ params }: Props) {
               </p>
             </div>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16, padding: "20px 22px" }}>
-              <div style={{ fontSize: 12, fontFamily: "DM Mono, monospace", color: "var(--accent)", marginBottom: 8 }}>{b!.unicode || cps.join(" ") || "—"}</div>
+              <div style={{ fontSize: 12, fontFamily: "var(--font-dm-mono), monospace", color: "var(--accent)", marginBottom: 8 }}>{b!.unicode || cps.join(" ") || "—"}</div>
               <h3 style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>Unicode codepoint</h3>
               <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>
                 {b!.unicode

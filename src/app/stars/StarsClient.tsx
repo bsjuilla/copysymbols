@@ -52,7 +52,7 @@ export default function StarsClient() {
                   <button
                     onClick={(e) => copy(e, s.char, s.name)}
                     aria-label={`Copy ${s.name}`}
-                    style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "2px 6px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === s.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                    style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "2px 6px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === s.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                   >
                     {copied === s.char ? "✓" : "COPY"}
                   </button>

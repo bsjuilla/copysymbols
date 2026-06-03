@@ -162,7 +162,7 @@ export default async function KaomojiDetailPage({ params }: Props) {
                   style={{
                     fontSize: 12,
                     color: "var(--accent)",
-                    fontFamily: "DM Mono, monospace",
+                    fontFamily: "var(--font-dm-mono), monospace",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                   }}
@@ -188,15 +188,15 @@ export default async function KaomojiDetailPage({ params }: Props) {
             {/* Specs grid */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Mood</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{mName}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Mood</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{mName}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
-                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)" }}>{Array.from(k!.face).length} chars</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
+                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)" }}>{Array.from(k!.face).length} chars</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {k!.keywords.map((kw) => (
                     <span key={kw} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{kw}</span>
