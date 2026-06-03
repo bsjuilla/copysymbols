@@ -1,4 +1,5 @@
 import { kaomojiCategories } from "@/data/kaomoji";
+import { kaomojiTypes } from "@/data/kaomoji-types";
 import { allKaomoji } from "@/data/all-kaomoji";
 import KaomojiPageClient from "./KaomojiPageClient";
 import CopyToast from "@/components/CopyToast";
@@ -53,6 +54,16 @@ export default function KaomojiPage() {
           {kaomojiCategories.map(c => (
             <Link key={c.id} href={`/kaomoji/mood/${c.id}`} className="cat-pill" style={{ textDecoration: "none" }}>
               {c.icon} {c.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Browse by style — demand-driven type collections (pout, confident, …). */}
+        <div className="section-label" style={{ margin: "22px 0 10px" }}>Browse kaomoji by style</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {kaomojiTypes.map(t => (
+            <Link key={t.id} href={`/kaomoji/type/${t.id}`} className="cat-pill" style={{ textDecoration: "none" }}>
+              {t.hero} {t.name}
             </Link>
           ))}
         </div>
