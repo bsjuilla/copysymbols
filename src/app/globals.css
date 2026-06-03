@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+/* Fonts now load via a preconnected <link> in app/layout.tsx (hoisted to
+   <head> by React 19). The old CSS @import here was render-blocking and
+   discovered late — moving it earlier in the critical path speeds up mobile
+   first paint. Same families/weights, identical rendering. */
 
 :root {
   --bg: #0a0a0f;

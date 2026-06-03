@@ -73,6 +73,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        {/* Fonts: preconnect + stylesheet, moved out of the globals.css @import
+            (which was render-blocking and discovered late). React 19 hoists these
+            into <head>; `precedence` makes the stylesheet a managed head resource.
+            Identical families/weights — purely a critical-path speedup. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          precedence="default"
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap"
+        />
         {/* Google AdSense loader as a RAW <script> (not next/script). next/script
             only emitted a <link rel=preload> + a JS-injected tag, which AdSense's
             crawler — reading raw HTML without running our JS — could not see, so
