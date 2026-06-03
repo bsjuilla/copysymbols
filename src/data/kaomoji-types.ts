@@ -77,14 +77,6 @@ export const kaomojiTypes: KaomojiType[] = [
     ],
   },
   {
-    id: "wink",
-    name: "Wink",
-    hero: "(^_~)",
-    synonyms: ["wink", "flirt", "tease", "winking", "cheeky"],
-    blurb:
-      "Wink kaomoji drop one eye for a playful, flirty, or just-kidding tone. Send (^_~) to soften a joke or add a little charm to a message.",
-  },
-  {
     id: "blush",
     name: "Blush",
     hero: "(〃▽〃)",
@@ -110,21 +102,25 @@ export const kaomojiTypes: KaomojiType[] = [
     id: "flex",
     name: "Flex",
     hero: "ᕦ(ò_óˇ)ᕤ",
-    synonyms: ["flex", "strong", "muscle", "power", "champion", "determined", "win", "fight", "victory", "pumped"],
+    synonyms: ["flex", "strong", "muscle", "power", "champion", "determined", "win", "winner", "winning", "fight", "fighting", "victory", "pumped", "triumph", "tough", "fierce"],
     blurb:
       "Flex kaomoji throw up the arms and show some muscle — ᕦ(ò_óˇ)ᕤ energy for wins, gym posts, motivation, or a playful 'let's go'.",
   },
 ];
 
-const lc = (s: string) => s.toLowerCase();
+// Whole-word tokens, lowercased. Using token equality (not substring
+// `includes`) prevents false positives like synonym "star" leaking into
+// "startled"/"stare" or "shine" into "sunshine" (ruflo review 2026-06).
+const tokens = (text: string) => text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
 
 /** Curated collection for a type: name-matches first, then keyword-matches,
  *  excluding duplicate-named records, capped for a focused page. */
 export function getKaomojiForType(t: KaomojiType): KaomojiWithSlug[] {
+  const syn = new Set(t.synonyms);
   const seen = new Set<string>();
   const out: KaomojiWithSlug[] = [];
-  const nameHit = (k: KaomojiWithSlug) => t.synonyms.some((s) => lc(k.name).includes(s));
-  const kwHit = (k: KaomojiWithSlug) => k.keywords.some((w) => t.synonyms.some((s) => lc(w).includes(s)));
+  const nameHit = (k: KaomojiWithSlug) => tokens(k.name).some((w) => syn.has(w));
+  const kwHit = (k: KaomojiWithSlug) => k.keywords.some((kw) => tokens(kw).some((w) => syn.has(w)));
   for (const k of allKaomoji) {
     if (k.isDuplicate) continue;
     if (nameHit(k) && !seen.has(k.slug)) { seen.add(k.slug); out.push(k); }
