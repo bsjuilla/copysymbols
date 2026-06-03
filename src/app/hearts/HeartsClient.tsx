@@ -52,11 +52,11 @@ export default function HeartsClient() {
                   <button
                     onClick={(e) => copy(e, h.char, h.name)}
                     aria-label={`Copy ${h.name}`}
-                    style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "2px 6px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === h.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                    style={{ position: "absolute", top: 6, right: 6, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "2px 6px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === h.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                   >
                     {copied === h.char ? "✓" : "COPY"}
                   </button>
-                  <span className="symbol-char" style={h.char.includes("\n") ? { whiteSpace: "pre", fontFamily: "DM Mono, monospace", fontSize: "clamp(0.6rem, 8cqi, 0.9rem)", lineHeight: 1.2 } : undefined}>{h.char}</span>
+                  <span className="symbol-char" style={h.char.includes("\n") ? { whiteSpace: "pre", fontFamily: "var(--font-dm-mono), monospace", fontSize: "clamp(0.6rem, 8cqi, 0.9rem)", lineHeight: 1.2 } : undefined}>{h.char}</span>
                   <span className="symbol-name">{h.name}</span>
                 </Link>
               ))}

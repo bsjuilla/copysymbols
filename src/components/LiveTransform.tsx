@@ -47,7 +47,7 @@ export default function LiveTransform({
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
       <div>
-        <label htmlFor="lt-in" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 8, display: "block" }}>Your text</label>
+        <label htmlFor="lt-in" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 8, display: "block" }}>Your text</label>
         <textarea
           id="lt-in"
           value={text}
@@ -58,7 +58,7 @@ export default function LiveTransform({
         />
       </div>
       <div>
-        <label htmlFor="lt-out" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 8, display: "block" }}>Result</label>
+        <label htmlFor="lt-out" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 8, display: "block" }}>Result</label>
         <div
           id="lt-out"
           style={{ width: "100%", minHeight: 124, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "14px 16px", fontSize: mode === "runes" ? "1.6rem" : 16, lineHeight: 1.6, color: "var(--text)", wordBreak: "break-word", whiteSpace: "pre-wrap" }}

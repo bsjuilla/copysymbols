@@ -166,7 +166,7 @@ export default async function SymbolDetailPage({ params }: Props) {
         }
         .sym-hero-char:hover { transform: scale(1.08); }
         .sym-hero-name {
-          font-family: 'Syne', sans-serif;
+          font-family: var(--font-syne), sans-serif;
           font-size: clamp(1.3rem, 3vw, 1.8rem);
           font-weight: 800;
           color: var(--text);
@@ -178,7 +178,7 @@ export default async function SymbolDetailPage({ params }: Props) {
         .sym-hero-cat {
           font-size: 13px;
           color: var(--accent);
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           margin-bottom: 24px;
@@ -222,7 +222,7 @@ export default async function SymbolDetailPage({ params }: Props) {
         }
         .spec-icon {
           font-size: 10px;
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           font-weight: 600;
           width: 24px;
           height: 24px;
@@ -242,11 +242,11 @@ export default async function SymbolDetailPage({ params }: Props) {
           font-size: 10px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           color: var(--text3);
         }
         .spec-value {
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           font-size: 14px;
           font-weight: 500;
           word-break: break-all;
@@ -260,7 +260,7 @@ export default async function SymbolDetailPage({ params }: Props) {
           border: 1px solid var(--border2);
           border-radius: 8px;
           padding: 6px 12px;
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           font-size: 13px;
           color: var(--text);
         }
@@ -376,13 +376,13 @@ export default async function SymbolDetailPage({ params }: Props) {
                 <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
                   {s!.shortcut.mac && (
                     <div>
-                      <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "DM Mono, monospace" }}>Mac</div>
+                      <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "var(--font-dm-mono), monospace" }}>Mac</div>
                       <div className="shortcut-key">{s!.shortcut.mac}</div>
                     </div>
                   )}
                   {s!.shortcut.windows && (
                     <div>
-                      <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "DM Mono, monospace" }}>Windows</div>
+                      <div style={{ fontSize: 11, color: "var(--text3)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em", fontFamily: "var(--font-dm-mono), monospace" }}>Windows</div>
                       <div className="shortcut-key">{s!.shortcut.windows}</div>
                     </div>
                   )}
@@ -400,8 +400,8 @@ export default async function SymbolDetailPage({ params }: Props) {
                   { lang: "Unicode", code: s!.unicode },
                 ].map(row => (
                   <div key={row.lang} style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-                    <span style={{ fontSize: 11, color: "var(--text3)", fontFamily: "DM Mono, monospace", width: 90, flexShrink: 0 }}>{row.lang}</span>
-                    <code style={{ fontSize: 13, color: "var(--teal)", fontFamily: "DM Mono, monospace", background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 8, padding: "4px 12px", flex: 1, minWidth: 0, display: "block" }}>
+                    <span style={{ fontSize: 11, color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace", width: 90, flexShrink: 0 }}>{row.lang}</span>
+                    <code style={{ fontSize: 13, color: "var(--teal)", fontFamily: "var(--font-dm-mono), monospace", background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 8, padding: "4px 12px", flex: 1, minWidth: 0, display: "block" }}>
                       {row.code}
                     </code>
                   </div>

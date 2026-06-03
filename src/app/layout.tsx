@@ -1,7 +1,17 @@
 import type { Metadata, Viewport } from "next";
+import { DM_Sans, DM_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavClient from "@/components/NavClient";
+
+// Self-hosted via next/font (no Google round-trip): fonts are downloaded at
+// build time, served from our own origin, preloaded, and exposed as CSS vars
+// (--font-dm-sans / --font-dm-mono / --font-syne) consumed across the app.
+// Replaces the old render-blocking Google Fonts @import. DM Sans + Syne are
+// variable fonts (full weight range in one file); DM Mono is static.
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
+const dmMono = DM_Mono({ subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-dm-mono", display: "swap" });
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne", display: "swap" });
 
 // Google AdSense publisher ID (public — also appears in the loader URL).
 const ADSENSE_CLIENT = "ca-pub-5652501264934418";
@@ -71,19 +81,8 @@ const siteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${dmMono.variable} ${syne.variable}`}>
       <body>
-        {/* Fonts: preconnect + stylesheet, moved out of the globals.css @import
-            (which was render-blocking and discovered late). React 19 hoists these
-            into <head>; `precedence` makes the stylesheet a managed head resource.
-            Identical families/weights — purely a critical-path speedup. */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          precedence="default"
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap"
-        />
         {/* Google AdSense loader as a RAW <script> (not next/script). next/script
             only emitted a <link rel=preload> + a JS-injected tag, which AdSense's
             crawler — reading raw HTML without running our JS — could not see, so

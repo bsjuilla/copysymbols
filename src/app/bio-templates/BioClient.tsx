@@ -73,19 +73,19 @@ export default function BioClient() {
                     <button
                       onClick={(e) => copy(e, b.template, b.name)}
                       aria-label={`Copy ${b.name}`}
-                      style={{ position: "absolute", top: 12, right: 12, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === b.template ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                      style={{ position: "absolute", top: 12, right: 12, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === b.template ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                     >
                       {copied === b.template ? "✓ COPIED" : "COPY"}
                     </button>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingRight: 70 }}>
                       <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text)" }}>{b.name}</div>
                     </div>
-                    <div style={{ display: "flex", gap: 6, fontSize: 10, fontFamily: "DM Mono, monospace", color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                    <div style={{ display: "flex", gap: 6, fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
                       <span style={{ color: "var(--accent)" }}>{pMeta?.name ?? b.platform}</span>
                       <span>·</span>
                       <span style={{ color: overLimit ? "#ff6b6b" : "var(--text3)" }}>{b.charCount}/{pMeta?.charLimit}</span>
                     </div>
-                    <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 12, color: "var(--text2)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.6, maxHeight: 140, overflow: "hidden" }}>{b.template}</pre>
+                    <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 12, color: "var(--text2)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.6, maxHeight: 140, overflow: "hidden" }}>{b.template}</pre>
                     <div style={{ fontSize: 11, color: "var(--accent)", marginTop: "auto" }}>open →</div>
                   </Link>
                 );

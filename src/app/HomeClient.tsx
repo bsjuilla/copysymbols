@@ -234,7 +234,7 @@ export default function HomeClient({
           font-size: 14px;
           cursor: pointer;
           transition: all 0.2s;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), sans-serif;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -286,7 +286,7 @@ export default function HomeClient({
           background: var(--bg3);
           border: 1px solid var(--border);
           color: var(--text3);
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
           font-size: 11px;
           padding: 3px 8px;
           border-radius: 6px;
@@ -366,7 +366,7 @@ export default function HomeClient({
           font-size: 13px;
           font-weight: 600;
           color: var(--accent);
-          font-family: 'DM Mono', monospace;
+          font-family: var(--font-dm-mono), monospace;
         }
         .testimonial-platform {
           font-size: 11px;
@@ -555,7 +555,7 @@ export default function HomeClient({
             <Link href="/flags" className="cat-card" style={{ textDecoration: "none" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                 <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Country Flags</span>
-                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "var(--font-dm-mono), monospace" }}>New</span>
               </div>
               <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
                 {["🇺🇸", "🇬🇧", "🇯🇵", "🇧🇷", "🇮🇳", "🇨🇦"].map((g, i) => (
@@ -569,7 +569,7 @@ export default function HomeClient({
             <Link href="/gaming-symbols" className="cat-card" style={{ textDecoration: "none" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                 <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Gaming Symbols</span>
-                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "var(--font-dm-mono), monospace" }}>New</span>
               </div>
               <div style={{ fontSize: "1.5rem", color: "var(--text)", letterSpacing: "0.05em", marginBottom: 12, lineHeight: 1.3 }}>꧁༒☬꧂ ⚔ ♛ ツ</div>
               <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>Stylish name symbols for Free Fire, PUBG, BGMI, COD &amp; more.</p>
@@ -579,7 +579,7 @@ export default function HomeClient({
             <Link href="/alphabets" className="cat-card" style={{ textDecoration: "none" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                 <span className="font-display" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>Alphabets &amp; Scripts</span>
-                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "DM Mono, monospace" }}>New</span>
+                <span style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--accent)", border: "1px solid var(--border)", borderRadius: 100, padding: "2px 8px", fontFamily: "var(--font-dm-mono), monospace" }}>New</span>
               </div>
               <div style={{ fontSize: "1.5rem", color: "var(--text)", letterSpacing: "0.08em", marginBottom: 12, lineHeight: 1.3 }}>あ 中 한 Я ع</div>
               <p style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, margin: 0 }}>Japanese, Chinese, Korean, Russian &amp; Arabic letters, with romanization.</p>
@@ -599,7 +599,7 @@ export default function HomeClient({
               <div className="font-display" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 800, color: "var(--accent)", lineHeight: 1 }}>
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "DM Mono, monospace" }}>
+              <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace" }}>
                 {stat.label}
               </div>
             </div>

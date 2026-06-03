@@ -26,7 +26,7 @@ const labelStyle = {
   fontSize: 12,
   letterSpacing: "0.06em",
   textTransform: "uppercase" as const,
-  fontFamily: "DM Mono, monospace",
+  fontFamily: "var(--font-dm-mono), monospace",
   color: "var(--text3)",
   marginBottom: 8,
 };

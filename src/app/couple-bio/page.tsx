@@ -141,8 +141,8 @@ export default function CoupleBioPage() {
                     { tag: "Partner 2", bio: m.partnerB },
                   ] as const).map(({ tag, bio }) => (
                     <div key={tag} style={{ flex: "1 1 240px", minWidth: 0, background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 14, padding: "16px 18px" }}>
-                      <div style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 12 }}>{tag}</div>
-                      <pre style={{ fontFamily: "DM Mono, monospace", fontSize: "1rem", color: "var(--text)", margin: "0 0 16px", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.7 }}>{bio}</pre>
+                      <div style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 12 }}>{tag}</div>
+                      <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "1rem", color: "var(--text)", margin: "0 0 16px", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.7 }}>{bio}</pre>
                       <EmojiCopyButton glyph={bio} name={`${m.label} — ${tag} bio`} size="1.4rem" />
                     </div>
                   ))}

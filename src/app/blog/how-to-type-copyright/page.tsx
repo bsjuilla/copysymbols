@@ -58,7 +58,7 @@ export default function BlogCopyright() {
         <section key={item.os} style={{ marginBottom: 40 }}>
           <h2 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 12 }}>On {item.os}</h2>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, padding: 20 }}>
-            <div style={{ fontSize: 13, fontFamily: "DM Mono, monospace", color: "var(--accent)", marginBottom: 12 }}>Shortcut: {item.shortcut}</div>
+            <div style={{ fontSize: 13, fontFamily: "var(--font-dm-mono), monospace", color: "var(--accent)", marginBottom: 12 }}>Shortcut: {item.shortcut}</div>
             <ol style={{ paddingLeft: 20, margin: 0 }}>
               {item.steps.map((s, i) => <li key={i} style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.7, marginBottom: 4 }}>{s}</li>)}
             </ol>
@@ -73,7 +73,7 @@ export default function BlogCopyright() {
           {[["HTML Entity", "&copy;"],["HTML Number", "&#169;"],["Unicode", "U+00A9"],["CSS content", "\\00A9"]].map(([label, code]) => (
             <div key={label} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid var(--border)" }}>
               <span style={{ fontSize: 14, color: "var(--text2)" }}>{label}</span>
-              <code style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)" }}>{code}</code>
+              <code style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)" }}>{code}</code>
             </div>
           ))}
         </div>

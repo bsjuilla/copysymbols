@@ -50,10 +50,10 @@ export default function FlagsHubPage() {
       {/* ── DEFINITION BLOCK ────────────────────────────────────────── */}
       <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "24px 28px", marginBottom: 24, maxWidth: 820 }}>
         <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.8, margin: 0 }}>
-          Copy any country flag emoji with one click. There are <strong style={{ color: "var(--text)" }}>{FLAGS.length} flags</strong> in the Unicode standard — one for every officially-assigned ISO 3166-1 country code. Each flag is built from two <strong style={{ color: "var(--text)" }}>regional indicator symbols</strong> that spell the country code (for example 🇫🇷 is <code style={{ fontFamily: "DM Mono, monospace", color: "var(--teal)" }}>F</code> + <code style={{ fontFamily: "DM Mono, monospace", color: "var(--teal)" }}>R</code>), so they paste anywhere you write text.
+          Copy any country flag emoji with one click. There are <strong style={{ color: "var(--text)" }}>{FLAGS.length} flags</strong> in the Unicode standard — one for every officially-assigned ISO 3166-1 country code. Each flag is built from two <strong style={{ color: "var(--text)" }}>regional indicator symbols</strong> that spell the country code (for example 🇫🇷 is <code style={{ fontFamily: "var(--font-dm-mono), monospace", color: "var(--teal)" }}>F</code> + <code style={{ fontFamily: "var(--font-dm-mono), monospace", color: "var(--teal)" }}>R</code>), so they paste anywhere you write text.
         </p>
         <p style={{ fontSize: 14, color: "var(--text3)", lineHeight: 1.7, margin: "12px 0 0" }}>
-          Tip: on Windows, flag emoji appear as the two-letter country code (like <code style={{ fontFamily: "DM Mono, monospace" }}>US</code>) instead of a picture — that is a Segoe UI Emoji font limitation, not a mistake. The same character shows a real flag on iPhone, Android, Mac and most browsers.
+          Tip: on Windows, flag emoji appear as the two-letter country code (like <code style={{ fontFamily: "var(--font-dm-mono), monospace" }}>US</code>) instead of a picture — that is a Segoe UI Emoji font limitation, not a mistake. The same character shows a real flag on iPhone, Android, Mac and most browsers.
         </p>
       </div>
 

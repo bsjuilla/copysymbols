@@ -54,7 +54,7 @@ export default function MultiSelectGrid({ symbols, gridStyle }: Props) {
         {selectMode && selected.size > 0 && (
           <>
             <span style={{ fontSize: 13, color: "var(--text3)" }}>{selected.size} selected</span>
-            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "6px 14px", fontSize: 13, color: "var(--text2)", fontFamily: "DM Mono, monospace" }}>
+            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "6px 14px", fontSize: 13, color: "var(--text2)", fontFamily: "var(--font-dm-mono), monospace" }}>
               {Array.from(selected.values()).join(" ")}
             </div>
             <button onClick={copyAll} style={{ background: "var(--accent)", border: "none", borderRadius: 8, padding: "6px 16px", color: "var(--bg)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>

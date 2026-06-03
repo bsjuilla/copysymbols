@@ -184,7 +184,7 @@ export default async function AestheticDetailPage({ params }: Props) {
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "28px 28px 24px", position: "relative", overflow: "hidden" }}>
             <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 160, background: "radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.10), transparent 70%)", pointerEvents: "none" }} />
             <div style={{ position: "relative", zIndex: 1 }}>
-              <pre style={{ fontFamily: "DM Mono, monospace", fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)", color: "var(--text)", margin: "0 0 20px", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.8 }}>{a!.bioTemplate}</pre>
+              <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)", color: "var(--text)", margin: "0 0 20px", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.8 }}>{a!.bioTemplate}</pre>
               <EmojiCopyButton glyph={a!.bioTemplate} name={`${a!.name} bio template`} size="2rem" />
             </div>
           </div>
