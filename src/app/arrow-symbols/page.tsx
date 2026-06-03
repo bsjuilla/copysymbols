@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import SymbolEnrichment from "@/components/SymbolEnrichment";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForSymbol } from "@/lib/related";
+import { symbolEnrichment } from "@/data/symbol-enrichment";
 import { canonical } from "@/lib/canonical";
+
+const pack = symbolEnrichment["arrow-symbols"];
 
 export const metadata: Metadata = {
   title: "Arrow Symbols → ← Copy & Paste — 100+ Arrow Signs",
@@ -57,6 +63,14 @@ const jsonLd = {
         name: `${it.symbol} ${it.name}`,
       })),
     },
+    {
+      "@type": "FAQPage",
+      mainEntity: pack.faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    },
   ],
 };
 
@@ -72,27 +86,13 @@ export default function ArrowSymbolsPage() {
         Click any arrow to copy it instantly. Works in all apps — Google Docs, Word, Instagram, Discord.
       </p>
       <CopySymbolGrid items={items} columns="repeat(auto-fill, minmax(160px, 1fr))" />
-      <section style={{ marginBottom: 40 }}>
-        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Keyboard Shortcuts</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
-          {[
-            { platform: "Windows → ←", method: "Alt+26 for →, Alt+27 for ←" },
-            { platform: "Windows ↑ ↓", method: "Alt+24 for ↑, Alt+25 for ↓" },
-            { platform: "HTML →", method: "&rarr; for →, &larr; for ←" },
-            { platform: "HTML ↑ ↓", method: "&uarr; for ↑, &darr; for ↓" },
-          ].map(row => (
-            <div key={row.platform} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "16px 18px" }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{row.platform}</div>
-              <div style={{ fontSize: 13, color: "var(--text2)" }}>{row.method}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SymbolEnrichment pack={pack} what="arrow symbols" />
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {[{href:"/symbols/arrows",label:"All Arrow Details"},{href:"/symbols/technical",label:"Technical Symbols"},{href:"/checkmark",label:"✓ Check Marks"}].map(l => (
+        {[{href:"/symbols/arrows",label:"All Arrow Details"},{href:"/symbols/technical",label:"Technical Symbols"},{href:"/checkmark",label:"✓ Check Marks"},{href:"/symbols",label:"All Symbols"}].map(l => (
           <Link key={l.href} href={l.href} style={{ fontSize: 13, padding: "5px 14px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text2)", textDecoration: "none" }}>{l.label}</Link>
         ))}
       </div>
+      <RelatedLinks links={relatedForSymbol("arrows")} heading="Related symbols & tools" />
     </div>
   );
 }

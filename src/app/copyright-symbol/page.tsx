@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import SymbolEnrichment from "@/components/SymbolEnrichment";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForSymbol } from "@/lib/related";
+import { symbolEnrichment } from "@/data/symbol-enrichment";
 import { canonical } from "@/lib/canonical";
+
+const pack = symbolEnrichment["copyright-symbol"];
 
 export const metadata: Metadata = {
   title: "Copyright Symbol © Copy & Paste — ™ ® © All IP Symbols",
@@ -47,13 +53,11 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "How do I type the copyright symbol on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 0169 on the numeric keypad to produce ©." } },
-        { "@type": "Question", name: "How do I type the copyright symbol on Mac?", acceptedAnswer: { "@type": "Answer", text: "Press Option + G to produce ©." } },
-        { "@type": "Question", name: "How do I type the copyright symbol on iPhone or Android?", acceptedAnswer: { "@type": "Answer", text: "Hold the C key on the iPhone keyboard — © appears in the popup. The same long-press works on most Android keyboards." } },
-        { "@type": "Question", name: "What is the HTML entity for the copyright symbol?", acceptedAnswer: { "@type": "Answer", text: "Use &copy; or the numeric reference &#169; to render © in HTML." } },
-        { "@type": "Question", name: "How do I get the copyright symbol in Microsoft Word?", acceptedAnswer: { "@type": "Answer", text: "Type (c) and Word autocorrects it to ©." } },
-      ],
+      mainEntity: pack.faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
     },
   ],
 };
@@ -70,29 +74,13 @@ export default function CopyrightSymbolPage() {
         Click any symbol to copy it instantly. Used in legal notices, documents, and content attribution worldwide.
       </p>
       <CopySymbolGrid items={items} />
-      <section style={{ marginBottom: 48 }}>
-        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>Keyboard Shortcuts for ©</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
-          {[
-            { platform: "Windows", method: "Alt + 0169" },
-            { platform: "Mac", method: "Option + G" },
-            { platform: "iPhone", method: "Hold C key — © appears" },
-            { platform: "Android", method: "Hold C on most keyboards" },
-            { platform: "HTML", method: "&copy; or &#169;" },
-            { platform: "Word", method: "(c) autocorrects to ©" },
-          ].map(row => (
-            <div key={row.platform} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "16px 18px" }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{row.platform}</div>
-              <div style={{ fontSize: 13, color: "var(--text2)" }}>{row.method}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SymbolEnrichment pack={pack} what="copyright symbol" />
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {[{href:"/symbols/legal",label:"All Legal Symbols"},{href:"/blog/trademark-vs-registered",label:"™ vs ® Explained"},{href:"/blog/how-to-type-copyright",label:"Type © Guide"}].map(l => (
+        {[{href:"/symbols/legal",label:"All Legal Symbols"},{href:"/blog/trademark-vs-registered",label:"™ vs ® Explained"},{href:"/blog/how-to-type-copyright",label:"Type © Guide"},{href:"/symbols",label:"All Symbols"}].map(l => (
           <Link key={l.href} href={l.href} style={{ fontSize: 13, padding: "5px 14px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text2)", textDecoration: "none" }}>{l.label}</Link>
         ))}
       </div>
+      <RelatedLinks links={relatedForSymbol("legal")} heading="Related symbols & tools" />
     </div>
   );
 }
