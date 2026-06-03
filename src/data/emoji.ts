@@ -1169,6 +1169,17 @@ export const emoji: EmojiRecord[] = [
   { id: "thread", emoji: "🧵", name: "Thread", category: "objects", keywords: ["thread","sewing","needle","stitch","craft","objects","emoji"] },
   { id: "yarn", emoji: "🧶", name: "Yarn", category: "objects", keywords: ["yarn","knit","crochet","craft","wool","objects","emoji"] },
   { id: "identification-card", emoji: "🪪", name: "Identification Card", category: "objects", keywords: ["id","card","identity","license","passport","objects","emoji"] },
+
+  { id: "person-facepalming", emoji: "🤦", name: "Person Facepalming", category: "people", keywords: ["facepalm","face","palm","disbelief","frustrated","people","emoji"] },
+  { id: "person-shrugging", emoji: "🤷", name: "Person Shrugging", category: "people", keywords: ["shrug","shrugging","dunno","whatever","idk","people","emoji"] },
+  // Newest Unicode 15.1 / 16.0 additions (verified June 2026).
+  { id: "leafless-tree", emoji: "🪾", name: "Leafless Tree", category: "animals", keywords: ["leafless","tree","bare","winter","branch","dead","nature","animals","emoji"] },
+  { id: "shovel", emoji: "🪏", name: "Shovel", category: "objects", keywords: ["shovel","dig","spade","garden","tool","objects","emoji"] },
+  { id: "root-vegetable", emoji: "🫜", name: "Root Vegetable", category: "food", keywords: ["root","vegetable","turnip","parsnip","food","emoji"] },
+  { id: "broken-chain", emoji: "⛓️‍💥", name: "Broken Chain", category: "objects", keywords: ["broken","chain","break","free","snap","freedom","objects","emoji"] },
+  { id: "harp", emoji: "🪉", name: "Harp", category: "objects", keywords: ["harp","music","instrument","string","strings","objects","emoji"] },
+  { id: "head-shaking-horizontally", emoji: "🙂‍↔️", name: "Head Shaking Horizontally", category: "smileys", keywords: ["head","shaking","horizontally","no","nope","disagree","smileys","emoji"] },
+  { id: "head-shaking-vertically", emoji: "🙂‍↕️", name: "Head Shaking Vertically", category: "smileys", keywords: ["head","shaking","vertically","yes","nod","agree","smileys","emoji"] },
 ];
 
 // Build all lookup maps in a single pass at module load. Build-time only;
