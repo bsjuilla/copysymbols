@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import CopyToast from "@/components/CopyToast";
 import EmojoCombosClient from "./EmojiCombosClient";
 import Link from "next/link";
+import { comboThemes } from "@/data/collections/emoji-combos";
 import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
@@ -23,6 +24,16 @@ export default function EmojiCombosPage() {
         >
           ✨ Community combos — browse &amp; submit your own →
         </Link>
+
+        {/* Browse by theme — hub→spoke links to per-theme combo collection pages. */}
+        <div className="section-label" style={{ margin: "22px 0 10px" }}>Browse combos by theme</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {comboThemes.map(t => (
+            <Link key={t.id} href={`/emoji-combos/theme/${t.id.toLowerCase()}`} className="cat-pill" style={{ textDecoration: "none" }}>
+              {t.name}
+            </Link>
+          ))}
+        </div>
       </div>
       <EmojoCombosClient />
     </>
