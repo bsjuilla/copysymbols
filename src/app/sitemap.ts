@@ -8,7 +8,7 @@ import { bullets } from "@/data/collections/bullets";
 import { borders } from "@/data/collections/borders";
 import { stars } from "@/data/collections/stars";
 import { lennyFaces } from "@/data/collections/lenny";
-import { emojiCombos } from "@/data/collections/emoji-combos";
+import { emojiCombos, comboThemes } from "@/data/collections/emoji-combos";
 import { EMOJI_MEANINGS } from "@/data/emoji-meanings";
 import { hearts } from "@/data/collections/hearts";
 import { textArt } from "@/data/collections/text-art";
@@ -273,6 +273,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.7,
+    })),
+    // ---- /emoji-combos/theme/<theme> collection pages (demand-driven) ----
+    ...comboThemes.map(t => ({
+      url: `${BASE}/emoji-combos/theme/${t.id.toLowerCase()}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     })),
     ...hearts.map(h => ({
       url: `${BASE}/hearts/${h.slug}`,
