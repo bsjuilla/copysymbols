@@ -108,7 +108,7 @@ export default async function TextArtDetailPage({ params }: Props) {
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 24, padding: isMultiline ? "32px 20px" : "48px 32px", position: "relative", overflow: "hidden" }}>
             <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 220, background: "radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.10), transparent 70%)", pointerEvents: "none" }} />
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
-              <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: isMultiline ? "clamp(0.85rem, 1.6vw, 1.15rem)" : "clamp(1.4rem, 4vw, 2.4rem)", color: "var(--text)", margin: 0, textAlign: "center", whiteSpace: "pre", lineHeight: isMultiline ? 1.3 : 1.2, overflow: "auto", maxWidth: "100%" }}>
+              <pre style={{ fontFamily: "DM Mono, monospace", fontSize: isMultiline ? "clamp(0.85rem, 1.6vw, 1.15rem)" : "clamp(1.4rem, 4vw, 2.4rem)", color: "var(--text)", margin: 0, textAlign: "center", whiteSpace: "pre", lineHeight: isMultiline ? 1.3 : 1.2, overflow: "auto", maxWidth: "100%" }}>
                 {t!.art}
               </pre>
               <EmojiCopyButton glyph={t!.art} name={t!.name} />
@@ -116,7 +116,7 @@ export default async function TextArtDetailPage({ params }: Props) {
                 <h1 className="font-display" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", marginBottom: 4 }}>
                   {t!.name}
                 </h1>
-                <Link href="/text-art" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+                <Link href="/text-art" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
                   {catMeta?.name ?? t!.category}
                 </Link>
               </div>
@@ -139,15 +139,15 @@ export default async function TextArtDetailPage({ params }: Props) {
 
           <div style={{ flex: 1, minWidth: 220, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Lines</div>
-              <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)" }}>{t!.lines}</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Lines</div>
+              <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)" }}>{t!.lines}</div>
             </div>
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
-              <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 13, color: "var(--accent)" }}>{catMeta?.name ?? t!.category}</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
+              <div style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--accent)" }}>{catMeta?.name ?? t!.category}</div>
             </div>
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                 {t!.keywords.map(k => (
                   <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{k}</span>
@@ -207,7 +207,7 @@ export default async function TextArtDetailPage({ params }: Props) {
                   prefetch={false}
                   style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 12, padding: "16px 14px", display: "flex", flexDirection: "column", gap: 8, textDecoration: "none", color: "inherit", minHeight: 120, transition: "border-color 0.15s" }}
                 >
-                  <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: r.lines > 1 ? "0.7rem" : "1.1rem", color: "var(--text)", margin: 0, whiteSpace: "pre", overflow: "hidden", textAlign: "center", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1.2 }}>{r.art}</pre>
+                  <pre style={{ fontFamily: "DM Mono, monospace", fontSize: r.lines > 1 ? "0.7rem" : "1.1rem", color: "var(--text)", margin: 0, whiteSpace: "pre", overflow: "hidden", textAlign: "center", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1.2 }}>{r.art}</pre>
                   <div style={{ fontSize: 11, color: "var(--text3)", textAlign: "center" }}>{r.name}</div>
                 </Link>
               ))}

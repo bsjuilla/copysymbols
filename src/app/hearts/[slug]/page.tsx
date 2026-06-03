@@ -129,7 +129,7 @@ export default async function HeartDetailPage({ params }: Props) {
               <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 200, background: "radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.12), transparent 70%)", pointerEvents: "none" }} />
               <div style={{ position: "relative", zIndex: 1 }}>
                 {isMultiline ? (
-                  <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "clamp(0.9rem, 2vw, 1.3rem)", color: "var(--text)", margin: "0 0 24px", textAlign: "center", whiteSpace: "pre", lineHeight: 1.4 }}>
+                  <pre style={{ fontFamily: "DM Mono, monospace", fontSize: "clamp(0.9rem, 2vw, 1.3rem)", color: "var(--text)", margin: "0 0 24px", textAlign: "center", whiteSpace: "pre", lineHeight: 1.4 }}>
                     {h!.char}
                   </pre>
                 ) : (
@@ -139,7 +139,7 @@ export default async function HeartDetailPage({ params }: Props) {
                 <h1 className="font-display" style={{ marginTop: 24, marginBottom: 6, fontSize: "clamp(1.3rem, 3vw, 1.6rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em" }}>
                   {h!.name}
                 </h1>
-                <Link href="/hearts" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+                <Link href="/hearts" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
                   {catMeta?.name ?? h!.category}
                 </Link>
               </div>
@@ -159,15 +159,15 @@ export default async function HeartDetailPage({ params }: Props) {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
-                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{h!.unicode || cps.join(" ") || "—"}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
+                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)", wordBreak: "break-all" }}>{h!.unicode || cps.join(" ") || "—"}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
-                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{catMeta?.name ?? h!.category}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
+                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{catMeta?.name ?? h!.category}</div>
               </div>
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   {h!.keywords.map(k => (
                     <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{k}</span>
@@ -176,7 +176,7 @@ export default async function HeartDetailPage({ params }: Props) {
               </div>
               {h!.altForms && h!.altForms.length > 0 && (
                 <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                  <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Visually similar</div>
+                  <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Visually similar</div>
                   <div style={{ fontSize: 22, color: "var(--text)", letterSpacing: "0.1em" }}>{h!.altForms.join("   ")}</div>
                 </div>
               )}

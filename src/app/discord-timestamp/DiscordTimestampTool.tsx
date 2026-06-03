@@ -133,9 +133,9 @@ export default function DiscordTimestampTool() {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 12, color: "var(--text3)", marginBottom: 4 }}>{label}</div>
                   <div style={{ fontSize: 15, color: "var(--text)", marginBottom: 4 }}>{preview(date!, code)}</div>
-                  <code style={{ fontSize: 12.5, color: "var(--text2)", fontFamily: "var(--font-dm-mono), monospace", wordBreak: "break-all" }}>{token}</code>
+                  <code style={{ fontSize: 12.5, color: "var(--text2)", fontFamily: "DM Mono, monospace", wordBreak: "break-all" }}>{token}</code>
                 </div>
-                <span style={{ flexShrink: 0, fontSize: 11, fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.04em", color: isCopied ? "var(--accent)" : "var(--text3)" }}>
+                <span style={{ flexShrink: 0, fontSize: 11, fontFamily: "DM Mono, monospace", letterSpacing: "0.04em", color: isCopied ? "var(--accent)" : "var(--text3)" }}>
                   {isCopied ? "✓ COPIED" : "COPY"}
                 </span>
               </button>

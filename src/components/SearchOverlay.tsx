@@ -241,7 +241,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
           outline: none;
           font-size: 18px;
           color: var(--text);
-          font-family: var(--font-dm-sans), sans-serif;
+          font-family: 'DM Sans', sans-serif;
           caret-color: var(--accent);
         }
         .overlay-input::placeholder { color: var(--text3); }
@@ -258,7 +258,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
           color: var(--text3);
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          font-family: var(--font-dm-mono), monospace;
+          font-family: 'DM Mono', monospace;
           position: sticky;
           top: 0;
           background: var(--bg2);
@@ -341,7 +341,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
           background: var(--bg3);
           border: 1px solid var(--border2);
           color: var(--text3);
-          font-family: var(--font-dm-mono), monospace;
+          font-family: 'DM Mono', monospace;
           font-size: 10px;
           padding: 2px 6px;
           border-radius: 5px;
@@ -350,7 +350,7 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
           margin-left: auto;
           font-size: 11px;
           color: var(--text3);
-          font-family: var(--font-dm-mono), monospace;
+          font-family: 'DM Mono', monospace;
         }
       `}</style>
 

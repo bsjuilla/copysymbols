@@ -48,7 +48,7 @@ export default function BordersClient() {
                   prefetch={false}
                   style={{ background: "var(--surface)", border: `1px solid ${copied === b.char ? "var(--accent)" : "var(--border)"}`, borderRadius: 10, padding: "12px 14px 12px 18px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, transition: "border-color 0.15s", textDecoration: "none", color: "inherit" }}
                 >
-                  <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", flex: 1, minWidth: 0 }}>{b.char}</pre>
+                  <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", flex: 1, minWidth: 0 }}>{b.char}</pre>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
                     <div style={{ textAlign: "right" }}>
                       <div style={{ fontSize: 12, color: "var(--text3)" }}>{b.name}</div>
@@ -57,7 +57,7 @@ export default function BordersClient() {
                     <button
                       onClick={(e) => copy(e, b.char, b.name)}
                       aria-label={`Copy ${b.name}`}
-                      style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "5px 10px", fontSize: 11, fontFamily: "var(--font-dm-mono), monospace", color: copied === b.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em" }}
+                      style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "5px 10px", fontSize: 11, fontFamily: "DM Mono, monospace", color: copied === b.char ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em" }}
                     >
                       {copied === b.char ? "✓ COPIED" : "COPY"}
                     </button>

@@ -50,14 +50,14 @@ export default function TextArtClient() {
                   <button
                     onClick={(e) => copy(e, t.art, t.name)}
                     aria-label={`Copy ${t.name}`}
-                    style={{ position: "absolute", top: 8, right: 8, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "var(--font-dm-mono), monospace", color: copied === t.art ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
+                    style={{ position: "absolute", top: 8, right: 8, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontFamily: "DM Mono, monospace", color: copied === t.art ? "var(--accent)" : "var(--text3)", cursor: "pointer", letterSpacing: "0.04em", zIndex: 2 }}
                   >
                     {copied === t.art ? "✓" : "COPY"}
                   </button>
-                  <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: t.lines > 1 ? "0.7rem" : "1.1rem", color: "var(--text)", margin: 0, whiteSpace: "pre", overflow: "hidden", textAlign: "center", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1.25, paddingRight: 36 }}>{t.art}</pre>
+                  <pre style={{ fontFamily: "DM Mono, monospace", fontSize: t.lines > 1 ? "0.7rem" : "1.1rem", color: "var(--text)", margin: 0, whiteSpace: "pre", overflow: "hidden", textAlign: "center", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", lineHeight: 1.25, paddingRight: 36 }}>{t.art}</pre>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                     <span style={{ fontSize: 12, color: "var(--text3)" }}>{t.name}</span>
-                    <span style={{ fontSize: 10, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace" }}>{t.lines}L →</span>
+                    <span style={{ fontSize: 10, color: "var(--accent)", fontFamily: "DM Mono, monospace" }}>{t.lines}L →</span>
                   </div>
                 </Link>
               ))}

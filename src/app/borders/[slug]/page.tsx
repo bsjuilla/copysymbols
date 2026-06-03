@@ -154,7 +154,7 @@ export default async function BorderDetailPage({ params }: Props) {
             <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 220, background: "radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.10), transparent 70%)", pointerEvents: "none" }} />
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
               {isWide ? (
-                <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "clamp(0.95rem, 2vw, 1.4rem)", color: "var(--text)", margin: 0, textAlign: "center", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.5 }}>
+                <pre style={{ fontFamily: "DM Mono, monospace", fontSize: "clamp(0.95rem, 2vw, 1.4rem)", color: "var(--text)", margin: 0, textAlign: "center", whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.5 }}>
                   {b!.char}
                 </pre>
               ) : (
@@ -165,7 +165,7 @@ export default async function BorderDetailPage({ params }: Props) {
                 <h1 className="font-display" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.02em", marginBottom: 4 }}>
                   {b!.name}
                 </h1>
-                <Link href="/borders" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+                <Link href="/borders" style={{ fontSize: 12, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
                   {catMeta?.name ?? b!.category}
                 </Link>
               </div>
@@ -189,21 +189,21 @@ export default async function BorderDetailPage({ params }: Props) {
 
           <div style={{ flex: 1, minWidth: 220, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Width</div>
-              <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 13, color: "var(--teal)" }}>{widthLabel(b!.width)}</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Width</div>
+              <div style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--teal)" }}>{widthLabel(b!.width)}</div>
             </div>
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
-              <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 13, color: "var(--accent)" }}>{charLength} char{charLength === 1 ? "" : "s"}</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
+              <div style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--accent)" }}>{charLength} char{charLength === 1 ? "" : "s"}</div>
             </div>
             {b!.unicode && (
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
-                <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 13, color: "var(--teal)" }}>{b!.unicode}</div>
+                <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Unicode</div>
+                <div style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--teal)" }}>{b!.unicode}</div>
               </div>
             )}
             <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
+              <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                 {b!.keywords.map(k => (
                   <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text3)", background: "var(--bg)" }}>{k}</span>
@@ -263,7 +263,7 @@ export default async function BorderDetailPage({ params }: Props) {
                   prefetch={false}
                   style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 18px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, textDecoration: "none", color: "inherit", transition: "border-color 0.15s" }}
                 >
-                  <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", flex: 1, minWidth: 0 }}>{r.char}</pre>
+                  <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", flex: 1, minWidth: 0 }}>{r.char}</pre>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
                     <div style={{ fontSize: 12, color: "var(--text3)" }}>{r.name}</div>
                     <div style={{ fontSize: 11, color: "var(--accent)", marginTop: 2 }}>open →</div>

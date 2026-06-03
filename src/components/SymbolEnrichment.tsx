@@ -49,9 +49,9 @@ export default function SymbolEnrichment({
                 <tr key={r.codepoint} style={{ borderTop: "1px solid var(--border)" }}>
                   <td style={{ padding: "10px 14px", fontSize: 20, color: "var(--text)" }}>{r.symbol}</td>
                   <td style={{ padding: "10px 14px", color: "var(--text2)" }}>{r.name}</td>
-                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace" }}>{r.codepoint}</td>
-                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace" }}>{r.html}</td>
-                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "var(--font-dm-mono), monospace" }}>{r.css}</td>
+                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "DM Mono, monospace" }}>{r.codepoint}</td>
+                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "DM Mono, monospace" }}>{r.html}</td>
+                  <td style={{ padding: "10px 14px", color: "var(--text3)", fontFamily: "DM Mono, monospace" }}>{r.css}</td>
                 </tr>
               ))}
             </tbody>

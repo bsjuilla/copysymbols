@@ -153,7 +153,7 @@ export default function NewEmoji2026Page() {
                   <span
                     style={{
                       fontSize: 11,
-                      fontFamily: "var(--font-dm-mono), monospace",
+                      fontFamily: "DM Mono, monospace",
                       color: "var(--accent)",
                       border: "1px solid var(--border)",
                       borderRadius: 100,
@@ -166,7 +166,7 @@ export default function NewEmoji2026Page() {
                     <span
                       style={{
                         fontSize: 11,
-                        fontFamily: "var(--font-dm-mono), monospace",
+                        fontFamily: "DM Mono, monospace",
                         color: "var(--text3)",
                         border: "1px solid var(--border)",
                         borderRadius: 100,
