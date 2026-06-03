@@ -124,12 +124,13 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
   // Focus input when opened
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
-    } else {
-      setQuery("");
-      setResults([]);
-      setActiveIndex(0);
+      const t = setTimeout(() => inputRef.current?.focus(), 50);
+      return () => clearTimeout(t); // cleanup: don't leak the focus timer if closed within 50ms
     }
+    // closed → reset for next open
+    setQuery("");
+    setResults([]);
+    setActiveIndex(0);
   }, [isOpen]);
 
   // Keyboard navigation
