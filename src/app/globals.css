@@ -1,6 +1,7 @@
-/* Fonts are self-hosted via next/font in app/layout.tsx and exposed as CSS
-   variables (--font-dm-sans / --font-dm-mono / --font-syne), set on <html>.
-   No Google round-trip, preloaded + render-safe. Used below via var(...). */
+/* Fonts now load via a preconnected <link> in app/layout.tsx (hoisted to
+   <head> by React 19). The old CSS @import here was render-blocking and
+   discovered late — moving it earlier in the critical path speeds up mobile
+   first paint. Same families/weights, identical rendering. */
 
 :root {
   --bg: #0a0a0f;
@@ -27,13 +28,13 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-dm-sans), sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-.font-display { font-family: var(--font-syne), sans-serif; }
-.font-mono-custom { font-family: var(--font-dm-mono), monospace; }
+.font-display { font-family: 'Syne', sans-serif; }
+.font-mono-custom { font-family: 'DM Mono', monospace; }
 
 .symbol-card {
   position: relative;
@@ -126,7 +127,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
-  font-family: var(--font-dm-sans), sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   padding: 14px 20px 14px 52px;
   border-radius: 12px;
@@ -169,7 +170,7 @@ body {
 .cat-pill:hover, .cat-pill.active { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
 .section-label {
-  font-family: var(--font-dm-mono), monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 11px;
   color: var(--accent);
   letter-spacing: 0.12em;
@@ -178,7 +179,7 @@ body {
 }
 
 .code-tag {
-  font-family: var(--font-dm-mono), monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 13px;
   background: var(--bg3);
   border: 1px solid var(--border);
@@ -219,7 +220,7 @@ body {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text2);
-  font-family: var(--font-dm-mono), monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.15s;

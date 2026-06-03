@@ -101,7 +101,7 @@ export default function EmojiCopyButton({
           fontSize: 12,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          fontFamily: "var(--font-dm-mono), monospace",
+          fontFamily: "DM Mono, monospace",
           color: copied ? "var(--accent)" : "var(--text3)",
           transition: "color 0.15s",
         }}

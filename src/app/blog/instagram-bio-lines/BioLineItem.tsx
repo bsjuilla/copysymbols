@@ -30,7 +30,7 @@ export default function BioLineItem({ s, n }: { s: string; n: string }) {
         gap: 16, transition: "all 0.15s",
       }}
     >
-      <code style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--text)", flex: 1 }}>{s}</code>
+      <code style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--text)", flex: 1 }}>{s}</code>
       <span style={{ fontSize: 12, color: copied ? "var(--accent)" : "var(--text3)", flexShrink: 0 }}>
         {copied ? "✓ copied!" : n + " · click to copy"}
       </span>

@@ -126,7 +126,7 @@ export default async function BioTemplateDetailPage({ params }: Props) {
         <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "28px 28px 24px", marginBottom: 24, position: "relative", overflow: "hidden" }}>
           <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 160, background: "radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.10), transparent 70%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", zIndex: 1 }}>
-            <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)", color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.7, marginBottom: 20 }}>{b!.template}</pre>
+            <pre style={{ fontFamily: "DM Mono, monospace", fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)", color: "var(--text)", margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word", lineHeight: 1.7, marginBottom: 20 }}>{b!.template}</pre>
             <EmojiCopyButton glyph={b!.template} name={b!.name} />
           </div>
         </div>
@@ -134,22 +134,22 @@ export default async function BioTemplateDetailPage({ params }: Props) {
         {/* Specs */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10, marginBottom: 40 }}>
           <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Platform</div>
-            <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--accent)" }}>{pMeta?.name ?? b!.platform}</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Platform</div>
+            <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{pMeta?.name ?? b!.platform}</div>
           </div>
           <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Vibe</div>
-            <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--teal)" }}>{vibe?.name ?? b!.vibe}</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Vibe</div>
+            <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--teal)" }}>{vibe?.name ?? b!.vibe}</div>
           </div>
           <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
-            <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: overLimit ? "#ff6b6b" : "var(--text)" }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Length</div>
+            <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: overLimit ? "#ff6b6b" : "var(--text)" }}>
               {b!.charCount} / {pMeta?.charLimit ?? "?"}
             </div>
           </div>
           <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-dm-mono), monospace", color: "var(--text3)", marginBottom: 6 }}>Placeholders</div>
-            <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 14, color: "var(--text)" }}>{b!.placeholders.length}</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Placeholders</div>
+            <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--text)" }}>{b!.placeholders.length}</div>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export default async function BioTemplateDetailPage({ params }: Props) {
             </p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {b!.placeholders.map(p => (
-                <span key={p} style={{ fontSize: 13, padding: "6px 12px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text2)", background: "var(--surface)", fontFamily: "var(--font-dm-mono), monospace" }}>{`{${p}}`}</span>
+                <span key={p} style={{ fontSize: 13, padding: "6px 12px", borderRadius: 8, border: "1px solid var(--border)", color: "var(--text2)", background: "var(--surface)", fontFamily: "DM Mono, monospace" }}>{`{${p}}`}</span>
               ))}
             </div>
           </section>
@@ -221,9 +221,9 @@ export default async function BioTemplateDetailPage({ params }: Props) {
                   >
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)" }}>{r.name}</div>
-                      <div style={{ fontSize: 10, color: "var(--accent)", fontFamily: "var(--font-dm-mono), monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}>{rPlatform?.name ?? r.platform}</div>
+                      <div style={{ fontSize: 10, color: "var(--accent)", fontFamily: "DM Mono, monospace", letterSpacing: "0.08em", textTransform: "uppercase" }}>{rPlatform?.name ?? r.platform}</div>
                     </div>
-                    <pre style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: 11, color: "var(--text3)", margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.5, maxHeight: 80, overflow: "hidden" }}>{r.template}</pre>
+                    <pre style={{ fontFamily: "DM Mono, monospace", fontSize: 11, color: "var(--text3)", margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.5, maxHeight: 80, overflow: "hidden" }}>{r.template}</pre>
                   </Link>
                 );
               })}

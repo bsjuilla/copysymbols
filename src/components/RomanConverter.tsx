@@ -40,7 +40,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: 11,
   letterSpacing: "0.08em",
   textTransform: "uppercase",
-  fontFamily: "var(--font-dm-mono), monospace",
+  fontFamily: "DM Mono, monospace",
   color: "var(--text3)",
   marginBottom: 8,
   display: "block",
