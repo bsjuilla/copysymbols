@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
+import SymbolEnrichment from "@/components/SymbolEnrichment";
+import RelatedLinks from "@/components/RelatedLinks";
+import { relatedForSymbol } from "@/lib/related";
+import { symbolEnrichment } from "@/data/symbol-enrichment";
 import { canonical } from "@/lib/canonical";
+
+const pack = symbolEnrichment["checkmark"];
 
 export const metadata: Metadata = {
   title: "Check Mark Symbol ✓ Copy & Paste — All Checkmarks",
@@ -48,13 +54,11 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "How do I type a check mark on Windows?", acceptedAnswer: { "@type": "Answer", text: "Hold Alt and type 10003 on the numeric keypad to produce ✓." } },
-        { "@type": "Question", name: "How do I type a check mark on Mac?", acceptedAnswer: { "@type": "Answer", text: "There is no direct shortcut — copy ✓ from this page, or use Ctrl+Cmd+Space to open the character viewer." } },
-        { "@type": "Question", name: "How do I insert a check mark in Word or Google Docs?", acceptedAnswer: { "@type": "Answer", text: "Go to Insert then Special Characters and search for 'check' to find ✓." } },
-        { "@type": "Question", name: "What is the HTML entity for a check mark?", acceptedAnswer: { "@type": "Answer", text: "Use &check; or the numeric reference &#10003; to render ✓ in HTML." } },
-        { "@type": "Question", name: "Where does the check mark work?", acceptedAnswer: { "@type": "Answer", text: "✓ works everywhere — Google Docs, Word, Instagram, Discord, WhatsApp, and any app that supports Unicode." } },
-      ],
+      mainEntity: pack.faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
     },
   ],
 };
@@ -71,27 +75,13 @@ export default function CheckmarkPage() {
         Click any check mark or tick symbol to copy it instantly. Works everywhere — Google Docs, Word, Instagram, Discord, WhatsApp.
       </p>
       <CopySymbolGrid items={items} />
-      <section style={{ marginBottom: 48 }}>
-        <h2 className="font-display" style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--text)", marginBottom: 16 }}>How to Type a Check Mark</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
-          {[
-            { platform: "Windows", method: "Alt + 10003 (numpad) for ✓" },
-            { platform: "Mac", method: "No shortcut — copy from here or Ctrl+Cmd+Space" },
-            { platform: "Word / Google Docs", method: "Insert → Special Characters → search 'check'" },
-            { platform: "HTML", method: "&check; or &#10003;" },
-          ].map(row => (
-            <div key={row.platform} style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 10, padding: "16px 18px" }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", marginBottom: 6 }}>{row.platform}</div>
-              <div style={{ fontSize: 13, color: "var(--text2)" }}>{row.method}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <SymbolEnrichment pack={pack} what="check mark" />
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {[{href:"/symbols/ui",label:"UI Symbols"},{href:"/bullet-points",label:"Bullet Points"},{href:"/symbols/shapes",label:"Shapes"}].map(l => (
+        {[{href:"/symbols/ui",label:"UI Symbols"},{href:"/bullet-points",label:"Bullet Points"},{href:"/symbols/shapes",label:"Shapes"},{href:"/symbols",label:"All Symbols"}].map(l => (
           <Link key={l.href} href={l.href} style={{ fontSize: 13, padding: "5px 14px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text2)", textDecoration: "none" }}>{l.label}</Link>
         ))}
       </div>
+      <RelatedLinks links={relatedForSymbol("ui")} heading="Related symbols & tools" />
     </div>
   );
 }

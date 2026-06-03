@@ -3,6 +3,7 @@ import { categories, symbols } from "@/data/symbols";
 import { emoji } from "@/data/emoji";
 import { allKaomoji } from "@/data/all-kaomoji";
 import { kaomojiCategories } from "@/data/kaomoji";
+import { kaomojiTypes } from "@/data/kaomoji-types";
 import { bullets } from "@/data/collections/bullets";
 import { borders } from "@/data/collections/borders";
 import { stars } from "@/data/collections/stars";
@@ -312,6 +313,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ---- /kaomoji/mood/<mood> spoke pages (P3) ---------------------------
     ...kaomojiCategories.map(c => ({
       url: `${BASE}/kaomoji/mood/${c.id}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+
+    // ---- /kaomoji/type/<type> style collection pages (demand-driven) -----
+    ...kaomojiTypes.map(t => ({
+      url: `${BASE}/kaomoji/type/${t.id}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
