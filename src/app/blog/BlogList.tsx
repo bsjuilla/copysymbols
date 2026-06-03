@@ -27,6 +27,10 @@ const posts = [
   { href: "/blog/tiktok-username-symbols", title: "Best Symbols for TikTok Usernames and Bios", desc: "Which symbols work in a TikTok @handle vs nickname, fonts and dividers to copy, and what TikTok quietly strips out.", icon: "✦", category: "How-To" },
   { href: "/blog/heart-emoji-meanings", title: "Heart Emoji Meanings — Every Colour Explained", desc: "What each heart means: ❤️ red, 🧡 orange, 💛 yellow, 💚 green, 💙 blue, 💜 purple, 🖤 black, 🤍 white and the special hearts.", icon: "💜", category: "Reference" },
   { href: "/blog/em-dash", title: "Em Dash — How to Type It & the 'AI' Meme", desc: "Type an em dash (—) on Windows, Mac, iPhone, Android and in HTML, how it differs from the en dash and hyphen, and the truth about the 'em dash means AI' debate.", icon: "—", category: "How-To" },
+  // New (2026-06 content push — aesthetic/combo + kaomoji guides)
+  { href: "/blog/aesthetic-emoji-combos", title: "Aesthetic Emoji Combos for Your Bio — Copy & Paste", desc: "The best aesthetic emoji combos by vibe (soft, coquette, y2k, cottagecore and more) and exactly how to add them to your Instagram, TikTok or Discord bio.", icon: "✨", category: "How-To" },
+  { href: "/blog/cool-username-ideas", title: "Cool Username Ideas — Symbols, Fonts & Aesthetic Names", desc: "Style a username with fancy fonts and decorative symbols, plus honest tips on what works in @handles vs display names on Instagram, TikTok, Discord and games.", icon: "✦", category: "How-To" },
+  { href: "/blog/what-is-kaomoji", title: "Kaomoji — What They Are and How to Use Them", desc: "What kaomoji (Japanese text faces) are, how they differ from Western emoticons, where they came from, and how to copy-paste them anywhere you type.", icon: "ツ", category: "Explained" },
 ];
 
 const categoryColors: Record<string, string> = {

@@ -167,6 +167,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/tiktok-username-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/heart-emoji-meanings`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/em-dash`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/aesthetic-emoji-combos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/cool-username-ideas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/what-is-kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // New tool — Discord timestamp generator
     { url: `${BASE}/discord-timestamp`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 
