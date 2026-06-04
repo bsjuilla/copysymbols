@@ -3,11 +3,11 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "CopyChars currently sets no cookies. This page explains what would change if cookies are added in the future.",
+  description: "How CopyChars uses cookies — we set none of our own, but Google AdSense uses advertising cookies to serve ads. How to control or opt out of them.",
   ...canonical("/cookies"),
 };
 
-const LAST_UPDATED = "May 14, 2026";
+const LAST_UPDATED = "June 4, 2026";
 // Set up via Cloudflare Email Routing (free) to forward to your real address.
 const CONTACT_EMAIL = "contact@copychars.com";
 
@@ -23,7 +23,7 @@ export default function CookiesPage() {
       <div style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.75, display: "flex", flexDirection: "column", gap: 28 }}>
         <section>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>The short version</h2>
-          <p>As of the date above, CopyChars sets no cookies of its own. The site does not include any analytics, advertising, or tracking pixels. There is therefore nothing to consent to or opt out of right now.</p>
+          <p>CopyChars sets no cookies of its own and runs no analytics. The site is free because it shows ads through <strong>Google AdSense</strong>, and Google uses third-party advertising cookies to serve and measure those ads. You can control or opt out of them — see sections 3 and 4 below.</p>
         </section>
 
         <section>
@@ -32,27 +32,26 @@ export default function CookiesPage() {
         </section>
 
         <section>
-          <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>2. What CopyChars uses today</h2>
-          <p style={{ marginBottom: 10 }}>None of the following are present on copychars.com as of the &quot;Last updated&quot; date:</p>
+          <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>2. What cookies are used today</h2>
           <ul style={{ paddingLeft: 22, display: "flex", flexDirection: "column", gap: 4 }}>
-            <li>First-party cookies set by copychars.com — none.</li>
-            <li>Analytics cookies (Google Analytics, Plausible, Fathom, etc.) — none.</li>
-            <li>Advertising cookies (Google AdSense, ad networks) — none.</li>
-            <li>Social-media tracking pixels (Facebook Pixel, Twitter Pixel) — none.</li>
+            <li>First-party cookies set by copychars.com — <strong>none</strong>.</li>
+            <li>Analytics cookies (Google Analytics, Plausible, Fathom, etc.) — <strong>none</strong>.</li>
+            <li>Social-media tracking pixels (Facebook Pixel, X Pixel) — <strong>none</strong>.</li>
+            <li>Advertising cookies (Google AdSense and Google ad partners) — <strong>yes, present</strong>. These third-party cookies are set by Google to serve and measure ads (see section 3).</li>
             <li>Session storage or local storage — none, except where explicitly noted on a tool page.</li>
           </ul>
-          <p style={{ marginTop: 10 }}>You can verify this in your browser&apos;s developer tools (Application → Storage → Cookies).</p>
+          <p style={{ marginTop: 10 }}>You can inspect every cookie in your browser&apos;s developer tools (Application → Storage → Cookies).</p>
         </section>
 
         <section>
-          <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>3. What may change</h2>
-          <p style={{ marginBottom: 10 }}>The site is in active development. Cookies are likely to be added in the future for one or more of the following reasons:</p>
+          <h2 style={{ fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>3. Advertising cookies (Google AdSense)</h2>
+          <p style={{ marginBottom: 10 }}>We use Google AdSense to display ads, which keeps the site free. Google and its partners place third-party cookies and similar identifiers — for example Google&apos;s advertising cookies (such as <code>__gads</code> and <code>__gpi</code>) and the DoubleClick cookie — to:</p>
           <ul style={{ paddingLeft: 22, display: "flex", flexDirection: "column", gap: 4 }}>
-            <li><strong>Analytics</strong> — to understand which pages and tools are most useful so we can improve them.</li>
-            <li><strong>Advertising</strong> — Google AdSense or a similar network, to support the site financially.</li>
-            <li><strong>Personalisation</strong> — to remember your favourite styles, recently-copied items, or display preferences across visits.</li>
+            <li>serve ads and measure their performance and reach;</li>
+            <li>limit how many times you see the same ad and detect invalid clicks/fraud;</li>
+            <li>where permitted, show personalised ads based on your prior visits to this and other websites.</li>
           </ul>
-          <p style={{ marginTop: 10 }}>If any of these are added, we will display a clear consent notice on first visit (for users in the EU, EEA, UK, and other jurisdictions that require opt-in consent), update this Cookie Policy with the specific cookies in use, and update our <a href="/privacy" style={{ color: "var(--accent)" }}>Privacy Policy</a>.</p>
+          <p style={{ marginTop: 10 }}>For visitors in the EEA, UK and Switzerland, a consent message (via Google&apos;s certified consent management) asks for your choices before non-essential cookies are set. You can opt out of personalised ads at <a href="https://adssettings.google.com" style={{ color: "var(--accent)" }}>Google Ads Settings</a>, manage third-party ad cookies at <a href="https://www.aboutads.info/choices/" style={{ color: "var(--accent)" }}>aboutads.info/choices</a> / <a href="https://www.youronlinechoices.eu/" style={{ color: "var(--accent)" }}>youronlinechoices.eu</a>, and read how Google uses this data in <a href="https://policies.google.com/technologies/partner-sites" style={{ color: "var(--accent)" }}>Google&apos;s partner-sites policy</a>. See also our <a href="/privacy" style={{ color: "var(--accent)" }}>Privacy Policy</a>.</p>
         </section>
 
         <section>
