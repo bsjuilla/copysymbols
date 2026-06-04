@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CopyToast from "@/components/CopyToast";
 import UsernameGeneratorClient from "./UsernameGeneratorClient";
 import { canonical } from "@/lib/canonical";
 import { STYLES } from "@/lib/fancy-text-styles";
 import { ORNAMENTS } from "@/lib/username-ornaments";
+import { USERNAME_IDEAS } from "@/data/username-ideas";
 
 const COMBINATIONS = STYLES.length * ORNAMENTS.length;
 
@@ -79,6 +81,31 @@ export default function UsernameGeneratorPage() {
       />
       <CopyToast />
       <UsernameGeneratorClient faqs={faqs} />
+
+      {/* Internal links → username-ideas hub + per-vibe / per-platform spokes. */}
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px 56px" }}>
+        <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}>
+          <h2 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
+            Username ideas by vibe &amp; platform
+          </h2>
+          <p style={{ fontSize: 14, color: "var(--text3)", marginBottom: 18 }}>
+            Prefer to browse ready-made examples? Each page has 100+ copy-ready usernames in one vibe.{" "}
+            <Link href="/username-ideas" style={{ color: "var(--accent)", textDecoration: "none" }}>See all username ideas →</Link>
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 10 }}>
+            {USERNAME_IDEAS.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/username-ideas/${p.slug}`}
+                style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 8, padding: "10px 14px", textDecoration: "none", color: "var(--text)", fontSize: 13 }}
+              >
+                <div style={{ fontWeight: 500 }}>{p.h1}</div>
+                <div style={{ fontSize: 11, color: "var(--text3)", marginTop: 2 }}>{p.tagline}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
     </>
   );
 }

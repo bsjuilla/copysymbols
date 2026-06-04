@@ -15,6 +15,7 @@ import { textArt } from "@/data/collections/text-art";
 import { bioTemplates } from "@/data/collections/bio-templates";
 import { platformIds } from "@/data/collections/platforms";
 import { STYLES as fancyTextStyles } from "@/lib/fancy-text-styles";
+import { USERNAME_IDEAS } from "@/data/username-ideas";
 import { translators } from "@/lib/translators";
 import { AESTHETICS } from "@/data/aesthetics";
 import { FLAGS } from "@/data/flags";
@@ -110,6 +111,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/zalgo-text`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/invisible-character`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/username-generator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    // Username-ideas hub + per-vibe / per-platform landing pages (pSEO).
+    { url: `${BASE}/username-ideas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...USERNAME_IDEAS.map((p) => ({
+      url: `${BASE}/username-ideas/${p.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     { url: `${BASE}/morse-code`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/binary-translator`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/roman-numerals`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
