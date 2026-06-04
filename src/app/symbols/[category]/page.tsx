@@ -67,11 +67,11 @@ const categoryIntros: Record<string, { intro: string }> = {
   },
   technical: {
     intro:
-      "Some symbols only make sense to people who spend time at a keyboard. The command key, written as a single glyph and officially named the Place of Interest sign, the option key, the shift arrow, the control caret, the return arrow, the delete-forward marker, and the escape symbol are all real Unicode characters, designed so that documentation, keyboard shortcut lists, and tutorials can show keys without screenshots. They are the reason a help article can write the command glyph plus S instead of spelling out \"command-S.\"\n\nAlongside the modifier keys, the technical block contains a range of engineering and computing glyphs: the power sign, the eject mark, the gear, brackets and corners used in technical drawings, and a small set of warning and notice marks. Apple has used the place-of-interest glyph as the Command key marker since the 1980s, so it carries instant meaning to anyone who has used a Mac.\n\nThese glyphs paste cleanly into README files, Notion docs, Stack Overflow answers, blog posts about productivity, and keyboard shortcut cheat sheets. Click any symbol to copy. For raised exponents and mathematical operators that pair with technical writing, see the Superscript and Math sections.",
+      "Some symbols only make sense to people who spend time at a keyboard. The command key, written as a single glyph and officially named the Place of Interest sign, the option key, the shift arrow, the control caret, the return arrow, the delete-forward marker, and the escape symbol are all real Unicode characters, designed so that documentation, keyboard shortcut lists, and tutorials can show keys without screenshots. They are the reason a help article can write the command glyph plus S instead of spelling out \"command-S.\"\n\nAlongside the modifier keys, the technical block contains a range of engineering and computing glyphs: the power sign, the eject mark, the gear, brackets and corners used in technical drawings, and a small set of warning and notice marks. Apple has used the place-of-interest glyph as the Command key marker since the 1980s, so it carries instant meaning to anyone who has used a Mac.\n\nThese glyphs paste cleanly into README files, Notion docs, Stack Overflow answers, blog posts about productivity, and keyboard shortcut cheat sheets. Click any symbol to copy. For mathematical operators and exponents that pair with technical writing, see the Math section.",
   },
-  superscript: {
+  fractions: {
     intro:
-      "Superscript and subscript characters let you write things like H₂O, m², xⁿ, and the trademark ™ inline with normal text — no rich-text formatting required. Because they are real Unicode codepoints rather than CSS effects, they survive copy and paste, work in plain-text fields, render correctly in chat apps, and show up in places that strip formatting like Twitter, Discord, and most form inputs.\n\nThe full set covers superscript digits 0–9 and most lowercase letters, plus subscript digits and a smaller selection of subscript letters. Common uses include chemical formulas (CO₂, H₂SO₄), units (km², m³), exponents (2¹⁰, eˣ), footnote markers (¹ ² ³), and decorative tiny text in social media bios. Some letters are missing from the subscript set — Unicode never assigned them — so a few words cannot be fully subscripted.\n\nClick any character to copy. If you need to convert a whole word or sentence at once, the Superscript Generator and Small Text tools will transform any input automatically and tell you which letters are unsupported. For mathematical operators that pair with exponents, the Math Symbols page is the natural next stop.",
+      "Vulgar fractions are the single-character forms of common fractions — ½, ⅓, ¼ and the rest — that sit inline with text instead of being typed out as 1/2. Unicode includes a fixed set of these precomposed fractions, drawn at the right size and baseline so they read cleanly in a recipe, a measurement, a spreadsheet, or a sentence, with no special formatting required.\n\nThe collection below covers halves, thirds, quarters, fifths, sixths, eighths and a few less common ones, plus the fraction slash ⁄ used to build your own fractions. Because they are real Unicode codepoints rather than styled text, they survive copy and paste, work in plain-text fields, and render the same on iOS, Android, Windows, and macOS.\n\nClick any fraction to copy it. For a fraction Unicode does not include as a single glyph, combine a superscript numerator, the fraction slash ⁄, and a subscript denominator. The Math Symbols page covers the operators that usually appear alongside fractions.",
   },
   ui: {
     intro:
@@ -121,7 +121,7 @@ const categoryRelated: Record<string, {
     ],
     pages: [
       { href: "/symbols/greek", label: "α Greek Letters" },
-      { href: "/symbols/superscript", label: "² Superscript" },
+      { href: "/symbols/fractions", label: "½ Fractions" },
       { href: "/pi-symbol", label: "π Pi Symbol" },
       { href: "/infinity-symbol", label: "∞ Infinity Symbol" },
     ],
@@ -229,19 +229,19 @@ const categoryRelated: Record<string, {
     ],
     pages: [
       { href: "/symbols/math", label: "∑ Math Symbols" },
-      { href: "/symbols/superscript", label: "² Superscript" },
+      { href: "/symbols/fractions", label: "½ Fractions" },
       { href: "/symbols-for/discord", label: "🎮 Technical for Discord" },
     ],
   },
-  superscript: {
+  fractions: {
     tools: [
-      { href: "/superscript-generator", label: "ˣ² Super & Subscript Generator", desc: "Type any text, get instant superscript and subscript" },
-      { href: "/small-text", label: "ˢ Small Text", desc: "Small caps + superscript + subscript in one tool" },
-      { href: "/fancy-text", label: "Fancy Text", desc: "More Unicode text styles" },
+      { href: "/superscript-generator", label: "ˣ² Super & Subscript Generator", desc: "Build custom fractions with superscript and subscript digits" },
+      { href: "/number-symbols", label: "№ Number Symbols", desc: "More numeric symbols and signs" },
+      { href: "/character-counter", label: "Character Counter", desc: "Count characters in any text" },
     ],
     pages: [
       { href: "/symbols/math", label: "∑ Math Symbols" },
-      { href: "/symbols/greek", label: "α Greek Letters" },
+      { href: "/symbols/currency", label: "€ Currency Symbols" },
     ],
   },
   ui: {

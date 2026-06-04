@@ -89,6 +89,12 @@ const nextConfig: NextConfig = {
       // spoke at /kaomoji/mood/cool. 308 so Google consolidates onto it.
       { source: "/kaomoji/cool-indifferent", destination: "/kaomoji/mood/cool", permanent: true },
 
+      // ── Retired /symbols/superscript category (redundant with the tool) ──────
+      // The "Superscript & Subscript" symbol category was removed — the
+      // /superscript-generator tool covers the same need. 308 the old category
+      // page to the generator so the indexed URL doesn't 404.
+      { source: "/symbols/superscript", destination: "/superscript-generator", permanent: true },
+
       // ── Original 4 (GSC May 9 batch) — closest-symbol redirects ───────────────
       { source: "/symbol/gen-greek-uppercase-delta-with-macron-1778250469107", destination: "/symbol/delta", permanent: true },
       { source: "/symbol/gen-greek-uppercase-alpha-with-macron-1778250469107", destination: "/symbols/greek", permanent: true },

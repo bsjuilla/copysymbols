@@ -22,7 +22,7 @@ export interface RelatedLink {
 const SYMBOL_CATEGORY_AFFINITY: Record<string, string[]> = {
   arrows: ["shapes", "technical"],
   currency: ["math", "legal"],
-  math: ["greek", "superscript"],
+  math: ["greek", "fractions"],
   greek: ["math", "technical"],
   legal: ["currency", "punctuation"],
   shapes: ["zodiac", "weather"],
@@ -32,7 +32,7 @@ const SYMBOL_CATEGORY_AFFINITY: Record<string, string[]> = {
   zodiac: ["weather", "shapes"],
   weather: ["zodiac", "shapes"],
   technical: ["math", "ui"],
-  superscript: ["math", "greek"],
+  fractions: ["math", "currency"],
   ui: ["technical", "punctuation"],
 };
 
@@ -49,7 +49,7 @@ const SYMBOL_CATEGORY_NAME: Record<string, string> = {
   zodiac: "Zodiac Symbols",
   weather: "Weather Symbols",
   technical: "Technical Symbols",
-  superscript: "Superscript & Subscript",
+  fractions: "Fractions",
   ui: "UI Symbols",
 };
 
@@ -77,7 +77,7 @@ const SYMBOL_CATEGORY_DESTINATIONS: Record<string, RelatedLink[]> = {
   zodiac: [{ href: "/bio-templates", label: "Zodiac Bio Templates" }],
   weather: [{ href: "/emoji-combos", label: "Weather Emoji Combos" }],
   technical: [{ href: "/checkmark", label: "Checkmark Symbols ✓" }],
-  superscript: [{ href: "/small-text", label: "Small Text Generator" }],
+  fractions: [{ href: "/number-symbols", label: "Number Symbols" }],
   ui: [{ href: "/checkmark", label: "Checkmark Symbols ✓" }],
 };
 
