@@ -4,7 +4,7 @@ import { canonical } from "@/lib/canonical";
 import { USERNAME_IDEAS } from "@/data/username-ideas";
 
 export const metadata: Metadata = {
-  title: "Username Ideas — Aesthetic, Cute, Edgy & by Platform",
+  title: "Username Ideas — Aesthetic, Cute, Edgy & More",
   description:
     "Browse username ideas by vibe (aesthetic, cute, edgy, soft, Y2K) and by platform (Discord, Roblox, TikTok, Instagram). 100+ examples per page plus a free generator. One click to copy.",
   keywords: [

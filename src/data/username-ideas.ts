@@ -55,7 +55,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     vibe: "aesthetic",
     name: "Aesthetic",
     h1: "Aesthetic Usernames",
-    title: "Aesthetic Usernames — 100+ Ideas & Free Generator",
+    title: "Aesthetic Usernames — 100+ Ideas & Generator",
     description:
       "Soft, dreamy aesthetic usernames with stars and sparkle accents. Browse 100+ ideas or type your name to generate your own — one click to copy for Discord, Insta, TikTok.",
     tagline: "Dreamy, celestial names with ⋆｡˚ star and sparkle accents.",
@@ -111,7 +111,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     vibe: "edgy",
     name: "Edgy",
     h1: "Edgy Usernames",
-    title: "Edgy Usernames — Cool Dark Name Ideas & Generator",
+    title: "Edgy Usernames — Cool Dark Name Ideas",
     description:
       "Sharp, dark edgy usernames with dagger, lightning and bracket accents. Browse 100+ ideas or generate your own from any name — one click to copy for Discord & gaming.",
     tagline: "Sharp, dark names with † dagger, ⌁ lightning and 『』 brackets.",
@@ -139,7 +139,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     vibe: "soft",
     name: "Soft",
     h1: "Soft Usernames",
-    title: "Soft Usernames — Gentle Aesthetic Name Ideas & Generator",
+    title: "Soft Usernames — Gentle Aesthetic Ideas",
     description:
       "Gentle soft usernames with petals, swans and wishing-star accents. Browse 100+ ideas or generate your own from any name — one click to copy for any bio or profile.",
     tagline: "Gentle names with ❀ petals, 🦢 swans and ✩ wishing stars.",
@@ -167,7 +167,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     vibe: "y2k",
     name: "Y2K",
     h1: "Y2K Usernames",
-    title: "Y2K Usernames — 2000s Aesthetic Name Ideas & Generator",
+    title: "Y2K Usernames — 2000s Aesthetic Name Ideas",
     description:
       "Retro Y2K usernames with shooting stars, sparkles and bubble fonts. Browse 100+ 2000s-aesthetic ideas or generate your own — one click to copy for TikTok, Insta, Discord.",
     tagline: "2000s-core names with ★彡 shooting stars and bubble fonts.",
@@ -224,7 +224,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     kind: "platform",
     name: "Roblox",
     h1: "Roblox Username Ideas",
-    title: "Roblox Username Ideas — Cool & Cute Name Generator",
+    title: "Roblox Username Ideas — Cool & Cute Names",
     description:
       "Roblox display-name ideas — cool, cute and aesthetic. Browse 100+ or generate your own from any name. Plus the real Roblox username vs display-name rules and limits.",
     tagline: "Cool & cute display-name ideas + the real Roblox name rules.",
@@ -252,7 +252,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     kind: "platform",
     name: "TikTok",
     h1: "TikTok Username Ideas",
-    title: "TikTok Username Ideas — Aesthetic Name Generator",
+    title: "TikTok Username Ideas — Aesthetic Generator",
     description:
       "Aesthetic TikTok name ideas with fancy fonts and symbols. Browse 100+ or generate your own. Plus the real difference between your TikTok @username and display name.",
     tagline: "Aesthetic display-name ideas + the @username vs nickname rules.",
@@ -279,7 +279,7 @@ export const USERNAME_IDEAS: UsernameIdeaPage[] = [
     kind: "platform",
     name: "Instagram",
     h1: "Instagram Username Ideas",
-    title: "Instagram Username Ideas — Aesthetic Name Generator",
+    title: "Instagram Username Ideas — Aesthetic Generator",
     description:
       "Aesthetic Instagram name ideas with fancy fonts and symbols. Browse 100+ or generate your own. Plus how the @handle, display name and bio fonts actually differ.",
     tagline: "Aesthetic name & bio ideas + how the @handle vs name differ.",
