@@ -100,7 +100,7 @@ const CAT_LABELS: Record<string, string> = {
   arrows: "Arrows", currency: "Currency", math: "Math", greek: "Greek Letters",
   legal: "Legal & Trade", shapes: "Shapes & Stars", punctuation: "Punctuation",
   music: "Music", chess: "Chess & Games", zodiac: "Zodiac", weather: "Weather",
-  technical: "Technical", superscript: "Superscript", ui: "UI & Interface",
+  technical: "Technical", fractions: "Fractions", ui: "UI & Interface",
 };
 
 // ─── MAIN OVERLAY ─────────────────────────────────────────────────────────────

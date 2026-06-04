@@ -233,15 +233,15 @@ const categoryRelated: Record<string, {
       { href: "/symbols-for/discord", label: "🎮 Technical for Discord" },
     ],
   },
-  superscript: {
+  fractions: {
     tools: [
-      { href: "/superscript-generator", label: "ˣ² Super & Subscript Generator", desc: "Type any text, get instant superscript and subscript" },
-      { href: "/small-text", label: "ˢ Small Text", desc: "Small caps + superscript + subscript in one tool" },
-      { href: "/fancy-text", label: "Fancy Text", desc: "More Unicode text styles" },
+      { href: "/superscript-generator", label: "ˣ² Super & Subscript Generator", desc: "Build custom fractions with superscript and subscript digits" },
+      { href: "/number-symbols", label: "№ Number Symbols", desc: "More numeric symbols and signs" },
+      { href: "/character-counter", label: "Character Counter", desc: "Count characters in any text" },
     ],
     pages: [
       { href: "/symbols/math", label: "∑ Math Symbols" },
-      { href: "/symbols/greek", label: "α Greek Letters" },
+      { href: "/symbols/currency", label: "€ Currency Symbols" },
     ],
   },
   ui: {
