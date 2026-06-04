@@ -129,6 +129,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // NEW (audit pass 3 Task 2) — translator index page (children at /translate/<id>)
     { url: `${BASE}/translate`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Legal pages — low priority for SEO but needed in sitemap for completeness
+    { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE}/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
