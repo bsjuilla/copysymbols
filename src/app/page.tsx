@@ -1,4 +1,6 @@
 import { categories, symbols, getPopularSymbols } from "@/data/symbols";
+import { emoji } from "@/data/emoji";
+import { allKaomoji } from "@/data/all-kaomoji";
 import CopyToast from "@/components/CopyToast";
 import HomeClient from "./HomeClient";
 import type { Metadata } from "next";
@@ -88,6 +90,8 @@ export default function HomePage() {
         currencySymbols={symbols.filter(s => s.category === "currency").slice(0, 16).map(s => ({ id: s.id, symbol: s.symbol, name: s.name }))}
         mathSymbols={symbols.filter(s => s.category === "math").slice(0, 16).map(s => ({ id: s.id, symbol: s.symbol, name: s.name }))}
         totalSymbols={symbols.length}
+        totalEmoji={emoji.length}
+        totalKaomoji={allKaomoji.length}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <section style={{ maxWidth: 760, margin: "0 auto", padding: "32px 24px 64px" }}>

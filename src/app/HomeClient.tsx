@@ -19,6 +19,8 @@ interface Props {
   currencySymbols: SymbolItem[];
   mathSymbols: SymbolItem[];
   totalSymbols: number;
+  totalEmoji: number;
+  totalKaomoji: number;
 }
 
 // ─── TICKER SYMBOLS ──────────────────────────────────────────────────────────
@@ -121,7 +123,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 
 export default function HomeClient({
-  popular, categories, arrowSymbols, currencySymbols, mathSymbols, totalSymbols
+  popular, categories, arrowSymbols, currencySymbols, mathSymbols, totalSymbols, totalEmoji, totalKaomoji
 }: Props) {
   const router = useRouter();
   const [query, setQuery] = useState("");
@@ -592,8 +594,8 @@ export default function HomeClient({
           {[
             { label: "Symbols", value: totalSymbols, suffix: "+" },
             { label: "Categories", value: 14, suffix: "" },
-            { label: "Kaomoji", value: 71, suffix: "+" },
-            { label: "Emoji", value: 1800, suffix: "+" },
+            { label: "Kaomoji", value: totalKaomoji, suffix: "+" },
+            { label: "Emoji", value: totalEmoji, suffix: "+" },
           ].map(stat => (
             <div key={stat.label} className="stat-card">
               <div className="font-display" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 800, color: "var(--accent)", lineHeight: 1 }}>
