@@ -419,7 +419,7 @@ export const AESTHETICS: Aesthetic[] = [
     emoji: "🐆",
     tagline: "faux fur, leopard print, and old-Hollywood gold — unapologetic excess",
     description:
-      "Mob Wife is a maximalist glam aesthetic that surged as a viral trend in early 2024, built on oversized faux-fur coats, leopard and animal-print everything, gold hoops and chunky jewellery, red lips, red nails, and oversized dark sunglasses. It draws visual inspiration from old-Hollywood glamour filtered through a mafia-wife confidence — think black, gold, and animal print layered together with zero restraint. Explicitly positioned as the anti clean-girl look, Mob Wife celebrates bold excess over minimalism, owning every room with silhouettes, texture, and jewellery that announce arrival before a word is spoken.",
+      "Mob Wife is a maximalist glam aesthetic that surged as a viral trend in early 2024, built on oversized faux-fur coats, leopard and animal-print everything, gold hoops and chunky jewellery, red lips, red nails, and oversized dark sunglasses. It draws visual inspiration from old-Hollywood glamour and larger-than-life, unapologetic confidence — think black, gold, and animal print layered together with zero restraint. Explicitly positioned as the anti clean-girl look, Mob Wife celebrates bold excess over minimalism, owning every room with silhouettes, texture, and jewellery that announce arrival before a word is spoken.",
     symbols: ["🐆", "💋", "💄", "👜", "💍", "🥂", "🕶️", "💅", "🌹", "✨", "🖤", "👛", "♛", "★", "❖", "✶"],
     kaomoji: ["( ͡° ͜ʖ ͡°)ᕤ", "💋 ( •̀ᴗ•́ ) 💋", "ψ(｀∇´)ψ", "( ˘ᵕ˘ )σ 💍", "₊˚🐆 ᕙ( •̀ ᗜ •́ )ᕗ ˚₊"],
     dividers: ["🐆 ‧₊˚ ♛ ✶ ♛ ˚₊‧ 🐆 ‧₊˚ ♛ ✶ ♛ ˚₊‧", "💋 ★ ❖ 🌹 ❖ ★ 💋 ★ ❖ 🌹 ❖ ★ 💋", "‧₊˚ 🕶️ 💍 🥂 💍 🕶️ ˚₊‧ ✶ ‧₊˚ 🕶️ 💍 🥂"],
