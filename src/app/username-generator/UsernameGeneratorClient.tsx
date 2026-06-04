@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { STYLES } from "@/lib/fancy-text-styles";
 import { ORNAMENTS, VIBES, type Vibe } from "@/lib/username-ornaments";
 
@@ -36,9 +36,22 @@ function generate(name: string, vibe: VibeFilter, count: number): Result[] {
   return out;
 }
 
-export default function UsernameGeneratorClient({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  const [name, setName] = useState("");
-  const [vibe, setVibe] = useState<VibeFilter>("all");
+export default function UsernameGeneratorClient({
+  faqs = [],
+  initialVibe = "all",
+  initialName = "",
+  embedded = false,
+}: {
+  faqs?: Array<{ q: string; a: string }>;
+  /** Pre-select a vibe filter (used when embedded on a /username-ideas page). */
+  initialVibe?: VibeFilter;
+  /** Pre-fill the name input (used when embedded on a /username-ideas page). */
+  initialName?: string;
+  /** Compact mode for embedding under a landing page's own H1/FAQ. */
+  embedded?: boolean;
+}) {
+  const [name, setName] = useState(initialName);
+  const [vibe, setVibe] = useState<VibeFilter>(initialVibe);
   const [count, setCount] = useState(24);
   const [results, setResults] = useState<Result[]>([]);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -48,6 +61,17 @@ export default function UsernameGeneratorClient({ faqs }: { faqs: Array<{ q: str
     setResults(generate(name, vibe, count));
     setHasGenerated(true);
   }, [name, vibe, count]);
+
+  // When embedded with a pre-filled name, roll a set on mount so the tool shows
+  // live results immediately under the landing page's server-rendered examples.
+  useEffect(() => {
+    if (embedded && initialName.trim()) {
+      setResults(generate(initialName, initialVibe, 24));
+      setHasGenerated(true);
+    }
+    // Run once on mount only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const copy = async (text: string, idx: number) => {
     try { await navigator.clipboard.writeText(text); }
@@ -75,14 +99,18 @@ export default function UsernameGeneratorClient({ faqs }: { faqs: Array<{ q: str
   };
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
-      <div className="section-label">Random username generator</div>
-      <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
-        Username Generator
-      </h1>
-      <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 32, lineHeight: 1.6 }}>
-        Type your name and pick a vibe. We mix {STYLES.length} font styles with {ORNAMENTS.length} ornament packs to spin up fancy usernames for Discord, Instagram, Roblox, TikTok and more. Press Generate to roll a fresh set.
-      </p>
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: embedded ? "8px 0 0" : "48px 24px" }}>
+      {!embedded && (
+        <>
+          <div className="section-label">Random username generator</div>
+          <h1 className="font-display" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 800, color: "var(--text)", marginBottom: 8, letterSpacing: "-0.03em" }}>
+            Username Generator
+          </h1>
+          <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 32, lineHeight: 1.6 }}>
+            Type your name and pick a vibe. We mix {STYLES.length} font styles with {ORNAMENTS.length} ornament packs to spin up fancy usernames for Discord, Instagram, Roblox, TikTok and more. Press Generate to roll a fresh set.
+          </p>
+        </>
+      )}
 
       {/* ── INPUT + CONTROLS ────────────────────────────────────────────────── */}
       <div style={{ marginBottom: 16 }}>
@@ -217,6 +245,8 @@ export default function UsernameGeneratorClient({ faqs }: { faqs: Array<{ q: str
         </div>
       )}
 
+      {/* FAQ + Related are hidden in embedded mode — the landing page supplies its own. */}
+      {!embedded && (<>
       {/* ── FAQ ─────────────────────────────────────────────────────────────── */}
       <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40, marginBottom: 48 }}>
         <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 20 }}>Frequently asked questions</h2>
@@ -251,6 +281,7 @@ export default function UsernameGeneratorClient({ faqs }: { faqs: Array<{ q: str
           ))}
         </div>
       </section>
+      </>)}
     </div>
   );
 }
