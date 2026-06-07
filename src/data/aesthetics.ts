@@ -522,7 +522,7 @@ export const AESTHETICS: Aesthetic[] = [
       "Acubi is a Korean-born fashion aesthetic blending cyber, grunge and minimalism — muted greys and silvers, chrome accents, blurred motion graphics, butterfly motifs and a sleek, slightly-edgy futurism. It favours low-contrast neutral palettes, asymmetric layers and a cool, understated tech-fairy mood. Butterflies 🦋, chrome shine and soft greys define the look.",
     symbols: ["🦋", "🤍", "✩", "✦", "⊹", "✧", "⋆", "❍", "◌", "♡", "☆", "✶", "˚", "₊", "‧", "⟡"],
     kaomoji: ["( ˘ ｰ ˘ )", "( ◡̀_◡́)", "(｡ᵕ ᵕ｡)", "ʚ✧ɞ", "( ⊹ ˙ ‿ ˙ ⊹ )"],
-    dividers: ["⊹ ࣪ ˖ 🦋 ˖ ࣪ ⊹ ⟡ ⊹ ࣪ ˖ 🦋 ˖ ࣪ ⊹", "✧ ⋆ ❍ ⋆ ✧ ⋆ ❍ ⋆ ✧", "‧₊˚ 🤍 ⟡ ✦ ⟡ 🤍 ˚₊‧"],
+    dividers: ["⊹ ˖ ✦ 🦋 ✦ ˖ ⊹ ⟡ ⊹ ˖ ✦ 🦋 ✦ ˖ ⊹", "✧ ⋆ ❍ ⋆ ✧ ⋆ ❍ ⋆ ✧", "‧₊˚ 🤍 ⟡ ✦ ⟡ 🤍 ˚₊‧"],
     bioTemplate: "🦋 {NAME} ⟡\n✧ {AGE} ⋅ {PRONOUNS}\n🤍 {STYLE_OR_HOBBY}\n⊹ blur the lines ⊹",
     related: ["cyber", "y2k", "mermaidcore"],
     searchTerms: ["acubi aesthetic symbols", "acubi bio copy paste", "acubi fashion symbols", "cyber fairy aesthetic"],
