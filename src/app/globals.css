@@ -209,7 +209,13 @@ body {
 .kaomoji-card:hover { border-color: var(--border2); transform: translateY(-1px); }
 .kaomoji-card.copied { border-color: var(--accent); }
 
-.kaomoji-face { font-size: 1.05rem; color: var(--text); font-family: serif; line-height: 1.6; word-break: keep-all; }
+/* Kaomoji faces keep a serif base (the look most faces were authored for) but
+   MUST fall back to CJK + symbol fonts for halfwidth katakana (ﾟ U+FF9F),
+   math operators (∀ U+2200) and other glyphs Times New Roman lacks — otherwise
+   faces like (ﾟ∀ﾟ) render as tofu boxes (□□□) on Windows. The named fonts ship
+   on Windows (Segoe UI / Yu Gothic / Segoe UI Symbol), macOS/iOS (Hiragino) and
+   Android/Linux (Noto). */
+.kaomoji-face { font-size: 1.05rem; color: var(--text); font-family: serif, "Segoe UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans CJK JP", "Noto Sans", "Segoe UI Symbol", sans-serif; line-height: 1.6; word-break: keep-all; }
 
 .detail-copy-btn {
   display: flex;
