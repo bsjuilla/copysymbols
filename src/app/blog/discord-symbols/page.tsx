@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
 
-const TITLE = "Discord Symbols — Special Characters That Work in Discord";
-const DESCRIPTION = "All symbols, Unicode characters, and text art that work in Discord usernames, bios, and messages. Stars, hearts, arrows, brackets, and more.";
+const TITLE = "Discord Symbols — Copy & Paste ★ ♥ → for Names & Bios";
+const DESCRIPTION = "Discord symbols to copy and paste — stars ★, hearts ♥, arrows →, brackets 「」 and text art that work in your username, server name, bio and messages. One click to copy each.";
 const SLUG = "discord-symbols";
 const PUBLISHED = "2026-03-01T00:00:00Z";
 const MODIFIED = "2026-05-09T00:00:00Z";

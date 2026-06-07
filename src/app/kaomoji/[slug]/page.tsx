@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const k = getKaomojiBySlug(slug);
   if (!k) return {};
-  const title = `${k.name} Kaomoji ${k.face} — Copy & Paste`;
-  const description = `Copy the ${k.name} kaomoji ${k.face} for free. A Japanese text emoticon in the ${moodName(k.mood)} category. Paste it into Discord, Twitter, Instagram or anywhere you write text.`;
+  const title = `${k.name} Kaomoji — Copy & Paste ${k.face}`;
+  const description = `Copy & paste the ${k.name} kaomoji — ${k.face} — in one click. A cute Japanese text face for the ${moodName(k.mood)} mood that works in Discord, TikTok, Instagram bios and messages. Tap to copy, then paste anywhere.`;
   const url = `https://www.copychars.com/kaomoji/${slug}`;
   return {
     title,
