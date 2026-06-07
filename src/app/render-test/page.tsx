@@ -3,6 +3,7 @@ import CopyToast from "@/components/CopyToast";
 import RelatedLinks from "@/components/RelatedLinks";
 import { relatedForEmoji } from "@/lib/related";
 import { canonical } from "@/lib/canonical";
+import { allKaomoji } from "@/data/all-kaomoji";
 import RenderTestClient from "./RenderTestClient";
 
 export const metadata: Metadata = {
@@ -164,6 +165,44 @@ export default function RenderTestPage() {
               <div key={f.q}>
                 <h3 style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 8 }}>{f.q}</h3>
                 <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7 }}>{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── KAOMOJI FONT SELF-CHECK ───────────────────────────────────────── */}
+        {/* Renders every kaomoji face in the real .kaomoji-face site font. Many
+            faces use halfwidth katakana (ﾟ U+FF9F), math operators (∀ U+2200) and
+            other glyphs that some fonts lack — if any face below shows empty boxes
+            (▯/□) on a given device, that's a font-coverage bug to fix. This is the
+            canary: open it on iOS / Android / Windows and scan for boxes. */}
+        <section style={{ borderTop: "1px solid var(--border)", paddingTop: 40, marginTop: 28, marginBottom: 12 }}>
+          <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+            Kaomoji font self-check
+          </h2>
+          <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 20 }}>
+            All {allKaomoji.length.toLocaleString()} kaomoji on CopyChars, rendered in the site font. Every face here
+            should display cleanly — if any shows empty boxes (▯ or □) on your device, that face has a font-coverage
+            problem. Open this on iPhone, Android and Windows to catch tofu before visitors do.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(116px, 1fr))", gap: 8 }}>
+            {allKaomoji.map((k) => (
+              <div
+                key={k.slug}
+                title={k.name}
+                style={{
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 8,
+                  padding: "10px 6px",
+                  textAlign: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <div className="kaomoji-face" style={{ fontSize: "0.9rem", lineHeight: 1.4 }}>{k.face}</div>
+                <div style={{ fontSize: 10, color: "var(--text3)", marginTop: 4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {k.name}
+                </div>
               </div>
             ))}
           </div>
