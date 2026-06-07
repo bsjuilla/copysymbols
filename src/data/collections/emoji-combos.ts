@@ -1153,7 +1153,40 @@ export const emojiCombos: ComboItem[] = [
   { slug: "blanket-fort", combo: "🛋️🧸☕", name: "Blanket Fort", theme: "Cozy", keywords: ["couch", "teddy bear", "coffee", "cozy", "indoor"], vibe: "Pillows stacked, bear in hand, hot drink on the side table — drop it on lazy-Sunday stay-in-bed content.", emojiCount: 3 },
   { slug: "sweater-weather", combo: "🍁🧤☕", name: "Sweater Weather", theme: "Cozy", keywords: ["maple leaf", "gloves", "coffee", "autumn", "cozy"], vibe: "Gloves on, latte warm, leaves falling everywhere — the quintessential autumn-morning combo for October carousels.", emojiCount: 3 },
   { slug: "confetti-drop", combo: "🎊🥳🎶", name: "Confetti Drop", theme: "Party", keywords: ["confetti", "party face", "music", "celebrate", "dance"], vibe: "Confetti raining, music blasting, everyone vibing — drop it on birthday-night carousels and milestone celebration reels.", emojiCount: 3 },
-  { slug: "glow-up-reveal", combo: "✨👑🥂", name: "Glow Up Reveal", theme: "Party", keywords: ["sparkle", "crown", "champagne", "glow up", "celebrate"], vibe: "Crown on, glass raised, transformation complete — use it on dramatic before-and-after reveals and personal-win announcements.", emojiCount: 3 },];
+  { slug: "glow-up-reveal", combo: "✨👑🥂", name: "Glow Up Reveal", theme: "Party", keywords: ["sparkle", "crown", "champagne", "glow up", "celebrate"], vibe: "Crown on, glass raised, transformation complete — use it on dramatic before-and-after reveals and personal-win announcements.", emojiCount: 3 },
+
+  // === Batch 3: trend + aesthetic expansion (24) — deepening the proven winners ===
+  // Internet / chronically-online (the delulu / main-character cohort that ranks)
+  { slug: "soft-launch", combo: "🤍🥂", name: "Soft Launch", theme: "Internet", keywords: ["soft launch", "relationship", "subtle", "reveal", "coy"], vibe: "The 'I'm seeing someone but staying coy' post — a glass raised and a white heart, no faces shown. Made for the subtle relationship reveal.", emojiCount: 2 },
+  { slug: "lock-in", combo: "🔒📚", name: "Lock In", theme: "Internet", keywords: ["lock in", "focus", "grind", "study", "discipline"], vibe: "Heads-down, distraction-free focus mode. Drop it when you're going no-contact with everything but the goal.", emojiCount: 2 },
+  { slug: "very-demure", combo: "🎀🤫", name: "Very Demure", theme: "Internet", keywords: ["demure", "mindful", "cutesy", "trend", "soft"], vibe: "Very demure, very mindful — the soft-spoken catchphrase in two emoji. Cutesy, understated, a little tongue-in-cheek.", emojiCount: 2 },
+  { slug: "brat", combo: "💚🕶️", name: "Brat", theme: "Internet", keywords: ["brat", "lime green", "confident", "summer", "bold"], vibe: "Lime-green, unbothered and a little chaotic — brat-summer energy. For the confident, take-it-or-leave-it caption.", emojiCount: 2 },
+  { slug: "npc-mode", combo: "🤖🎮", name: "NPC Mode", theme: "Internet", keywords: ["npc", "gaming", "autopilot", "funny", "meme"], vibe: "Running on autopilot like a background character in someone else's game. Self-aware and funny.", emojiCount: 2 },
+  { slug: "mother-energy", combo: "💋👑", name: "Mother Energy", theme: "Internet", keywords: ["mother", "slay", "iconic", "confident", "queen"], vibe: "She's that girl — iconic, in-charge 'mother' energy. For the unapologetically confident post.", emojiCount: 2 },
+  { slug: "vibe-check", combo: "✅😎", name: "Vibe Check", theme: "Internet", keywords: ["vibe check", "cool", "approved", "chill", "passed"], vibe: "Passed the vibe check — effortlessly cool and approved. A laid-back stamp of good energy.", emojiCount: 2 },
+  { slug: "feral-era", combo: "😼💥", name: "Feral Era", theme: "Internet", keywords: ["feral", "chaotic", "unhinged", "funny", "era"], vibe: "Embracing your chaotic, unbothered, slightly-unhinged era. Loud, fun and a bit menacing.", emojiCount: 2 },
+  // Love (the puppy-love / shy-crush cohort)
+  { slug: "hopeless-romantic", combo: "💌🌹", name: "Hopeless Romantic", theme: "Love", keywords: ["romantic", "love letter", "rose", "crush", "dreamer"], vibe: "For the daydreamers who fall hard — a love letter and a single rose. Pure soft-hearted devotion.", emojiCount: 2 },
+  { slug: "finger-heart", combo: "🫰💗", name: "Finger Heart", theme: "Love", keywords: ["finger heart", "kpop", "cute love", "crush", "sweet"], vibe: "The K-pop finger-heart in emoji form — tiny, sweet and universally read as 'I love you'.", emojiCount: 2 },
+  { slug: "cherry-kiss", combo: "🍒💋", name: "Cherry Kiss", theme: "Love", keywords: ["cherry", "kiss", "flirty", "sweet", "playful"], vibe: "Sweet with a flirty wink — cherries and a kiss mark for a playful crush post.", emojiCount: 2 },
+  { slug: "heart-eyes", combo: "😍💞", name: "Heart Eyes", theme: "Love", keywords: ["heart eyes", "crush", "in love", "swoon", "adore"], vibe: "Completely smitten — the classic heart-eyes-and-sparkling-hearts swoon.", emojiCount: 2 },
+  { slug: "moonchild", combo: "🌙🤍", name: "Moonchild", theme: "Love", keywords: ["moon", "soft", "dreamy", "gentle", "ethereal"], vibe: "Gentle, dreamy and a little ethereal — a crescent moon with a soft white heart.", emojiCount: 2 },
+  // Coquette (the lace-pearls / cherry-coquette cohort)
+  { slug: "rose-gold-bow", combo: "🎀🌹", name: "Rose Gold Bow", theme: "Coquette", keywords: ["bow", "rose", "coquette", "feminine", "ribbon"], vibe: "Bows and roses — peak coquette. For pink, ribbon-laced grids and soft-girl bios.", emojiCount: 2 },
+  { slug: "pearl-blush", combo: "🤍🌸", name: "Pearl Blush", theme: "Coquette", keywords: ["pearl", "blush", "soft", "coquette", "petal"], vibe: "Soft pearl-and-petal prettiness — a demure, blushing coquette combo.", emojiCount: 2 },
+  { slug: "ribbon-tea", combo: "🎀🫖", name: "Ribbon Tea", theme: "Coquette", keywords: ["ribbon", "tea", "cottage", "coquette", "dainty"], vibe: "Afternoon-tea daintiness tied with a ribbon — a cosy coquette-meets-cottage crossover.", emojiCount: 2 },
+  { slug: "strawberry-cream", combo: "🍓🤍", name: "Strawberry Cream", theme: "Coquette", keywords: ["strawberry", "cream", "sweet", "soft", "pink"], vibe: "Strawberries-and-cream softness — sweet, pink and gentle.", emojiCount: 2 },
+  // Aesthetic (the soft-sunset / golden-hour cohort)
+  { slug: "starry-eyed", combo: "🌟👀", name: "Starry Eyed", theme: "Aesthetic", keywords: ["stars", "dreamy", "wonder", "wishful", "hopeful"], vibe: "Wide-eyed wonder — for wishful, stargazing, dream-big captions.", emojiCount: 2 },
+  { slug: "peachy-glow", combo: "🍑✨", name: "Peachy Glow", theme: "Aesthetic", keywords: ["peach", "glow", "warm", "soft", "sunkissed"], vibe: "Warm, sun-kissed peach tones — a soft glowy aesthetic in two emoji.", emojiCount: 2 },
+  { slug: "sugar-rush", combo: "🍭✨", name: "Sugar Rush", theme: "Aesthetic", keywords: ["candy", "sweet", "colorful", "fun", "playful"], vibe: "Bright, sweet and a little hyper — candy-coloured fun energy.", emojiCount: 2 },
+  // Cozy (the sweater-weather / pumpkin-spice cohort)
+  { slug: "matcha-morning", combo: "🍵🌿", name: "Matcha Morning", theme: "Cozy", keywords: ["matcha", "morning", "calm", "green", "slow"], vibe: "Slow green-tea mornings — calm, leafy and unhurried.", emojiCount: 2 },
+  { slug: "fresh-bread", combo: "🥖🧈", name: "Fresh Bread", theme: "Cozy", keywords: ["bread", "baking", "warm", "homey", "comfort"], vibe: "Warm-from-the-oven comfort — bread-and-butter homeliness.", emojiCount: 2 },
+  // Y2K (the frutiger-aero / disc-butterfly cohort)
+  { slug: "chrome-heart", combo: "🤍🦋", name: "Chrome Heart", theme: "Y2K", keywords: ["chrome", "butterfly", "y2k", "metallic", "cyber"], vibe: "Metallic 2000s shine with a butterfly clip — cyber-glam nostalgia.", emojiCount: 2 },
+  { slug: "bubblegum-pop", combo: "🫧💖", name: "Bubblegum Pop", theme: "Y2K", keywords: ["bubblegum", "pink", "pop", "playful", "bubbly"], vibe: "Bubbly pink pop energy — playful early-2000s sweetness.", emojiCount: 2 },
+];
 
 const _bySlug = new Map(emojiCombos.map(c => [c.slug, c]));
 export function getComboBySlug(slug: string): ComboItem | undefined { return _bySlug.get(slug); }

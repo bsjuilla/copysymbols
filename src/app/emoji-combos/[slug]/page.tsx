@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const c = getComboBySlug(slug);
   if (!c) return {};
-  const title = `${c.name} ${c.combo} — Emoji Combo Copy & Paste`;
-  const description = `Copy the ${c.name} emoji combo (${c.combo}) for free. ${c.vibe} Paste into Instagram bio, TikTok caption, Twitter or anywhere you write text.`;
+  const title = `${c.name} Emoji Combo ${c.combo} — Copy & Paste`;
+  const description = `${c.combo} — copy the ${c.name} emoji combo free, in one click. ${c.vibe} Perfect for Instagram bios, TikTok captions, Discord and Twitter.`;
   const url = `https://www.copychars.com/emoji-combos/${slug}`;
   return {
     title,
