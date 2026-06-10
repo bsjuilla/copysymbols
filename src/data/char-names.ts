@@ -238,7 +238,7 @@ export const CHAR_NAMES: Record<number, string> = {
   0x76BF: "CJK UNIFIED IDEOGRAPH-76BF",
   0x76CA: "CJK UNIFIED IDEOGRAPH-76CA",
   0xA4B3: "YI RADICAL JO",
-  0xB208: "HANGUL SYLLABLE-B208",
+  0xB208: "HANGUL SYLLABLE NUN",
   0xFE34: "PRESENTATION FORM FOR VERTICAL WAVY LOW LINE",
   0xFE35: "PRESENTATION FORM FOR VERTICAL LEFT PARENTHESIS",
   0xFE36: "PRESENTATION FORM FOR VERTICAL RIGHT PARENTHESIS",
@@ -279,5 +279,7 @@ export function charName(cp: number): string {
   if (!raw) return "U+" + cp.toString(16).toUpperCase().padStart(4, "0");
   return raw
     .toLowerCase()
-    .replace(/(^|[\s(-])([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase());
+    .replace(/(^|[\s(-])([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase())
+    .replace(/^Cjk/, "CJK")
+    .replace(/Ideograph-([0-9a-f]+)$/i, (m, hex) => "Ideograph-" + hex.toUpperCase());
 }

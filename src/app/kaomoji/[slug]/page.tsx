@@ -25,8 +25,12 @@ function anatomyOf(face: string): Array<{ ch: string; cp: string; name: string }
     const cp = ch.codePointAt(0);
     if (cp == null || ch === " " || seen.has(cp)) continue;
     seen.add(cp);
+    // Combining marks can't render alone — mount them on the standard U+25CC
+    // dotted-circle carrier so the grid shows them the way Unicode charts do.
+    const isCombining =
+      (cp >= 0x0300 && cp <= 0x036f) || (cp >= 0x1ab0 && cp <= 0x1aff) || (cp >= 0x20d0 && cp <= 0x20ff);
     out.push({
-      ch,
+      ch: isCombining ? "◌" + ch : ch,
       cp: "U+" + cp.toString(16).toUpperCase().padStart(4, "0"),
       name: charName(cp),
     });

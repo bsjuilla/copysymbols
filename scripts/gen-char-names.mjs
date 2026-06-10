@@ -35,12 +35,24 @@ for (const line of readFileSync("/tmp/unidata/UnicodeData.txt", "utf8").split("\
 }
 
 // 3) report misses (e.g. chars inside First/Last ranges — name them generically)
+// Official algorithmic Hangul syllable name (Unicode ch. 3.12 Jamo short names).
+const HANGUL_L = ["G","GG","N","D","DD","R","M","B","BB","S","SS","","J","JJ","C","K","T","P","H"];
+const HANGUL_V = ["A","AE","YA","YAE","EO","E","YEO","YE","O","WA","WAE","OE","YO","U","WEO","WE","WI","YU","EU","YI","I"];
+const HANGUL_T = ["","G","GG","GS","N","NJ","NH","D","L","LG","LM","LB","LS","LT","LP","LH","M","B","BS","S","SS","NG","J","C","K","T","P","H"];
+function hangulName(cp) {
+  const i = cp - 0xac00;
+  const l = Math.floor(i / (21 * 28));
+  const v = Math.floor((i % (21 * 28)) / 28);
+  const t = i % 28;
+  return `HANGUL SYLLABLE ${HANGUL_L[l]}${HANGUL_V[v]}${HANGUL_T[t]}`;
+}
+
 const missing = [...cps].filter((c) => !names.has(c)).sort((a, b) => a - b);
 for (const c of missing) {
   // All kaomoji chars are individually listed in UnicodeData except CJK/Hangul
   // range members; give those their standard algorithmic names.
   if (c >= 0x4e00 && c <= 0x9fff) names.set(c, `CJK UNIFIED IDEOGRAPH-${c.toString(16).toUpperCase()}`);
-  else if (c >= 0xac00 && c <= 0xd7a3) names.set(c, `HANGUL SYLLABLE-${c.toString(16).toUpperCase()}`);
+  else if (c >= 0xac00 && c <= 0xd7a3) names.set(c, hangulName(c));
   else names.set(c, `U+${c.toString(16).toUpperCase().padStart(4, "0")}`);
 }
 console.log(`named: ${names.size}/${cps.size} (${missing.length} via range fallback: ${missing.map((c) => "U+" + c.toString(16).toUpperCase()).join(" ") || "none"})`);
@@ -64,7 +76,9 @@ export function charName(cp: number): string {
   if (!raw) return "U+" + cp.toString(16).toUpperCase().padStart(4, "0");
   return raw
     .toLowerCase()
-    .replace(/(^|[\\s(-])([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase());
+    .replace(/(^|[\\s(-])([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase())
+    .replace(/^Cjk/, "CJK")
+    .replace(/Ideograph-([0-9a-f]+)$/i, (m, hex) => "Ideograph-" + hex.toUpperCase());
 }
 `;
 writeFileSync("src/data/char-names.ts", out, "utf8");
