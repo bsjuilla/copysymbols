@@ -86,7 +86,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do you write 2026 in Roman numerals?",
-    a: "MMXXVI: two Ms for 2,000, two Xs for 20, then VI for 6. Nearby years are just as regular. 2025 is MMXXV, 2027 is MMXXVII, and 2030 is MMXXX. Years in the 2000s are among the easiest to write because they involve no subtractive pairs at all until 2040, which is MMXL.",
+    a: "MMXXVI: two Ms for 2,000, two Xs for 20, then VI for 6. Nearby years like 2025 (MMXXV), 2027 (MMXXVII), and 2030 (MMXXX) are just as regular, though any year ending in 4 or 9 brings a subtractive pair back — 2024 is MMXXIV and 2029 is MMXXIX.",
   },
   {
     q: "Did the Romans have a zero?",
