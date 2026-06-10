@@ -88,6 +88,12 @@ const nextConfig: NextConfig = {
       // taxonomy was later split; the live equivalent is the "Cool & Confident"
       // spoke at /kaomoji/mood/cool. 308 so Google consolidates onto it.
       { source: "/kaomoji/cool-indifferent", destination: "/kaomoji/mood/cool", permanent: true },
+      // ── Removed kaomoji slugs (GSC 2026-06-10 404 drilldown; crawled June 1-2,
+      //    confirmed still 404 live). Old faces cut in the mood-taxonomy rework;
+      //    308 each to its mood spoke so Google consolidates the signal. ─────────
+      { source: "/kaomoji/angry-whimper-face", destination: "/kaomoji/mood/angry", permanent: true },
+      { source: "/kaomoji/love-swoon", destination: "/kaomoji/mood/love", permanent: true },
+      { source: "/kaomoji/frustrated-face-2", destination: "/kaomoji/mood/angry", permanent: true },
 
       // ── Retired /symbols/superscript category (redundant with the tool) ──────
       // The "Superscript & Subscript" symbol category was removed — the

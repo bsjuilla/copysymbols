@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Zodiac Signs ♈♉♊ — Every Symbol, Date and Meaning";
 const DESCRIPTION = "All 12 zodiac sign symbols to copy and paste, with their dates, element, ruling planet, and meaning. Plus where the glyphs come from and how to use them in bios.";
@@ -71,6 +72,7 @@ export default function ZodiacSignsSymbols() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           Zodiac Signs: Every Symbol, Date and Meaning
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           Each of the twelve zodiac signs has its own glyph — a simple drawn symbol that has stood in for the sign for centuries. They live in Unicode, so you can copy and paste them anywhere: a bio, a username, a caption, or a note. Tap any sign below to copy its symbol, then read on for the dates, element, and meaning behind each one.
         </p>

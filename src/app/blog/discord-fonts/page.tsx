@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "How to Get Fancy Fonts in Your Discord Name and Messages";
 const DESCRIPTION = "Discord has no font setting, but Unicode 'fancy text' lets you style your username, nickname, and messages. Here's how it works, what to watch out for, and styles to copy.";
@@ -63,6 +64,7 @@ export default function DiscordFonts() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           How to Get Fancy Fonts in Your Discord Name and Messages
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           Discord doesn&apos;t have a font setting. There&apos;s no menu where you switch your name to cursive or bold. What people are actually doing when their name looks like a fancy font is pasting in characters from a different part of Unicode that happen to be shaped like styled letters. Once you know that, styling your name or messages takes about ten seconds.
         </p>

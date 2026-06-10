@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Kaomoji: What They Are and How to Use Them";
 const DESCRIPTION = "Learn what kaomoji are, how they differ from Western emoticons, where they came from, and how to copy-paste them into Discord, Instagram, TikTok, and more.";
@@ -49,6 +50,7 @@ export default function BlogPost() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           {TITLE}
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>{INTRO}</p>
 
         {SECTIONS.map((s, i) => (

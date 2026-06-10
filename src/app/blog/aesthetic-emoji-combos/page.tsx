@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Aesthetic Emoji Combos for Your Bio — Copy & Paste";
 const DESCRIPTION = "Discover the best aesthetic emoji combos for your Instagram, TikTok, and Discord bio. Match your vibe and learn exactly how to add them.";
@@ -49,6 +50,7 @@ export default function BlogPost() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           {TITLE}
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>{INTRO}</p>
 
         {SECTIONS.map((s, i) => (

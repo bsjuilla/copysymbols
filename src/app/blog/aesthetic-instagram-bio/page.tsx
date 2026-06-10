@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "How to Make an Aesthetic Instagram Bio — Symbols, Fonts & Layout";
 const DESCRIPTION = "A step-by-step guide to building an aesthetic Instagram bio: copy-paste dividers and symbols, fancy fonts for your name, spacing tricks, and layout examples that actually render.";
@@ -65,6 +66,7 @@ export default function AestheticInstagramBio() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           How to Make an Aesthetic Instagram Bio
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           An aesthetic Instagram bio is mostly three things working together: a styled name, a few well-chosen symbols, and clean spacing. Instagram has no built-in formatting, so every &ldquo;font&rdquo; and divider you see is really a Unicode character pasted in. This guide walks through each part and gives you copy-paste pieces that render correctly on phones, not just on desktop.
         </p>

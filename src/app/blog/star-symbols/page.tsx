@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Star Symbols ★ ☆ Copy & Paste — Every Star Character";
 const DESCRIPTION = "Copy star symbols instantly. Filled stars, outline stars, sparkle stars, and emoji stars. Complete guide with Unicode values and uses.";
@@ -40,6 +41,7 @@ export default function BlogPost() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, lineHeight: 1.2, letterSpacing: "-0.03em" }}>
         Star Symbols ★ ☆ Copy & Paste — Every Star Character
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 15, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>Copy star symbols instantly. Filled stars, outline stars, sparkle stars, and emoji stars. Complete guide with Unicode values and uses.</p>
       <article style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85 }} dangerouslySetInnerHTML={{ __html: `<p><strong>Star symbols</strong> are among the most versatile special characters. From the classic five-pointed &#9733; to decorative sparkle variants &#10022; &#10023;, stars appear in ratings, bios, bullet points, and decorative text.</p>
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Types of Star Symbols</h2>

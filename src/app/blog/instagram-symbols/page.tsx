@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Instagram Symbols — Copy & Paste for Bios and Captions";
 const DESCRIPTION = "The best symbols for Instagram bios and captions. Stars, hearts, arrows, flowers, dividers, and aesthetic text that actually works on Instagram.";
@@ -40,6 +41,7 @@ export default function BlogPost() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, lineHeight: 1.2, letterSpacing: "-0.03em" }}>
         Instagram Symbols — Copy & Paste for Bios and Captions
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 15, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>The best symbols for Instagram bios and captions. Stars, hearts, arrows, flowers, dividers, and aesthetic text that actually works on Instagram.</p>
       <article style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85 }} dangerouslySetInnerHTML={{ __html: `<p>Instagram supports Unicode text everywhere &mdash; bios, captions, comments, story text, and display names. This means thousands of special characters work on the platform.</p>
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Best Symbols for Instagram Bios</h2>

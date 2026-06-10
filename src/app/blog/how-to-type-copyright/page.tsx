@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "How to Type the Copyright Symbol © on Mac, Windows & iPhone";
 const DESCRIPTION = "Learn how to type the copyright symbol © on Mac (Option+G), Windows (Alt+0169), iPhone, Android, and in HTML. Step-by-step guide with shortcuts.";
@@ -39,6 +40,7 @@ export default function BlogCopyright() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
         How to Type the Copyright Symbol © on Any Device
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>The copyright symbol © is one of the most searched symbols on the internet. Whether you need it for a website, document, or social media post, here is how to type it on every device — or just copy it below.</p>
 
       <div style={{ background: "var(--surface)", border: "1px solid var(--accent)", borderRadius: 14, padding: 24, marginBottom: 48, textAlign: "center" }}>
