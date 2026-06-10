@@ -10,8 +10,48 @@ import {
   type EmojiRecord,
 } from "@/data/emoji";
 import { canonical } from "@/lib/canonical";
+import { getEmojiMeta } from "@/data/emoji-meta";
 import CopyToast from "@/components/CopyToast";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
+
+// Semantic related-emoji index: emoji sharing official CLDR keywords. Built once
+// at module load (trivial cost), used by every detail page so "related" is
+// per-emoji unique instead of the same first-12 of the category.
+const _byKeyword = new Map<string, EmojiRecord[]>();
+for (const r of emoji) {
+  const m = getEmojiMeta(r.emoji);
+  if (!m) continue;
+  for (const kw of m.kw) {
+    const list = _byKeyword.get(kw);
+    if (list) list.push(r); else _byKeyword.set(kw, [r]);
+  }
+}
+
+function semanticRelated(e: EmojiRecord, n: number): EmojiRecord[] {
+  const meta = getEmojiMeta(e.emoji);
+  const score = new Map<string, { r: EmojiRecord; s: number }>();
+  if (meta) {
+    for (const kw of meta.kw) {
+      for (const r of _byKeyword.get(kw) ?? []) {
+        if (r.id === e.id) continue;
+        const cur = score.get(r.id);
+        if (cur) cur.s++; else score.set(r.id, { r, s: 1 });
+      }
+    }
+  }
+  const ranked = [...score.values()]
+    .sort((a, b) => b.s - a.s || (a.r.category === e.category ? -1 : 0) - (b.r.category === e.category ? -1 : 0))
+    .map((x) => x.r);
+  // Fill any remainder with same-category neighbours.
+  if (ranked.length < n) {
+    const have = new Set(ranked.map((r) => r.id));
+    for (const r of emoji) {
+      if (ranked.length >= n) break;
+      if (r.category === e.category && r.id !== e.id && !have.has(r.id)) ranked.push(r);
+    }
+  }
+  return ranked.slice(0, n);
+}
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -67,10 +107,10 @@ export default async function EmojiDetailPage({ params }: Props) {
   const catName = categoryName(e!.category);
   const cps = codepointsOf(e!.emoji);
 
-  // Related — same category, exclude self, take 12.
-  const related: EmojiRecord[] = emoji
-    .filter((r) => r.category === e!.category && r.id !== e!.id)
-    .slice(0, 12);
+  // Related — ranked by shared official CLDR keywords (unique per emoji),
+  // topped up with same-category neighbours.
+  const related: EmojiRecord[] = semanticRelated(e!, 12);
+  const meta = getEmojiMeta(e!.emoji);
 
   const baseUrl = "https://www.copychars.com";
   const jsonLd = {
@@ -122,7 +162,11 @@ export default async function EmojiDetailPage({ params }: Props) {
     ? `People commonly use ${e!.emoji} in contexts relating to ${meaningKeywords.join(", ")}.`
     : `It is recognised and rendered on iOS, Android, macOS, Windows, and all major web browsers.`;
 
-  const techLine = `Its Unicode codepoint${cps.length > 1 ? "s are" : " is"} ${cpString} — part of the ${catName} block in the Unicode standard. You can copy ${e!.emoji} by clicking the button above, then paste it anywhere with Ctrl+V (Windows / Linux) or Cmd+V (Mac).`;
+  const versionLine = meta && meta.y > 0
+    ? ` The ${e!.name.toLowerCase()} emoji joined the emoji standard in ${meta.y} as part of Emoji ${meta.v}, so it renders on any device updated since then.`
+    : "";
+
+  const techLine = `Its Unicode codepoint${cps.length > 1 ? "s are" : " is"} ${cpString} — part of the ${catName} block in the Unicode standard.${versionLine} You can copy ${e!.emoji} by clicking the button above, then paste it anywhere with Ctrl+V (Windows / Linux) or Cmd+V (Mac).`;
 
   return (
     <>
@@ -226,6 +270,12 @@ export default async function EmojiDetailPage({ params }: Props) {
                 <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Category</div>
                 <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--accent)" }}>{catName}</div>
               </div>
+              {meta && meta.y > 0 && (
+                <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
+                  <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Introduced</div>
+                  <div style={{ fontFamily: "DM Mono, monospace", fontSize: 14, color: "var(--text)" }}>Emoji {meta.v} · {meta.y}</div>
+                </div>
+              )}
               <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
                 <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Keywords</div>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
@@ -234,6 +284,16 @@ export default async function EmojiDetailPage({ params }: Props) {
                   ))}
                 </div>
               </div>
+              {meta && meta.kw.length > 0 && (
+                <div style={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 16, padding: "16px 18px", gridColumn: "1 / -1" }}>
+                  <div style={{ fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "DM Mono, monospace", color: "var(--text3)", marginBottom: 6 }}>Official Unicode (CLDR) keywords</div>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {meta.kw.map((k) => (
+                      <span key={k} style={{ fontSize: 12, padding: "4px 10px", borderRadius: 100, border: "1px solid var(--border)", color: "var(--text2)", background: "var(--bg)" }}>{k}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
