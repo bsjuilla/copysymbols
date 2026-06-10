@@ -11,8 +11,28 @@ import {
 } from "@/data/all-kaomoji";
 import { kaomojiCategories } from "@/data/kaomoji";
 import { canonical } from "@/lib/canonical";
+import { charName } from "@/data/char-names";
 import CopyToast from "@/components/CopyToast";
 import EmojiCopyButton from "@/components/EmojiCopyButton";
+
+// Per-character "anatomy" of a face: each distinct non-space character with its
+// codepoint and official Unicode name. Factual, and unique to every kaomoji —
+// the anti-thin-content layer for this page class.
+function anatomyOf(face: string): Array<{ ch: string; cp: string; name: string }> {
+  const seen = new Set<number>();
+  const out: Array<{ ch: string; cp: string; name: string }> = [];
+  for (const ch of face) {
+    const cp = ch.codePointAt(0);
+    if (cp == null || ch === " " || seen.has(cp)) continue;
+    seen.add(cp);
+    out.push({
+      ch,
+      cp: "U+" + cp.toString(16).toUpperCase().padStart(4, "0"),
+      name: charName(cp),
+    });
+  }
+  return out;
+}
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -206,6 +226,34 @@ export default async function KaomojiDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Anatomy — how the face is built, character by character */}
+        {(() => {
+          const anatomy = anatomyOf(k!.face);
+          if (anatomy.length === 0) return null;
+          return (
+            <section style={{ marginBottom: 40 }}>
+              <div className="section-label" style={{ marginBottom: 6 }}>Anatomy</div>
+              <h2 className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+                How {k!.name} is made
+              </h2>
+              <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.7, marginBottom: 16, maxWidth: 680 }}>
+                {k!.face} is assembled from {anatomy.length} distinct Unicode character{anatomy.length === 1 ? "" : "s"} — most borrowed from alphabets and symbol sets that were never meant to draw faces. Here is every piece with its official Unicode name:
+              </p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8 }}>
+                {anatomy.map((a) => (
+                  <div key={a.cp} style={{ display: "flex", alignItems: "center", gap: 12, background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 12, padding: "10px 14px" }}>
+                    <span className="kaomoji-face" style={{ fontSize: "1.3rem", lineHeight: 1, minWidth: 28, textAlign: "center" }}>{a.ch}</span>
+                    <span style={{ minWidth: 0 }}>
+                      <span style={{ display: "block", fontFamily: "DM Mono, monospace", fontSize: 11.5, color: "var(--teal)" }}>{a.cp}</span>
+                      <span style={{ display: "block", fontSize: 12, color: "var(--text2)", lineHeight: 1.4 }}>{a.name}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Related */}
         {related.length > 0 && (
