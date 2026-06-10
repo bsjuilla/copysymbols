@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Best Symbols for TikTok Usernames and Bios — Copy & Paste";
 const DESCRIPTION = "The symbols that actually work in a TikTok username and bio, how to add them, and what TikTok blocks. Copy-paste aesthetic symbols and fancy fonts for your @ and profile.";
@@ -63,6 +64,7 @@ export default function TikTokUsernameSymbols() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           Best Symbols for TikTok Usernames and Bios
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           TikTok has two name fields and they follow different rules. Knowing which is which saves a lot of frustration when a symbol you paste suddenly disappears. This guide covers what works in each, gives you copy-paste symbols and fonts, and explains the limits TikTok actually enforces.
         </p>

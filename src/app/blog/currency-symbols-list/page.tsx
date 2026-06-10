@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "All Currency Symbols List — Copy & Paste $ € £ ¥ ₹ ₿";
 const DESCRIPTION = "Complete list of all world currency symbols with their country, currency name and Unicode. Copy any currency symbol with one click.";
@@ -60,6 +61,7 @@ export default function BlogCurrency() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
         Complete List of Currency Symbols — Copy & Paste $ € £ ¥
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>
         Every world currency symbol in one place, with the country, currency name and Unicode code point. Click any symbol to go to its detail page and copy it.
       </p>

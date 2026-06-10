@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Discord Symbols — Copy & Paste ★ ♥ → for Names & Bios";
 const DESCRIPTION = "Discord symbols to copy and paste — stars ★, hearts ♥, arrows →, brackets 「」 and text art that work in your username, server name, bio and messages. One click to copy each.";
@@ -40,6 +41,7 @@ export default function BlogPost() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, lineHeight: 1.2, letterSpacing: "-0.03em" }}>
         Discord Symbols — Special Characters That Work in Discord
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 15, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>All symbols, Unicode characters, and text art that work in Discord usernames, bios, and messages. Stars, hearts, arrows, brackets, and more.</p>
       <article style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85 }} dangerouslySetInnerHTML={{ __html: `<p>Discord supports the full Unicode standard, meaning thousands of special characters work in usernames, server names, channel names, bios, and messages. Here are the most useful symbols for Discord.</p>
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Symbols for Discord Usernames</h2>

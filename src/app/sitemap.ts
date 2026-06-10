@@ -180,6 +180,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/aesthetic-emoji-combos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/cool-username-ideas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog/what-is-kaomoji`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Editorial depth sprint (2026-06-10 — AdSense content push)
+    { url: `${BASE}/blog/alt-codes`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/morse-code-alphabet`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/roman-numerals-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/lenny-face-meaning`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/cursed-text-zalgo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/text-art-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/hand-emoji-meanings`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/how-emoji-work`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/why-symbols-show-as-boxes`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/invisible-character-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/blog/bullet-journal-symbols`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // New tool — Discord timestamp generator
     { url: `${BASE}/discord-timestamp`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
 

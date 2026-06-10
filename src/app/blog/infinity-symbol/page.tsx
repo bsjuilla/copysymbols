@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Infinity Symbol ∞ — Meaning, History and How to Type It";
 const DESCRIPTION = "The complete guide to the infinity symbol. Its mathematical meaning, historical origin, and keyboard shortcuts for Mac, Windows, HTML and LaTeX.";
@@ -40,6 +41,7 @@ export default function BlogPost() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, lineHeight: 1.2, letterSpacing: "-0.03em" }}>
         Infinity Symbol ∞ — Meaning, History and How to Type It
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 15, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>The complete guide to the infinity symbol. Its mathematical meaning, historical origin, and keyboard shortcuts for Mac, Windows, HTML and LaTeX.</p>
       <article style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85 }} dangerouslySetInnerHTML={{ __html: `<p>The <strong>infinity symbol &infin;</strong> (U+221E) represents a quantity larger than any real number. Beyond mathematics it has become a popular motif for tattoos, jewellery, and social media &mdash; representing endlessness and eternal potential.</p>
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Mathematical Meaning</h2>

@@ -92,6 +92,16 @@ export default function AboutPage() {
           </section>
 
           <section>
+            <h2 style={h2}>Who writes the guides</h2>
+            <p style={{ marginBottom: 10 }}>
+              The articles on our <Link href="/blog" style={linkStyle}>blog</Link> are written and maintained by the CopyChars team — the same people who curate the character library. We write about what we work with every day: Unicode blocks, font rendering quirks, platform character rules, and the history behind text faces and symbols. Every guide carries its publication and last-updated date.
+            </p>
+            <p>
+              Our editorial rule is simple: only state what we can verify. Keyboard shortcuts are tested on real devices, codepoints are checked against the Unicode standard, and where the history of an internet phenomenon is murky (as it often is), we say so instead of inventing certainty. If you spot an error in any guide, email us and we will correct it — the <em>updated</em> date on the article reflects exactly that.
+            </p>
+          </section>
+
+          <section>
             <h2 style={h2}>Who it&apos;s for</h2>
             <p>
               CopyChars is built for anyone decorating a space online or finishing a document: students dropping a degree sign or Greek letter into homework, creators styling an Instagram or TikTok bio, gamers building a username, developers grabbing an HTML entity, and people who just want to add a ♡ or a ʕ•ᴥ•ʔ to a message. Because everything is plain Unicode text, it works the same in a bio field, a caption, a Discord chat, a spreadsheet or a code comment.

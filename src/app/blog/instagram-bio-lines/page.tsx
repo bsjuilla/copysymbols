@@ -3,6 +3,7 @@ import Link from "next/link";
 import CopyToast from "@/components/CopyToast";
 import BioLineItem from "./BioLineItem";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "How to Make a Line in Instagram Bio — Dividers Copy & Paste";
 const DESCRIPTION = "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.";
@@ -52,6 +53,7 @@ export default function BlogInstagramLines() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           How to Make a Line in Your Instagram Bio
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>
           Instagram does not have a built-in divider feature, but Unicode line characters work perfectly in bios. Click any line below to copy it, then paste it straight into Instagram.
         </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "™ vs ® vs © — What is the Difference? (Trade Mark, Registered, Copyright)";
 const DESCRIPTION = "Learn the difference between ™ (trade mark), ® (registered trademark) and © (copyright). When to use each symbol and what they legally mean.";
@@ -39,6 +40,7 @@ export default function BlogTrademark() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
         ™ vs ® vs © — What is the Difference?
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>
         These three symbols look similar and often appear together — but they mean very different things legally. Here is a plain-English explanation of each.
       </p>

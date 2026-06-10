@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Em Dash — How to Type It (and Why It Became the 'AI' Sign)";
 const DESCRIPTION = "How to type an em dash (—) on Windows, Mac, iPhone, Android and in HTML, the difference between the em dash, en dash and hyphen, and an honest look at the 2026 'em dash means AI wrote it' debate.";
@@ -83,6 +84,7 @@ export default function EmDash() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           Em Dash — How to Type It (and Why It Became the &lsquo;AI&rsquo; Sign)
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           The em dash (—) is the long horizontal stroke you reach for when a comma feels too weak and a full stop feels too final. It has been part of careful writing for hundreds of years, and lately it has also become the centre of an odd internet argument about whether using one means a robot wrote your sentence. This guide covers both halves: how to actually type the thing on every device, and what the &ldquo;em dash equals AI&rdquo; talk is really about.
         </p>

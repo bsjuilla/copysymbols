@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Greek Alphabet Symbols — Complete List α β γ Copy & Paste";
 const DESCRIPTION = "Complete Greek alphabet with uppercase and lowercase letters, names and their common uses in math, science and everyday language. Copy any Greek letter.";
@@ -66,6 +67,7 @@ export default function BlogGreek() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
         Complete Greek Alphabet — Copy & Paste All Letters
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 40, lineHeight: 1.7 }}>
         All 24 Greek letters with both uppercase and lowercase forms, their English names, and their common uses in mathematics, science, and everyday language. Click any row to copy the lowercase letter.
       </p>

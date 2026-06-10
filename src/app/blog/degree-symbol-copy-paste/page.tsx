@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Degree Symbol ° — How to Type It on Any Device";
 const DESCRIPTION = "How to type the degree symbol on Windows (Alt+0176), Mac (Option+Shift+8), iPhone (hold 0), and Android. Plus HTML code and CSS value.";
@@ -40,6 +41,7 @@ export default function BlogPost() {
       <h1 className="font-display" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 800, color: "var(--text)", marginBottom: 16, lineHeight: 1.2, letterSpacing: "-0.03em" }}>
         Degree Symbol ° — How to Type It on Any Device
       </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
       <p style={{ fontSize: 15, color: "var(--text3)", marginBottom: 40, lineHeight: 1.6 }}>How to type the degree symbol on Windows (Alt+0176), Mac (Option+Shift+8), iPhone (hold 0), and Android. Plus HTML code and CSS value.</p>
       <article style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85 }} dangerouslySetInnerHTML={{ __html: `<p>The <strong>degree symbol &deg;</strong> is used for temperature (25&deg;C), angles (90&deg;), and geographic coordinates. It is one of those characters everyone needs but few know how to type.</p>
 <h2 style="font-size:1.3rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem">Windows Keyboard Shortcut</h2>

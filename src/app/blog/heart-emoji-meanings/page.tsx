@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CopySymbolGrid from "@/components/CopySymbolGrid";
 import { canonical } from "@/lib/canonical";
+import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Heart Emoji Meanings — What Every Colour and Type Means";
 const DESCRIPTION = "What each heart emoji means: ❤️ red, 🧡 orange, 💛 yellow, 💚 green, 💙 blue, 💜 purple, 🖤 black, 🤍 white, 🩷 pink and the special hearts. Copy any of them.";
@@ -105,6 +106,7 @@ export default function HeartEmojiMeanings() {
         <h1 className="font-display" style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, color: "var(--text)", margin: "16px 0", letterSpacing: "-0.02em" }}>
           Heart Emoji Meanings: What Every Colour and Type Means
         </h1>
+        <PostMeta published={PUBLISHED} modified={MODIFIED} />
         <p style={{ fontSize: 16, color: "var(--text2)", marginBottom: 36, lineHeight: 1.7 }}>
           Heart emoji carry real shades of meaning, and the colour you choose changes the message. A red heart says one thing to a partner; a yellow heart says something gentler to a friend. None of these meanings are official rules — they are the conventions people have settled into — but knowing them helps you pick the right one. Here is what each heart tends to mean, with every one ready to copy.
         </p>
