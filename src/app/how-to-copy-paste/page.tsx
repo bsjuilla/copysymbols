@@ -6,7 +6,7 @@ import { relatedForEmoji } from "@/lib/related";
 
 const TITLE = "How to Copy and Paste Symbols & Emoji — iPhone, Android, Windows, Mac";
 const DESCRIPTION =
-  "Learn how to copy and paste symbols, emoji, and special characters on every device — iPhone, Android, Windows, Mac, and Google Docs. Click to copy on CopyChars, then paste anywhere.";
+  "Learn how to copy and paste symbols, emoji and special characters on iPhone, Android, Windows, Mac and Google Docs. Click to copy, then paste anywhere you type.";
 
 export const metadata: Metadata = {
   title: TITLE,

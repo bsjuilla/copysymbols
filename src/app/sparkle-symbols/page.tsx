@@ -5,7 +5,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Sparkle Symbols ✨ ✦ ⭐ Copy & Paste — Star Sparkles",
-  description: "Copy sparkle and star symbols instantly. ✨ ✦ ✧ ⭐ 🌟 💫 ✶ — aesthetic sparkles for Instagram bios, captions, and social media.",
+  description: "Copy sparkle and star symbols instantly: ✨ ✦ ✧ ⭐ 🌟 💫 ★ ☆ and more aesthetic text sparkles for Instagram and TikTok bios, captions and social media posts.",
   ...canonical("/sparkle-symbols"),
 };
 

@@ -3,7 +3,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How CopyChars handles user data — what we collect, what we don't, and your rights under GDPR and CCPA.",
+  description: "How CopyChars handles your data: we collect nothing ourselves, your typed text stays on your device, and Google AdSense ads are governed by GDPR and CCPA.",
   ...canonical("/privacy"),
 };
 

@@ -4,7 +4,7 @@ import { canonical } from "@/lib/canonical";
 import PostMeta from "@/components/PostMeta";
 
 const TITLE = "Check Mark Symbol ✓ — Complete Guide to Tick Marks";
-const DESCRIPTION = "Everything about the check mark symbol. Unicode values, keyboard shortcuts for every device, and when to use each variant.";
+const DESCRIPTION = "The complete guide to the check mark symbol ✓: every tick variant, Unicode values, keyboard shortcuts for Windows, Mac and phones, and when to use each one.";
 const SLUG = "check-mark-symbol";
 const PUBLISHED = "2026-03-01T00:00:00Z";
 const MODIFIED = "2026-05-09T00:00:00Z";

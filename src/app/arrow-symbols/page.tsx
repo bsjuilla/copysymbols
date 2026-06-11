@@ -11,7 +11,7 @@ const pack = symbolEnrichment["arrow-symbols"];
 
 export const metadata: Metadata = {
   title: "Arrow Symbols → ← Copy & Paste — 100+ Arrow Signs",
-  description: "Copy and paste arrow symbols instantly. Right →, left ←, up ↑, down ↓, double ⇒, curved ↷, bold ➡ and more. One click to copy.",
+  description: "Copy and paste arrow symbols instantly: right →, left ←, up ↑, down ↓, double ⇒, curved ↷, bold ➡ and 100+ more. One click to copy into Docs, Word or chat.",
   ...canonical("/arrow-symbols"),
 };
 

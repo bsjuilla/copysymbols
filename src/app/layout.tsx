@@ -6,6 +6,18 @@ import NavClient from "@/components/NavClient";
 // Google AdSense publisher ID (public — also appears in the loader URL).
 const ADSENSE_CLIENT = "ca-pub-5652501264934418";
 
+// Google Consent Mode v2 default state. Runs as a synchronous inline script
+// BEFORE the async AdSense loader, so the page is compliant-by-default: in the
+// EEA, UK and Switzerland every consent signal starts 'denied' until the user
+// acts on Google's certified CMP (the GDPR message created in AdSense →
+// Privacy & messaging), which then calls gtag('consent','update',…). Scoped to
+// `region` so non-EEA traffic (US, India, etc.) keeps full personalized ads —
+// they get no banner and no legal denied-default. `ads_data_redaction` strips
+// ad identifiers while consent is denied. CSP already allows inline scripts
+// ('unsafe-inline') and the Funding Choices CMP origins (see next.config.ts).
+const EEA_UK_CH = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB","CH"];
+const CONSENT_MODE_DEFAULT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500,region:${JSON.stringify(EEA_UK_CH)}});gtag('set','ads_data_redaction',true);`;
+
 // Next 16 moved themeColor out of the metadata export into a dedicated
 // viewport export (see node_modules/next/dist/docs/.../generate-viewport.md).
 // Keeping it in metadata emits an "Unsupported metadata themeColor" build
@@ -84,12 +96,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           precedence="default"
           href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap"
         />
+        {/* Consent Mode v2 default. A PLAIN synchronous inline <script>: it runs
+            at parse time, the instant the parser reaches it — which is before the
+            adsbygoogle.js below (it's `async`, so it only executes once downloaded,
+            tens to hundreds of ms later). React 19 hoists the async ad tag into
+            <head> and leaves this in <body>, so HTML position has them reversed,
+            but EXECUTION order is consent-first (sync-now beats async-later). We do
+            NOT route either through next/script — beforeInteractive defers this one
+            and the ad tag must stay a raw, crawler-visible <script> for AdSense.
+            The load-bearing GDPR compliance is Google's certified CMP (the Funding
+            Choices "GDPR message" created in AdSense → Privacy & messaging, served
+            via the ad tag, TCF v2.2); this snippet is the compliant-by-default
+            Consent Mode layer the CMP then updates. */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_MODE_DEFAULT }} />
         {/* Google AdSense loader as a RAW <script> (not next/script). next/script
             only emitted a <link rel=preload> + a JS-injected tag, which AdSense's
             crawler — reading raw HTML without running our JS — could not see, so
             verification failed. React 19 hoists this async script into <head> and
             renders it as a real tag in the server HTML. Paired with the
-            google-adsense-account meta tag (metadata.other below) for verification. */}
+            google-adsense-account meta tag (metadata.other below) for verification.
+            It also auto-renders the Funding Choices GDPR consent message for EEA
+            visitors once that message is published in AdSense → Privacy & messaging. */}
         <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
