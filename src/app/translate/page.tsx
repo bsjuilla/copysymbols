@@ -4,7 +4,7 @@ import { canonical } from "@/lib/canonical";
 import { translators } from "@/lib/translators";
 
 const TITLE = "Free Online Translators — Text to Wingdings, Braille, Pig Latin";
-const DESCRIPTION = "Free online translators for Wingdings, Braille, Pig Latin and more. Type once, get the encoded output, copy to clipboard.";
+const DESCRIPTION = "Free online translators for Wingdings, Braille, Pig Latin, Morse code and more. Type once in your browser, get the encoded output and copy it to your clipboard.";
 
 export const metadata: Metadata = {
   title: TITLE,

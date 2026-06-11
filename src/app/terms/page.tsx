@@ -3,7 +3,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for CopyChars — a free copy-and-paste tool for symbols, emoji, kaomoji, and fancy text.",
+  description: "Terms of Service for CopyChars, the free copy-and-paste tool for Unicode symbols, emoji, kaomoji and fancy text. Read the rules for using the site and content.",
   ...canonical("/terms"),
 };
 

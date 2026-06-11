@@ -5,7 +5,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "All Symbol Categories",
-  description: "Browse 3000+ special characters organised by category — arrows, currency, math, Greek letters, chess, zodiac, and more.",
+  description: "Browse over 3000 special characters by category — arrows, currency, math, Greek letters, chess, zodiac and more. Click any symbol to copy it instantly, no app.",
   ...canonical("/symbols"),
 };
 

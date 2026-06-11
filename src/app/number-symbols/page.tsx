@@ -5,7 +5,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Number Symbols ① ② ③ Copy & Paste — Circled & Special Numbers",
-  description: "Copy circled numbers ①②③, Roman numerals ⅠⅡⅢ, fractions ½ ¼ ¾, and superscript numbers. One click to copy.",
+  description: "Copy circled numbers ①②③, Roman numerals ⅠⅡⅢ, fractions ½ ¼ ¾ and superscript digits, each a single Unicode character. One click to copy and paste anywhere.",
   ...canonical("/number-symbols"),
 };
 

@@ -6,7 +6,7 @@ import { canonical } from "@/lib/canonical";
 import PostMeta from "@/components/PostMeta";
 
 const TITLE = "How to Make a Line in Instagram Bio — Dividers Copy & Paste";
-const DESCRIPTION = "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any line to copy it instantly.";
+const DESCRIPTION = "Copy and paste aesthetic lines and dividers for your Instagram bio. Click any thin, double, thick or wavy line to copy it instantly, then paste it to Save.";
 const SLUG = "instagram-bio-lines";
 const PUBLISHED = "2026-03-01T00:00:00Z";
 const MODIFIED = "2026-05-09T00:00:00Z";

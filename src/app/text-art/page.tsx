@@ -5,7 +5,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Text Art — Copy & Paste ASCII Art",
-  description: "Copy and paste ASCII text art. Animals, objects, symbols and more — all made from text characters. Works anywhere.",
+  description: "Copy and paste ASCII and text art — animals, objects, hearts, borders and more, each one click to copy. Works in Discord, Instagram, messages and bios alike.",
   keywords: ["text art","ascii art","copy paste art","text symbols art","unicode art"],
   ...canonical("/text-art"),
 };

@@ -5,7 +5,7 @@ import { canonical } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Flower Symbols ✿ ❀ ❁ Copy & Paste — All Floral Signs",
-  description: "Copy flower symbols instantly. ✿ ❀ ❁ ✾ 🌸 🌺 🌻 — floral text symbols and emoji flowers for bios, captions, and messages.",
+  description: "Copy flower symbols and emoji instantly: ✿ ❀ ❁ ✾ 🌸 🌺 🌻 🌹 and more floral text characters for Instagram bios, captions, Discord and your text messages.",
   ...canonical("/flower-symbols"),
 };
 
