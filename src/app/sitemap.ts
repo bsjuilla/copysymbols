@@ -75,6 +75,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     // How-to guide (P4, AEO HowTo schema)
     { url: `${BASE}/how-to-copy-paste`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    // Developer API docs (the /api/v1/* endpoints themselves are robots-disallowed).
+    { url: `${BASE}/developers`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     // NOTE: /community and /search are intentionally OMITTED.
     //   /community  — empty user-content page (~40 words live content); excluded
     //                 to avoid "Crawled — currently not indexed" noise.

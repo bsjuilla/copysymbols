@@ -148,6 +148,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
               <Link href="/about" className="nav-link" style={{ fontSize: 13 }}>About</Link>
+              <Link href="/developers" className="nav-link" style={{ fontSize: 13 }}>API</Link>
               <Link href="/privacy" className="nav-link" style={{ fontSize: 13 }}>Privacy</Link>
               <Link href="/terms" className="nav-link" style={{ fontSize: 13 }}>Terms</Link>
               <Link href="/cookies" className="nav-link" style={{ fontSize: 13 }}>Cookies</Link>
